@@ -1,19 +1,24 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from 'next/link';
+import React from 'react';
 import useDarkMode from '../hooks/useDarkMode';
 
 export default function Header() {
   const [colorTheme, setTheme] = useDarkMode();
   return (
-    <header className='py-4 flex justify-between'>
-        <Link href="/"><a className='dark:text-gray-100 dark:hover:text-gray-400 no-underline'>JuanCamiloQhz</a></Link>
-        <div className='flex gap-4 dark:text-gray-100'>
-          <Link href="/about"><a className='no-underline dark:text-gray-100 dark:hover:text-gray-400'>About</a></Link>
-          {colorTheme === "light" ? (
+    <header className="w-full border-b">
+      <div className="max-w-6xl h-20 px-2 md:px-4 lg:px-8 flex justify-between items-center mx-auto">
+        <Link href="/">
+          <a className="nav-link">JuanCamiloQhz</a>
+        </Link>
+        <div className="flex gap-4 dark:text-gray-100">
+          <Link href="/about">
+            <a className="nav-link">About</a>
+          </Link>
+          {colorTheme === 'light' ? (
             <svg
-              onClick={() => setTheme("light")}
+              onClick={() => setTheme('light')}
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 hover:text-gray-400"
+              className="h-6 w-6 nav-link"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -27,9 +32,9 @@ export default function Header() {
             </svg>
           ) : (
             <svg
-              onClick={() => setTheme("dark")}
+              onClick={() => setTheme('dark')}
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 hover:text-gray-400"
+              className="h-6 w-6 nav-link"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -44,6 +49,7 @@ export default function Header() {
             </svg>
           )}
         </div>
+      </div>
     </header>
-  )
+  );
 }

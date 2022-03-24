@@ -1,4 +1,4 @@
-import { PostLayout } from '../../../components'
+import { PostLayout } from '../../../components';
 
 export const meta = {
   title: 'Introduction to Next.js',
@@ -6,9 +6,11 @@ export const meta = {
   date: 'June 04, 2020',
   readTime: 2,
   author: 'Lee Robinson',
-}
+};
 
-export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout>
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);
 
 ## My Headline
 

@@ -1,4 +1,4 @@
-import { Button, PostLayout } from '../../../components'
+import { Button, PostLayout } from '../../../components';
 
 export const meta = {
   title: 'Markdown/MDX with Next.js',
@@ -6,9 +6,11 @@ export const meta = {
   date: 'Sep 04, 2020',
   readTime: 2,
   author: 'Juan Camilo Qhz',
-}
+};
 
-export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout>
+export default ({ children }) => (
+  <PostLayout meta={meta}>{children}</PostLayout>
+);
 
 # My MDX Test page
 
@@ -22,5 +24,4 @@ Checkout my React component:
 
 I **love** using [Next.js](https://nextjs.org/)
 
-<Button/>
-
+<Button />
