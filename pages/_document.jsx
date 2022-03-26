@@ -8,7 +8,7 @@ export default function Document() {
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap"
         rel="stylesheet"
       />
-      <body className="bg-gray-50 dark:bg-[#171717] w-full">
+      <body>
         <Main />
         <NextScript />
       </body>

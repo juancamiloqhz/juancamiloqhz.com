@@ -1,55 +1,60 @@
 import Link from 'next/link';
-import React from 'react';
-import useDarkMode from '../hooks/useDarkMode';
+import { useState } from 'react';
 
-export default function Header() {
-  const [colorTheme, setTheme] = useDarkMode();
+import MenuToggle from './MenuToggle/MenuToggle';
+import ModalMenuMobile from './Modals/ModalMenuMobile';
+import ThemeButton from './ThemeButton';
+
+export default function Header({ pageTitle }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <header className="w-full border-b">
-      <div className="max-w-6xl h-20 px-2 md:px-4 lg:px-8 flex justify-between items-center mx-auto">
-        <Link href="/">
-          <a className="nav-link">JuanCamiloQhz</a>
-        </Link>
-        <div className="flex gap-4 dark:text-gray-100">
-          <Link href="/about">
-            <a className="nav-link">About</a>
+    <>
+      <header className="w-full border-b dark:border-gray-600 fixed top-0 bg-white dark:bg-black z-10">
+        <div className="max-w-6xl h-16 md:h-20 px-4 md:px-6 lg:px-8 flex justify-between items-center mx-auto">
+          <Link href="/">
+            <a className="nav-link">JuanCamiloQhz</a>
           </Link>
-          {colorTheme === 'light' ? (
-            <svg
-              onClick={() => setTheme('light')}
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 nav-link"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="hidden md:flex gap-4 dark:text-gray-100">
+            <Link href="/">
+              <a className="nav-link">Home</a>
+            </Link>
+            <Link href="/blog">
+              <a className="nav-link">Blog</a>
+            </Link>
+            <Link href="/work">
+              <a className="nav-link">Work</a>
+            </Link>
+            <Link href="/about">
+              <a className="nav-link">About</a>
+            </Link>
+            <Link href="/contact">
+              <a className="nav-link">Contact</a>
+            </Link>
+            <ThemeButton />
+          </div>
+          <div className="flex items-center md:hidden">
+            <button
+              type="button"
+              className="p-0 border-0"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-              />
-            </svg>
-          ) : (
-            <svg
-              onClick={() => setTheme('dark')}
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 nav-link"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                // className="dark:text-red-600"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            </svg>
-          )}
+              <MenuToggle isOpen={mobileMenuOpen} />
+            </button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+      {pageTitle && (
+        <div className="mt-16 md:mt-20 w-full h-24 md:h-28 flex items-center border-b dark:border-gray-600 bg-white dark:bg-black">
+          <div className="px-4 md:px-6 ld:px-8 max-w-6xl mx-auto w-full flex items-center">
+            <h1>{pageTitle}</h1>
+          </div>
+        </div>
+      )}
+      <ModalMenuMobile
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
+    </>
   );
 }
