@@ -1,9 +1,13 @@
 import { Layout } from '../components';
 
 export default function AboutPage() {
-  return <h1>Work Page</h1>;
+  return (
+    <div className="page-container">
+      <h1>Work Page</h1>
+    </div>
+  );
 }
 
 AboutPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout pageTitle="My Work">{page}</Layout>;
 };

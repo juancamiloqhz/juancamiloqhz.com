@@ -135,14 +135,14 @@ a {
     font-family: Josefin Sans, system-ui, sans-serif;
   }
   body {
-    @apply antialiased text-gray-700 dark:text-gray-200;
-    @apply bg-gray-50 dark:bg-[#171717] w-full;
+    @apply antialiased text-neutral-700 dark:text-gray-200;
+    @apply dark:bg-black w-full;
+    /* @apply dark:bg-[#171717] w-full; */
     @apply leading-normal tracking-normal text-base font-normal break-words;
     @apply text-base lg:text-xl;
   }
 
   main {
-    @apply max-w-6xl mx-auto py-[5rem] md:py-[8rem];
   }
 
   a {
@@ -156,19 +156,19 @@ a {
     @apply cursor-pointer focus:outline-none;
   }
   h1 {
-    @apply text-2xl font-bold md:text-4xl;
+    @apply text-3xl font-bold md:text-4xl;
   }
 
   h2 {
-    @apply text-xl font-bold md:text-3xl;
+    @apply text-2xl font-bold md:text-3xl;
   }
 
   h3 {
-    @apply text-lg font-bold md:text-2xl;
+    @apply text-xl font-bold md:text-2xl;
   }
 
   h4 {
-    @apply text-base font-bold md:text-lg;
+    @apply text-lg font-bold md:text-lg;
   }
 }
 
@@ -181,4 +181,11 @@ a {
 }
 .nav-link.active {
   @apply text-gray-700;
+}
+
+.page-container {
+  @apply mx-auto max-w-6xl w-full py-2 md:py-4;
+}
+.post-container {
+  @apply mx-auto max-w-2xl w-full py-2 md:py-4;
 }

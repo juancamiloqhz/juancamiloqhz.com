@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+};
 
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
@@ -9,9 +9,9 @@ const withMDX = require('@next/mdx')({
     remarkPlugins: [],
     rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.
-    providerImportSource: "@mdx-js/react",
+    providerImportSource: '@mdx-js/react',
   },
-})
+});
 module.exports = withMDX({
   ...nextConfig,
   // Append the default value with md extensions
@@ -19,5 +19,6 @@ module.exports = withMDX({
   images: {
     loader: 'imgix',
     path: 'https://images.unsplash.com/',
+    // domains: ['images.unsplash.com', 'deelay.me', 'picsum.photos'],
   },
-})
+});

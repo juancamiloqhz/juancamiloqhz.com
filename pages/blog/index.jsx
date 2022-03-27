@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import { Layout, Meta, Post } from '../../components';
+import { Layout, Meta, PostPreview } from '../../components';
 import { posts } from '../../scripts/getAllPosts';
 
 export default function BlogArchivePage() {
   return (
     <div>
       <Meta title="Blog" />
-      <div className="">
+      <div className="page-container post-container">
         {posts.map((post) => (
-          <Post key={post.link} post={post} />
+          <PostPreview key={post.link} post={post} />
         ))}
       </div>
     </div>
@@ -16,5 +16,5 @@ export default function BlogArchivePage() {
 }
 
 BlogArchivePage.getLayout = function getLayout(page) {
-  return <Layout pageTitle="All Articles">{page}</Layout>;
+  return <Layout pageTitle="Articles">{page}</Layout>;
 };

@@ -3,7 +3,7 @@ import Head from 'next/head';
 export default function Meta({ title, description }) {
   return (
     <Head>
-      <title>{title || 'JuanCamiloQhz - Personal Website'}</title>
+      <title>{title || 'JuanCamiloQHz - Personal Website'}</title>
       <meta
         name="keywords"
         content="Software Developer, Mechanical Engineer, Professional Pyrotechnician"
