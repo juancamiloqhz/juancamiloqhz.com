@@ -14,9 +14,14 @@ const variants = {
   },
 };
 
+const firstItem = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.1 } },
+};
+
 const item = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.1 } },
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 };
 export default function Home() {
   // console.dir(posts, { depth: null})
@@ -30,7 +35,7 @@ export default function Home() {
           animate="show"
         >
           <motion.h4
-            variants={item}
+            variants={firstItem}
             className="text-blue-600 dark:text-blue-500"
           >
             HELLO, MY NAME IS JUAN CAMILO

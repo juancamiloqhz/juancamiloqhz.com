@@ -7,9 +7,14 @@ export default function BlogArchivePage() {
     <div>
       <Meta title="Blog" />
       <div className="page-container post-container">
-        {posts.map((post) => (
-          <PostPreview key={post.link} post={post} />
-        ))}
+        {posts
+          .sort(
+            (a, b) =>
+              new Date(b.module.meta.date) - new Date(a.module.meta.date)
+          )
+          .map((post) => (
+            <PostPreview key={post.link} post={post} />
+          ))}
       </div>
     </div>
   );
