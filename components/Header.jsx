@@ -23,13 +23,41 @@ export default function Header({ pageTitle }) {
           <motion.div
             exit={{ height: 0 }}
             animate={{ height: '6rem' }}
-            className="overflow-y-hidden bg-gray-100 dark:bg-neutral-900 flex py-4 overflow-x-auto relative"
+            className="overflow-y-hidden bg-gray-100 dark:bg-neutral-900 flex py-4 relative"
           >
             <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 w-full flex flex-col items-center justify-between">
               <h5 className="text-sm font-bold text-center w-full">
                 SELECT THEME
               </h5>
-              <div className="flex w-full gap-5 h-full">
+              <div className="flex w-full gap-5 h-full overflow-x-auto">
+                <button
+                  type="button"
+                  onClick={() => setTheme('light')}
+                  className="theme-card bg-white px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
+                >
+                  <p className="flex flex-col dark:text-gray-800">Classic</p>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTheme('dark')}
+                  className="theme-card bg-black px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
+                >
+                  <p className="flex flex-col text-white">Dark</p>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTheme('light')}
+                  className="theme-card bg-white px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
+                >
+                  <p className="flex flex-col dark:text-gray-800">Classic</p>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTheme('dark')}
+                  className="theme-card bg-black px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
+                >
+                  <p className="flex flex-col text-white">Dark</p>
+                </button>
                 <button
                   type="button"
                   onClick={() => setTheme('light')}
@@ -61,39 +89,41 @@ export default function Header({ pageTitle }) {
             <a className="nav-link flex items-center hover:opacity-80">
               <img
                 src="/face.png"
-                className="rounded-full w-12 h-12 object-cover mr-3"
+                className="rounded-full w-10 h-10 md:w-12 md:h-12 object-cover mr-3"
                 aria-label="Juan Camilo&lsquo;s face"
                 alt="Juan Camilo&lsquo;s face"
               />
               JuanCamiloQHz
             </a>
           </Link>
-          <div className="hidden md:flex gap-6 dark:text-gray-100 items-center">
-            <Link href="/">
-              <a className="nav-link">Home</a>
-            </Link>
-            <Link href="/blog">
-              <a className="nav-link">Blog</a>
-            </Link>
-            <Link href="/work">
-              <a className="nav-link">Work</a>
-            </Link>
-            <Link href="/about">
-              <a className="nav-link">About</a>
-            </Link>
-            <Link href="/contact">
-              <a className="nav-link">Contact</a>
-            </Link>
+          <div className="flex items-center">
+            <div className="hidden md:flex gap-6 dark:text-gray-100 items-center mr-5">
+              <Link href="/">
+                <a className="nav-link">Home</a>
+              </Link>
+              <Link href="/blog">
+                <a className="nav-link">Blog</a>
+              </Link>
+              <Link href="/work">
+                <a className="nav-link">Work</a>
+              </Link>
+              <Link href="/about">
+                <a className="nav-link">About</a>
+              </Link>
+              <Link href="/contact">
+                <a className="nav-link">Contact</a>
+              </Link>
+            </div>
             <ThemeButton />
-          </div>
-          <div className="flex items-center md:hidden">
-            <button
-              type="button"
-              className="p-0 border-0"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <MenuToggle isOpen={mobileMenuOpen} />
-            </button>
+            <div className="flex items-center md:hidden">
+              <button
+                type="button"
+                className="p-0 border-0 m-0 ml-3 flex items-center justify-center bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-full h-8 w-8"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <MenuToggle isOpen={mobileMenuOpen} size={20} />
+              </button>
+            </div>
           </div>
         </div>
       </header>

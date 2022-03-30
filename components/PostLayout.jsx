@@ -9,10 +9,10 @@ export default function PostLayout({ children, meta }) {
       <Meta title={meta?.title} />
       <Header />
       <main>
-        <h1 className="text-center text-6xl font-serif mt-10 mb-20">
+        <h1 className="text-center text-4xl md:text-6xl font-serif mt-6 md:mt-10 mb-14 md:mb-20 px-4">
           {meta.title}
         </h1>
-        <div className="prose dark:prose-invert prose-sm md:prose-base prose-a:decoration-blue-600 mx-auto">
+        <div className="prose dark:prose-invert  prose-sm md:prose-base prose-a:decoration-blue-600 mx-auto px-4">
           {children}
         </div>
       </main>

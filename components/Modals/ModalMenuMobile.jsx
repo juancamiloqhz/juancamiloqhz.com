@@ -53,6 +53,12 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
       key="dialog"
       style={{ width: '100%', ...dialogStyles }}
     >
+      <motion.button
+        onClick={onClose}
+        className="absolute top-1 right-2 p-0 border-0"
+      >
+        <XIcon />
+      </motion.button>
       <div className="items-center h-full flex flex-col text-center justify-center gap-8">
         <Link href="/">
           <a onClick={onClose} className="nav-link !text-3xl">
@@ -79,7 +85,6 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             Contact
           </a>
         </Link>
-        <ThemeButton withText />
       </div>
     </motion.div>
   );

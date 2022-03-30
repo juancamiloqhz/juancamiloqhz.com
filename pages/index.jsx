@@ -10,19 +10,19 @@ const variants = {
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.8, staggerChildren: 0.3 },
+    transition: { when: 'beforeChildren', staggerChildren: 0.3 },
   },
 };
 
 const item = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1 },
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.1 } },
 };
 export default function Home() {
   // console.dir(posts, { depth: null})
   return (
     <>
-      <div className="hero flex items-center justify-center h-[77vh] min-h-fit w-full">
+      <div className="hero flex items-center justify-center h-[55vh] md:h-[77vh] min-h-fit w-full">
         <motion.div
           variants={variants}
           className="hero-inner max-w-6xl w-full mx-auto px-4 md:px-6 lg:px-8"
@@ -35,10 +35,16 @@ export default function Home() {
           >
             HELLO, MY NAME IS JUAN CAMILO
           </motion.h4>
-          <motion.h1 variants={item} className="text-8xl font-serif">
+          <motion.h1
+            variants={item}
+            className="text-5xl md:text-8xl font-serif"
+          >
             I make websites.
           </motion.h1>
-          <motion.p variants={item} className="text-3xl font-light mt-4">
+          <motion.p
+            variants={item}
+            className="text-xl md:text-3xl font-light mt-4"
+          >
             I&lsquo;m a full-stack developer and co-founder of{' '}
             <a href="https://vibra.la" target="_blank" rel="noreferrer">
               Vibra
@@ -52,7 +58,7 @@ export default function Home() {
       </div>
       <div className="max-w-6xl w-full flex flex-col mx-auto px-4 md:px-6 lg:px-8">
         <h2 className="font-serif mb-6">Featured Posts</h2>
-        <div className="grid grid-cols-4 gap-10 pb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pb-16">
           {posts
             .filter((p) => p.module?.meta?.featured)
             .map((post, i) => {
@@ -64,7 +70,7 @@ export default function Home() {
                 <Link href="/blog/[slug]" as={`/blog${link}`} key={i}>
                   <a className="group block relative">
                     {meta.image && (
-                      <div className="image-wrapper relative h-72 shadow-2xl">
+                      <div className="image-wrapper relative h-52 md:h-72 shadow-2xl">
                         <Image
                           // loader={unsplashLoader}
                           src={meta.image}
