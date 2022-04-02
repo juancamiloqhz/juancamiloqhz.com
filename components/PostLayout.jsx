@@ -3,10 +3,10 @@ import Footer from './Footer';
 import Header from './Header';
 import Meta from './Meta';
 
-export default function PostLayout({ children, meta }) {
+export default function PostLayout({ children }) {
   return (
     <>
-      <Meta title={meta?.title} />
+      <Meta />
       <Header />
       <main>
         <h1 className="text-center text-4xl md:text-6xl font-serif mt-6 md:mt-10 mb-14 md:mb-20 px-4">

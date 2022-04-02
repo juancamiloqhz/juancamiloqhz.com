@@ -1,8 +1,9 @@
-import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { posts } from '../scripts/getAllPosts';
 import Image from 'next/image';
+
+import Layout from '../components/Layout';
+import { getAllPosts } from '../lib/blog-api';
 
 // console.table(posts);
 const variants = {
@@ -23,8 +24,25 @@ const item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 };
-export default function Home() {
-  // console.dir(posts, { depth: null})
+
+export async function getStaticProps() {
+  const allPosts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+    'categories',
+  ]);
+  // console.log({ posts: allPosts });
+  return {
+    props: { posts: allPosts },
+  };
+}
+
+export default function Home({ posts }) {
+  // console.table(posts);
   return (
     <>
       <div className="hero flex items-center justify-center h-[55vh] md:h-[77vh] min-h-fit w-full">
@@ -65,22 +83,17 @@ export default function Home() {
         <h2 className="font-serif mb-6">Featured Posts</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pb-16">
           {posts
-            .filter((p) => p.module?.meta?.featured)
+            .filter((p) => p.featured)
             .map((post, i) => {
-              const {
-                link,
-                module: { meta },
-              } = post;
               return (
-                <Link href="/blog/[slug]" as={`/blog${link}`} key={i}>
+                <Link href="/blog/[slug]" as={`/blog/${post.slug}`} key={i}>
                   <a className="group block relative">
-                    {meta.image && (
+                    {post.coverImage && (
                       <div className="image-wrapper relative h-52 md:h-72 shadow-2xl">
                         <Image
-                          // loader={unsplashLoader}
-                          src={meta.image}
+                          src={post.coverImage}
                           layout="fill"
-                          alt={meta.title}
+                          alt={post.title}
                           objectFit="cover"
                           objectPosition="center"
                           className="rounded-lg z-0 group-hover:brightness-50 transition-all duration-100 ease-in-out"
@@ -89,11 +102,11 @@ export default function Home() {
                     )}
 
                     <div className="p-4 absolute top-0 bottom-0 left-0 right-0">
-                      <div className="font-bold text-3xl mb-2 text-white font-serif">
-                        {meta.title}
+                      <div className="font-bold text-3xl mb-2 text-white font-serif group-hover:opacity-0 transition-all duration-500 ease-in-out">
+                        {post.title}
                       </div>
-                      <p className="text-gray-200 text-xl opacity-0 mt-5 group-hover:opacity-100 group-hover:mt-0 transition-all duration-500 ease-in-out">
-                        {meta.description}
+                      <p className="p-4 absolute top-0 bottom-0 left-0 right-0 text-gray-100 text-xl opacity-0 mt-5 group-hover:opacity-100 group-hover:mt-0 transition-all duration-500 ease-in-out">
+                        {post.excerpt}
                       </p>
                     </div>
                   </a>

@@ -1,13 +1,13 @@
 import { useGlobalContext } from '../context/GlobalProvider';
 
 export default function ThemeButton({ withText = false }) {
-  const { themePickerOpen, setThemPickerOpen } = useGlobalContext();
+  const { themePickerOpen, setThemePickerOpen } = useGlobalContext();
   return (
     <button
       type="button"
       className="flex items-center p-1 justify-center border-0 gap-2 m-0 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-full h-8 w-8"
       // onClick={() => setTheme(colorTheme === 'light' ? 'dark' : 'light')}
-      onClick={() => setThemPickerOpen((d) => !d)}
+      onClick={() => setThemePickerOpen((d) => !d)}
     >
       <svg
         stroke="currentColor"

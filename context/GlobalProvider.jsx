@@ -6,13 +6,13 @@ export const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);
 
 export function GlobalProvider({ children }) {
-  const [themePickerOpen, setThemPickerOpen] = useState(0);
+  const [themePickerOpen, setThemePickerOpen] = useState(0);
 
   return (
     <GlobalContext.Provider
       value={{
         themePickerOpen,
-        setThemPickerOpen,
+        setThemePickerOpen,
       }}
     >
       {children}

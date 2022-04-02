@@ -1,20 +1,34 @@
-import { motion } from 'framer-motion';
-import { Layout, Meta, PostPreview } from '../../components';
-import { posts } from '../../scripts/getAllPosts';
+import Layout from '../../components/Layout';
+import Meta from '../../components/Meta';
+import { PostPreview } from '../../components/Post';
+import { getAllPosts } from '../../lib/blog-api';
+// import { posts as allPosts } from '../../scripts/getAllPosts';
 
-export default function BlogArchivePage() {
+export async function getStaticProps() {
+  const allPosts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+    'categories',
+  ]);
+
+  return {
+    props: { posts: allPosts },
+  };
+}
+
+export default function BlogArchivePage({ posts }) {
+  // console.log(posts);
   return (
     <div>
       <Meta title="Blog" />
       <div className="page-container post-container">
-        {posts
-          .sort(
-            (a, b) =>
-              new Date(b.module.meta.date) - new Date(a.module.meta.date)
-          )
-          .map((post) => (
-            <PostPreview key={post.link} post={post} />
-          ))}
+        {posts.map((post) => (
+          <PostPreview key={post.slug} post={post} />
+        ))}
       </div>
     </div>
   );

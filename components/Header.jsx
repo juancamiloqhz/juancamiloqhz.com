@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useGlobalContext } from '../context/GlobalProvider';
 
 import MenuToggle from './MenuToggle/MenuToggle';
@@ -10,17 +10,21 @@ import ModalMenuMobile from './Modals/ModalMenuMobile';
 import ThemeButton from './ThemeButton';
 import useDarkMode from '../hooks/useDarkMode';
 import { XIcon } from './Icons';
+import { useOnClickOutside } from '../lib/hooks';
 
 export default function Header({ pageTitle }) {
+  const ref = useRef();
   const [colorTheme, setTheme] = useDarkMode();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { themePickerOpen, setThemPickerOpen } = useGlobalContext();
+  const { themePickerOpen, setThemePickerOpen } = useGlobalContext();
+  useOnClickOutside(ref, () => setThemePickerOpen(false));
 
   return (
     <>
       <AnimatePresence initial={false} exitBeforeEnter>
         {themePickerOpen && (
           <motion.div
+            ref={ref}
             exit={{ height: 0 }}
             animate={{ height: '6rem' }}
             className="overflow-y-hidden bg-gray-100 dark:bg-neutral-900 flex py-4 relative"
@@ -74,7 +78,7 @@ export default function Header({ pageTitle }) {
                 </button>
               </div>
               <motion.button
-                onClick={() => setThemPickerOpen(false)}
+                onClick={() => setThemePickerOpen(false)}
                 className="absolute top-1.5 right-1.5 border-0 p-0"
               >
                 <XIcon />

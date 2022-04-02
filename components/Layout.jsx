@@ -3,12 +3,11 @@ import Footer from './Footer';
 import Header from './Header';
 import Meta from './Meta';
 
-export default function Layout({ children, meta, pageTitle }) {
+export default function Layout({ children, pageTitle }) {
   return (
     <>
-      <Meta title={meta?.title} />
+      <Meta />
       <Header pageTitle={pageTitle} />
-
       <main>{children}</main>
       <Footer />
     </>
