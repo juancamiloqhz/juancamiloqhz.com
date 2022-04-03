@@ -1,9 +1,9 @@
-Personal Website [juancamiloqhz.vercel.com](https://juancamiloqhz.vercel.com/)
+Personal Website [juancamiloqhz.vercel.app](https://juancamiloqhz.vercel.app/)
 
 ## Stack for this website
 
 - Next.js
 - Tailwind
-- Mdx and Markdown
+- Markdown
 - Framer Motion for animations
 -

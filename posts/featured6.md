@@ -11,8 +11,15 @@ author:
   picture: '/assets/blog/authors/blonde.jpg'
 ogImage:
   url: '/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg'
-categories:
-  ['buscando-hogar: Buscando Hogar', 'comprando-hogar: Comprando Hogar']
+categories: ['category-1: Category 1', 'category-2: Category 2']
+tags:
+  [
+    'tag-6: Tag 6',
+    'tag-7: Tag 7',
+    'tag-8: Tag 8',
+    'tag-9: Tag 9',
+    'tag-10: Tag 10',
+  ]
 ---
 
 ## My Headline

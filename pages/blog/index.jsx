@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Layout from '../../components/Layout';
 import Meta from '../../components/Meta';
 import { PostPreview } from '../../components/Post';
@@ -24,7 +25,9 @@ export default function BlogArchivePage({ posts }) {
   // console.log(posts);
   return (
     <div>
-      <Meta title="Blog" />
+      <Head>
+        <title>All Articles | JuanCamiloQHz</title>
+      </Head>
       <div className="page-container post-container">
         {posts.map((post) => (
           <PostPreview key={post.slug} post={post} />

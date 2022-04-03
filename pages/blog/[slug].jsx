@@ -53,6 +53,11 @@ export async function getStaticPaths() {
 }
 
 export default function SinglePost({ post }) {
+  const categories = post.categories.map((c, index) => ({
+    slug: c.split(':')[0],
+    name: c.split(':')[1],
+    link: `/blog/category/${c.split(':')[0]}`,
+  }));
   // console.log({ post });
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
@@ -62,7 +67,7 @@ export default function SinglePost({ post }) {
     <PostTitle>Loading…</PostTitle>
   ) : (
     <>
-      <article className="mb-32">
+      <article className="mb-32 mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
         <Head>
           <title>{post.title} | JuanCamiloQHz</title>
           <meta property="og:image" content={post.ogImage.url} />
@@ -72,6 +77,7 @@ export default function SinglePost({ post }) {
           coverImage={post.coverImage}
           date={post.date}
           author={post.author}
+          categories={categories}
         />
         <PostBody content={post.content} />
       </article>

@@ -1,18 +1,18 @@
 ---
-title: 'Learn How to Pre-render Pages Using Static Generation with Next.js'
+title: 'Dynamic Routing and Static Generation'
 excerpt: '8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
-coverImage: '/assets/blog/hello-world/joshua-sortino-LqKhnDzSF-8-unsplash-hello-world.jpg'
+coverImage: '/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg'
 date: '2020-03-16T05:35:07.322Z'
-featured: true
+featured: false
 readTime: 10
 author:
-  name: Tim Neutkens
-  username: joe
-  picture: '/assets/blog/authors/blonde.jpeg'
+  name: Lorena Rojas
+  username: lorena
+  picture: '/assets/blog/authors/blonde.jpg'
 ogImage:
-  url: '/assets/blog/hello-world/joshua-sortino-LqKhnDzSF-8-unsplash-hello-world.jpg'
-categories:
-  ['buscando-hogar: Buscando Hogar', 'comprando-hogar: Comprando Hogar']
+  url: '/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg'
+categories: ['category-1: Category 1', 'category-2: Category 2']
+tags: ['tag-6: Tag 6', 'tag-7: Tag 7', 'tag-8: Tag 8']
 ---
 
 ## My Headline

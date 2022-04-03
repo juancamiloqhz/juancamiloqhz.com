@@ -10,6 +10,7 @@ export default function CoverImage({ title, src, slug, height, width }) {
       layout="responsive"
       width={width}
       height={height}
+      className="rounded-md"
     />
   );
   return (
