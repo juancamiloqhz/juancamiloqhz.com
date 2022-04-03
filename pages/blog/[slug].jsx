@@ -56,7 +56,7 @@ export default function SinglePost({ post }) {
   const categories = post.categories.map((c, index) => ({
     slug: c.split(':')[0],
     name: c.split(':')[1],
-    link: `/blog/category/${c.split(':')[0]}`,
+    link: `/category/${c.split(':')[0]}`,
   }));
   // console.log({ post });
   const router = useRouter();

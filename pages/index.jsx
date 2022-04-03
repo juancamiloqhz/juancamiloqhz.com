@@ -45,7 +45,7 @@ export default function Home({ posts }) {
   // console.table(posts);
   return (
     <>
-      <div className="hero flex items-center justify-center h-[55vh] md:h-[77vh] min-h-fit w-full">
+      <div className="hero flex items-center justify-center h-[65vh] md:h-[77vh] min-h-[450px] w-full">
         <motion.div
           variants={variants}
           className="hero-inner max-w-6xl w-full mx-auto px-4 md:px-6 lg:px-8"
@@ -66,9 +66,9 @@ export default function Home({ posts }) {
           </motion.h1>
           <motion.p
             variants={item}
-            className="text-xl md:text-3xl font-light mt-4"
+            className="text-2xl md:text-3xl font-light mt-4"
           >
-            I&lsquo;m a full-stack developer and co-founder of{' '}
+            I&lsquo;m a full-stack developer, CTO and co-founder of{' '}
             <a href="https://vibra.la" target="_blank" rel="noreferrer">
               Vibra
             </a>
@@ -81,7 +81,7 @@ export default function Home({ posts }) {
       </div>
       <div className="max-w-6xl w-full flex flex-col mx-auto px-4 md:px-6 lg:px-8">
         <h2 className="font-serif mb-6">Featured Posts</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 pb-16">
           {posts
             .filter((p) => p.featured)
             .map((post, i) => {

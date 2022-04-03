@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function CoverImage({ title, src, slug, height, width }) {
+export default function CoverImage({ title, src, slug }) {
   if (!src) return null;
   const image = (
     <Image
       src={src}
       alt={`Cover Image for ${title}`}
-      layout="responsive"
-      width={width}
-      height={height}
-      className="rounded-md"
+      layout="fill"
+      className="rounded md:rounded-md"
+      objectFit="cover"
+      objectPosition="center"
     />
   );
   return (

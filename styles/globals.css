@@ -147,7 +147,7 @@ a {
 
   a {
     @apply text-gray-700 hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-300;
-    @apply underline-offset-2 underline decoration-blue-600 hover:underline-offset-[3px];
+    @apply underline-offset-2 underline decoration-blue-600 dark:decoration-blue-500 hover:underline-offset-[3px];
     @apply transition-all duration-100 ease-in;
   }
 

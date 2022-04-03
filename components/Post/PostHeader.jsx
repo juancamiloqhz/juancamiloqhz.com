@@ -14,7 +14,7 @@ export default function PostHeader({
   return (
     <header>
       <PostTitle>{title}</PostTitle>
-      <div className="flex flex-col justify-center md:items-center mb-12">
+      <div className="flex flex-col justify-center md:items-center mb-6 md:mb-12">
         <div className="flex items-center">
           <DateFormatter dateString={date} />
           {' - '}
@@ -37,9 +37,9 @@ export default function PostHeader({
             })}
           </div>
         </div>
-        {/* <Avatar name={author.name} src={author.picture} /> */}
+        {/* <Avatar author={author} /> */}
       </div>
-      <div className="mb-8 md:mb-16 max-w-3xl mx-auto">
+      <div className="mb-8 md:mb-16 max-w-3xl mx-auto relative h-60 md:h-[420px] w-full">
         <CoverImage title={title} src={coverImage} height={620} width={1240} />
       </div>
     </header>

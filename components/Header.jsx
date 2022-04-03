@@ -25,19 +25,28 @@ export default function Header({ pageTitle }) {
         {themePickerOpen && (
           <motion.div
             ref={ref}
-            exit={{ height: 0 }}
-            animate={{ height: '6rem' }}
-            className="overflow-y-hidden bg-gray-100 dark:bg-neutral-900 flex py-4 relative"
+            exit={{
+              height: '0',
+              transition: { ease: 'easeOut', duration: 0.3 },
+            }}
+            animate={{
+              height: 'auto',
+              transition: { ease: 'easeIn', duration: 0.3 },
+            }}
+            initial={{
+              height: '0',
+            }}
+            className="overflow-y-hidden bg-gray-100 dark:bg-neutral-900 flex pt-4 relative"
           >
-            <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8 w-full flex flex-col items-center justify-between">
-              <h5 className="text-sm font-bold text-center w-full">
+            <div className="h-28 mx-auto max-w-7xl w-full flex flex-col items-center justify-between">
+              <h5 className="text-sm font-bold text-center w-full mb-2">
                 SELECT THEME
               </h5>
-              <div className="flex w-full gap-5 h-full overflow-x-auto">
+              <div className="flex w-full gap-5 h-full overflow-x-auto pb-4">
                 <button
                   type="button"
                   onClick={() => setTheme('light')}
-                  className="theme-card bg-white px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
+                  className="theme-card bg-white ml-3 px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
                 >
                   <p className="flex flex-col dark:text-gray-800">Classic</p>
                 </button>
@@ -72,7 +81,7 @@ export default function Header({ pageTitle }) {
                 <button
                   type="button"
                   onClick={() => setTheme('dark')}
-                  className="theme-card bg-black px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
+                  className="theme-card bg-black mr-3 px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
                 >
                   <p className="flex flex-col text-white">Dark</p>
                 </button>

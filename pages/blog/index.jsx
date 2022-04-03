@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import Layout from '../../components/Layout';
-import Meta from '../../components/Meta';
 import { PostPreview } from '../../components/Post';
 import { getAllPosts } from '../../lib/blog-api';
-// import { posts as allPosts } from '../../scripts/getAllPosts';
 
 export async function getStaticProps() {
   const allPosts = getAllPosts([
