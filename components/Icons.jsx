@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 // BASE SVG COMPONENT
 // ------------------------------
@@ -16,17 +16,17 @@ const Svg = ({ color, size, stroke, ...props }) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   />
-)
+);
 Svg.propTypes = {
   color: PropTypes.string,
   size: PropTypes.number,
   stroke: PropTypes.number,
-}
+};
 Svg.defaultProps = {
   color: 'currentColor',
   size: 24,
   stroke: 2,
-}
+};
 
 // Icons
 // https://feathericons.com
@@ -38,13 +38,13 @@ export const AlertIcon = (props) => (
     <line x1="12" y1="9" x2="12" y2="13" />
     <line x1="12" y1="17" x2="12" y2="17" />
   </Svg>
-)
+);
 
 export const CheckmarkIcon = (props) => (
   <Svg {...props}>
     <polyline points="20 6 9 17 4 12" />
   </Svg>
-)
+);
 
 export const MicrophoneIcon = (props) => (
   <Svg {...props}>
@@ -53,14 +53,14 @@ export const MicrophoneIcon = (props) => (
     <line x1="12" y1="19" x2="12" y2="23" />
     <line x1="8" y1="23" x2="16" y2="23" />
   </Svg>
-)
+);
 
 export const PinIcon = (props) => (
   <Svg {...props}>
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
     <circle cx="12" cy="10" r="3" />
   </Svg>
-)
+);
 
 export const SignoutIcon = (props) => (
   <Svg {...props}>
@@ -68,28 +68,28 @@ export const SignoutIcon = (props) => (
     <polyline points="16 17 21 12 16 7" />
     <line x1="21" y1="12" x2="9" y2="12" />
   </Svg>
-)
+);
 
 export const UserIcon = (props) => (
   <Svg {...props}>
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />
   </Svg>
-)
+);
 
 export const XIcon = (props) => (
   <Svg {...props}>
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </Svg>
-)
+);
 
 export const SearchIcon = (props) => (
   <Svg {...props}>
     <circle cx="10" cy="10" r="9" fill="none" />
     <path strokelinecap="round" d="M16.5 16.5L23 23" />
   </Svg>
-)
+);
 
 export const FacebookMessenger = ({ size }) => (
   <svg
@@ -114,63 +114,40 @@ export const FacebookMessenger = ({ size }) => (
       d="m100.04 75.878l-60.401 63.952 54.97-30.16 28.721 30.16 60.06-63.952-54.36 29.632-28.99-29.632z"
     />
   </svg>
-)
+);
 
-export function GrowiIcon({ size }) {
-  return (
-    <svg
-      version="1.0"
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 668.000000 480.000000"
-      preserveAspectRatio="xMidYMid meet"
-    >
-      <g
-        transform="translate(0.000000,480.000000) scale(0.100000,-0.100000)"
-        stroke="none"
-      >
-        <path
-          d="M3281 4669 c-10 -25 -45 -103 -106 -234 -52 -113 -262 -532 -320
--640 -62 -117 -106 -199 -139 -257 -14 -27 -38 -69 -52 -95 -15 -27 -52 -93
--84 -148 -32 -55 -67 -116 -78 -135 -220 -386 -593 -947 -924 -1390 -185 -247
--335 -435 -583 -733 -155 -186 -472 -531 -737 -802 -75 -77 -135 -141 -134
--142 2 -2 56 10 122 26 176 42 485 106 684 141 96 17 198 35 225 40 46 9 158
-25 445 64 185 25 530 62 685 73 55 3 103 7 108 9 4 1 13 2 20 3 13 1 134 137
-167 187 8 13 47 65 86 116 184 240 345 504 515 842 49 99 96 181 104 182 9 1
-45 -60 99 -169 47 -95 106 -210 132 -257 55 -100 233 -387 275 -445 110 -150
-271 -360 309 -403 l45 -50 155 -11 c239 -17 682 -62 805 -81 33 -5 123 -19
-200 -30 156 -23 283 -44 395 -64 41 -8 115 -21 164 -30 116 -21 438 -90 606
--131 30 -7 57 -11 59 -9 3 2 -70 80 -161 172 -257 260 -486 505 -638 682 -30
-35 -75 87 -100 115 -25 28 -65 75 -90 104 -25 30 -70 84 -100 120 -59 70 -230
-282 -341 422 -36 46 -119 156 -184 244 -65 88 -135 183 -155 210 -110 149
--464 675 -526 783 -10 17 -22 32 -26 32 -4 0 -8 5 -8 12 0 6 -28 57 -63 112
--69 110 -210 345 -216 361 -2 5 -32 60 -66 120 -34 61 -82 146 -105 190 -23
-44 -57 107 -75 140 -60 110 -253 500 -315 635 -33 74 -62 136 -65 138 -2 3 -9
--6 -14 -19z"
-        />
-      </g>
-    </svg>
-  )
-}
+export const GitHub = ({ size }) => (
+  <Svg
+    stroke="currentColor"
+    fill="currentColor"
+    strokeWidth="0"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g>
+      <path fill="none" d="M0 0h24v24H0z"></path>
+      <path d="M12 2C6.475 2 2 6.475 2 12a9.994 9.994 0 0 0 6.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.288-.6-1.175-1.025-1.413-.35-.187-.85-.65-.013-.662.788-.013 1.35.725 1.538 1.025.9 1.512 2.338 1.087 2.912.825.088-.65.35-1.087.638-1.337-2.225-.25-4.55-1.113-4.55-4.938 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.275.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10z"></path>
+    </g>
+  </Svg>
+);
 
-GrowiIcon.defaultProps = {
-  size: '40px',
-}
-
-// export const Close = styled.button`
-//   background: 0;
-//   border: 0;
-//   border-radius: 2.9rem;
-//   color: ${(props) => props.theme.colors.greyFonts};
-//   cursor: pointer;
-//   line-height: 0rem;
-//   padding: 0rem;
-//   position: absolute;
-//   top: 1rem;
-//   right: 1rem;
-//   transition: background-color 150ms, color 150ms;
-//   height: 2.8rem;
-//   width: 2.8rem;
-//   z-index: 11;
-// `;
+export const Rss = ({ size }) => (
+  <Svg
+    stroke="currentColor"
+    fill="none"
+    stroke-width="0"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"
+    ></path>
+  </Svg>
+);

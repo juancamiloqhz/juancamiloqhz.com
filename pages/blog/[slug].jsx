@@ -6,8 +6,9 @@ import Layout from '../../components/Layout';
 import { getAllPosts, getPostBySlug } from '../../lib/blog-api';
 import markdownToHtml from '../../lib/markdownToHtml';
 import { PostBody, PostHeader, PostTitle } from '../../components/Post';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
   const post = getPostBySlug(params.slug, [
     'title',
     'date',
@@ -16,6 +17,7 @@ export async function getStaticProps({ params }) {
     'content',
     'ogImage',
     'coverImage',
+    'categories',
   ]);
   const content = await markdownToHtml(post.content || '');
 
@@ -25,44 +27,42 @@ export async function getStaticProps({ params }) {
         ...post,
         content,
       },
+      ...(await serverSideTranslations(locale, [
+        'single-post',
+        'footer',
+        'header',
+      ])),
     },
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const posts = getAllPosts(['slug']);
-  // console.log(
-  //   posts.map((post) => {
-  //     return {
-  //       params: {
-  //         slug: post.slug,
-  //       },
-  //     };
-  //   })
-  // );
-  return {
-    paths: posts.map((post) => {
-      return {
+  const paths = [];
+  for (const locale of locales) {
+    for (const post of posts) {
+      // console.log(post.categories, locale);
+      paths.push({
         params: {
           slug: post.slug,
+          locale,
         },
-      };
-    }),
-    fallback: false,
+      });
+    }
+  }
+  return {
+    paths,
+    fallback: true,
   };
 }
 
 export default function SinglePost({ post }) {
-  const categories = post.categories.map((c, index) => ({
-    slug: c.split(':')[0],
-    name: c.split(':')[1],
-    link: `/category/${c.split(':')[0]}`,
-  }));
   // console.log({ post });
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   return router.isFallback ? (
     <PostTitle>Loading…</PostTitle>
   ) : (
@@ -77,7 +77,7 @@ export default function SinglePost({ post }) {
           coverImage={post.coverImage}
           date={post.date}
           author={post.author}
-          categories={categories}
+          categories={post.categories}
         />
         <PostBody content={post.content} />
       </article>

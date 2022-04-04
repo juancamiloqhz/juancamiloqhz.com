@@ -11,6 +11,12 @@ export default function PostHeader({
   author,
   categories,
 }) {
+  // console.log(post);
+  const categoriesArr = categories?.map((c, index) => ({
+    slug: c.split(':')[0],
+    name: c.split(':')[1],
+    link: `/category/${c.split(':')[0]}`,
+  }));
   return (
     <header>
       <PostTitle>{title}</PostTitle>
@@ -19,8 +25,8 @@ export default function PostHeader({
           <DateFormatter dateString={date} />
           {' - '}
           <div className="flex flex-wrap items-center ml-2">
-            {categories?.map((c, index) => {
-              if (index === categories.length - 1) {
+            {categoriesArr?.map((c, index) => {
+              if (index === categoriesArr.length - 1) {
                 return (
                   <Link href={c.link} key={index}>
                     <a className="post-category uppercase text-sm font-serif">

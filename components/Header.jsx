@@ -3,22 +3,24 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
-import { useGlobalContext } from '../context/GlobalProvider';
+import { useTranslation } from 'next-i18next';
 
+import { useGlobalContext } from '../context/GlobalProvider';
 import MenuToggle from './MenuToggle/MenuToggle';
 import ModalMenuMobile from './Modals/ModalMenuMobile';
 import ThemeButton from './ThemeButton';
 import useDarkMode from '../hooks/useDarkMode';
 import { XIcon } from './Icons';
 import { useOnClickOutside } from '../lib/hooks';
+import LocaleSwitcher from './LocaleSwitcher';
 
 export default function Header({ pageTitle }) {
   const ref = useRef();
   const [colorTheme, setTheme] = useDarkMode();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { themePickerOpen, setThemePickerOpen } = useGlobalContext();
+  const { t } = useTranslation('header');
   useOnClickOutside(ref, () => setThemePickerOpen(false));
-
   return (
     <>
       <AnimatePresence initial={false} exitBeforeEnter>
@@ -112,21 +114,22 @@ export default function Header({ pageTitle }) {
           <div className="flex items-center">
             <div className="hidden md:flex gap-6 dark:text-gray-100 items-center mr-5">
               <Link href="/">
-                <a className="nav-link">Home</a>
+                <a className="nav-link">{t('home')}</a>
               </Link>
               <Link href="/blog">
-                <a className="nav-link">Blog</a>
+                <a className="nav-link">{t('blog')}</a>
               </Link>
               <Link href="/work">
-                <a className="nav-link">Work</a>
+                <a className="nav-link">{t('work')}</a>
               </Link>
               <Link href="/about">
-                <a className="nav-link">About</a>
+                <a className="nav-link">{t('about')}</a>
               </Link>
               <Link href="/contact">
-                <a className="nav-link">Contact</a>
+                <a className="nav-link">{t('contact')}</a>
               </Link>
             </div>
+            <LocaleSwitcher />
             <ThemeButton />
             <div className="flex items-center md:hidden">
               <button

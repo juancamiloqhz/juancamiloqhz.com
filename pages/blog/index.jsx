@@ -1,9 +1,13 @@
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
+import PageTitle from '../../components/common/PageTitle';
+// import PageTitle from '../../components/common/PageTitle';
 import Layout from '../../components/Layout';
 import { PostPreview } from '../../components/Post';
 import { getAllPosts } from '../../lib/blog-api';
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   const allPosts = getAllPosts([
     'title',
     'date',
@@ -15,17 +19,27 @@ export async function getStaticProps() {
   ]);
 
   return {
-    props: { posts: allPosts },
+    props: {
+      posts: allPosts,
+      ...(await serverSideTranslations(locale, [
+        'single-post',
+        'footer',
+        'header',
+        'blog-archive',
+      ])),
+    },
   };
 }
 
 export default function BlogArchivePage({ posts }) {
   // console.log(posts);
+  const { t } = useTranslation('blog-archive');
   return (
     <div>
       <Head>
-        <title>All Articles | JuanCamiloQHz</title>
+        <title>{t('pageTitle')} | JuanCamiloQHz</title>
       </Head>
+      <PageTitle>{t('pageTitle')}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post) => (
           <PostPreview key={post.slug} post={post} />
@@ -36,5 +50,5 @@ export default function BlogArchivePage({ posts }) {
 }
 
 BlogArchivePage.getLayout = function getLayout(page) {
-  return <Layout pageTitle="Articles">{page}</Layout>;
+  return <Layout>{page}</Layout>;
 };

@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router';
 import { useGlobalContext } from '../context/GlobalProvider';
 
 export default function ThemeButton({ withText = false }) {
+  const { locale } = useRouter();
   const { themePickerOpen, setThemePickerOpen } = useGlobalContext();
   return (
     <button
@@ -8,6 +10,7 @@ export default function ThemeButton({ withText = false }) {
       className="flex items-center p-1 justify-center border-0 gap-2 m-0 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-full h-8 w-8"
       // onClick={() => setTheme(colorTheme === 'light' ? 'dark' : 'light')}
       onClick={() => setThemePickerOpen((d) => !d)}
+      title={locale === 'en' ? 'Change theme' : 'Cambiar tema'}
     >
       <svg
         stroke="currentColor"

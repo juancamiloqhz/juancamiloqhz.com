@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '../components/Layout';
 import { getAllPosts } from '../lib/blog-api';
+import Head from 'next/head';
 
 // console.table(posts);
 const variants = {
@@ -25,7 +28,7 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   const allPosts = getAllPosts([
     'title',
     'date',
@@ -37,14 +40,27 @@ export async function getStaticProps() {
   ]);
   // console.log({ posts: allPosts });
   return {
-    props: { posts: allPosts },
+    props: {
+      posts: allPosts,
+      ...(await serverSideTranslations(locale, [
+        'home',
+        'footer',
+        'header',
+        'index-page',
+      ])),
+    },
   };
 }
 
 export default function Home({ posts }) {
+  const { t } = useTranslation(['home', 'index-page']);
   // console.table(posts);
   return (
     <>
+      <Head>
+        <title>{t('index-page:metaTitle')}</title>
+      </Head>
+
       <div className="hero flex items-center justify-center h-[65vh] md:h-[77vh] min-h-[450px] w-full">
         <motion.div
           variants={variants}
@@ -56,13 +72,13 @@ export default function Home({ posts }) {
             variants={firstItem}
             className="text-blue-600 dark:text-blue-500"
           >
-            HELLO, MY NAME IS JUAN CAMILO
+            {t('hello')}
           </motion.h4>
           <motion.h1
             variants={item}
             className="text-5xl md:text-8xl font-serif"
           >
-            I make websites.
+            {t('iDo')}
           </motion.h1>
           <motion.p
             variants={item}
@@ -80,7 +96,7 @@ export default function Home({ posts }) {
         </motion.div>
       </div>
       <div className="max-w-6xl w-full flex flex-col mx-auto px-4 md:px-6 lg:px-8">
-        <h2 className="font-serif mb-6">Featured Posts</h2>
+        <h2 className="font-serif mb-6">{t('index-page:featuredPosts')}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 pb-16">
           {posts
             .filter((p) => p.featured)
@@ -114,9 +130,6 @@ export default function Home({ posts }) {
               );
             })}
         </div>
-        <Link href="/blog" passHref>
-          <a className="block mb-20 self-end">See All Posts =></a>
-        </Link>
       </div>
     </>
   );

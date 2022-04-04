@@ -1,7 +1,8 @@
+import { appWithTranslation } from 'next-i18next';
 import { ContextProvider } from '../context/ContextProvider';
 import '../styles/globals.css';
 
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page);
 
@@ -9,3 +10,5 @@ export default function MyApp({ Component, pageProps }) {
     <ContextProvider>{getLayout(<Component {...pageProps} />)}</ContextProvider>
   );
 }
+
+export default appWithTranslation(MyApp);
