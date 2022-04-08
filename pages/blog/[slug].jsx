@@ -1,15 +1,14 @@
-import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '../../components/Layout';
 import { getAllPosts, getPostBySlug } from '../../lib/blog-api';
 import markdownToHtml from '../../lib/markdownToHtml';
-import { PostBody, PostHeader, PostTitle } from '../../components/Post';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { PostBody, PostHeader } from '../../components/Post';
 
 export async function getStaticProps({ params, locale }) {
-  const post = getPostBySlug(params.slug, [
+  // console.log('getStaticProps', params, locale);
+  const post = getPostBySlug(params.slug, locale, [
     'title',
     'date',
     'slug',
@@ -19,6 +18,7 @@ export async function getStaticProps({ params, locale }) {
     'coverImage',
     'categories',
   ]);
+  // console.log('post', post);
   const content = await markdownToHtml(post.content || '');
 
   return {
@@ -36,8 +36,8 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export async function getStaticPaths({ locales }) {
-  const posts = getAllPosts(['slug']);
+export async function getStaticPaths({ locales, locale }) {
+  const posts = getAllPosts(['slug'], locale);
   const paths = [];
   for (const locale of locales) {
     for (const post of posts) {
@@ -52,36 +52,26 @@ export async function getStaticPaths({ locales }) {
   }
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 }
 
 export default function SinglePost({ post }) {
-  // console.log({ post });
-  const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
-
-  return router.isFallback ? (
-    <PostTitle>Loading…</PostTitle>
-  ) : (
-    <>
-      <article className="mb-32 mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
-        <Head>
-          <title>{post.title} | JuanCamiloQHz</title>
-          <meta property="og:image" content={post.ogImage.url} />
-        </Head>
-        <PostHeader
-          title={post.title}
-          coverImage={post.coverImage}
-          date={post.date}
-          author={post.author}
-          categories={post.categories}
-        />
-        <PostBody content={post.content} />
-      </article>
-    </>
+  return (
+    <article className="mb-32 mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
+      <Head>
+        <title>{post.title} | JuanCamiloQHz</title>
+        <meta property="og:image" content={post.ogImage.url} />
+      </Head>
+      <PostHeader
+        title={post.title}
+        coverImage={post.coverImage}
+        date={post.date}
+        author={post.author}
+        categories={post.categories}
+      />
+      <PostBody content={post.content} />
+    </article>
   );
 }
 

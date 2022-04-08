@@ -21,7 +21,7 @@ export default function LocaleSwitcher() {
               <Link href={{ pathname, query }} as={asPath} locale={locale}>
                 <a
                   title={localeTxt}
-                  className="rounded-full bg-gray-100 hover:bg-gray-200 p-2 py-[10px] items-center justify-center text-sm w-full h-full"
+                  className="rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 p-2 py-[10px] items-center justify-center text-sm w-full h-full"
                 >
                   {locale.toUpperCase()}
                 </a>

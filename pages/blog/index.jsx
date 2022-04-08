@@ -2,21 +2,15 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import PageTitle from '../../components/common/PageTitle';
-// import PageTitle from '../../components/common/PageTitle';
 import Layout from '../../components/Layout';
 import { PostPreview } from '../../components/Post';
 import { getAllPosts } from '../../lib/blog-api';
 
 export async function getStaticProps({ locale }) {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-    'categories',
-  ]);
+  const allPosts = getAllPosts(
+    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'categories'],
+    locale
+  );
 
   return {
     props: {

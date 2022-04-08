@@ -1,14 +1,14 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+
 import PageTitle from '../../components/common/PageTitle';
 import Layout from '../../components/Layout';
 import { PostPreview, PostTitle } from '../../components/Post';
 import { getAllPostsByTag, getAllTagSlugs } from '../../lib/blog-api';
 
-export async function getStaticPaths({ locales }) {
-  const tags = getAllTagSlugs();
+export async function getStaticPaths({ locales, locale }) {
+  const tags = getAllTagSlugs(locale);
   const paths = [];
   for (const locale of locales) {
     for (const tag of tags) {
@@ -23,12 +23,12 @@ export async function getStaticPaths({ locales }) {
 
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ params, locale }) {
-  const posts = getAllPostsByTag(params.tag, [
+  const posts = getAllPostsByTag(params.tag, locale, [
     'title',
     'date',
     'slug',
@@ -53,10 +53,7 @@ export async function getStaticProps({ params, locale }) {
 
 export default function AuthorPostsPage({ posts }) {
   const { t } = useTranslation('tag-archive');
-  const router = useRouter();
-  return router.isFallback ? (
-    <PostTitle>Loading…</PostTitle>
-  ) : (
+  return (
     <div>
       <Head>
         <title>{t('tag-archive:pageTitle')} | JuanCamiloQHz</title>

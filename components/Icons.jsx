@@ -118,9 +118,8 @@ export const FacebookMessenger = ({ size }) => (
 
 export const GitHub = ({ size }) => (
   <Svg
-    stroke="currentColor"
     fill="currentColor"
-    strokeWidth="0"
+    stroke={0}
     viewBox="0 0 24 24"
     width={size}
     height={size}
@@ -135,9 +134,9 @@ export const GitHub = ({ size }) => (
 
 export const Rss = ({ size }) => (
   <Svg
-    stroke="currentColor"
+    stroke={0}
     fill="none"
-    stroke-width="0"
+    strokeWidth="0"
     viewBox="0 0 24 24"
     width={size}
     height={size}

@@ -23,8 +23,8 @@ export default function PostHeader({
       <div className="flex flex-col justify-center md:items-center mb-6 md:mb-12">
         <div className="flex items-center">
           <DateFormatter dateString={date} />
-          {' - '}
-          <div className="flex flex-wrap items-center ml-2">
+          <span className="mx-1">{'-'}</span>
+          <div className="flex flex-wrap items-center">
             {categoriesArr?.map((c, index) => {
               if (index === categoriesArr.length - 1) {
                 return (

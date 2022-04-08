@@ -1,17 +1,17 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+
 import PageTitle from '../../components/common/PageTitle';
 import Layout from '../../components/Layout';
-import { PostPreview, PostTitle } from '../../components/Post';
+import { PostPreview } from '../../components/Post';
 import {
   getAllCategoriesSlugs,
   getAllPostsByCategory,
 } from '../../lib/blog-api';
 
-export async function getStaticPaths({ locales }) {
-  const categories = getAllCategoriesSlugs();
+export async function getStaticPaths({ locales, locale }) {
+  const categories = getAllCategoriesSlugs(locale);
   const paths = [];
   for (const category of categories) {
     for (const locale of locales) {
@@ -25,12 +25,12 @@ export async function getStaticPaths({ locales }) {
   }
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ params, locale }) {
-  const posts = getAllPostsByCategory(params.category, [
+  const posts = getAllPostsByCategory(params.category, locale, [
     'title',
     'date',
     'slug',
@@ -54,18 +54,15 @@ export async function getStaticProps({ params, locale }) {
 
 export default function AllPostsByCategoryPage({ posts }) {
   const { t } = useTranslation('category-archive');
-  const router = useRouter();
-  return router.isFallback ? (
-    <PostTitle>Loading…</PostTitle>
-  ) : (
+  return (
     <div>
       <Head>
         <title>{t('category-archive:pageTitle')} | JuanCamiloQHz</title>
       </Head>
       <PageTitle>{t('category-archive:pageTitle')}</PageTitle>
       <div className="page-container post-container">
-        {posts.map((post) => (
-          <PostPreview key={post.slug} post={post} />
+        {posts.map((post, i) => (
+          <PostPreview key={i} post={post} />
         ))}
       </div>
     </div>
