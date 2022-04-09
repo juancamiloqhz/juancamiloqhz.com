@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function CoverImage({ title, src, slug }) {
+export default function CoverImage({ title, src, slug, blurDataURL }) {
   if (!src) return null;
   const image = (
     <Image
@@ -11,6 +11,8 @@ export default function CoverImage({ title, src, slug }) {
       className="rounded md:rounded-md"
       objectFit="cover"
       objectPosition="center"
+      placeholder="blur"
+      blurDataURL={blurDataURL}
     />
   );
   return (

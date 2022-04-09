@@ -10,6 +10,7 @@ import {
   getAllCategoriesSlugs,
   getAllPostsByCategory,
 } from '../../lib/blog-api';
+import blurImage from '../../lib/blur-images';
 
 export async function getStaticPaths({ locales }) {
   const categories = getAllCategoriesSlugs(locales);
@@ -41,10 +42,19 @@ export async function getStaticProps({ params, locale }) {
     'coverImage',
     'categories',
   ]);
+  const postWithBlurredImages = await Promise.all(
+    posts.map(async (post) => {
+      const { imgBase64 } = await blurImage(post.coverImage);
+      return {
+        ...post,
+        blurDataURL: imgBase64,
+      };
+    })
+  );
 
   return {
     props: {
-      posts,
+      posts: postWithBlurredImages,
       ...(await serverSideTranslations(locale, [
         'footer',
         'header',

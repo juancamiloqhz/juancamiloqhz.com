@@ -6,16 +6,26 @@ import Layout from '../../components/Layout';
 import { PostPreview } from '../../components/Post';
 import SEO from '../../components/SEO';
 import { getAllPosts } from '../../lib/blog-api';
+import blurImage from '../../lib/blur-images';
 
 export async function getStaticProps({ locale }) {
   const allPosts = getAllPosts(
     ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'categories'],
     locale
   );
+  const postWithBlurredImages = await Promise.all(
+    allPosts.map(async (post) => {
+      const { imgBase64 } = await blurImage(post.coverImage);
+      return {
+        ...post,
+        blurDataURL: imgBase64,
+      };
+    })
+  );
 
   return {
     props: {
-      posts: allPosts,
+      posts: postWithBlurredImages,
       ...(await serverSideTranslations(locale, [
         'single-post',
         'footer',

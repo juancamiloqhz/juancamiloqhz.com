@@ -7,6 +7,7 @@ import Layout from '../../components/Layout';
 import { PostPreview } from '../../components/Post';
 import SEO from '../../components/SEO';
 import { getAllPostsByTag, getAllTagSlugs } from '../../lib/blog-api';
+import blurImage from '../../lib/blur-images';
 
 export async function getStaticPaths({ locales }) {
   const tags = getAllTagSlugs(locales);
@@ -39,10 +40,19 @@ export async function getStaticProps({ params, locale }) {
     'categories',
     'tags',
   ]);
+  const postWithBlurredImages = await Promise.all(
+    posts.map(async (post) => {
+      const { imgBase64 } = await blurImage(post.coverImage);
+      return {
+        ...post,
+        blurDataURL: imgBase64,
+      };
+    })
+  );
 
   return {
     props: {
-      posts,
+      posts: postWithBlurredImages,
       ...(await serverSideTranslations(locale, [
         'footer',
         'header',

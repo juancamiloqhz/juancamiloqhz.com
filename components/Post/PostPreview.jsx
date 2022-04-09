@@ -13,7 +13,12 @@ export default function PostPreview({ post }) {
   return (
     <article className="mb-16 overflow-hidden px-4 md:px-0">
       <div className="cover-wrapper h-48 md:h-[365px] relative w-full">
-        <CoverImage title={post.title} slug={post.slug} src={post.coverImage} />
+        <CoverImage
+          title={post.title}
+          slug={post.slug}
+          src={post.coverImage}
+          blurDataURL={post.blurDataURL}
+        />
       </div>
       <div>
         <p className="text-base mt-3">

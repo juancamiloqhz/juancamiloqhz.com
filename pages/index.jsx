@@ -7,6 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Layout from '../components/Layout';
 import { getAllPosts } from '../lib/blog-api';
 import SEO from '../components/SEO';
+import blurImage from '../lib/blur-images';
 
 // console.table(posts);
 const variants = {
@@ -33,10 +34,21 @@ export async function getStaticProps({ locale }) {
     ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'categories'],
     locale
   );
+
+  const postWithBlurredImages = await Promise.all(
+    allPosts.map(async (post) => {
+      const { imgBase64 } = await blurImage(post.coverImage);
+      return {
+        ...post,
+        blurDataURL: imgBase64,
+      };
+    })
+  );
+
   // console.log({ posts: allPosts });
   return {
     props: {
-      posts: allPosts,
+      posts: postWithBlurredImages,
       ...(await serverSideTranslations(locale, [
         'home',
         'footer',
@@ -108,6 +120,8 @@ export default function Home({ posts }) {
                           alt={post.title}
                           objectFit="cover"
                           objectPosition="center"
+                          placeholder="blur"
+                          blurDataURL={post.blurDataURL}
                           className="rounded-lg z-0 group-hover:brightness-50 transition-all duration-100 ease-in-out"
                         />
                       </div>

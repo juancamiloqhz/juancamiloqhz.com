@@ -6,6 +6,7 @@ import markdownToHtml from '../../lib/markdownToHtml';
 import { PostBody, PostHeader } from '../../components/Post';
 import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
+import blurImage from '../../lib/blur-images';
 
 export async function getStaticProps({ params, locale }) {
   // console.log('getStaticProps', params, locale);
@@ -22,12 +23,15 @@ export async function getStaticProps({ params, locale }) {
   // console.log('post', post.title);
   const content = await markdownToHtml(post.content || '');
 
+  const { imgBase64 } = await blurImage(post.coverImage);
+
   return {
     props: {
       post: {
         ...post,
         content,
       },
+      blurDataURL: imgBase64,
       ...(await serverSideTranslations(locale, [
         'single-post',
         'footer',
@@ -59,7 +63,7 @@ export async function getStaticPaths({ locales }) {
   };
 }
 
-export default function SinglePost({ post }) {
+export default function SinglePost({ post, blurDataURL }) {
   const { locale } = useRouter();
   return (
     <article className="mb-32 mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
@@ -87,6 +91,7 @@ export default function SinglePost({ post }) {
         date={post.date}
         author={post.author}
         categories={post.categories}
+        blurDataURL={blurDataURL}
       />
       <PostBody content={post.content} />
     </article>
