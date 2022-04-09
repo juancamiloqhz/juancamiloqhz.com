@@ -6,6 +6,7 @@ import { useKeydown } from '../../lib/helpers';
 import { XIcon, Close } from '../Icons';
 import Link from 'next/link';
 import ThemeButton from '../ThemeButton';
+import { useTranslation } from 'next-i18next';
 
 const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -29,6 +30,7 @@ const dialogVariants = {
 };
 
 function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
+  const { t } = useTranslation('header');
   useKeydown('Escape', onClose);
   useEffect(() => {
     if (isOpen) {

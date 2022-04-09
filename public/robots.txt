@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://juancamiloqhz.vercel.app
+
+# Sitemaps
+Sitemap: https://juancamiloqhz.vercel.app/sitemap.xml

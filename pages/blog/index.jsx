@@ -1,9 +1,10 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
+import { useRouter } from 'next/router';
 import PageTitle from '../../components/common/PageTitle';
 import Layout from '../../components/Layout';
 import { PostPreview } from '../../components/Post';
+import SEO from '../../components/SEO';
 import { getAllPosts } from '../../lib/blog-api';
 
 export async function getStaticProps({ locale }) {
@@ -27,12 +28,19 @@ export async function getStaticProps({ locale }) {
 
 export default function BlogArchivePage({ posts }) {
   // console.log(posts);
+  const { locale } = useRouter();
   const { t } = useTranslation('blog-archive');
   return (
     <div>
-      <Head>
-        <title>{t('pageTitle')} | JuanCamiloQHz</title>
-      </Head>
+      <SEO
+        url={`https://juancamiloqhz.vercel.app/${
+          locale === 'en' ? '' : `${locale}/`
+        }blog`}
+        openGraphType="website"
+        schemaType="website"
+        title={t('pageTitle')}
+        description={t('pageDescription')}
+      />
       <PageTitle>{t('pageTitle')}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post) => (

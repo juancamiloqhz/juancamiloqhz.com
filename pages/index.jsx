@@ -6,7 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '../components/Layout';
 import { getAllPosts } from '../lib/blog-api';
-import Head from 'next/head';
+import SEO from '../components/SEO';
 
 // console.table(posts);
 const variants = {
@@ -52,9 +52,10 @@ export default function Home({ posts }) {
   // console.table(posts);
   return (
     <>
-      <Head>
-        <title>{t('index-page:metaTitle')}</title>
-      </Head>
+      <SEO
+        title={t('index-page:metaTitle')}
+        description={t('index-page:metaDescription')}
+      />
 
       <div className="hero flex items-center justify-center h-[65vh] md:h-[77vh] min-h-[450px] w-full">
         <motion.div

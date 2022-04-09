@@ -1,16 +1,14 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
 import PageTitle from '../components/common/PageTitle';
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
 export default function MailingListPage() {
   const { t } = useTranslation('mailing-list-page');
   return (
     <div className="page-container">
-      <Head>
-        <title>{t('pageTitle')} | JuanCamiloQHz</title>
-      </Head>
+      <SEO title={t('pageTitle')} description={t('pageDescription')} />
       <PageTitle>{t('pageTitle')}</PageTitle>
     </div>
   );

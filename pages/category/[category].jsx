@@ -1,10 +1,11 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import PageTitle from '../../components/common/PageTitle';
 import Layout from '../../components/Layout';
 import { PostPreview } from '../../components/Post';
+import SEO from '../../components/SEO';
 import {
   getAllCategoriesSlugs,
   getAllPostsByCategory,
@@ -54,12 +55,19 @@ export async function getStaticProps({ params, locale }) {
 }
 
 export default function AllPostsByCategoryPage({ posts }) {
+  const { query, locale } = useRouter();
   const { t } = useTranslation('category-archive');
   return (
     <div>
-      <Head>
-        <title>{t('category-archive:pageTitle')} | JuanCamiloQHz</title>
-      </Head>
+      <SEO
+        url={`https://juancamiloqhz.vercel.app/${
+          locale === 'en' ? '' : `${locale}/`
+        }category/${query.category}`}
+        openGraphType="website"
+        schemaType="website"
+        title={t('category-archive:pageTitle')}
+        description={t('category-archive:pageDescription')}
+      />
       <PageTitle>{t('category-archive:pageTitle')}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post, i) => (
