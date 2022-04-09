@@ -1,6 +1,6 @@
 ---
 title: 'Learn How to Pre-render Pages Using Static Generation with Next.js'
-excerpt: '8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
+excerpt: '(Destacado 2) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
 coverImage: '/assets/blog/hello-world/joshua-sortino-LqKhnDzSF-8-unsplash-hello-world.jpg'
 date: '2020-03-16T05:35:07.322Z'
 featured: true

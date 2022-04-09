@@ -29,15 +29,10 @@ const item = {
 };
 
 export async function getStaticProps({ locale }) {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-    'categories',
-  ]);
+  const allPosts = getAllPosts(
+    ['title', 'date', 'slug', 'author', 'coverImage', 'excerpt', 'categories'],
+    locale
+  );
   // console.log({ posts: allPosts });
   return {
     props: {

@@ -1,6 +1,6 @@
 ---
 title: 'Dynamic Routing and Static Generation'
-excerpt: '8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
+excerpt: '(Featured 8) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
 coverImage: '/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg'
 date: '2020-03-16T05:35:07.322Z'
 featured: false

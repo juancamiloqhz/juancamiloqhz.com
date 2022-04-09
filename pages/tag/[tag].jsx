@@ -4,26 +4,26 @@ import Head from 'next/head';
 
 import PageTitle from '../../components/common/PageTitle';
 import Layout from '../../components/Layout';
-import { PostPreview, PostTitle } from '../../components/Post';
+import { PostPreview } from '../../components/Post';
 import { getAllPostsByTag, getAllTagSlugs } from '../../lib/blog-api';
 
-export async function getStaticPaths({ locales, locale }) {
-  const tags = getAllTagSlugs(locale);
+export async function getStaticPaths({ locales }) {
+  const tags = getAllTagSlugs(locales);
   const paths = [];
   for (const locale of locales) {
     for (const tag of tags) {
       paths.push({
         params: {
           tag,
-          locale,
         },
+        locale,
       });
     }
   }
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   };
 }
 

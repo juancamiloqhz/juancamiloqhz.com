@@ -10,22 +10,23 @@ import {
   getAllPostsByCategory,
 } from '../../lib/blog-api';
 
-export async function getStaticPaths({ locales, locale }) {
-  const categories = getAllCategoriesSlugs(locale);
+export async function getStaticPaths({ locales }) {
+  const categories = getAllCategoriesSlugs(locales);
+  // console.log(categories);
   const paths = [];
   for (const category of categories) {
     for (const locale of locales) {
       paths.push({
         params: {
           category,
-          locale,
         },
+        locale,
       });
     }
   }
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   };
 }
 

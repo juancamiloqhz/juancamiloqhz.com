@@ -1,6 +1,6 @@
 ---
 title: 'Modo de Vista Previa para Generación Estática'
-excerpt: '8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
+excerpt: '(Destacado 1) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
 coverImage: '/assets/blog/preview/esaias-tan-MKvjc2kar7Q-unsplash-preview.jpg'
 date: '2020-03-16T05:35:07.322Z'
 featured: true

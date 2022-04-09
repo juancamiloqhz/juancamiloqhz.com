@@ -62,27 +62,27 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
       <div className="items-center h-full flex flex-col text-center justify-center gap-8">
         <Link href="/">
           <a onClick={onClose} className="nav-link !text-3xl">
-            Home
+            {t('home')}
           </a>
         </Link>
         <Link href="/blog">
           <a onClick={onClose} className="nav-link !text-3xl">
-            Blog
+            {t('blog')}
           </a>
         </Link>
         <Link href="/work">
           <a onClick={onClose} className="nav-link !text-3xl">
-            Work
+            {t('work')}
           </a>
         </Link>
         <Link href="/about">
           <a onClick={onClose} className="nav-link !text-3xl">
-            About
+            {t('about')}
           </a>
         </Link>
         <Link href="/contact">
           <a onClick={onClose} className="nav-link !text-3xl">
-            Contact
+            {t('contact')}
           </a>
         </Link>
       </div>

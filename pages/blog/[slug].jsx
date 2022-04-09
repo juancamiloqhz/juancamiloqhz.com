@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Layout from '../../components/Layout';
-import { getAllPosts, getPostBySlug } from '../../lib/blog-api';
+import { getPostBySlug, uniquePostSlugs } from '../../lib/blog-api';
 import markdownToHtml from '../../lib/markdownToHtml';
 import { PostBody, PostHeader } from '../../components/Post';
 
@@ -18,7 +18,7 @@ export async function getStaticProps({ params, locale }) {
     'coverImage',
     'categories',
   ]);
-  // console.log('post', post);
+  // console.log('post', post.title);
   const content = await markdownToHtml(post.content || '');
 
   return {
@@ -36,23 +36,25 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export async function getStaticPaths({ locales, locale }) {
-  const posts = getAllPosts(['slug'], locale);
+export async function getStaticPaths({ locales }) {
+  const uniqueSlugs = uniquePostSlugs();
+  // console.log('uniqueSlugs', uniqueSlugs);
   const paths = [];
   for (const locale of locales) {
-    for (const post of posts) {
-      // console.log(post.categories, locale);
+    for (const slug of uniqueSlugs) {
+      // console.log(post.slug, locale);
       paths.push({
         params: {
-          slug: post.slug,
-          locale,
+          slug,
         },
+        locale,
       });
     }
   }
+  // console.log('paths', paths);
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   };
 }
 
