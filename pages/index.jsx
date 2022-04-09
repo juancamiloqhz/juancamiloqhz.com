@@ -53,7 +53,7 @@ export default function Home({ posts }) {
   return (
     <>
       <SEO
-        title={t('index-page:metaTitle')}
+        exclusiveTitle={t('index-page:metaTitle')}
         description={t('index-page:metaDescription')}
       />
 

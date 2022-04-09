@@ -64,7 +64,7 @@ export default function Footer() {
             <GitHub size="1.5rem" />
           </a>
 
-          <Link href="/rss.xml">
+          <Link href="/feed.xml">
             <a className="decoration-none text-sm">
               <Rss size="1.5rem" />
             </a>
