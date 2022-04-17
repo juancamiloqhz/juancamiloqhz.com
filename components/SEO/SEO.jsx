@@ -3,12 +3,12 @@ import Head from 'next/head';
 
 const settings = {
   meta: {
-    rootUrl: 'https://juancamiloqhz.vercel.app',
+    rootUrl: 'https://juancamiloqhz.com',
     title: 'JuanCamiloQHz',
     description:
       'Software Developer, Mechanical Engineer and Professional Pyrotechnician',
     social: {
-      graphic: `https://juancamiloqhz.vercel.app/face.png`,
+      graphic: `https://juancamiloqhz.com/face.png`,
       twitter: '@juancamiloqhz',
     },
   },
@@ -216,8 +216,8 @@ export default function SEO(props) {
 
 SEO.defaultProps = {
   openGraphType: 'website',
-  schemaType: 'website',
-  url: 'https://juancamiloqhz.vercel.app',
+  schemaType: 'WebSite',
+  url: 'https://juancamiloqhz.com',
   exclusiveTitle: '',
   title: 'Home',
   description: settings && settings.meta && settings.meta.description,
@@ -235,7 +235,7 @@ SEO.defaultProps = {
   gender: '',
   createdAt: '',
   updatedAt: '',
-  authorUrl: 'https://juancamiloqhz.vercel.app',
+  authorUrl: 'https://juancamiloqhz.com',
   mainCategory: '',
   tagArray: [''],
   keywords: settings && settings.keywords,

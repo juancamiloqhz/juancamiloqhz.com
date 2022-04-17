@@ -70,7 +70,7 @@ export default function AllPostsByCategoryPage({ posts }) {
   return (
     <div>
       <SEO
-        url={`https://juancamiloqhz.vercel.app/${
+        url={`https://juancamiloqhz.com/${
           locale === 'en' ? '' : `${locale}/`
         }category/${query.category}`}
         openGraphType="website"

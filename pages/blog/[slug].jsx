@@ -68,15 +68,15 @@ export default function SinglePost({ post, blurDataURL }) {
   return (
     <article className="mb-32 mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
       <SEO
-        url={`https://juancamiloqhz.vercel.app/${
+        url={`https://juancamiloqhz.com/${
           locale === 'en' ? '' : `${locale}/`
         }blog/${post.slug}`}
         openGraphType="article"
-        schemaType="article"
+        schemaType="Article"
         title={`${post.title}`}
         description={post.excerpt || ''}
         imageUrl={post.ogImage?.url || ''}
-        authorUrl={`https://juancamiloqhz.vercel.app/${
+        authorUrl={`https://juancamiloqhz.com/${
           locale === 'en' ? '' : `${locale}/`
         }about`}
         name="JuanCamilo"

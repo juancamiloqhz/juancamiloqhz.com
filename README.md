@@ -1,4 +1,4 @@
-Personal Website [juancamiloqhz.vercel.app](https://juancamiloqhz.vercel.app/)
+Personal Website [juancamiloqhz.com](https://juancamiloqhz.com/)
 
 ## Stack for this website
 

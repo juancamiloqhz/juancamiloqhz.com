@@ -68,7 +68,7 @@ export default function AuthorPostsPage({ posts }) {
   return (
     <div>
       <SEO
-        url={`https://juancamiloqhz.vercel.app/${
+        url={`https://juancamiloqhz.com/${
           locale === 'en' ? '' : `${locale}/`
         }tag/${query.tag}`}
         openGraphType="website"

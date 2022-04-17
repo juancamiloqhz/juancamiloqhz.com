@@ -43,7 +43,7 @@ export default function BlogArchivePage({ posts }) {
   return (
     <div>
       <SEO
-        url={`https://juancamiloqhz.vercel.app/${
+        url={`https://juancamiloqhz.com/${
           locale === 'en' ? '' : `${locale}/`
         }blog`}
         openGraphType="website"

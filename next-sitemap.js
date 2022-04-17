@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://juancamiloqhz.vercel.app',
+  siteUrl: process.env.SITE_URL || 'https://juancamiloqhz.com',
   generateRobotsTxt: true, // (optional)
   // ...other options
 };

@@ -9,7 +9,6 @@ import { getAllPosts } from '../lib/blog-api';
 import SEO from '../components/SEO';
 import blurImage from '../lib/blur-images';
 
-// console.table(posts);
 const variants = {
   hidden: { y: 90, opacity: 0 },
   show: {
@@ -58,6 +57,10 @@ export async function getStaticProps({ locale }) {
     },
   };
 }
+
+Home.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
 
 export default function Home({ posts }) {
   const { t } = useTranslation(['home', 'index-page']);
@@ -144,7 +147,3 @@ export default function Home({ posts }) {
     </>
   );
 }
-
-Home.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

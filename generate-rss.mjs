@@ -6,8 +6,8 @@ const { getAllPosts } = api;
 async function generate() {
   const enFeed = new RSS({
     title: 'JuanCamiloQHz',
-    site_url: 'https://juancamiloqhz.vercel.app',
-    feed_url: 'https://juancamiloqhz.vercel.app/feed.xml',
+    site_url: 'https://juancamiloqhz.com',
+    feed_url: 'https://juancamiloqhz.com/feed.xml',
     language: 'en',
   });
   const enPosts = getAllPosts(['title', 'date', 'slug', 'excerpt'], 'en');
@@ -15,7 +15,7 @@ async function generate() {
   enPosts.map((post) => {
     enFeed.item({
       title: post.title,
-      url: `https://juancamiloqhz.vercel.app/blog/${post.slug}`,
+      url: `https://juancamiloqhz.com/blog/${post.slug}`,
       date: post.date,
       description: post.excerpt,
     });
