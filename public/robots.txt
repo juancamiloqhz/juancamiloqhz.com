@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://juancamiloqhz.vercel.app
+Host: https://juancamiloqhz.com
 
 # Sitemaps
-Sitemap: https://juancamiloqhz.vercel.app/sitemap.xml
+Sitemap: https://juancamiloqhz.com/sitemap.xml
