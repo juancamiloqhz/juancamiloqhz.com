@@ -1,4 +1,4 @@
 {
-  "pageTitle": "Artículos en Tag",
-  "pageDescription": "Artículos en Tag"
+  "pageTitle": "Artículos en Tag: {{tag}}",
+  "pageDescription": "Artículos en Tag: {{tag}}"
 }

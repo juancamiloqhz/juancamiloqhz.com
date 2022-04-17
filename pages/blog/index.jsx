@@ -47,7 +47,7 @@ export default function BlogArchivePage({ posts }) {
           locale === 'en' ? '' : `${locale}/`
         }blog`}
         openGraphType="website"
-        schemaType="website"
+        schemaType="Blog"
         title={t('pageTitle')}
         description={t('pageDescription')}
       />

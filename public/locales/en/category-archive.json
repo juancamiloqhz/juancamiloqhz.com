@@ -1,4 +1,4 @@
 {
-  "pageTitle": "All Articles in Category",
-  "pageDescription": "All Articles in Category"
+  "pageTitle": "All Articles in {{category}}",
+  "pageDescription": "All Articles in {{category}}"
 }

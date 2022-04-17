@@ -33,7 +33,7 @@ export async function getStaticPaths({ locales }) {
 }
 
 export async function getStaticProps({ params, locale }) {
-  const posts = getAllPostsByCategory(params.category, locale, [
+  const { category, posts } = getAllPostsByCategory(params.category, locale, [
     'title',
     'date',
     'slug',
@@ -54,6 +54,7 @@ export async function getStaticProps({ params, locale }) {
 
   return {
     props: {
+      category,
       posts: postWithBlurredImages,
       ...(await serverSideTranslations(locale, [
         'footer',
@@ -64,7 +65,7 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export default function AllPostsByCategoryPage({ posts }) {
+export default function AllPostsByCategoryPage({ posts, category }) {
   const { query, locale } = useRouter();
   const { t } = useTranslation('category-archive');
   return (
@@ -72,13 +73,17 @@ export default function AllPostsByCategoryPage({ posts }) {
       <SEO
         url={`https://juancamiloqhz.com/${
           locale === 'en' ? '' : `${locale}/`
-        }category/${query.category}`}
+        }category/${category.slug}`}
         openGraphType="website"
-        schemaType="website"
-        title={t('category-archive:pageTitle')}
-        description={t('category-archive:pageDescription')}
+        schemaType="SearchResultsPage"
+        title={t('category-archive:pageTitle', { category: category.name })}
+        description={t('category-archive:pageDescription', {
+          category: category.name,
+        })}
       />
-      <PageTitle>{t('category-archive:pageTitle')}</PageTitle>
+      <PageTitle>
+        {t('category-archive:pageTitle', { category: category.name })}
+      </PageTitle>
       <div className="page-container post-container">
         {posts.map((post, i) => (
           <PostPreview key={i} post={post} />

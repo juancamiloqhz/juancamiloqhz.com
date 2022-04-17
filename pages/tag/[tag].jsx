@@ -30,7 +30,7 @@ export async function getStaticPaths({ locales }) {
 }
 
 export async function getStaticProps({ params, locale }) {
-  const posts = getAllPostsByTag(params.tag, locale, [
+  const { posts, tag } = getAllPostsByTag(params.tag, locale, [
     'title',
     'date',
     'slug',
@@ -52,6 +52,7 @@ export async function getStaticProps({ params, locale }) {
 
   return {
     props: {
+      tag,
       posts: postWithBlurredImages,
       ...(await serverSideTranslations(locale, [
         'footer',
@@ -62,7 +63,7 @@ export async function getStaticProps({ params, locale }) {
   };
 }
 
-export default function AuthorPostsPage({ posts }) {
+export default function AuthorPostsPage({ posts, tag }) {
   const { locale, query } = useRouter();
   const { t } = useTranslation('tag-archive');
   return (
@@ -70,13 +71,13 @@ export default function AuthorPostsPage({ posts }) {
       <SEO
         url={`https://juancamiloqhz.com/${
           locale === 'en' ? '' : `${locale}/`
-        }tag/${query.tag}`}
+        }tag/${tag.slug}`}
         openGraphType="website"
-        schemaType="website"
-        title={t('tag-archive:pageTitle')}
+        schemaType="SearchResultsPage"
+        title={t('tag-archive:pageTitle', { tag: tag.name })}
         description={t('tag-archive:pageDescription')}
       />
-      <PageTitle>{t('tag-archive:pageTitle')}</PageTitle>
+      <PageTitle>{t('tag-archive:pageTitle', { tag: tag.name })}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post) => (
           <PostPreview key={post.slug} post={post} />

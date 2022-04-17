@@ -203,9 +203,9 @@ export default function SEO(props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'http://schema.org',
-            '@type': schemaType, // 'Article', 'Person', 'Organization' ...
+            '@type': schemaType, // https://schema.org/docs/full.html
             name: title,
-            about: description,
+            description,
             url: url,
           }),
         }}
@@ -216,7 +216,7 @@ export default function SEO(props) {
 
 SEO.defaultProps = {
   openGraphType: 'website',
-  schemaType: 'WebSite',
+  schemaType: 'WebPage',
   url: 'https://juancamiloqhz.com',
   exclusiveTitle: '',
   title: 'Home',

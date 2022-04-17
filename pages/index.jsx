@@ -70,6 +70,7 @@ export default function Home({ posts }) {
       <SEO
         exclusiveTitle={t('index-page:metaTitle')}
         description={t('index-page:metaDescription')}
+        schemaType="WebSite"
       />
 
       <div className="hero flex items-center justify-center h-[65vh] md:h-[77vh] min-h-[450px] w-full">

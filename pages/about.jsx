@@ -8,7 +8,11 @@ export default function AboutPage() {
   const { t } = useTranslation('about-page');
   return (
     <div className="page-container">
-      <SEO title={t('pageTitle')} description={t('pageDescription')} />
+      <SEO
+        title={t('pageTitle')}
+        description={t('pageDescription')}
+        schemaType="AboutPage"
+      />
       <PageTitle>{t('pageTitle')}</PageTitle>
     </div>
   );
