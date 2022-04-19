@@ -1,4 +1,18 @@
 {
-  "pageTitle": "Contacto",
-  "pageDescription": "Contáctame en mi correo electrónico o en mi perfil de GitHub"
+  "pageTitle": "Contacta Conmigo",
+  "pageDescription": "Escríbeme un mensaje y te contestaré lo antes posible",
+  "name": "Nombre",
+  "email": "Correo electrónico",
+  "message": "Mensaje",
+  "send": "Enviar",
+  "error": "Error",
+  "success": "Mensaje enviado",
+  "sendMessage": "Enviar mensaje",
+  "sendingMessage": "Enviando mensaje...",
+  "sendMessageSuccess": "Mensaje enviado con éxito",
+  "sendMessageError": "Error enviando el mensaje",
+  "sendMessageErrorMessage": "Por favor verifica tu conexión a internet y vuelve a intentarlo",
+  "sendMessageErrorTitle": "Error enviando el mensaje",
+  "sendMessageErrorButton": "Intentar de nuevo",
+  "sendMessageErrorButton2": "Cancelar"
 }

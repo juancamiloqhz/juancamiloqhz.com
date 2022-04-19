@@ -1,4 +1,18 @@
 {
   "pageTitle": "Contact Me",
-  "pageDescription": "Contact Me to get in touch with me"
+  "pageDescription": "Send me a message and I'll get back to you as soon as possible.",
+  "name": "Name",
+  "email": "Email",
+  "message": "Message",
+  "send": "Send",
+  "error": "Error",
+  "success": "Success",
+  "sendMessage": "Send Message",
+  "sendingMessage": "Sending Message...",
+  "sendMessageSuccess": "Message sent successfully",
+  "sendMessageError": "Error sending message",
+  "sendMessageErrorMessage": "Please check your internet connection and try again",
+  "sendMessageErrorTitle": "Error sending message",
+  "sendMessageErrorButton": "Try again",
+  "sendMessageErrorButton2": "Cancel"
 }

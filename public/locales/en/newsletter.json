@@ -1,0 +1,11 @@
+{
+  "title": "Subscribe to the Newsletter",
+  "subtitle": "Get emails about my latest blog posts and other interesting stuff I found on the web.",
+  "//": {
+    "subtitle": "Get emails from me about web development, tech, and early access to new articles."
+  },
+  "email": "Your Email",
+  "subscribe": "Subscribe",
+  "subscribing": "Subscribing...",
+  "noMessage": "I'll only send emails when new content is posted. No spam."
+}

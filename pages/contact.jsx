@@ -7,15 +7,17 @@ import SEO from '../components/SEO';
 
 //Taken from https://greedytaker.in/nextjs/email-sending-contact-page-nextjs
 export default function AboutPage() {
+  const [loading, setLoading] = useState(false);
   const { t } = useTranslation('contact-page');
   const [submitted, setSubmitted] = useState(false);
 
-  const Userdata = async (event) => {
+  const UserData = async (event) => {
     event.preventDefault();
+    setLoading(true);
     console.log('Sending');
-    setSubmitted(true);
+    // setSubmitted(true);
 
-    let userdata = {
+    let userData = {
       Name: event.target.Name.value,
       Email: event.target.Email.value,
       Message: event.target.Message.value,
@@ -26,9 +28,13 @@ export default function AboutPage() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(userdata),
+      body: JSON.stringify(userData),
     });
-    console.log({ res });
+    // console.log({ res });
+    event.target.Name.value = '';
+    event.target.Email.value = '';
+    event.target.Message.value = '';
+    setLoading(false);
   };
   return (
     <div className="page-container">
@@ -38,16 +44,25 @@ export default function AboutPage() {
         schemaType="ContactPage"
       />
       <PageTitle>{t('pageTitle')}</PageTitle>
-      <div>
-        <form onSubmit={(e) => Userdata(e)} className="flex flex-col">
-          <label htmlFor="Name">Name</label>
-          <input name="Name" id="Name" type="text" required />
-          <label htmlFor="Email">Email</label>
-          <input name="Email" id="Email" type="email" required />
-          <label htmlFor="Message">Message</label>
-          <textarea id="Message" name="Message" required></textarea>
-          <button type="submit">Send</button>
-          {submitted == true ? alert('submitted') : ''}
+      <p className="font-light">{t('pageDescription')}</p>
+      <div className="max-w-md mx-auto mt-2 mb-32">
+        <form onSubmit={(e) => UserData(e)} className="flex flex-col">
+          <label htmlFor="Name" className="mb-4 flex-col flex">
+            {t('name')}
+            <input name="Name" id="Name" type="text" required />
+          </label>
+          <label htmlFor="Email" className="mb-4 flex-col flex">
+            {t('email')}
+            <input name="Email" id="Email" type="email" required />
+          </label>
+          <label htmlFor="Message" className="mb-4 flex-col flex">
+            {t('message')}
+            <textarea id="Message" name="Message" required></textarea>
+          </label>
+          <button type="submit" className="mt-8">
+            {loading ? t('sendingMessage') : t('sendMessage')}
+          </button>
+          {/* {submitted == true ? alert('submitted') : ''} */}
         </form>
       </div>
     </div>

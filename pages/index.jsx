@@ -8,6 +8,7 @@ import Layout from '../components/Layout';
 import { getAllPosts } from '../lib/blog-api';
 import SEO from '../components/SEO';
 import blurImage from '../lib/blur-images';
+import Subscribe from '../components/Subscribe/Subscribe';
 
 const variants = {
   hidden: { y: 90, opacity: 0 },
@@ -53,6 +54,7 @@ export async function getStaticProps({ locale }) {
         'footer',
         'header',
         'index-page',
+        'newsletter',
       ])),
     },
   };
@@ -96,13 +98,11 @@ export default function Home({ posts }) {
             variants={item}
             className="text-2xl md:text-3xl font-light mt-4"
           >
-            I&lsquo;m a full-stack developer, CTO and co-founder of{' '}
+            {t('home:first')}{' '}
             <a href="https://vibra.la" target="_blank" rel="noreferrer">
               Vibra
-            </a>
-            , a real estate startup in Latin America. I also write about tech,
-            startups, and the future of the web on my{' '}
-            <Link href="/blog">Blog</Link> and on{' '}
+            </a>{' '}
+            {t('home:second')} <Link href="/blog">Blog</Link> {t('home:third')}{' '}
             <a href="https://twitter.com/juancamiloqhz">Twitter</a>.
           </motion.p>
         </motion.div>
@@ -144,6 +144,9 @@ export default function Home({ posts }) {
               );
             })}
         </div>
+      </div>
+      <div className="max-w-6xl w-full flex flex-col mx-auto px-4 md:px-6 lg:px-8 mt-10 mb-20">
+        <Subscribe />
       </div>
     </>
   );

@@ -1,5 +1,8 @@
 {
   "hello": "HOLA, MI NOMBRE ES JUAN CAMILO",
   "iDo": "Creo websites.",
-  "description": "This is a non-page component that requires its own namespace"
+  "description": "This is a non-page component that requires its own namespace",
+  "first": "Soy un Desarrollador full-stack, CTO y co-fundador de",
+  "second": ", una startup Inmobiliaria en America Latina. También escribo sobre tecnología, startups, y el futuro del internet en mi",
+  "third": "y en"
 }

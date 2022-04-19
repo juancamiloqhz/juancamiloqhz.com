@@ -152,7 +152,7 @@ a {
   }
 
   button {
-    @apply py-1 px-4 my-2 rounded border border-gray-500;
+    @apply py-1 px-4 my-2 rounded border border-gray-500 dark:border-gray-300 hover:bg-neutral-700 hover:text-gray-50;
     @apply cursor-pointer focus:outline-none;
   }
   h1 {
@@ -169,6 +169,13 @@ a {
 
   h4 {
     @apply text-lg font-bold md:text-lg;
+  }
+  input,
+  textarea {
+    @apply text-neutral-700 dark:text-gray-200 px-2 py-3 border border-neutral-700 dark:border-gray-300 rounded;
+  }
+  label {
+    @apply text-base;
   }
 }
 
