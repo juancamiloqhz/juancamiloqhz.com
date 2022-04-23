@@ -8,6 +8,28 @@ import SEO from '../../components/SEO';
 import { useRouter } from 'next/router';
 import blurImage from '../../lib/blur-images';
 
+export async function getStaticPaths({ locales }) {
+  const uniqueSlugs = uniquePostSlugs();
+  // console.log('uniqueSlugs', uniqueSlugs);
+  const paths = [];
+  for (const locale of locales) {
+    for (const slug of uniqueSlugs) {
+      // console.log(post.slug, locale);
+      paths.push({
+        params: {
+          slug
+        },
+        locale
+      });
+    }
+  }
+  // console.log('paths', paths);
+  return {
+    paths,
+    fallback: false
+  };
+}
+
 export async function getStaticProps({ params, locale }) {
   // console.log('getStaticProps', params, locale);
   const post = getPostBySlug(params.slug, locale, [
@@ -18,7 +40,7 @@ export async function getStaticProps({ params, locale }) {
     'content',
     'ogImage',
     'coverImage',
-    'categories',
+    'categories'
   ]);
   // console.log('post', post.title);
   const content = await markdownToHtml(post.content || '');
@@ -29,37 +51,15 @@ export async function getStaticProps({ params, locale }) {
     props: {
       post: {
         ...post,
-        content,
+        content
       },
       blurDataURL: imgBase64,
       ...(await serverSideTranslations(locale, [
         'single-post',
         'footer',
-        'header',
-      ])),
-    },
-  };
-}
-
-export async function getStaticPaths({ locales }) {
-  const uniqueSlugs = uniquePostSlugs();
-  // console.log('uniqueSlugs', uniqueSlugs);
-  const paths = [];
-  for (const locale of locales) {
-    for (const slug of uniqueSlugs) {
-      // console.log(post.slug, locale);
-      paths.push({
-        params: {
-          slug,
-        },
-        locale,
-      });
+        'header'
+      ]))
     }
-  }
-  // console.log('paths', paths);
-  return {
-    paths,
-    fallback: false,
   };
 }
 
