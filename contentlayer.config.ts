@@ -16,11 +16,6 @@ const getLocale = (path: string) => {
   return pathArray.length > 2 ? pathArray.slice(-2)[0] : 'en';
 };
 
-type Category = {
-  name: string;
-  slug: string;
-};
-
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
@@ -68,44 +63,49 @@ const Blog = defineDocumentType(() => ({
   computedFields
 }));
 
-const Newsletter = defineDocumentType(() => ({
-  name: 'Newsletter',
-  filePathPattern: 'newsletter/*.mdx',
-  contentType: 'mdx',
-  fields: {
-    title: { type: 'string', required: true },
-    publishedAt: { type: 'string', required: true },
-    summary: { type: 'string', required: true },
-    image: { type: 'string', required: true }
-  },
-  computedFields
-}));
+// const Newsletter = defineDocumentType(() => ({
+//   name: 'Newsletter',
+//   filePathPattern: 'newsletter/*.mdx',
+//   contentType: 'mdx',
+//   fields: {
+//     title: { type: 'string', required: true },
+//     publishedAt: { type: 'string', required: true },
+//     summary: { type: 'string', required: true },
+//     image: { type: 'string', required: true }
+//   },
+//   computedFields
+// }));
 
-const Snippet = defineDocumentType(() => ({
-  name: 'Snippet',
-  filePathPattern: 'snippets/*.mdx',
-  contentType: 'mdx',
-  fields: {
-    title: { type: 'string', required: true },
-    description: { type: 'string', required: true },
-    logo: { type: 'string', required: true }
-  },
-  computedFields
-}));
+// const Snippet = defineDocumentType(() => ({
+//   name: 'Snippet',
+//   filePathPattern: 'snippets/*.mdx',
+//   contentType: 'mdx',
+//   fields: {
+//     title: { type: 'string', required: true },
+//     description: { type: 'string', required: true },
+//     logo: { type: 'string', required: true }
+//   },
+//   computedFields
+// }));
 
-const OtherPage = defineDocumentType(() => ({
-  name: 'OtherPage',
-  filePathPattern: '*.mdx',
-  contentType: 'mdx',
-  fields: {
-    title: { type: 'string', required: true }
-  },
-  computedFields
-}));
+// const OtherPage = defineDocumentType(() => ({
+//   name: 'OtherPage',
+//   filePathPattern: '*.mdx',
+//   contentType: 'mdx',
+//   fields: {
+//     title: { type: 'string', required: true }
+//   },
+//   computedFields
+// }));
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Newsletter, Snippet, OtherPage],
+  documentTypes: [
+    Blog
+    // Newsletter,
+    // Snippet,
+    //  OtherPage
+  ],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
