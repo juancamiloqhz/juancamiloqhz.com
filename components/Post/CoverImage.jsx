@@ -11,8 +11,8 @@ export default function CoverImage({ title, src, slug, blurDataURL }) {
       className="rounded md:rounded-md"
       objectFit="cover"
       objectPosition="center"
-      placeholder="blur"
-      blurDataURL={blurDataURL}
+      // placeholder="blur"
+      // blurDataURL={blurDataURL}
     />
   );
   return (

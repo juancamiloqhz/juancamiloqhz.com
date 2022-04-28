@@ -4,7 +4,7 @@
         <description><![CDATA[JuanCamiloQHz]]></description>
         <link>https://juancamiloqhz.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 17 Apr 2022 20:13:14 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 28 Apr 2022 01:27:46 GMT</lastBuildDate>
         <atom:link href="https://juancamiloqhz.com/feed.xml" rel="self" type="application/rss+xml"/>
         <language><![CDATA[en]]></language>
         <item>
@@ -40,55 +40,6 @@
             <description><![CDATA[(Featured 5) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
             <link>https://juancamiloqhz.com/blog/featured5</link>
             <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured5</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[(Featured 6) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/featured6</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured6</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[(Featured 7) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/featured7</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured7</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[(Featured 8) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/featured8</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured8</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[(Fourth Post) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/fourth-post</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/fourth-post</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/test-post</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/test-post</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/test2</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/test2</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/third-post</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/third-post</guid>
             <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
         </item>
     </channel>

@@ -35,15 +35,31 @@ const computedFields: ComputedFields = {
   slug: {
     type: 'string',
     resolve: (doc) => {
-      console.log(doc._raw.sourceFileName.split('.')[0]);
+      // console.log(doc._raw.sourceFileName.split('.')[0]);
       return doc._raw.sourceFileName.split('.')[0];
     }
   },
   locale: {
     type: 'string',
     resolve: (doc) => {
-      console.log(getLocale(doc._raw.sourceFilePath));
+      // console.log(getLocale(doc._raw.sourceFilePath));
       return getLocale(doc._raw.sourceFilePath);
+    }
+  },
+  categories: {
+    type: 'json',
+    resolve: (doc) => {
+      const categories = doc.categories;
+      // console.log(categories ?? []);
+      return categories ?? [];
+    }
+  },
+  tags: {
+    type: 'json',
+    resolve: (doc) => {
+      const tags = doc.tags;
+      // console.log(tags ?? []);
+      return tags ?? [];
     }
   }
 };

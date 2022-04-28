@@ -1,5 +1,8 @@
-import PropTypes from 'prop-types';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import Footer from './Footer';
+import Header from './Header';
 
 const settings = {
   meta: {
@@ -15,6 +18,26 @@ const settings = {
   keywords:
     'Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js'
 };
+
+interface SocialTagsTypes {
+  openGraphType?: 'profile' | 'article' | 'website';
+  url?: string;
+  title?: string;
+  description?: string;
+  imageUrl?: string;
+  width?: string;
+  height?: string;
+  alt?: string;
+  name?: string;
+  lastName?: string;
+  username?: string;
+  gender?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  authorUrl?: string;
+  mainCategory?: string;
+  tagArray?: any;
+}
 
 const socialTags = ({
   openGraphType,
@@ -34,7 +57,7 @@ const socialTags = ({
   authorUrl,
   mainCategory,
   tagArray
-}) => {
+}: SocialTagsTypes) => {
   const metaTags = [
     { name: 'twitter:card', content: 'summary_large_image' },
     {
@@ -135,131 +158,149 @@ const socialTags = ({
   return metaTags;
 };
 
-export default function SEO(props) {
+interface ContainerProps {
+  children: React.ReactNode;
+  openGraphType?: 'profile' | 'article' | 'website';
+  schemaType?:
+    | 'WebPage'
+    | 'Article'
+    | 'Profile'
+    | 'WebSite'
+    | 'AboutPage'
+    | 'ContactPage'
+    | 'SearchResultsPage'
+    | 'Blog';
+  exclusiveTitle?: string;
+  title?: string;
+  description?: string;
+  imageUrl?: string;
+  url?: string;
+  width?: string;
+  height?: string;
+  alt?: string;
+  name?: string;
+  lastName?: string;
+  username?: string;
+  gender?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  authorUrl?: string;
+  mainCategory?: string;
+  tagArray?: any;
+  keywords?: string;
+}
+
+export default function Container({ children, ...props }: ContainerProps) {
+  const { locale, asPath } = useRouter();
+
   const {
-    // openGraphType,
-    schemaType,
-    url,
-    exclusiveTitle,
-    title,
-    description,
-    imageUrl,
-    // width,
-    // height,
-    // alt,
-    // name,
-    // lastName,
-    // username,
-    // gender,
-    // createdAt,
-    // updatedAt,
-    // authorUrl,
-    // mainCategory,
-    // tagArray,
-    keywords
+    openGraphType = 'website',
+    schemaType = 'WebPage',
+    url = `https://juancamiloqhz.com${
+      locale === 'en' ? '' : `/${locale}`
+    }${asPath}`,
+    exclusiveTitle = '',
+    title = 'Home',
+    description = settings && settings.meta && settings.meta.description,
+    imageUrl = settings &&
+      settings.meta &&
+      settings.meta.social &&
+      settings.meta.social.graphic,
+    width = '300',
+    height = '190',
+    alt = 'Logo JuanCamiloQHz',
+    name = 'Juan Camilo',
+    lastName = 'Qhz',
+    username = 'juancamiloqhz',
+    gender = 'male',
+    createdAt = '',
+    updatedAt = '',
+    authorUrl = 'https://juancamiloqhz.com',
+    mainCategory = '',
+    tagArray = [''],
+    keywords = settings && settings.keywords
   } = props;
 
   return (
-    <Head>
-      <title>{exclusiveTitle || `${title} | JuanCamiloQHz`}</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="keywords" content={keywords} />
-      <meta name="description" key="description" content={description} />
-      <meta property="og:image" key="og:image" content={imageUrl} />
-      <link rel="icon" href="/favicon.ico" />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/favicons/apple-touch-icon.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicons/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicons/favicon-16x16.png"
-      />
-      <link rel="manifest" href="/favicons/site.webmanifest" />
-      <link
-        rel="mask-icon"
-        href="/favicons/safari-pinned-tab.svg"
-        color="#000000"
-      />
-      <link rel="shortcut icon" href="/favicons/favicon.ico" />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
-      <meta name="theme-color" content="#000" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      {socialTags(props).map(({ name, content }) => {
-        return <meta key={name} name={name} content={content} />;
-      })}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'http://schema.org',
-            '@type': schemaType, // https://schema.org/docs/full.html
-            name: title,
-            description,
-            url: url
-          })
-        }}
-      />
-    </Head>
+    <div className="bg-gray-50 dark:bg-gray-900">
+      <Head>
+        <title>{exclusiveTitle || `${title} | JuanCamiloQHz`}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content={keywords} />
+        <meta name="description" key="description" content={description} />
+        <meta property="og:image" key="og:image" content={imageUrl} />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="canonical" href={url} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
+        <link
+          rel="mask-icon"
+          href="/favicons/safari-pinned-tab.svg"
+          color="#000000"
+        />
+        <link rel="shortcut icon" href="/favicons/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta
+          name="msapplication-config"
+          content="/favicons/browserconfig.xml"
+        />
+        <meta name="theme-color" content="#000" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        {socialTags({
+          openGraphType,
+          url,
+          title,
+          description,
+          imageUrl,
+          width,
+          height,
+          alt,
+          name,
+          lastName,
+          username,
+          gender,
+          createdAt,
+          updatedAt,
+          authorUrl,
+          mainCategory,
+          tagArray
+        }).map(({ name, content }) => {
+          return <meta key={name} name={name} content={content} />;
+        })}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'http://schema.org',
+              '@type': schemaType, // https://schema.org/docs/full.html
+              name: title,
+              description,
+              url: url
+            })
+          }}
+        />
+      </Head>
+      <Header />
+      <main>
+        {children}
+        <Footer />
+      </main>
+    </div>
   );
 }
-
-SEO.defaultProps = {
-  openGraphType: 'website',
-  schemaType: 'WebPage',
-  url: 'https://juancamiloqhz.com',
-  exclusiveTitle: '',
-  title: 'Home',
-  description: settings && settings.meta && settings.meta.description,
-  imageUrl:
-    settings &&
-    settings.meta &&
-    settings.meta.social &&
-    settings.meta.social.graphic,
-  width: '300',
-  height: '190',
-  alt: 'Logo JuanCamiloQHz',
-  name: '',
-  lastName: '',
-  username: '',
-  gender: '',
-  createdAt: '',
-  updatedAt: '',
-  authorUrl: 'https://juancamiloqhz.com',
-  mainCategory: '',
-  tagArray: [''],
-  keywords: settings && settings.keywords
-};
-
-SEO.propTypes = {
-  openGraphType: PropTypes.string,
-  schemaType: PropTypes.string,
-  url: PropTypes.string,
-  exclusiveTitle: PropTypes.string,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  imageUrl: PropTypes.string,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  alt: PropTypes.string,
-  name: PropTypes.string,
-  lastName: PropTypes.string,
-  username: PropTypes.string,
-  gender: PropTypes.string,
-  createdAt: PropTypes.string,
-  updatedAt: PropTypes.string,
-  authorUrl: PropTypes.string,
-  mainCategory: PropTypes.string,
-  tagArray: PropTypes.array,
-  keywords: PropTypes.string
-};

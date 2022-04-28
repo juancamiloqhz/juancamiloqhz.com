@@ -2,8 +2,19 @@ import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PageTitle from '../components/common/PageTitle';
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
+import Container from '../components/Container';
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'contact-page',
+        'header',
+        'footer'
+      ]))
+    }
+  };
+}
 
 //Taken from https://greedytaker.in/nextjs/email-sending-contact-page-nextjs
 export default function AboutPage() {
@@ -20,15 +31,15 @@ export default function AboutPage() {
     let userData = {
       Name: event.target.Name.value,
       Email: event.target.Email.value,
-      Message: event.target.Message.value,
+      Message: event.target.Message.value
     };
 
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(userData),
+      body: JSON.stringify(userData)
     });
     // console.log({ res });
     event.target.Name.value = '';
@@ -37,12 +48,11 @@ export default function AboutPage() {
     setLoading(false);
   };
   return (
-    <div className="page-container">
-      <SEO
-        title={t('pageTitle')}
-        description={t('pageDescription')}
-        schemaType="ContactPage"
-      />
+    <Container
+      title={t('pageTitle')}
+      description={t('pageDescription')}
+      schemaType="ContactPage"
+    >
       <PageTitle>{t('pageTitle')}</PageTitle>
       <p className="font-light">{t('pageDescription')}</p>
       <div className="max-w-md mx-auto mt-2 mb-32">
@@ -65,22 +75,6 @@ export default function AboutPage() {
           {/* {submitted == true ? alert('submitted') : ''} */}
         </form>
       </div>
-    </div>
+    </Container>
   );
-}
-
-AboutPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
-
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, [
-        'contact-page',
-        'header',
-        'footer',
-      ])),
-    },
-  };
 }

@@ -1,14 +1,24 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PageTitle from '../components/common/PageTitle';
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
+import Container from '../components/Container';
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'privacy-policy',
+        'header',
+        'footer'
+      ]))
+    }
+  };
+}
 
 export default function PrivacyPolicy() {
   const { t } = useTranslation('privacy-policy');
   return (
-    <div className="page-container">
-      <SEO title={t('pageTitle')} description={t('pageDescription')} />
+    <Container title={t('pageTitle')} description={t('pageDescription')}>
       <PageTitle>{t('pageTitle')}</PageTitle>
       <div className="flex flex-col max-w-3xl mx-auto">
         <p>
@@ -154,22 +164,6 @@ export default function PrivacyPolicy() {
           <li>DoubleClick Platform Integration</li>
         </ul>
       </div>
-    </div>
+    </Container>
   );
-}
-
-PrivacyPolicy.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
-
-export async function getStaticProps({ locale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, [
-        'privacy-policy',
-        'header',
-        'footer',
-      ])),
-    },
-  };
 }

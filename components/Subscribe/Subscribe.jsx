@@ -17,12 +17,12 @@ export default function Subscribe() {
     // 3. Send a request to our API with the user's email address.
     const res = await fetch('/api/subscribe', {
       body: JSON.stringify({
-        email: inputEl.current.value,
+        email: inputEl.current.value
       }),
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     });
 
     const { error } = await res.json();
@@ -52,7 +52,7 @@ export default function Subscribe() {
   return (
     <form
       onSubmit={subscribe}
-      className="border border-blue-200 p-4 md:p-5 lg:p-6 flex flex-col bg-blue-50 rounded"
+      className="border border-blue-200 p-4 md:p-5 lg:p-6 flex flex-col bg-blue-50 dark:bg-indigo-900 rounded w-full"
     >
       <p>{t('title')}</p>
       <label htmlFor="email-input" className="flex flex-col relative">

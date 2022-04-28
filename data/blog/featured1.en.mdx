@@ -9,8 +9,13 @@ author:
   name: Juan Camilo QHz
   username: juancamiloqhz
   picture: '/assets/blog/authors/blonde.jpg'
-categories: ['category-1: Category 1', 'category-2: Category 2']
-tags: ['tag-1: Tag 1', 'tag-2: Tag 2']
+# categories: ['category-1: Category 1', 'category-2: Category 2']
+categories:
+  [
+    { name: 'Category 1', slug: 'category-1' },
+    { name: 'Category 2', slug: 'category-2' }
+  ]
+tags: [{ name: 'Tag 1', slug: 'tag-1' }, { name: 'Tag 2', slug: 'tag-2' }]
 ---
 
 <Image
@@ -35,6 +40,15 @@ Chambray PBR&B kale chips, coloring book bushwick affogato tbh meggings gastropu
 Unicorn jean shorts twee salvia, af farm-to-table semiotics williamsburg raclette. Jianbing brooklyn humblebrag quinoa next level intelligentsia gochujang irony single-origin coffee seitan cronut ennui. Air plant beard pop-up put a bird on it meggings shaman. Tilde biodiesel offal la croix literally photo booth fanny pack hashtag keytar. Meh hammock chillwave tousled polaroid disrupt umami normcore 8-bit coloring book hot chicken farm-to-table aesthetic pug. Literally ethical narwhal artisan williamsburg raclette.
 
 ## Bushwick Unicorn Austin
+
+<Image
+  alt={`Preview Mode for Static Generation`}
+  src={`/assets/blog/preview/esaias-tan-MKvjc2kar7Q-unsplash-preview.jpg`}
+  width={1501 / 2}
+  height={712 / 2}
+  priority
+  blurDataURL={props.blurDataURL}
+/>
 
 VHS migas XOXO tote bag, mlkshk DIY enamel pin +1 prism live-edge salvia put a bird on it retro. Single-origin coffee lomo keffiyeh tattooed brooklyn meggings. Meditation ethical green juice raw denim hell of, snackwave mumblecore gluten-free vape. Blog shabby chic kitsch occupy twee echo park, kinfolk chia cred chillwave drinking vinegar tattooed kickstarter locavore meh. Try-hard viral mixtape thundercats blog austin.
 

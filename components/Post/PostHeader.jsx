@@ -7,23 +7,23 @@ import Link from 'next/link';
 export default function PostHeader({
   title,
   coverImage,
-  date,
+  publishedAt,
   author,
   categories,
-  blurDataURL,
+  blurDataURL
 }) {
   // console.log(post);
   const categoriesArr = categories?.map((c, index) => ({
     slug: c.split(':')[0],
     name: c.split(':')[1],
-    link: `/category/${c.split(':')[0]}`,
+    link: `/category/${c.split(':')[0]}`
   }));
   return (
     <header>
       <PostTitle>{title}</PostTitle>
       <div className="flex flex-col justify-center md:items-center mb-6 md:mb-12">
         <div className="flex items-center">
-          <DateFormatter dateString={date} />
+          <DateFormatter dateString={new Date(publishedAt).toISOString()} />
           <span className="mx-1">{'-'}</span>
           <div className="flex flex-wrap items-center">
             {categoriesArr?.map((c, index) => {

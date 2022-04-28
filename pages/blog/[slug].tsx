@@ -1,12 +1,13 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Layout from '../../components/Layout';
+
 // import { getTweets } from 'lib/twitter';
 import components from '../../components/MDXComponents';
 import blurImage from '../../lib/blur-images';
 // import Tweet from 'components/Tweet';
 import { allBlogs } from 'contentlayer/generated';
 import type { Blog } from 'contentlayer/generated';
+import PostLayout from 'layouts/PostLayout';
 
 export default function Post({
   post,
@@ -24,10 +25,7 @@ export default function Post({
   //   };
 
   return (
-    <Layout
-      pageTitle={post.title}
-      // post={post}
-    >
+    <PostLayout post={post}>
       <Component
         blurDataURL={blurDataURL}
         components={
@@ -37,7 +35,7 @@ export default function Post({
           } as any
         }
       />
-    </Layout>
+    </PostLayout>
   );
 }
 
@@ -65,7 +63,8 @@ export async function getStaticProps({ params, locale }) {
       ...(await serverSideTranslations(locale, [
         'single-post',
         'footer',
-        'header'
+        'header',
+        'newsletter'
       ]))
     }
   };

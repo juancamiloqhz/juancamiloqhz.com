@@ -14,13 +14,17 @@ import { XIcon } from './Icons';
 import { useOnClickOutside } from '../lib/hooks';
 import LocaleSwitcher from './LocaleSwitcher';
 
-export default function Header({ pageTitle }) {
+export default function Header({ pageTitle }: { pageTitle?: string }) {
   const ref = useRef();
   const [colorTheme, setTheme] = useDarkMode();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { themePickerOpen, setThemePickerOpen } = useGlobalContext();
   const { t } = useTranslation('header');
   useOnClickOutside(ref, () => setThemePickerOpen(false));
+  const setThemeFn = (theme: string) => {
+    setTheme(theme);
+    setThemePickerOpen(false);
+  };
   return (
     <>
       <AnimatePresence initial={false} exitBeforeEnter>
@@ -29,14 +33,14 @@ export default function Header({ pageTitle }) {
             ref={ref}
             exit={{
               height: '0',
-              transition: { ease: 'easeOut', duration: 0.3 },
+              transition: { ease: 'easeOut', duration: 0.3 }
             }}
             animate={{
               height: 'auto',
-              transition: { ease: 'easeIn', duration: 0.3 },
+              transition: { ease: 'easeIn', duration: 0.3 }
             }}
             initial={{
-              height: '0',
+              height: '0'
             }}
             className="overflow-y-hidden bg-gray-100 dark:bg-neutral-900 flex pt-4 relative"
           >
@@ -47,42 +51,42 @@ export default function Header({ pageTitle }) {
               <div className="flex w-full gap-5 h-full overflow-x-auto pb-4">
                 <button
                   type="button"
-                  onClick={() => setTheme('light')}
+                  onClick={() => setThemeFn('light')}
                   className="theme-card bg-white ml-3 px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
                 >
                   <p className="flex flex-col dark:text-gray-800">Classic</p>
                 </button>
                 <button
                   type="button"
-                  onClick={() => setTheme('dark')}
+                  onClick={() => setThemeFn('dark')}
                   className="theme-card bg-black px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
                 >
                   <p className="flex flex-col text-white">Dark</p>
                 </button>
                 <button
                   type="button"
-                  onClick={() => setTheme('light')}
+                  onClick={() => setThemeFn('light')}
                   className="theme-card bg-white px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
                 >
                   <p className="flex flex-col dark:text-gray-800">Classic</p>
                 </button>
                 <button
                   type="button"
-                  onClick={() => setTheme('dark')}
+                  onClick={() => setThemeFn('dark')}
                   className="theme-card bg-black px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
                 >
                   <p className="flex flex-col text-white">Dark</p>
                 </button>
                 <button
                   type="button"
-                  onClick={() => setTheme('light')}
+                  onClick={() => setThemeFn('light')}
                   className="theme-card bg-white px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
                 >
                   <p className="flex flex-col dark:text-gray-800">Classic</p>
                 </button>
                 <button
                   type="button"
-                  onClick={() => setTheme('dark')}
+                  onClick={() => setThemeFn('dark')}
                   className="theme-card bg-black mr-3 px-3 py-1 h-full m-0 rounded border-gray-200  dark:border-gray-600"
                 >
                   <p className="flex flex-col text-white">Dark</p>
@@ -103,10 +107,10 @@ export default function Header({ pageTitle }) {
           <Link href="/">
             <a className="nav-link flex items-center hover:opacity-80">
               <img
-                src="/face.png"
+                src="/avatar.png"
                 className="rounded-full w-10 h-10 md:w-12 md:h-12 object-cover mr-3"
-                aria-label="Juan Camilo&lsquo;s face"
-                alt="Juan Camilo&lsquo;s face"
+                aria-label="Juan Camilo&lsquo;s Avatar"
+                alt="Juan Camilo&lsquo;s Avatar"
               />
               JuanCamiloQHz
             </a>

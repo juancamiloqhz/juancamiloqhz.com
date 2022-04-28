@@ -1,6 +1,5 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import Layout from '../../components/Layout';
 import { getPostBySlug, uniquePostSlugs } from '../../lib/blog-api';
 import markdownToHtml from '../../lib/markdownToHtml';
 import { PostBody, PostHeader } from '../../components/Post';
@@ -88,7 +87,7 @@ export default function SinglePost({ post, blurDataURL }) {
       <PostHeader
         title={post.title}
         coverImage={post.coverImage}
-        date={post.date}
+        publishedAt={post.date}
         author={post.author}
         categories={post.categories}
         blurDataURL={blurDataURL}
@@ -97,7 +96,3 @@ export default function SinglePost({ post, blurDataURL }) {
     </article>
   );
 }
-
-SinglePost.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

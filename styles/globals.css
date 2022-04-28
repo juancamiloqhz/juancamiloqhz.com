@@ -152,7 +152,7 @@ a {
   }
 
   button {
-    @apply py-1 px-4 my-2 rounded border border-gray-500 dark:border-gray-300 hover:bg-neutral-700 hover:text-gray-50;
+    @apply py-1 px-4 my-2 rounded border border-gray-500 dark:border-gray-300 hover:bg-neutral-700 hover:text-gray-50 dark:text-black dark:hover:text-white;
     @apply cursor-pointer focus:outline-none;
   }
   h1 {

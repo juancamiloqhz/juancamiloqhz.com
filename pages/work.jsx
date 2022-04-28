@@ -1,28 +1,21 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PageTitle from '../components/common/PageTitle';
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
-
-export default function MyWorkPage() {
-  const { t } = useTranslation('work');
-  return (
-    <div className="page-container">
-      <SEO title={t('pageTitle')} description={t('pageDescription')} />
-      <PageTitle>{t('pageTitle')}</PageTitle>
-      <h1>Work Page</h1>
-    </div>
-  );
-}
-
-MyWorkPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+import Container from '../components/Container';
 
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['work', 'header', 'footer'])),
-    },
+      ...(await serverSideTranslations(locale, ['work', 'header', 'footer']))
+    }
   };
+}
+
+export default function MyWorkPage() {
+  const { t } = useTranslation('work');
+  return (
+    <Container title={t('pageTitle')} description={t('pageDescription')}>
+      <PageTitle>{t('pageTitle')}</PageTitle>
+    </Container>
+  );
 }

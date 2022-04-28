@@ -1,4 +1,6 @@
 {
   "pageTitle": "Todos los Artículos",
-  "pageDescription": "JuanCamiloQHz es un Blog sobre desarrollo web, programación y tecnología. Este blog está dedicado a la programación y a la tecnología. Todos los artículos que se publican en este blog son de autoría del autor JuanCamiloQHz."
+  "pageDescription": "JuanCamiloQHz es un Blog sobre desarrollo web, programación y tecnología. Este blog está dedicado a la programación y a la tecnología. Todos los artículos que se publican en este blog son de autoría del autor JuanCamiloQHz.",
+  "search": "Buscar artículos",
+  "blogDescription": "Escribo online desde 2020 en su mayoría sobre desarrollo web. En total, he escrito {{count}} artículos en mi blog. Usa el buscador de abajo para filtrar por título."
 }

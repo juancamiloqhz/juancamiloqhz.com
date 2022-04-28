@@ -1,14 +1,12 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
+import Container from 'components/Container';
 
 import PageTitle from '../../components/common/PageTitle';
-import Layout from '../../components/Layout';
 import { PostPreview } from '../../components/Post';
-import SEO from '../../components/SEO';
 import {
   getAllCategoriesSlugs,
-  getAllPostsByCategory,
+  getAllPostsByCategory
 } from '../../lib/blog-api';
 import blurImage from '../../lib/blur-images';
 
@@ -20,15 +18,15 @@ export async function getStaticPaths({ locales }) {
     for (const locale of locales) {
       paths.push({
         params: {
-          category,
+          category
         },
-        locale,
+        locale
       });
     }
   }
   return {
     paths,
-    fallback: false,
+    fallback: false
   };
 }
 
@@ -40,14 +38,14 @@ export async function getStaticProps({ params, locale }) {
     'author',
     'ogImage',
     'coverImage',
-    'categories',
+    'categories'
   ]);
   const postWithBlurredImages = await Promise.all(
     posts.map(async (post) => {
       const { imgBase64 } = await blurImage(post.coverImage);
       return {
         ...post,
-        blurDataURL: imgBase64,
+        blurDataURL: imgBase64
       };
     })
   );
@@ -59,40 +57,31 @@ export async function getStaticProps({ params, locale }) {
       ...(await serverSideTranslations(locale, [
         'footer',
         'header',
-        'category-archive',
-      ])),
-    },
+        'category-archive'
+      ]))
+    }
   };
 }
 
 export default function AllPostsByCategoryPage({ posts, category }) {
-  const { query, locale } = useRouter();
   const { t } = useTranslation('category-archive');
   return (
-    <div>
-      <SEO
-        url={`https://juancamiloqhz.com/${
-          locale === 'en' ? '' : `${locale}/`
-        }category/${category.slug}`}
-        openGraphType="website"
-        schemaType="SearchResultsPage"
-        title={t('category-archive:pageTitle', { category: category.name })}
-        description={t('category-archive:pageDescription', {
-          category: category.name,
-        })}
-      />
+    <Container
+      title={t('category-archive:pageTitle', { category: category.name })}
+      description={t('category-archive:pageDescription', {
+        category: category.name
+      })}
+      openGraphType="website"
+      schemaType="SearchResultsPage"
+    >
       <PageTitle>
         {t('category-archive:pageTitle', { category: category.name })}
       </PageTitle>
       <div className="page-container post-container">
-        {posts.map((post, i) => (
+        {/* {posts.map((post, i) => (
           <PostPreview key={i} post={post} />
-        ))}
+        ))} */}
       </div>
-    </div>
+    </Container>
   );
 }
-
-AllPostsByCategoryPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};

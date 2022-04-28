@@ -1,11 +1,9 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
-
+import Container from 'components/Container';
 import PageTitle from '../../components/common/PageTitle';
-import Layout from '../../components/Layout';
 import { PostPreview } from '../../components/Post';
-import SEO from '../../components/SEO';
 import { getAllPostsByTag, getAllTagSlugs } from '../../lib/blog-api';
 import blurImage from '../../lib/blur-images';
 
@@ -16,16 +14,16 @@ export async function getStaticPaths({ locales }) {
     for (const tag of tags) {
       paths.push({
         params: {
-          tag,
+          tag
         },
-        locale,
+        locale
       });
     }
   }
 
   return {
     paths,
-    fallback: false,
+    fallback: false
   };
 }
 
@@ -38,14 +36,14 @@ export async function getStaticProps({ params, locale }) {
     'ogImage',
     'coverImage',
     'categories',
-    'tags',
+    'tags'
   ]);
   const postWithBlurredImages = await Promise.all(
     posts.map(async (post) => {
       const { imgBase64 } = await blurImage(post.coverImage);
       return {
         ...post,
-        blurDataURL: imgBase64,
+        blurDataURL: imgBase64
       };
     })
   );
@@ -57,36 +55,27 @@ export async function getStaticProps({ params, locale }) {
       ...(await serverSideTranslations(locale, [
         'footer',
         'header',
-        'tag-archive',
-      ])),
-    },
+        'tag-archive'
+      ]))
+    }
   };
 }
 
 export default function AuthorPostsPage({ posts, tag }) {
-  const { locale, query } = useRouter();
   const { t } = useTranslation('tag-archive');
   return (
-    <div>
-      <SEO
-        url={`https://juancamiloqhz.com/${
-          locale === 'en' ? '' : `${locale}/`
-        }tag/${tag.slug}`}
-        openGraphType="website"
-        schemaType="SearchResultsPage"
-        title={t('tag-archive:pageTitle', { tag: tag.name })}
-        description={t('tag-archive:pageDescription')}
-      />
+    <Container
+      openGraphType="website"
+      schemaType="SearchResultsPage"
+      title={t('tag-archive:pageTitle', { tag: tag.name })}
+      description={t('tag-archive:pageDescription')}
+    >
       <PageTitle>{t('tag-archive:pageTitle', { tag: tag.name })}</PageTitle>
       <div className="page-container post-container">
-        {posts.map((post) => (
+        {/* {posts.map((post) => (
           <PostPreview key={post.slug} post={post} />
-        ))}
+        ))} */}
       </div>
-    </div>
+    </Container>
   );
 }
-
-AuthorPostsPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
