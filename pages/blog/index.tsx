@@ -20,7 +20,9 @@ export async function getStaticProps({ locale }) {
         'summary',
         'publishedAt',
         'image',
-        'categories'
+        'blurDataURL',
+        'categories',
+        'tags'
       ])
     )
     .sort(
@@ -53,8 +55,6 @@ export default function BlogArchivePage({
 
   return (
     <Container
-      //   title="Blog – Lee Robinson"
-      //   description="Thoughts on the software industry, programming, tech, videography, music, and my personal life."
       title={t('pageTitle')}
       description={t('pageDescription')}
       schemaType="Blog"

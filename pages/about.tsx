@@ -24,7 +24,7 @@ export async function getStaticProps({ locale }) {
         'about-page',
         'header',
         'footer'
-      ]))
+      ])) 
     }
   };
 }

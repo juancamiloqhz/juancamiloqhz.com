@@ -49,5 +49,5 @@ export default function Meta({ title = '', description }) {
 // let's set a default title
 Meta.defaultProps = {
   description:
-    'Software Developer, Mechanical Engineer and Professional Pyrotechnician',
+    'Software Developer, Mechanical Engineer and Professional Pyrotechnician'
 };

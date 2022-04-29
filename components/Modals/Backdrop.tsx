@@ -1,18 +1,4 @@
-import { motion } from 'framer-motion'
-
-const Blanket = `
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // height: 100%;
-  // width: 100%;
-  // background-color: rgb(0, 0, 0, 0.5);
-  // backdrop-filter: blur(4px);
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  z-index: 20;
-`
+import { motion } from 'framer-motion';
 
 export default function Backdrop({ children, onClick }) {
   return (
@@ -26,5 +12,5 @@ export default function Backdrop({ children, onClick }) {
     >
       {children}
     </motion.div>
-  )
+  );
 }

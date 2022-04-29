@@ -10,6 +10,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrism from 'rehype-prism-plus';
+import blurImage from './lib/blur-images';
 
 const getLocale = (path: string) => {
   const pathArray = path.split('.');
@@ -60,6 +61,15 @@ const computedFields: ComputedFields = {
       const tags = doc.tags;
       // console.log(tags ?? []);
       return tags ?? [];
+    }
+  },
+  blurDataURL: {
+    type: 'string',
+    resolve: async (doc) => {
+      // const dataURL = doc.image;
+      const { imgBase64 } = await blurImage(doc.image);
+      // console.log(dataURL ?? '');
+      return imgBase64;
     }
   }
 };

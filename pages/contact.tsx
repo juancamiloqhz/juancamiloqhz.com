@@ -20,7 +20,7 @@ export async function getStaticProps({ locale }) {
 export default function AboutPage() {
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation('contact-page');
-  const [submitted, setSubmitted] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
 
   const UserData = async (event) => {
     event.preventDefault();

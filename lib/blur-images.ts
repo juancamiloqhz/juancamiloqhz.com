@@ -1,9 +1,9 @@
-const { join } = require('path');
-const sharp = require('sharp');
+import { join } from 'path';
+import sharp from 'sharp';
 
 const imagesDirectory = join(process.cwd(), 'public');
 
-export default async function blurImage(imagePath) {
+export default async function blurImage(imagePath: string) {
   // console.log('blurring image', `${imagesDirectory}${imagePath}`);
   const sharpImg = sharp(`${imagesDirectory}${imagePath}`);
   const meta = await sharpImg.metadata();
@@ -15,7 +15,7 @@ export default async function blurImage(imagePath) {
     .resize(placeholderImgWidth, placeholderImgHeight)
     .toBuffer()
     .then(
-      (buffer) =>
+      (buffer: any) =>
         `data:image/${meta.format};base64,${buffer.toString('base64')}`
     );
   // console.log('blurred image', typeof imgBase64);
@@ -27,6 +27,6 @@ export default async function blurImage(imagePath) {
     //   .substring('public'.length),
     // width: meta.width,
     // height: meta.height,
-    imgBase64,
+    imgBase64
   };
 }
