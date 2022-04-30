@@ -103,7 +103,7 @@ export default function Header({ pageTitle }: { pageTitle?: string }) {
         )}
       </AnimatePresence>
       <header className="w-full top-0 bg-white dark:bg-black z-10">
-        <div className="max-w-6xl h-20 md:h-28 px-4 md:px-6 lg:px-8 flex justify-between items-center mx-auto">
+        <div className="max-w-6xl h-20 md:h-28 px-8 flex justify-between items-center mx-auto">
           <Link href="/">
             <a className="nav-link flex items-center hover:opacity-80">
               <img

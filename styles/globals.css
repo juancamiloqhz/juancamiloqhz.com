@@ -135,7 +135,7 @@ a {
     font-family: Josefin Sans, system-ui, sans-serif;
   }
   body {
-    @apply antialiased text-neutral-700 dark:text-gray-200;
+    @apply antialiased text-black dark:text-white;
     @apply dark:bg-black w-full;
     /* @apply dark:bg-[#171717] w-full; */
     @apply leading-normal tracking-normal text-base font-normal break-words;
@@ -146,13 +146,13 @@ a {
   }
 
   a {
-    @apply text-gray-700 hover:text-gray-600 dark:text-gray-200 dark:hover:text-gray-300;
+    @apply text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-400;
     @apply underline-offset-2 underline decoration-blue-600 dark:decoration-blue-500 hover:underline-offset-[3px];
     @apply transition-all duration-100 ease-in;
   }
 
   button {
-    @apply py-1 px-4 my-2 rounded border border-gray-500 dark:border-gray-300 hover:bg-neutral-700 hover:text-gray-50 dark:text-black dark:hover:text-white;
+    @apply py-1 px-4 my-2 rounded border border-gray-500 dark:border-gray-300 bg-transparent hover:bg-gray-100 text-black hover:text-gray-900 dark:text-white  dark:hover:text-white;
     @apply cursor-pointer focus:outline-none;
   }
   h1 {
@@ -195,4 +195,7 @@ a {
 }
 .post-container {
   @apply mx-auto max-w-2xl w-full py-2 md:py-4;
+}
+.border-bottom {
+  @apply border-b border-gray-200 dark:border-gray-500;
 }

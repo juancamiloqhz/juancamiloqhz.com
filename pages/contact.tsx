@@ -1,10 +1,11 @@
+import { GetStaticProps } from 'next';
 import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PageTitle from '../components/common/PageTitle';
 import Container from '../components/Container';
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale, [
@@ -14,7 +15,7 @@ export async function getStaticProps({ locale }) {
       ]))
     }
   };
-}
+};
 
 //Taken from https://greedytaker.in/nextjs/email-sending-contact-page-nextjs
 export default function AboutPage() {

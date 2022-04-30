@@ -19,14 +19,21 @@ const dialogVariants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.2,
+      duration: 0.05,
       type: 'spring',
       damping: 50,
       stiffness: 400,
-    },
+      staggerChildren: 0.07
+      // when: 'beforeChildren'
+    }
   },
   hidden: { opacity: 0 },
-  exit: { opacity: 0 },
+  exit: { opacity: 0 }
+};
+
+const item = {
+  hidden: { opacity: 0, x: -8 },
+  visible: { opacity: 1, x: 0 }
 };
 
 function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
@@ -44,7 +51,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
   return (
     <motion.div
       onClick={(e) => e.stopPropagation()}
-      className="bg-white dark:bg-black fixed top-0 bottom-0 left-0 right-0"
+      className="bg-white dark:bg-black fixed top-20 bottom-0 left-0 right-0 py-4 px-8"
       animate="visible"
       initial="hidden"
       exit="exit"
@@ -55,37 +62,75 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
       key="dialog"
       style={{ width: '100%', ...dialogStyles }}
     >
-      <motion.button
+      {/* <motion.button
         onClick={onClose}
         className="absolute top-1 right-2 p-0 border-0"
       >
         <XIcon />
-      </motion.button>
-      <div className="items-center h-full flex flex-col text-center justify-center gap-8">
-        <Link href="/">
-          <a onClick={onClose} className="nav-link !text-3xl">
+      </motion.button> */}
+      <div className="h-full flex flex-col">
+        <Link href="/" passHref>
+          <motion.a
+            variants={item}
+            onClick={onClose}
+            className="nav-link !text-lg !leading-4 pb-5 border-bottom"
+          >
             {t('home')}
-          </a>
+          </motion.a>
         </Link>
-        <Link href="/blog">
-          <a onClick={onClose} className="nav-link !text-3xl">
+        <Link href="/blog" passHref>
+          <motion.a
+            variants={item}
+            onClick={onClose}
+            className="nav-link !text-lg !leading-4 py-5 border-bottom"
+          >
             {t('blog')}
-          </a>
+          </motion.a>
         </Link>
-        <Link href="/work">
-          <a onClick={onClose} className="nav-link !text-3xl">
+        <Link href="/dashboard" passHref>
+          <motion.a
+            variants={item}
+            onClick={onClose}
+            className="nav-link !text-lg !leading-4 py-5 border-bottom"
+          >
+            Dashboard
+          </motion.a>
+        </Link>
+        <Link href="/work" passHref>
+          <motion.a
+            variants={item}
+            onClick={onClose}
+            className="nav-link !text-lg !leading-4 py-5 border-bottom"
+          >
             {t('work')}
-          </a>
+          </motion.a>
         </Link>
-        <Link href="/about">
-          <a onClick={onClose} className="nav-link !text-3xl">
+        <Link href="/guestbook" passHref>
+          <motion.a
+            variants={item}
+            onClick={onClose}
+            className="nav-link !text-lg !leading-4 py-5 border-bottom"
+          >
+            {t('guestbook')}
+          </motion.a>
+        </Link>
+        <Link href="/about" passHref>
+          <motion.a
+            variants={item}
+            onClick={onClose}
+            className="nav-link !text-lg !leading-4 py-5 border-bottom"
+          >
             {t('about')}
-          </a>
+          </motion.a>
         </Link>
-        <Link href="/contact">
-          <a onClick={onClose} className="nav-link !text-3xl">
+        <Link href="/contact" passHref>
+          <motion.a
+            variants={item}
+            onClick={onClose}
+            className="nav-link !text-lg !leading-4 pt-5"
+          >
             {t('contact')}
-          </a>
+          </motion.a>
         </Link>
       </div>
     </motion.div>
@@ -95,7 +140,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
 ModalElement.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
-  dialogStyles: PropTypes.object,
+  dialogStyles: PropTypes.object
 };
 
 export default function ModalMenuMobile(props) {

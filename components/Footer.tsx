@@ -27,6 +27,14 @@ export default function Footer() {
             </Link>
           </div>
           <div>
+            <p className="font-bold text-base">{t('footer:guestbookTitle')}</p>
+            <Link href="/guestbook">
+              <a className="decoration-gray-700 text-base">
+                {t('footer:guestbook')}
+              </a>
+            </Link>
+          </div>
+          <div>
             <p className="font-bold text-base">Social</p>
             <div className="flex items-center">
               <a
@@ -61,7 +69,7 @@ export default function Footer() {
             className="decoration-none text-base"
             rel="noopener noreferrer"
           >
-            <GitHub size="1.5rem" />
+            <GitHub size={15} />
           </a>
 
           <Link href="/feed.xml">

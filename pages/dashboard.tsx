@@ -4,27 +4,41 @@ import Link from 'next/link';
 // import Newsletter from 'components/metrics/Newsletter';
 import Container from 'components/Container';
 import GitHub from 'components/Metrics/Github';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 // import Gumroad from 'components/metrics/Gumroad';
 // import Unsplash from 'components/metrics/Unsplash';
 // import YouTube from 'components/metrics/Youtube';
 // import TopTracks from 'components/TopTracks';
 
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'dashboard-page',
+        'header',
+        'footer'
+      ]))
+    },
+    revalidate: 60
+  };
+};
+
 export default function Dashboard() {
+  const { t } = useTranslation(['dashboard-page']);
   return (
     <Container
-      title="Dashboard – Lee Robinson"
-      description="My personal dashboard, built with Next.js API routes deployed as serverless functions."
+      title={t('dashboard-page:metaTitle')}
+      description={t('dashboard-page:metaDescription')}
     >
       <div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16">
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
-          Dashboard
+          {t('dashboard-page:metaTitle')}
         </h1>
         <div className="mb-8">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            This is my personal dashboard, built with Next.js API routes
-            deployed as serverless functions. I use this dashboard to track
-            various metrics across platforms like Unsplash, YouTube, GitHub, and
-            more. Want to build your own? Check out my&nbsp;
+            {t('dashboard-page:pageDescription')}&nbsp;
             <Link href="/blog/fetching-data-with-swr">
               <a className="text-gray-900 dark:text-gray-100 underline">
                 blog series.
@@ -44,14 +58,14 @@ export default function Dashboard() {
           <Gumroad />
           <Newsletter />
         </div> */}
-        <h2 className="font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
+        {/* <h2 className="font-bold text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
           Top Tracks
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
           Curious what I&apos;m currently jamming to? Here&apos;s my top tracks
           on Spotify updated daily.
         </p>
-        {/* <TopTracks /> */}
+        <TopTracks /> */}
       </div>
     </Container>
   );

@@ -53,7 +53,7 @@ export default function Home({ posts }) {
       <div className="hero flex items-center justify-center h-[65vh] md:h-[77vh] min-h-[450px] w-full">
         <motion.div
           variants={variants}
-          className="hero-inner max-w-6xl w-full mx-auto px-4 md:px-6 lg:px-8"
+          className="hero-inner max-w-6xl w-full mx-auto px-8"
           initial="hidden"
           animate="show"
         >
@@ -82,7 +82,7 @@ export default function Home({ posts }) {
           </motion.p>
         </motion.div>
       </div>
-      <div className="max-w-6xl w-full flex flex-col mx-auto px-4 md:px-6 lg:px-8">
+      <div className="max-w-6xl w-full flex flex-col mx-auto px-8">
         <h2 className="font-serif mb-6">{t('index-page:featuredPosts')}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-16">
           <FeaturedPostCard
@@ -105,7 +105,7 @@ export default function Home({ posts }) {
           />
         </div>
       </div>
-      <div className="max-w-6xl w-full flex flex-col mx-auto px-4 md:px-6 lg:px-8 mt-10 mb-20">
+      <div className="max-w-6xl w-full flex flex-col mx-auto px-8 mt-10 mb-20">
         <Subscribe />
       </div>
     </Container>

@@ -4,6 +4,7 @@ const { i18n } = require('./next-i18next.config');
 /**
  * @type {import('next').NextConfig}
  */
+console.log('ENV: ', process.env.NODE_ENV);
 module.exports = withContentlayer({
   reactStrictMode: true,
   i18n,
