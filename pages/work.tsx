@@ -15,7 +15,9 @@ export default function MyWorkPage() {
   const { t } = useTranslation('work');
   return (
     <Container title={t('pageTitle')} description={t('pageDescription')}>
-      <PageTitle>{t('pageTitle')}</PageTitle>
+      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
+        <PageTitle>{t('pageTitle')}</PageTitle>
+      </div>
     </Container>
   );
 }

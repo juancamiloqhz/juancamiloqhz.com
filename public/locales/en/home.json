@@ -1,5 +1,6 @@
 {
-  "hello": "HELLO, MY NAME IS JUAN CAMILO",
+  "profession": "Director of Technology at",
+  "professionDescription": "Helping home buyers/renters and realtors find the right tools to make their real estate dreams come true.",
   "iDo": "I make websites.",
   "description": "This is a non-page component that requires its own namespace",
   "first": "I'm a full-stack developer, CTO and co-founder of",

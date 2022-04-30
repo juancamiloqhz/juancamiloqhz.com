@@ -19,6 +19,22 @@ a {
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/ibm-plex-sans-var.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/ibm-plex-sans-var-italic.woff2) format('woff2');
+}
+
 /* vietnamese */
 @font-face {
   font-family: 'Josefin Sans';
@@ -128,51 +144,51 @@ a {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
+}
+
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
+#__next {
+  @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-200;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 @layer base {
   html {
     font-family: Josefin Sans, system-ui, sans-serif;
+    min-width: 360px;
+    scroll-behavior: smooth;
   }
   body {
-    @apply antialiased text-black dark:text-white;
-    @apply dark:bg-black w-full;
+    /* @apply antialiased text-black dark:text-white; */
+    /* @apply dark:bg-black w-full; */
     /* @apply dark:bg-[#171717] w-full; */
-    @apply leading-normal tracking-normal text-base font-normal break-words;
-    @apply text-base lg:text-xl;
+    /* @apply  break-words; */
   }
 
   main {
   }
 
   a {
-    @apply text-black hover:text-gray-600 dark:text-white dark:hover:text-gray-400;
+    @apply text-gray-900 dark:text-gray-200;
     @apply underline-offset-2 underline decoration-blue-600 dark:decoration-blue-500 hover:underline-offset-[3px];
     @apply transition-all duration-100 ease-in;
   }
 
   button {
-    @apply py-1 px-4 my-2 rounded border border-gray-500 dark:border-gray-300 bg-transparent hover:bg-gray-100 text-black hover:text-gray-900 dark:text-white  dark:hover:text-white;
+    @apply py-1 px-4 my-2 rounded border border-gray-500 dark:border-gray-400;
+    @apply bg-transparent hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-black hover:text-gray-900 dark:text-white  dark:hover:text-white;
     @apply cursor-pointer focus:outline-none;
   }
-  h1 {
-    @apply text-3xl font-bold md:text-4xl;
-  }
 
-  h2 {
-    @apply text-2xl font-bold md:text-3xl;
-  }
-
-  h3 {
-    @apply text-xl font-bold md:text-2xl;
-  }
-
-  h4 {
-    @apply text-lg font-bold md:text-lg;
-  }
   input,
   textarea {
-    @apply text-neutral-700 dark:text-gray-200 px-2 py-3 border border-neutral-700 dark:border-gray-300 rounded;
+    @apply text-gray-900 dark:text-gray-100 px-2 py-3 border border-gray-300 rounded bg-white dark:bg-gray-800 focus:ring-blue-500 focus:border-blue-500;
   }
   label {
     @apply text-base;
@@ -184,17 +200,17 @@ a {
 }
 
 .nav-link {
-  @apply cursor-pointer no-underline font-bold text-xl;
+  @apply cursor-pointer no-underline font-bold;
 }
 .nav-link.active {
   @apply text-gray-700;
 }
 
 .page-container {
-  @apply mx-auto max-w-6xl w-full py-2 md:py-4;
+  @apply mx-auto max-w-3xl w-full py-2 md:py-4;
 }
 .post-container {
-  @apply mx-auto max-w-2xl w-full py-2 md:py-4;
+  @apply mx-auto max-w-3xl w-full py-2 md:py-4;
 }
 .border-bottom {
   @apply border-b border-gray-200 dark:border-gray-500;

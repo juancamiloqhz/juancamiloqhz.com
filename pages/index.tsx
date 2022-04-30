@@ -9,22 +9,20 @@ import Container from 'components/Container';
 import FeaturedPostCard from 'components/Post/FeaturedPostCard';
 
 const variants = {
-  hidden: { y: 90, opacity: 0 },
+  hidden: {},
   show: {
-    y: 0,
-    opacity: 1,
-    transition: { when: 'beforeChildren', staggerChildren: 0.3 }
+    transition: { staggerChildren: 0.5 }
   }
 };
 
 const firstItem = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.1 } }
+  show: { opacity: 1 }
 };
 
 const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.3 } }
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0 }
 };
 
 export async function getStaticProps({ locale }) {
@@ -50,40 +48,63 @@ export default function Home({ posts }) {
       description={t('index-page:metaDescription')}
       schemaType="WebSite"
     >
-      <div className="hero flex items-center justify-center h-[65vh] md:h-[77vh] min-h-[450px] w-full">
+      <div className="hero flex items-center justify-center mt-12 mb-24 w-full">
         <motion.div
           variants={variants}
-          className="hero-inner max-w-6xl w-full mx-auto px-8"
+          className="hero-inner w-full mx-auto max-w-3xl flex flex-col-reverse sm:flex-row items-start"
           initial="hidden"
           animate="show"
         >
-          <motion.h4
-            variants={firstItem}
-            className="text-blue-600 dark:text-blue-500"
-          >
-            {t('hello')}
-          </motion.h4>
-          <motion.h1
-            variants={item}
-            className="text-5xl md:text-8xl font-serif"
-          >
-            {t('iDo')}
-          </motion.h1>
-          <motion.p
-            variants={item}
-            className="text-2xl md:text-3xl font-light mt-4"
-          >
-            {t('home:first')}{' '}
-            <a href="https://vibra.la" target="_blank" rel="noreferrer">
-              Vibra
-            </a>{' '}
-            {t('home:second')} <Link href="/blog">Blog</Link> {t('home:third')}{' '}
-            <a href="https://twitter.com/juancamiloqhz">Twitter</a>.
-          </motion.p>
+          <div className="flex flex-col pr-8">
+            <motion.h1
+              variants={item}
+              className="text-3xl md:text-5xl font-serif"
+            >
+              JuanCamiloQHz
+            </motion.h1>
+            <motion.p variants={item} className="md:text-lg">
+              {t('profession')}&nbsp;
+              <a href="https://vibra.la" target="_blank" rel="noreferrer">
+                <strong>Vibra</strong>
+              </a>{' '}
+            </motion.p>
+            <motion.p
+              variants={item}
+              className="md:text-lg font-light text-gray-400 mt-2"
+            >
+              {t('professionDescription')}
+            </motion.p>
+            {/* <motion.p
+              variants={item}
+              className="text-2xl md:text-3xl font-light mt-4"
+            >
+              {t('home:first')}{' '}
+              <a href="https://vibra.la" target="_blank" rel="noreferrer">
+                Vibra
+              </a>{' '}
+              {t('home:second')} <Link href="/blog">Blog</Link>{' '}
+              {t('home:third')}{' '}
+              <a href="https://twitter.com/juancamiloqhz">Twitter</a>.
+            </motion.p> */}
+          </div>
+          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+            <Image
+              src="/avatar.png"
+              aria-label="Juan Camilo&lsquo;s Avatar"
+              alt="Juan Camilo&lsquo;s Avatar"
+              height={176}
+              width={176}
+              objectFit="cover"
+              objectPosition="center"
+              className="rounded-full filter grayscale"
+            />
+          </div>
         </motion.div>
       </div>
-      <div className="max-w-6xl w-full flex flex-col mx-auto px-8">
-        <h2 className="font-serif mb-6">{t('index-page:featuredPosts')}</h2>
+      <div className="max-w-3xl w-full flex flex-col mx-auto">
+        <h2 className="mb-6 text-3xl font-semibold">
+          {t('index-page:featuredPosts')}
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-16">
           <FeaturedPostCard
             title="Vibra: A new way to build your website"
@@ -105,7 +126,7 @@ export default function Home({ posts }) {
           />
         </div>
       </div>
-      <div className="max-w-6xl w-full flex flex-col mx-auto px-8 mt-10 mb-20">
+      <div className="max-w-3xl w-full flex flex-col mx-auto mt-10 mb-20">
         <Subscribe />
       </div>
     </Container>

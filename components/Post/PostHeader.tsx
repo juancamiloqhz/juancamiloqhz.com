@@ -46,7 +46,7 @@ export default function PostHeader({
         </div>
         {/* <Avatar author={author} /> */}
       </div>
-      <div className="mb-8 md:mb-16 max-w-3xl mx-auto relative h-60 md:h-[420px] w-full">
+      <div className="mb-8 md:mb-16 max-w-4xl mx-auto relative h-60 md:h-[420px] w-full">
         <CoverImage title={title} src={coverImage} blurDataURL={blurDataURL} />
       </div>
     </header>

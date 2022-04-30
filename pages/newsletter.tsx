@@ -9,8 +9,10 @@ export default function MailingListPage() {
   const { t } = useTranslation('newsletter-page');
   return (
     <Container title={t('pageTitle')} description={t('pageDescription')}>
-      <PageTitle>{t('pageTitle')}</PageTitle>
-      <Subscribe />
+      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
+        <PageTitle>{t('pageTitle')}</PageTitle>
+        <Subscribe />
+      </div>
     </Container>
   );
 }

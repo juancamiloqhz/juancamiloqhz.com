@@ -6,8 +6,8 @@ export default function PostPreview({ post }) {
   if (!post?.title) return null;
   // console.dir(meta, { depth: null });
   return (
-    <article className="mb-16 overflow-hidden px-4 md:px-0">
-      <div className="cover-wrapper h-48 md:h-[365px] relative w-full">
+    <article className="mb-16 overflow-hidden">
+      <div className="cover-wrapper relative w-full mb-2">
         <CoverImage
           title={post.title}
           slug={post.slug}
@@ -39,7 +39,7 @@ export default function PostPreview({ post }) {
           })}
         </p>
         <Link href={`/blog/${post.slug}`}>
-          <a className="no-underline text-blue-700 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400">
+          <a className="no-underline text-blue-700 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 text-xl">
             <h2 className="m-0 font-serif font-bold">{post.title}</h2>
           </a>
         </Link>

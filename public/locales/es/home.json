@@ -1,5 +1,6 @@
 {
-  "hello": "HOLA, MI NOMBRE ES JUAN CAMILO",
+  "profession": "Director de Tecnología en",
+  "professionDescription": "Ayudando a crear las mejores herramientas para todos los actores involucrados en Bienes Raíces.",
   "iDo": "Creo websites.",
   "description": "This is a non-page component that requires its own namespace",
   "first": "Soy un Desarrollador full-stack, CTO y co-fundador de",

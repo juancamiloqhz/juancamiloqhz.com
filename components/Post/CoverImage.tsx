@@ -19,7 +19,9 @@ export default function CoverImage({
     <Image
       src={src}
       alt={`Cover Image for ${title}`}
-      layout="fill"
+      // layout="fill"
+      height={550}
+      width={1200}
       className="rounded md:rounded-md"
       objectFit="cover"
       objectPosition="center"

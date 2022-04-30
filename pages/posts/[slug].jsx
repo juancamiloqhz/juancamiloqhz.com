@@ -65,7 +65,7 @@ export async function getStaticProps({ params, locale }) {
 export default function SinglePost({ post, blurDataURL }) {
   const { locale } = useRouter();
   return (
-    <article className="mb-32 mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
+    <article className="mb-32 mx-auto max-w-3xl px-6 md:px-8">
       <SEO
         url={`https://juancamiloqhz.com/${
           locale === 'en' ? '' : `${locale}/`

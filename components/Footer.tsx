@@ -7,8 +7,8 @@ export default function Footer() {
   // get current year
 
   return (
-    <footer className="w-full border-t bg-white dark:bg-black">
-      <div className="grid grid-cols-1 sm:grid-cols-[auto,auto] gap-3 justify-between items-center py-3 md:py-8 px-4 md:px-6 lg:px-8 max-w-6xl mx-auto">
+    <footer className="w-full border-t">
+      <div className="grid grid-cols-1 sm:grid-cols-[auto,auto] gap-3 justify-between items-center py-3 md:py-8 max-w-3xl mx-auto">
         <div className="mt-5 sm:mt-0 grid grid-cols-[auto_auto] sm:grid-flow-col gap-8 sm:gap-14 justify-start sm:justify-between items-center">
           <div>
             <p className="font-bold text-base">
@@ -69,7 +69,7 @@ export default function Footer() {
             className="decoration-none text-base"
             rel="noopener noreferrer"
           >
-            <GitHub size={15} />
+            <GitHub size={25} />
           </a>
 
           <Link href="/feed.xml">

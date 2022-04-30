@@ -297,7 +297,7 @@ export default function Container({ children, ...props }: ContainerProps) {
         />
       </Head>
       <Header />
-      <main>
+      <main className="flex flex-col justify-center px-6 md:px-8 bg-gray-50 dark:bg-gray-900">
         {children}
         <Footer />
       </main>

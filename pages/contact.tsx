@@ -54,10 +54,10 @@ export default function AboutPage() {
       description={t('pageDescription')}
       schemaType="ContactPage"
     >
-      <PageTitle>{t('pageTitle')}</PageTitle>
-      <p className="font-light">{t('pageDescription')}</p>
-      <div className="max-w-md mx-auto mt-2 mb-32">
-        <form onSubmit={(e) => UserData(e)} className="flex flex-col">
+      <div className="max-w-3xl mx-auto mt-2 mb-32">
+        <PageTitle>{t('pageTitle')}</PageTitle>
+        <p className="font-light">{t('pageDescription')}</p>
+        <form onSubmit={(e) => UserData(e)} className="flex flex-col w-full">
           <label htmlFor="Name" className="mb-4 flex-col flex">
             {t('name')}
             <input name="Name" id="Name" type="text" required />

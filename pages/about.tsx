@@ -12,7 +12,9 @@ export default function AboutPage() {
       description={t('pageDescription')}
       schemaType="AboutPage"
     >
-      <PageTitle>{t('pageTitle')}</PageTitle>
+      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16">
+        <PageTitle>{t('pageTitle')}</PageTitle>
+      </div>
     </Container>
   );
 }
@@ -24,7 +26,7 @@ export async function getStaticProps({ locale }) {
         'about-page',
         'header',
         'footer'
-      ])) 
+      ]))
     }
   };
 }

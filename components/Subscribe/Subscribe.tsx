@@ -52,9 +52,9 @@ export default function Subscribe() {
   return (
     <form
       onSubmit={subscribe}
-      className="border border-blue-200 p-4 md:p-5 lg:p-6 flex flex-col bg-blue-50 dark:bg-indigo-900 rounded w-full"
+      className="border border-blue-200 dark:border-gray-800 p-4 md:p-5 lg:p-6 flex flex-col bg-blue-50 dark:bg-blue-opaque rounded w-full"
     >
-      <p>{t('title')}</p>
+      <p className="my-1 text-gray-800 dark:text-gray-200">{t('title')}</p>
       <label htmlFor="email-input" className="flex flex-col relative">
         <input
           id="email-input"
@@ -72,7 +72,9 @@ export default function Subscribe() {
           {loading ? `✨ ${t('subscribing')} 💌` : `✨ ${t('subscribe')} 💌`}
         </button>
       </label>
-      <p className="mt-3 text-base">{messageTxt}</p>
+      <p className="mt-3 text-sm text-gray-800 dark:text-gray-200">
+        {messageTxt}
+      </p>
     </form>
   );
 }

@@ -15,7 +15,7 @@ export default function FeaturedPostCard({
   return (
     <Link href="/blog/[slug]" as={`/blog/${slug}`}>
       <a className="group block relative w-full">
-        <div className="image-wrapper relative h-52 md:h-72 shadow-2xl">
+        <div className="image-wrapper relative h-52 md:h-60 shadow-2xl">
           <Image
             src={image}
             layout="fill"
@@ -32,9 +32,9 @@ export default function FeaturedPostCard({
           <div className="font-bold text-3xl mb-2 text-white font-serif group-hover:opacity-0 transition-all duration-500 ease-in-out">
             {title}
           </div>
-          <p className="p-4 absolute top-0 bottom-0 left-0 right-0 text-gray-100 text-xl opacity-0 mt-5 group-hover:opacity-100 group-hover:mt-0 transition-all duration-500 ease-in-out">
+          {/* <p className="p-4 absolute top-0 bottom-0 left-0 right-0 text-gray-100 text-xl opacity-0 mt-5 group-hover:opacity-100 group-hover:mt-0 transition-all duration-500 ease-in-out">
             {summary}
-          </p>
+          </p> */}
         </div>
       </a>
     </Link>
