@@ -48,7 +48,7 @@ export default function Home({ posts }) {
       description={t('index-page:metaDescription')}
       schemaType="WebSite"
     >
-      <div className="hero flex items-center justify-center mt-12 mb-24 w-full">
+      <div className="hero flex items-center justify-center mt-8 md:mt-12 mb-20 md:mb-24 w-full">
         <motion.div
           variants={variants}
           className="hero-inner w-full mx-auto max-w-3xl flex flex-col-reverse sm:flex-row items-start"
@@ -58,7 +58,7 @@ export default function Home({ posts }) {
           <div className="flex flex-col pr-8">
             <motion.h1
               variants={item}
-              className="text-3xl md:text-5xl font-serif"
+              className="text-4xl md:text-5xl font-semibold"
             >
               JuanCamiloQHz
             </motion.h1>
@@ -68,10 +68,7 @@ export default function Home({ posts }) {
                 <strong>Vibra</strong>
               </a>{' '}
             </motion.p>
-            <motion.p
-              variants={item}
-              className="md:text-lg font-light text-gray-400 mt-2"
-            >
+            <motion.p variants={item} className="md:text-lg text-gray-400 mt-2">
               {t('professionDescription')}
             </motion.p>
             {/* <motion.p
@@ -87,7 +84,7 @@ export default function Home({ posts }) {
               <a href="https://twitter.com/juancamiloqhz">Twitter</a>.
             </motion.p> */}
           </div>
-          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[80px] sm:w-[176px] relative mb-4 sm:mb-0 mr-auto">
             <Image
               src="/avatar.png"
               aria-label="Juan Camilo&lsquo;s Avatar"
@@ -105,7 +102,7 @@ export default function Home({ posts }) {
         <h2 className="mb-6 text-3xl font-semibold">
           {t('index-page:featuredPosts')}
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-10">
           <FeaturedPostCard
             title="Vibra: A new way to build your website"
             summary="Vibra is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes."
@@ -125,6 +122,25 @@ export default function Home({ posts }) {
             image="/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
           />
         </div>
+        <Link href="/blog" passHref>
+          <a className="flex mb-10">
+            {t('index-page:seeAllPosts')}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="h-6 w-6 ml-1"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
+              />
+            </svg>
+          </a>
+        </Link>
       </div>
       <div className="max-w-3xl w-full flex flex-col mx-auto mt-10 mb-20">
         <Subscribe />

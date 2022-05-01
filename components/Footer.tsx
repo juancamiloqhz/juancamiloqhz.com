@@ -8,9 +8,9 @@ export default function Footer() {
 
   return (
     <footer className="w-full border-t">
-      <div className="grid grid-cols-1 sm:grid-cols-[auto,auto] gap-3 justify-between items-center py-3 md:py-8 max-w-3xl mx-auto">
-        <div className="mt-5 sm:mt-0 grid grid-cols-[auto_auto] sm:grid-flow-col gap-8 sm:gap-14 justify-start sm:justify-between items-center">
-          <div>
+      <div className="gap-3 py-3 md:py-8 max-w-3xl mx-auto">
+        <div className="my-8">
+          <div className="mb-6">
             <p className="font-bold text-base">
               &copy; 2016 - {new Date().getFullYear()}
             </p>
@@ -18,7 +18,7 @@ export default function Footer() {
               <a className="decoration-gray-700 text-base">JuanCamiloQHz</a>
             </Link>
           </div>
-          <div>
+          <div className="mb-6">
             <p className="font-bold text-base">{t('footer:subscribe')}</p>
             <Link href="/newsletter">
               <a className="decoration-gray-700 text-base">
@@ -26,7 +26,7 @@ export default function Footer() {
               </a>
             </Link>
           </div>
-          <div>
+          <div className="mb-6">
             <p className="font-bold text-base">{t('footer:guestbookTitle')}</p>
             <Link href="/guestbook">
               <a className="decoration-gray-700 text-base">
@@ -34,7 +34,7 @@ export default function Footer() {
               </a>
             </Link>
           </div>
-          <div>
+          <div className="mb-6">
             <p className="font-bold text-base">Social</p>
             <div className="flex items-center">
               <a
@@ -54,7 +54,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div>
+          <div className="mb-6">
             <p className="font-bold text-base">Legal</p>
             <Link href="/privacy-policy">
               <a className="decoration-gray-700 text-base">
@@ -63,7 +63,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div className="grid grid-flow-col justify-start gap-3 sm:gap-5 items-center my-5 sm:my-0">
+        <div className="grid grid-flow-col justify-start gap-3 sm:gap-5 items-center my-7">
           <a
             href="https://github.com/juancamiloqhz"
             className="decoration-none text-base"

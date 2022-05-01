@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
@@ -9,22 +9,40 @@ import { useGlobalContext } from '../context/GlobalProvider';
 import MenuToggle from './MenuToggle/MenuToggle';
 import ModalMenuMobile from './Modals/ModalMenuMobile';
 import ThemeButton from './ThemeButton';
-import useDarkMode from '../hooks/useDarkMode';
-import { XIcon } from './Icons';
+// import useDarkMode from '../hooks/useDarkMode';
+// import { XIcon } from './Icons';
 import { useOnClickOutside } from '../lib/hooks';
 import LocaleSwitcher from './LocaleSwitcher';
+import { useRouter } from 'next/router';
+import classNames from 'classnames';
+
+function NavItem({ href, text }) {
+  const router = useRouter();
+  const isActive = router.asPath === href;
+
+  return (
+    <Link href={href}>
+      <a
+        className={classNames(
+          isActive
+            ? 'font-semibold text-gray-800 dark:text-gray-200'
+            : 'font-normal text-gray-600 dark:text-gray-400',
+          'no-underline p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
+        )}
+      >
+        <span className="capsize">{text}</span>
+      </a>
+    </Link>
+  );
+}
 
 export default function Header({ pageTitle }: { pageTitle?: string }) {
   const ref = useRef();
-  const [colorTheme, setTheme] = useDarkMode();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { themePickerOpen, setThemePickerOpen } = useGlobalContext();
   const { t } = useTranslation('header');
   useOnClickOutside(ref, () => setThemePickerOpen(false));
-  const setThemeFn = (theme: string) => {
-    setTheme(theme);
-    setThemePickerOpen(false);
-  };
+
   return (
     <>
       <AnimatePresence initial={false} exitBeforeEnter>
@@ -44,7 +62,7 @@ export default function Header({ pageTitle }: { pageTitle?: string }) {
             }}
             className="overflow-y-hidden bg-gray-100 dark:bg-neutral-900 flex pt-4 relative"
           >
-            <div className="h-28 mx-auto max-w-5xl w-full flex flex-col items-center justify-between">
+            {/* <div className="h-28 mx-auto max-w-5xl w-full flex flex-col items-center justify-between">
               <h5 className="text-sm font-bold text-center w-full mb-2">
                 SELECT THEME
               </h5>
@@ -98,45 +116,31 @@ export default function Header({ pageTitle }: { pageTitle?: string }) {
               >
                 <XIcon />
               </motion.button>
-            </div>
+            </div> */}
           </motion.div>
         )}
       </AnimatePresence>
       <header className="w-full top-0 z-10 px-6 md:px-8">
-        <div className="max-w-3xl w-full h-20 md:h-28  flex justify-between items-center mx-auto">
-          {/* <div className="flex items-center">} */}
+        <div className="max-w-3xl w-full h-20 md:h-24  flex justify-between items-center mx-auto">
           <div className="flex items-center justify-between w-full">
             <button
               type="button"
-              className="p-0 border-0 m-0 flex items-center justify-center rounded-full md:hidden hover:bg-transparent"
+              className="p-0 border-0 m-0 flex items-center justify-center rounded-full sm:hidden hover:bg-transparent"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <MenuToggle isOpen={mobileMenuOpen} size={20} />
             </button>
-            <div className="hidden md:flex gap-6 items-center mr-5">
-              <Link href="/">
-                <a className="nav-link">{t('home')}</a>
-              </Link>
-              <Link href="/blog">
-                <a className="nav-link">{t('blog')}</a>
-              </Link>
-              <Link href="/work">
-                <a className="nav-link">{t('work')}</a>
-              </Link>
-              <Link href="/about">
-                <a className="nav-link">{t('about')}</a>
-              </Link>
-              <Link href="/contact">
-                <a className="nav-link">{t('contact')}</a>
-              </Link>
+            <div className="hidden sm:flex gap-1 items-center mr-5 ml-[-0.60rem]">
+              <NavItem href="/" text={t('home')} />
+              <NavItem href="/blog" text={t('blog')} />
+              <NavItem href="/work" text={t('work')} />
+              <NavItem href="/about" text={t('about')} />
+              <NavItem href="/contact" text={t('contact')} />
             </div>
             <div className="flex items-center">
               <LocaleSwitcher />
               <ThemeButton />
             </div>
-            {/* <div className="flex items-center md:hidden">
-              
-            </div> */}
           </div>
         </div>
       </header>

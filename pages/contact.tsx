@@ -54,9 +54,13 @@ export default function AboutPage() {
       description={t('pageDescription')}
       schemaType="ContactPage"
     >
-      <div className="max-w-3xl mx-auto mt-2 mb-32">
-        <PageTitle>{t('pageTitle')}</PageTitle>
-        <p className="font-light">{t('pageDescription')}</p>
+      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4">
+          {t('pageTitle')}
+        </h1>
+        <p className="text-gray-600 dark:text-gray-300 mb-10">
+          {t('pageDescription')}
+        </p>
         <form onSubmit={(e) => UserData(e)} className="flex flex-col w-full">
           <label htmlFor="Name" className="mb-4 flex-col flex">
             {t('name')}
@@ -70,7 +74,7 @@ export default function AboutPage() {
             {t('message')}
             <textarea id="Message" name="Message" required></textarea>
           </label>
-          <button type="submit" className="mt-8">
+          <button type="submit" className="mt-6">
             {loading ? t('sendingMessage') : t('sendMessage')}
           </button>
           {/* {submitted == true ? alert('submitted') : ''} */}

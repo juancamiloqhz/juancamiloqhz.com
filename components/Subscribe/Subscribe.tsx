@@ -54,7 +54,7 @@ export default function Subscribe() {
       onSubmit={subscribe}
       className="border border-blue-200 dark:border-gray-800 p-4 md:p-5 lg:p-6 flex flex-col bg-blue-50 dark:bg-blue-opaque rounded w-full"
     >
-      <p className="my-1 text-gray-800 dark:text-gray-200">{t('title')}</p>
+      <p className="mb-2 text-gray-800 dark:text-gray-200">{t('title')}</p>
       <label htmlFor="email-input" className="flex flex-col relative">
         <input
           id="email-input"
@@ -67,12 +67,13 @@ export default function Subscribe() {
         />
         <button
           type="submit"
-          className="self-end absolute right-2 m-0 top-1/2 -translate-y-1/2 border-gray-300 bg-gray-100"
+          className="self-end absolute right-2 m-0 top-1/2 -translate-y-1/2"
         >
-          {loading ? `✨ ${t('subscribing')} 💌` : `✨ ${t('subscribe')} 💌`}
+          {/* {loading ? `✨ ${t('subscribing')} 💌` : `✨ ${t('subscribe')} 💌`} */}
+          {loading ? t('subscribing') : t('subscribe')}
         </button>
       </label>
-      <p className="mt-3 text-sm text-gray-800 dark:text-gray-200">
+      <p className="mt-4 text-sm text-gray-800 dark:text-gray-200">
         {messageTxt}
       </p>
     </form>

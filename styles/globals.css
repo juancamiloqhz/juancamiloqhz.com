@@ -169,6 +169,7 @@ a {
     /* @apply dark:bg-black w-full; */
     /* @apply dark:bg-[#171717] w-full; */
     /* @apply  break-words; */
+    @apply text-base font-normal font-sans;
   }
 
   main {
@@ -186,6 +187,9 @@ a {
     @apply cursor-pointer focus:outline-none;
   }
 
+  textarea {
+    @apply min-h-[150px];
+  }
   input,
   textarea {
     @apply text-gray-900 dark:text-gray-100 px-2 py-3 border border-gray-300 rounded bg-white dark:bg-gray-800 focus:ring-blue-500 focus:border-blue-500;
@@ -193,6 +197,19 @@ a {
   label {
     @apply text-base;
   }
+}
+
+/* https://seek-oss.github.io/capsize/ */
+.capsize::before {
+  content: '';
+  margin-bottom: -0.098em;
+  display: table;
+}
+
+.capsize::after {
+  content: '';
+  margin-top: -0.219em;
+  display: table;
 }
 
 .nav-item {

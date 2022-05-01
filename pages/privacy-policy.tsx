@@ -19,8 +19,12 @@ export default function PrivacyPolicy() {
   const { t } = useTranslation('privacy-policy');
   return (
     <Container title={t('pageTitle')} description={t('pageDescription')}>
-      <PageTitle>{t('pageTitle')}</PageTitle>
-      <div className="flex flex-col max-w-3xl mx-auto">
+      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
+        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4">
+          {t('pageTitle')}
+        </h1>
+      </div>
+      <div className="flex flex-col max-w-3xl mx-auto prose dark:prose-dark mb-10">
         <p>
           This privacy policy has been compiled to better serve those who are
           concerned with how their &apos;Personally Identifiable

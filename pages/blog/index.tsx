@@ -59,8 +59,8 @@ export default function BlogArchivePage({
       description={t('pageDescription')}
       schemaType="Blog"
     >
-      <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+      <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl ">
           Blog
         </h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
@@ -91,7 +91,7 @@ export default function BlogArchivePage({
         </div>
         {!searchValue && (
           <div className="mb-10 w-full">
-            <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
+            <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight md:text-4xl">
               Most Popular
             </h3>
             <FeaturedPostCard
@@ -114,7 +114,7 @@ export default function BlogArchivePage({
             />
           </div>
         )}
-        <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
+        <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight md:text-4xl">
           All Posts
         </h3>
         {!filteredPosts.length && (

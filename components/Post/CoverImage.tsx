@@ -33,7 +33,10 @@ export default function CoverImage({
     <>
       {slug ? (
         <Link href={`/blog/${slug}`} passHref>
-          <a aria-label={title} className="relative w-full h-48 md:h-[365px]">
+          <a
+            aria-label={title}
+            className="relative w-full h-56 sm:h-[365px] flex"
+          >
             {image}
           </a>
         </Link>

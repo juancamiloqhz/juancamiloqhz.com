@@ -51,7 +51,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
   return (
     <motion.div
       onClick={(e) => e.stopPropagation()}
-      className="bg-gray-50 dark:bg-gray-900 fixed top-20 bottom-0 left-0 right-0 py-4 px-6"
+      className="bg-gray-50 dark:bg-gray-900 fixed top-16 bottom-0 left-0 right-0 py-4 px-6"
       animate="visible"
       initial="hidden"
       exit="exit"
@@ -73,7 +73,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
           <motion.a
             variants={item}
             onClick={onClose}
-            className="no-underline text-lg font-normal leading-4 pb-5 border-bottom"
+            className="no-underline font-normal leading-4 pb-5 border-bottom"
           >
             {t('home')}
           </motion.a>
@@ -82,7 +82,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
           <motion.a
             variants={item}
             onClick={onClose}
-            className="no-underline text-lg font-normal leading-4 py-5 border-bottom"
+            className="no-underline font-normal leading-4 py-5 border-bottom"
           >
             {t('blog')}
           </motion.a>
@@ -91,7 +91,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
           <motion.a
             variants={item}
             onClick={onClose}
-            className="no-underline text-lg font-normal leading-4 py-5 border-bottom"
+            className="no-underline font-normal leading-4 py-5 border-bottom"
           >
             Dashboard
           </motion.a>
@@ -100,7 +100,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
           <motion.a
             variants={item}
             onClick={onClose}
-            className="no-underline text-lg font-normal leading-4 py-5 border-bottom"
+            className="no-underline font-normal leading-4 py-5 border-bottom"
           >
             {t('mailList')}
           </motion.a>
@@ -109,7 +109,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
           <motion.a
             variants={item}
             onClick={onClose}
-            className="no-underline text-lg font-normal leading-4 py-5 border-bottom"
+            className="no-underline font-normal leading-4 py-5 border-bottom"
           >
             {t('work')}
           </motion.a>
@@ -118,7 +118,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
           <motion.a
             variants={item}
             onClick={onClose}
-            className="no-underline text-lg font-normal leading-4 py-5 border-bottom"
+            className="no-underline font-normal leading-4 py-5 border-bottom"
           >
             {t('guestbook')}
           </motion.a>
@@ -127,7 +127,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
           <motion.a
             variants={item}
             onClick={onClose}
-            className="no-underline text-lg font-normal leading-4 py-5 border-bottom"
+            className="no-underline font-normal leading-4 py-5 border-bottom"
           >
             {t('about')}
           </motion.a>
@@ -136,7 +136,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
           <motion.a
             variants={item}
             onClick={onClose}
-            className="no-underline text-lg font-normal leading-4 pt-5"
+            className="no-underline font-normal leading-4 pt-5"
           >
             {t('contact')}
           </motion.a>

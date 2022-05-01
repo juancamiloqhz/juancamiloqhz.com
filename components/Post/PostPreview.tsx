@@ -6,8 +6,8 @@ export default function PostPreview({ post }) {
   if (!post?.title) return null;
   // console.dir(meta, { depth: null });
   return (
-    <article className="mb-16 overflow-hidden">
-      <div className="cover-wrapper relative w-full mb-2">
+    <article className="mb-16 md:mb-20 overflow-hidden">
+      <div className="cover-wrapper relative w-full">
         <CoverImage
           title={post.title}
           slug={post.slug}
@@ -16,7 +16,7 @@ export default function PostPreview({ post }) {
         />
       </div>
       <div>
-        <p className="text-base mt-3">
+        <p className="mt-3">
           <DateFormatter
             dateString={new Date(post.publishedAt).toISOString()}
           />{' '}
@@ -39,11 +39,14 @@ export default function PostPreview({ post }) {
           })}
         </p>
         <Link href={`/blog/${post.slug}`}>
-          <a className="no-underline text-blue-700 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 text-xl">
+          {/* <a className="no-underline text-blue-700 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 text-xl">
             <h2 className="m-0 font-serif font-bold">{post.title}</h2>
+          </a> */}
+          <a className="no-underline text-2xl md:text-3xl">
+            <h2 className="my-1 font-serif font-bold">{post.title}</h2>
           </a>
         </Link>
-        <p className="tex-base">{post.summary}</p>
+        <p className="tex-base mb-3">{post.summary}</p>
 
         <Link href={`/blog/${post.slug}`}>
           <a className="no-underline text-blue-700 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-500">
