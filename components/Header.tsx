@@ -130,7 +130,7 @@ export default function Header({ pageTitle }: { pageTitle?: string }) {
             >
               <MenuToggle isOpen={mobileMenuOpen} size={20} />
             </button>
-            <div className="hidden sm:flex gap-1 items-center mr-5 ml-[-0.60rem]">
+            <div className="hidden sm:flex items-center mr-5 ml-[-0.60rem]">
               <NavItem href="/" text={t('home')} />
               <NavItem href="/blog" text={t('blog')} />
               <NavItem href="/work" text={t('work')} />

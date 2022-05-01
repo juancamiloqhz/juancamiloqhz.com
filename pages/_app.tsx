@@ -2,6 +2,7 @@ import type { ReactElement, ReactNode } from 'react';
 import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 import { appWithTranslation } from 'next-i18next';
+import { ThemeProvider } from 'next-themes';
 import { ContextProvider } from '../context/ContextProvider';
 import { SessionProvider } from 'next-auth/react';
 import '../styles/globals.css';
@@ -20,9 +21,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      <ContextProvider>
-        {getLayout(<Component {...pageProps} />)}
-      </ContextProvider>
+      <ThemeProvider attribute="class">
+        <ContextProvider>
+          {getLayout(<Component {...pageProps} />)}
+        </ContextProvider>
+      </ThemeProvider>
     </SessionProvider>
   );
 }
