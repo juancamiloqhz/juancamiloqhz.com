@@ -89,18 +89,18 @@ const Blog = defineDocumentType(() => ({
   computedFields
 }));
 
-// const Newsletter = defineDocumentType(() => ({
-//   name: 'Newsletter',
-//   filePathPattern: 'newsletter/*.mdx',
-//   contentType: 'mdx',
-//   fields: {
-//     title: { type: 'string', required: true },
-//     publishedAt: { type: 'string', required: true },
-//     summary: { type: 'string', required: true },
-//     image: { type: 'string', required: true }
-//   },
-//   computedFields
-// }));
+const Newsletter = defineDocumentType(() => ({
+  name: 'Newsletter',
+  filePathPattern: 'newsletter/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    publishedAt: { type: 'string', required: true },
+    summary: { type: 'string', required: true },
+    image: { type: 'string', required: true }
+  },
+  computedFields
+}));
 
 // const Snippet = defineDocumentType(() => ({
 //   name: 'Snippet',
@@ -127,8 +127,8 @@ const Blog = defineDocumentType(() => ({
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
   documentTypes: [
-    Blog
-    // Newsletter,
+    Blog,
+    Newsletter
     // Snippet,
     //  OtherPage
   ],
