@@ -7,6 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Subscribe from 'components/Subscribe/Subscribe';
 import Container from 'components/Container';
 import FeaturedPostCard from 'components/Post/FeaturedPostCard';
+import blurImage from 'lib/blur-images';
 
 const variants = {
   hidden: {},
@@ -26,8 +27,11 @@ const item = {
 };
 
 export async function getStaticProps({ locale }) {
+  const { imgBase64 } = await blurImage('/avatar-bw.png');
+  // console.log(imgBase64);
   return {
     props: {
+      avatarBlurDataURL: imgBase64,
       ...(await serverSideTranslations(locale, [
         'home',
         'footer',
@@ -39,7 +43,7 @@ export async function getStaticProps({ locale }) {
   };
 }
 
-export default function Home({ posts }) {
+export default function Home({ posts, avatarBlurDataURL }) {
   const { t } = useTranslation(['home', 'index-page']);
   // console.table(posts);
   return (
@@ -94,6 +98,8 @@ export default function Home({ posts }) {
               objectFit="cover"
               objectPosition="center"
               className="rounded-full filter grayscale"
+              placeholder="blur"
+              blurDataURL={avatarBlurDataURL}
             />
           </div>
         </motion.div>
