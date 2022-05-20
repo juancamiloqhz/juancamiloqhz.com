@@ -1,8 +1,10 @@
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import CoverImage from './CoverImage';
 import DateFormatter from './DateFormatter';
 
 export default function PostPreview({ post }) {
+  const { t } = useTranslation('header');
   if (!post?.title) return null;
   // console.dir(meta, { depth: null });
   return (
@@ -50,7 +52,7 @@ export default function PostPreview({ post }) {
 
         <Link href={`/blog/${post.slug}`}>
           <a className="no-underline text-blue-700 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-500">
-            <span className="text-sm">Read more</span>
+            <span className="text-sm">{t('read-more')}</span>
           </a>
         </Link>
       </div>

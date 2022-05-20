@@ -89,7 +89,7 @@ export default function BlogArchivePage({
             />
           </svg>
         </div>
-        {!searchValue && (
+        {/* {!searchValue && (
           <div className="mb-10 w-full">
             <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight md:text-4xl">
               Most Popular
@@ -113,9 +113,9 @@ export default function BlogArchivePage({
               image="/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
             />
           </div>
-        )}
+        )} */}
         <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight md:text-4xl">
-          All Posts
+          {t('pageTitle')}
         </h3>
         {!filteredPosts.length && (
           <p className="mb-4 text-gray-600 dark:text-gray-400">

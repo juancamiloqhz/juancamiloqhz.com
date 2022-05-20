@@ -7,7 +7,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Subscribe from 'components/Subscribe/Subscribe';
 import Container from 'components/Container';
 import FeaturedPostCard from 'components/Post/FeaturedPostCard';
-import blurImage from 'lib/blur-images';
 
 const variants = {
   hidden: {},
@@ -27,11 +26,10 @@ const item = {
 };
 
 export async function getStaticProps({ locale }) {
-  const { imgBase64 } = await blurImage('/avatar-bw.png');
+  // const { imgBase64 } = await blurImage('/avatar-bw.png');
   // console.log(imgBase64);
   return {
     props: {
-      avatarBlurDataURL: imgBase64,
       ...(await serverSideTranslations(locale, [
         'home',
         'footer',
@@ -43,7 +41,7 @@ export async function getStaticProps({ locale }) {
   };
 }
 
-export default function Home({ posts, avatarBlurDataURL }) {
+export default function Home({ posts }) {
   const { t } = useTranslation(['home', 'index-page']);
   // console.table(posts);
   return (
@@ -66,13 +64,13 @@ export default function Home({ posts, avatarBlurDataURL }) {
             >
               JuanCamiloQHz
             </motion.h1>
-            <motion.p variants={item} className="md:text-lg">
+            <motion.p variants={item} className="text-lg mt-1">
               {t('profession')}&nbsp;
               <a href="https://vibra.la" target="_blank" rel="noreferrer">
                 <strong>Vibra</strong>
               </a>{' '}
             </motion.p>
-            <motion.p variants={item} className="md:text-lg text-gray-400 mt-2">
+            <motion.p variants={item} className=" text-gray-400 mt-2">
               {t('professionDescription')}
             </motion.p>
             {/* <motion.p
@@ -90,16 +88,16 @@ export default function Home({ posts, avatarBlurDataURL }) {
           </div>
           <div className="w-[80px] sm:w-[176px] relative mb-4 sm:mb-0 mr-auto">
             <Image
-              src="/avatar.png"
+              src="/avatar-bw.png"
               aria-label="Juan Camilo&lsquo;s Avatar"
               alt="Juan Camilo&lsquo;s Avatar"
               height={176}
               width={176}
               objectFit="cover"
               objectPosition="center"
-              className="rounded-full filter grayscale"
+              className="rounded-full"
               placeholder="blur"
-              blurDataURL={avatarBlurDataURL}
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpklEQVQokT2SS0sbURzFB6H9AO2X0LWge7+Am7ZBBRcKipI0BhN8xImvZJJ5xISJRKPkYQSfqJCIMakKPlE3guDCLF200PoBxCT3lHMpXfyZO3Pnnv/vnPtXLi4uPpdKpT+FQgF7e3uN7e1tLC8vi9bWVrS0tKCnpwejo6Po7e1FR0cHmpub0dTUhLa2NhEIBODz+eoejwcjIyNVXdc/KuVy+fvh4SH29/ffNzc3sb6+LlZWVtDV1YVcLofz83NcXl6iXC7j4OAAbMi99vZ2TExMCK/XS7Ga0+mEx+P5ppydnf0gXSqVqpMslUohHA5jamoKNzc3uL+/x+PjI+7u7nB9fS3XJycn6Ovrg9vtJr1wu901l8vF97xye3v76+joCIFAgBaEaZqYmZnB2NgYNjY2+B1+vx+7u7uYm5vDwMAA5ufnMTQ0hPHxcczOzgpVVRuqqnL9pDw8PNRphxusWCwGVjAYRCQSgcPhQHd3N4rFIqanp9HZ2YnBwUFMTk5C0zToui6CwaBgk1AoVFOen5/rp6enpBKapgnbthGPx5FOp7GzsyNJSV2tVmWObJLP52FZlmxqmqY891/w5eXlJ4OnYCQSEYuLi2Ctrq7i+PhYim5tbUnCtbU1MB7aNwxDipqmyXMNimua9qS8vr5Wrq6uoKpq3TAMkUgkJB0pMpkMSqWSzJKkjIIXkkwmEY1GQTeWZQld12u0Hw6H88rb25uLt+f3+99pLZFICApxPChMWtKEQiFpkQcpRnH+u7CwwP0aozAM46sC4FOlUvnNwA3DaLBrNpsVtEjbFPL5fOjv78fw8LC8cdbS0pKMJxaL1f9Zr2YymQ+KZVlKMpl0MlRd199t2xbZbJbW5JNiJCMl55MDTJuMhHNr23aNxPF4/Es0GlX+ArFlQxVMtgyfAAAAAElFTkSuQmCC"
             />
           </div>
         </motion.div>
@@ -108,24 +106,27 @@ export default function Home({ posts, avatarBlurDataURL }) {
         <h2 className="mb-6 text-3xl font-semibold">
           {t('index-page:featuredPosts')}
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-10">
+        <div className="flex gap-6 flex-col md:flex-row mb-8">
           <FeaturedPostCard
-            title="Vibra: A new way to build your website"
+            title={t('index-page:dev')}
             summary="Vibra is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes."
-            slug="vibra-a-new-way-to-build-your-website"
+            link="/development"
             image="/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
+            gradient="from-[#D8B4FE] to-[#818CF8]"
           />
           <FeaturedPostCard
-            title="Vibra: A new way to build your website"
+            title={t('index-page:dev')}
             summary="Vibra is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes."
-            slug="vibra-a-new-way-to-build-your-website"
+            link="/development"
             image="/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
+            gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
           />
           <FeaturedPostCard
-            title="Vibra: A new way to build your website"
+            title={t('index-page:dev')}
             summary="Vibra is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes."
-            slug="vibra-a-new-way-to-build-your-website"
+            link="/development"
             image="/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
+            gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
           />
         </div>
         <Link href="/blog" passHref>
