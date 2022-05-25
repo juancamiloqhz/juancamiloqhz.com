@@ -1,11 +1,14 @@
 {
-    "metaTitle": "Libro de Visitas",
-    "metaDescription": "Deja un mensaje en mi Libro de Visitas y comparte tu conocimiento.",
+    "metaTitle": "Libro de Visitantes",
+    "metaDescription": "Deja un mensaje en mi Libro de Visitantes y comparte tu conocimiento.",
     "pageDescription": "Deja un comentario abajo. Puede ser cualquier cosa: Mensaje, información, conocimiento, y hasta humor. Sorpréndeme!",
-    "cardTitle": "Firma el Libro de Visitas",
+    "cardTitle": "Firma el Libro de Visitantes",
     "cardDescription": "Deja un mensaje para un futuro visitante.",
     "cardInfo": "Tu información sólo será usada para mostrar tu nombre y responderte por correo.",
     "logInWithGitHub": "Inicia sesión con GitHub",
     "logInWithGoogle": "Inicia sesión con Google",
-    "signOut": "Cerrar sesión"
+    "signOut": "Cerrar sesión",
+    "sign": "Firmar libro",
+    "delete": "Eliminar",
+    "hooray": "Genial! Gracias por firmar mi libro de Visitantes."
 }

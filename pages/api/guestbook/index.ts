@@ -12,6 +12,7 @@ export default async function handler(
         updated_at: 'desc'
       }
     });
+    // console.dir(entries, { depth: null });
 
     return res.json(
       entries.map((entry) => ({

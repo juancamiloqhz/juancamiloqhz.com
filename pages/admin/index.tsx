@@ -2,7 +2,27 @@ import AdminContainer from 'components/AdminContainer';
 import { useSession, getSession } from 'next-auth/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  //   console.log(session);
+  if (session && session.user.email === process.env.ADMIN_EMAIL) {
+    return {
+      props: {
+        session,
+        ...(await serverSideTranslations(context.locale, ['header', 'footer']))
+      }
+    };
+  }
+
+  return {
+    props: {}
+  };
+
+  // return {
+  //   notFound: true
+  // };
+}
 
 const BarChart = dynamic(() => import('components/admin/BarChart'), {
   ssr: false
@@ -47,21 +67,4 @@ export default function PersonalDashboard() {
       </div>
     </AdminContainer>
   );
-}
-
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  //   console.log(session);
-  if (session && session.user.email == process.env.ADMIN_EMAIL) {
-    return {
-      props: {
-        session,
-        ...(await serverSideTranslations(context.locale, ['header', 'footer']))
-      }
-    };
-  }
-
-  return {
-    notFound: true
-  };
 }

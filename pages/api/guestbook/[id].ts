@@ -26,8 +26,12 @@ export default async function handler(
     });
   }
 
-  if (!session || email !== entry.email) {
-    return res.status(403).send('Unauthorized');
+  // If its admin user then skip validation to delete and put
+  if (email !== process.env.ADMIN_EMAIL) {
+    // console.log('no admin');
+    if (!session || email !== entry.email) {
+      return res.status(403).send('Unauthorized');
+    }
   }
 
   if (req.method === 'DELETE') {

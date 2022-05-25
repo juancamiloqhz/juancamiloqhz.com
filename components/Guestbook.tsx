@@ -12,13 +12,17 @@ import LoadingSpinner from 'components/LoadingSpinner';
 import { useTranslation } from 'next-i18next';
 
 function GuestbookEntry({ entry, user }) {
+  const [deleting, setDeleting] = useState(false);
+  const { t } = useTranslation('guestbook-page');
   const { mutate } = useSWRConfig();
   const deleteEntry = async (e) => {
     e.preventDefault();
+    setDeleting(true);
 
     await fetch(`/api/guestbook/${entry.id}`, {
       method: 'DELETE'
     });
+    setDeleting(false);
 
     mutate('/api/guestbook');
   };
@@ -32,17 +36,19 @@ function GuestbookEntry({ entry, user }) {
         <p className="text-sm text-gray-400 dark:text-gray-600">
           {format(new Date(entry.updated_at), "d MMM yyyy 'at' h:mm bb")}
         </p>
-        {user && entry.created_by === user.name && (
-          <>
-            <span className="text-gray-200 dark:text-gray-800">/</span>
-            <button
-              className="text-sm text-red-600 dark:text-red-400"
-              onClick={deleteEntry}
-            >
-              Delete
-            </button>
-          </>
-        )}
+        {user &&
+          (entry.created_by === user.name ||
+            user.name === 'Juan Camilo QHz') && (
+            <>
+              <span className="text-gray-200 dark:text-gray-800">/</span>
+              <button
+                className="text-sm text-red-600 dark:text-red-400"
+                onClick={deleteEntry}
+              >
+                {deleting ? <LoadingSpinner /> : t('delete')}
+              </button>
+            </>
+          )}
       </div>
     </div>
   );
@@ -85,7 +91,7 @@ export default function Guestbook({ fallbackData }) {
     mutate('/api/guestbook');
     setForm({
       state: Form.Success,
-      message: `Hooray! Thanks for signing my Guestbook.`
+      message: t('hooray')
     });
   };
 
@@ -102,7 +108,7 @@ export default function Guestbook({ fallbackData }) {
           <button
             type="button"
             onClick={() => signOut()}
-            className="font-bold h-8 bg-gray-200 dark:bg-slate-500 text-gray-900 dark:text-gray-100 rounded"
+            className="font-bold h-8 bg-gray-200 dark:bg-slate-500 hover:dark:bg-slate-600 text-gray-900 dark:text-gray-100 rounded"
           >
             {t('signOut')}
           </button>
@@ -111,7 +117,7 @@ export default function Guestbook({ fallbackData }) {
           <>
             <a
               href="/api/auth/signin/github"
-              className="whitespace-nowrap flex items-center justify-center my-4 font-bold h-8 bg-gray-200 dark:bg-slate-500 text-gray-900 dark:text-gray-100 rounded"
+              className="whitespace-nowrap flex items-center justify-center my-4 font-bold h-8 bg-gray-200 dark:bg-slate-500 hover:dark:bg-slate-600 text-gray-900 dark:text-gray-100 rounded"
               onClick={(e) => {
                 e.preventDefault();
                 signIn('github');
@@ -121,7 +127,7 @@ export default function Guestbook({ fallbackData }) {
             </a>
             <a
               href="/api/auth/signin/google"
-              className="whitespace-nowrap flex items-center justify-center my-4 font-bold h-8 bg-gray-200 dark:bg-slate-500 text-gray-900 dark:text-gray-100 rounded"
+              className="whitespace-nowrap flex items-center justify-center my-4 font-bold h-8 bg-gray-200 dark:bg-slate-500 hover:dark:bg-slate-600 text-gray-900 dark:text-gray-100 rounded"
               onClick={(e) => {
                 e.preventDefault();
                 signIn('google');
@@ -141,10 +147,10 @@ export default function Guestbook({ fallbackData }) {
               className="pl-4 pr-32 py-2 mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full border-gray-300 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
             />
             <button
-              className="flex items-center justify-center absolute right-1 top-1 px-4 pt-1 font-medium h-8 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded w-28"
+              className="flex items-center justify-center absolute right-1 top-[50%] translate-y-[-50%] px-4 pt-1 m-0 font-medium h-8 rounded min-w-[8rem] w-fit"
               type="submit"
             >
-              {form.state === Form.Loading ? <LoadingSpinner /> : 'Sign'}
+              {form.state === Form.Loading ? <LoadingSpinner /> : t('sign')}
             </button>
           </form>
         )}
@@ -158,7 +164,7 @@ export default function Guestbook({ fallbackData }) {
           </p>
         )}
       </div>
-      <div className="mt-4 space-y-8">
+      <div className="mt-4 w-full space-y-8">
         {entries?.map((entry) => (
           <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
         ))}

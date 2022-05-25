@@ -7,6 +7,9 @@
     "cardInfo": "Your information is only used to display your name and reply by email.",
     "logInWithGitHub": "Login with GitHub",
     "logInWithGoogle": "Login with Google",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "sign": "Sign",
+    "delete": "Delete",
+    "hooray": "Hooray! Thanks for signing my Guestbook."
 
 }
