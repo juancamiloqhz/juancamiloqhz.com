@@ -115,7 +115,7 @@ export default function BlogArchivePage({
           </div>
         )} */}
         {!searchValue && (
-          <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight md:text-4xl">
+          <h3 className="mt-8 mb-16 text-2xl font-bold tracking-tight md:text-4xl">
             {t('pageTitle')}
           </h3>
         )}
