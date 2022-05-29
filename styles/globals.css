@@ -158,6 +158,12 @@ a {
   min-height: 100vh;
 }
 
+@layer components {
+  .prose {
+    @apply max-w-full;
+  }
+}
+
 @layer base {
   html {
     font-family: Josefin Sans, system-ui, sans-serif;

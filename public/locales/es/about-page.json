@@ -2,5 +2,19 @@
   "pageTitle": "Sobre Mí",
   "pageDescription": "Sobre mí, una descripción de mi perfil y una breve historia de mi vida.",
   "jobTitle": "Título de mi Trabajo",
-  "jobTitleDescription": "Juan Camilo Quintero, Co-Fundador & Director de Tecnología en"
+  "jobTitleDescription": "Juan Camilo Quintero, Co-Fundador & Director de Tecnología en",
+  "longThirdPersonTitle": "Largo, 3ra persona",
+  "longThirdPerson1": "Juan Camilo Quintero es un ingeniero de software, emprendedor, y además diseñador de Shows de Fuegos artificiales. El es co-fundador y director de tecnología en",
+  "longThirdPerson2": ", una startup que ofrece una plataforma para la creación de contenido y servicios para el digital.",
+  "longFirstPersonTitle": "Largo, 1ra persona",
+  "longFirstPerson1": "Hola, soy Juan Camilo Quintero, ingeniero de software, emprendedor, y diseñador de shows de fuegos artificiales",
+  "longFirstPerson2": ", una startup que ofrece una plataforma para la creación de contenido y servicios para el digital.",
+  "shortThirdPersonTitle": "Corto, 3ra persona",
+  "shortThirdPerson1": "Juan Camilo Quintero es el Director de Tecnología en",
+  "shortThirdPerson2": ", una startup que ofrece una plataforma para la creación...",
+  "shortFirstPersonTitle": "Corto, 1ra persona",
+  "shortFirstPerson1": "Hola, soy Juan Camilo Quintero, Director de Tecnología en",
+  "shortFirstPerson2": ", una startup que ofrece una plataforma para la creación de contenido y servicios para el digital.",
+  "educationTitle": "Educación",
+  "educationDescription": "Juan Camilo Quintero se graduó en la Universidad EAFIT de Ingeniería Mecánica y MBA. Actualmente con 6 años de experiencia en Ingeniería de Software."
 }

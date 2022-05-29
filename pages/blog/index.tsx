@@ -114,9 +114,11 @@ export default function BlogArchivePage({
             />
           </div>
         )} */}
-        <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight md:text-4xl">
-          {t('pageTitle')}
-        </h3>
+        {!searchValue && (
+          <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight md:text-4xl">
+            {t('pageTitle')}
+          </h3>
+        )}
         {!filteredPosts.length && (
           <p className="mb-4 text-gray-600 dark:text-gray-400">
             No posts found.

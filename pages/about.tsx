@@ -61,40 +61,28 @@ export default function AboutPage() {
           <p>
             {t('jobTitleDescription')} <a href="https://vibra.la">Vibra.la</a>
           </p>
-          <h3>Long, 3rd Person</h3>
+          <h3>{t('longThirdPersonTitle')}</h3>
           <p>
-            Juan Camilo Quintero is a software engineer, entrepreneur, and
-            entrepreneur-in-residence. He is a co-founder and director of{' '}
-            <a href="https://vibra.la">Vibra.la</a>, a startup that provides a
-            platform for the creation of content and services for the digital
-            age.
+            {t('longThirdPerson1')} <a href="https://vibra.la">Vibra.la</a>
+            {t('longThirdPerson2')}
           </p>
-          <h3>Long, 1st Person</h3>
+          <h3>{t('longFirstPersonTitle')}</h3>
           <p>
-            Hey, I&apos;m Juan Camilo Quintero, a software engineer,
-            entrepreneur, and entrepreneur-in-residence. I&apos;m a co-founder
-            and director of <a href="https://vibra.la">Vibra.la</a>, a startup
-            that provides a platform for the creation of content and services
-            for the digital age.
+            {t('longFirstPerson1')} <a href="https://vibra.la">Vibra.la</a>
+            {t('longFirstPerson2')}{' '}
           </p>
-          <h3>Short, 3rd Person</h3>
+          <h3>{t('shortThirdPersonTitle')}</h3>
           <p>
-            Juan Camilo Quintero is the Director of Technology at{' '}
-            <a href="https://vibra.la">Vibra.la</a>, a startup that provides a
-            platform for the creation ...
+            {t('shortThirdPerson1')} <a href="https://vibra.la">Vibra.la</a>
+            {t('shortThirdPerson2')}
           </p>
-          <h3>Short, 1st Person</h3>
+          <h3>{t('shortFirstPersonTitle')}</h3>
           <p>
-            Hey, I&apos;m Juan Camilo Quintero, the Director of Technology at{' '}
-            <a href="https://vibra.la">Vibra.la</a>, a startup that provides a
-            platform for the creation ...
+            {t('shortFirstPerson1')} <a href="https://vibra.la">Vibra.la</a>
+            {t('shortFirstPerson2')}
           </p>
-          <h3>Education</h3>
-          <p>
-            Juan Camilo Quintero graduated from the EAFIT University with a
-            Bachelor&apos;s degree in Mechanical Engineering and a MBA.
-            Currently with 6 years of experience in Software Engineering.
-          </p>
+          <h3>{t('educationTitle')}</h3>
+          <p>{t('educationDescription')}</p>
         </div>
       </div>
     </Container>

@@ -56,7 +56,7 @@ export default function PostLayout({
           </p>
         </div>
         {post.image && (
-          <div className="relative h-80 w-full">
+          <div className="relative h-80 w-full mb-8">
             <Image
               alt={post.title}
               src={post.image}
@@ -70,10 +70,7 @@ export default function PostLayout({
             />
           </div>
         )}
-        <div className="w-full mt-4 mb-20 prose dark:prose-dark mx-auto">
-          {children}
-        </div>
-
+        <div className="prose dark:prose-dark mb-20">{children}</div>
         <Subscribe />
       </article>
     </Container>

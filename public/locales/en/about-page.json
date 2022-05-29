@@ -2,5 +2,19 @@
   "pageTitle": "About Me",
   "pageDescription": "Get to know me better",
   "jobTitle": "Job Title",
-  "jobTitleDescription": "Juan Camilo Quintero, Co-Founder & Director of Technology at"
+  "jobTitleDescription": "Juan Camilo Quintero, Co-Founder & Director of Technology at",
+  "longThirdPersonTitle": "Long, 3rd Person",
+  "longThirdPerson1": "Juan Camilo Quintero is a software engineer, entrepreneur, and entrepreneur-in-residence. He is a co-founder and director of",
+  "longThirdPerson2": ", a startup that provides a platform for the creation of content and services for the digital age.",
+  "longFirstPersonTitle": "Long, 1st Person",
+  "longFirstPerson1": "Hey, I'm Juan Camilo Quintero, a software engineer, entrepreneur, and entrepreneur-in-residence. I'm a co-founder and director of ",
+  "longFirstPerson2": ", a startup that provides a platform for the creation of content and services for the digital age.",
+  "shortThirdPersonTitle": "Short, 3rd Person",
+  "shortThirdPerson1": "Juan Camilo Quintero is the Director of Technology at",
+  "shortThirdPerson2": ", a startup that provides a platform for the creation ...",
+  "shortFirstPersonTitle": "Short, 1st Person",
+  "shortFirstPerson1": "Hey, I'm Juan Camilo Quintero, the Director of Technology at",
+  "shortFirstPerson2": ", a startup that provides a platform for the creation ...",
+  "educationTitle": "Education",
+  "educationDescription": "Juan Camilo Quintero graduated from the EAFIT University with a Bachelor's degree in Mechanical Engineering and a MBA. Currently with 6 years of experience in Software Engineering."
 }

@@ -64,13 +64,13 @@ export default function Home({ posts }) {
             >
               JuanCamiloQHz
             </motion.h1>
-            <motion.p variants={item} className="text-lg mt-1">
+            <motion.p variants={item} className="text-xl mt-1">
               {t('profession')}&nbsp;
               <a href="https://vibra.la" target="_blank" rel="noreferrer">
-                <strong>Vibra</strong>
+                <strong>Vibra.la</strong>
               </a>{' '}
             </motion.p>
-            <motion.p variants={item} className=" text-gray-400 mt-2">
+            <motion.p variants={item} className="text-gray-400 mt-2 text-lg">
               {t('professionDescription')}
             </motion.p>
             {/* <motion.p
