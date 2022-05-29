@@ -108,24 +108,18 @@ export default function Home({ posts }) {
         </h2>
         <div className="flex gap-6 flex-col md:flex-row mb-8">
           <FeaturedPostCard
-            title={t('index-page:dev')}
-            summary="Vibra is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes."
+            title={t('index-page:featured-one-title')}
             link="/development"
-            image="/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
             gradient="from-[#D8B4FE] to-[#818CF8]"
           />
           <FeaturedPostCard
             title={t('index-page:dev')}
-            summary="Vibra is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes."
             link="/development"
-            image="/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
             gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
           />
           <FeaturedPostCard
             title={t('index-page:dev')}
-            summary="Vibra is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes. It is a new way to build your website. It is a simple, fast and powerful tool that allows you to create your website in minutes."
             link="/development"
-            image="/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
             gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
           />
         </div>

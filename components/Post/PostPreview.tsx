@@ -8,15 +8,15 @@ export default function PostPreview({ post }) {
   if (!post?.title) return null;
   // console.dir(meta, { depth: null });
   return (
-    <article className="mb-16 md:mb-20 overflow-hidden">
-      <div className="cover-wrapper relative w-full">
+    <article className="mb-12 overflow-hidden">
+      {/* <div className="cover-wrapper relative w-full">
         <CoverImage
           title={post.title}
           slug={post.slug}
           src={post.image}
           blurDataURL={post.blurDataURL}
         />
-      </div>
+      </div> */}
       <div>
         <p className="mt-3">
           <DateFormatter
