@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next';
 import { PostPreview } from '../../components/Post';
 import { allBlogs } from 'contentlayer/generated';
 import Container from 'components/Container';
-import FeaturedPostCard from 'components/Post/FeaturedPostCard';
+// import FeaturedPostCard from 'components/Post/FeaturedPostCard';
 // import Container from 'components/Container';
 
 export async function getStaticProps({ locale }) {
