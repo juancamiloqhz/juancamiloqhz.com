@@ -21,24 +21,26 @@ export default function PostPreview({ post }) {
         <p className="mt-3">
           <DateFormatter
             dateString={new Date(post.publishedAt).toISOString()}
-          />{' '}
-          -{' '}
-          {post.categories?.map((c, index) => {
-            if (index === post.categories.length - 1) {
+          />
+          {/*
+            {' - '}
+            {post.categories?.map((c, index) => {
+              if (index === post.categories.length - 1) {
+                return (
+                  <Link href={`/category/${c.slug}`} key={index}>
+                    <a className="post-category uppercase text-sm font-serif">
+                      {c.name}
+                    </a>
+                  </Link>
+                );
+              }
               return (
                 <Link href={`/category/${c.slug}`} key={index}>
-                  <a className="post-category uppercase text-sm font-serif">
-                    {c.name}
-                  </a>
+                  <a className="post-category mr-1 uppercase text-sm font-serif">{`${c.name},`}</a>
                 </Link>
               );
-            }
-            return (
-              <Link href={`/category/${c.slug}`} key={index}>
-                <a className="post-category mr-1 uppercase text-sm font-serif">{`${c.name},`}</a>
-              </Link>
-            );
-          })}
+            })}
+          */}
         </p>
         <Link href={`/blog/${post.slug}`}>
           {/* <a className="no-underline text-blue-700 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 text-xl">
@@ -51,7 +53,7 @@ export default function PostPreview({ post }) {
         <p className="tex-base mb-3">{post.summary}</p>
 
         <Link href={`/blog/${post.slug}`}>
-          <a className="no-underline text-blue-700 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-500">
+          <a className="no-underline hover:underline text-blue-700 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-500">
             <span className="text-sm">{t('read-more')}</span>
           </a>
         </Link>
