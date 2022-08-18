@@ -16,7 +16,7 @@ export default function DateFormatter({
       className="text-sm text-gray-500 dark:text-gray-300"
     >
       {format(date, 'LLLL	d, yyyy', {
-        locale: locale === 'es' && es
+        locale: locale === 'es' ? es : undefined
       })}
     </time>
   );

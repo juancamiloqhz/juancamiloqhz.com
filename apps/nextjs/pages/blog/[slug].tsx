@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, locale }) {
+  // console.log(params, locale);
   const post = allBlogs.find(
     (post) => post.slug === params.slug && post.locale === locale
   );

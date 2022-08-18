@@ -45,7 +45,7 @@ export default function PostLayout({
               </Link>
               {' / '}
               {format(parseISO(post.publishedAt), 'MMMM dd, yyyy', {
-                locale: locale === 'es' && es
+                locale: locale === 'es' ? es : undefined
               })}
             </p>
           </div>

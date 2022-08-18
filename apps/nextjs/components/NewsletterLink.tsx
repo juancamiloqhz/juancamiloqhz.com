@@ -14,7 +14,7 @@ export default function NewsletterLink({
       <Link href={`/newsletter/${slug}`}>
         <a>
           {format(parseISO(publishedAt), 'MMMM dd, yyyy', {
-            locale: locale === 'es' && es
+            locale: locale === 'es' ? es : undefined
           })}
         </a>
       </Link>
