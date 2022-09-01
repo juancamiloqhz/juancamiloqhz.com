@@ -7,6 +7,6 @@
 	// console.log(data);
 </script>
 
-<h1>Hello from blog</h1>
+<h1>Blog</h1>
 
 {JSON.stringify(data, null, 2)}
