@@ -15,7 +15,7 @@ export default async function handler(
     // console.dir(entries, { depth: null });
 
     return res.json(
-      entries.map((entry) => ({
+      entries.map((entry: any) => ({
         id: entry.id.toString(),
         body: entry.body,
         created_by: entry.created_by,
@@ -25,18 +25,17 @@ export default async function handler(
   }
 
   const session = await getSession({ req });
-  const { email, name } = session.user;
-
-  if (!session) {
+  if (!session || !session.user) {
     return res.status(403).send('Unauthorized');
   }
+  const { email, name } = session.user;
 
   if (req.method === 'POST') {
     const newEntry = await prisma.guestbook.create({
       data: {
-        email,
+        email: email as string,
         body: (req.body.body || '').slice(0, 500),
-        created_by: name
+        created_by: name as string
       }
     });
 

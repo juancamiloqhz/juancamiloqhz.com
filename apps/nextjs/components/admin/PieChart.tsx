@@ -1,5 +1,5 @@
-import { ResponsivePie } from '@nivo/pie';
 import React from 'react';
+import { ResponsivePie } from '@nivo/pie';
 
 export const data = [
   {
@@ -23,7 +23,7 @@ export const data = [
   }
 ];
 
-const PieChart = () => {
+export default function PieChart() {
   return (
     <ResponsivePie
       data={data}
@@ -62,6 +62,4 @@ const PieChart = () => {
       ]}
     />
   );
-};
-
-export default PieChart;
+}

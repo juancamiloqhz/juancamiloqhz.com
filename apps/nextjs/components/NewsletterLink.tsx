@@ -12,11 +12,9 @@ export default function NewsletterLink({
   return (
     <li>
       <Link href={`/newsletter/${slug}`}>
-        <a>
-          {format(parseISO(publishedAt), 'MMMM dd, yyyy', {
-            locale: locale === 'es' ? es : undefined
-          })}
-        </a>
+        {format(parseISO(publishedAt), 'MMMM dd, yyyy', {
+          locale: locale === 'es' ? es : undefined
+        })}
       </Link>
     </li>
   );

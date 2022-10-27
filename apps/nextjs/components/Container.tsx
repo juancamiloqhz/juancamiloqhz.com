@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from 'components/Footer';
+import Header from 'components/Header';
 
 const settings = {
   meta: {

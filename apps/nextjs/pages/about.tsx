@@ -8,7 +8,7 @@ import Container from '../components/Container';
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         'about-page',
         'header',
         'footer'
@@ -46,7 +46,7 @@ export default function AboutPage() {
             <li>
               Website:{' '}
               <Link href="https://juancamiloqhz.com">
-                <a>https://juancamiloqhz.com</a>
+                https://juancamiloqhz.com
               </Link>
             </li>
             <li>

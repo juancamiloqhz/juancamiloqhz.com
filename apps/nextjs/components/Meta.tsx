@@ -1,6 +1,9 @@
 import Head from 'next/head';
 
-export default function Meta({ title = '', description }) {
+export default function Meta({
+  title = '',
+  description = 'Software Developer, Mechanical Engineer and Professional Pyrotechnician'
+}) {
   return (
     <Head>
       <title>{title || 'JuanCamiloQHz - Personal Website'}</title>
@@ -45,9 +48,3 @@ export default function Meta({ title = '', description }) {
     </Head>
   );
 }
-
-// let's set a default title
-Meta.defaultProps = {
-  description:
-    'Software Developer, Mechanical Engineer and Professional Pyrotechnician'
-};

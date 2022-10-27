@@ -1,5 +1,4 @@
 import Link from 'next/link';
-
 // import Analytics from 'components/metrics/Analytics';
 // import Newsletter from 'components/metrics/Newsletter';
 import Container from 'components/Container';
@@ -15,7 +14,7 @@ import { useTranslation } from 'next-i18next';
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         'dashboard-page',
         'header',
         'footer'
@@ -39,10 +38,11 @@ export default function Dashboard() {
         <div className="mb-8">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             {t('dashboard-page:pageDescription')}&nbsp;
-            <Link href="/blog/fetching-data-with-swr">
-              <a className="text-gray-900 dark:text-gray-100 underline">
-                blog series.
-              </a>
+            <Link
+              href="/blog/fetching-data-with-swr"
+              className="text-gray-900 dark:text-gray-100 underline"
+            >
+              blog series.
             </Link>
           </p>
         </div>

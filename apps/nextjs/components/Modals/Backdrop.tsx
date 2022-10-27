@@ -1,6 +1,12 @@
 import { motion } from 'framer-motion';
 
-export default function Backdrop({ children, onClick }) {
+export default function Backdrop({
+  children,
+  onClick
+}: {
+  children: React.ReactNode;
+  onClick: (props: any) => void;
+}) {
   return (
     <motion.div
       onClick={onClick}

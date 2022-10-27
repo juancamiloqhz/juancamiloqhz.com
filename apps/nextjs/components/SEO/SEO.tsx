@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import Head from 'next/head';
 
 const settings = {
@@ -34,7 +33,7 @@ const socialTags = ({
   authorUrl,
   mainCategory,
   tagArray
-}) => {
+}: SEOProps) => {
   const metaTags = [
     { name: 'twitter:card', content: 'summary_large_image' },
     {
@@ -135,28 +134,54 @@ const socialTags = ({
   return metaTags;
 };
 
-export default function SEO(props) {
+interface SEOProps {
+  openGraphType?: string;
+  schemaType?: string;
+  url?: string;
+  exclusiveTitle?: string;
+  title?: string;
+  description?: string;
+  imageUrl?: string;
+  width?: string;
+  height?: string;
+  alt?: string;
+  name?: string;
+  lastName?: string;
+  username?: string;
+  gender?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  authorUrl?: string;
+  mainCategory?: string;
+  tagArray?: string;
+  keywords?: string;
+}
+
+export default function SEO(props: SEOProps) {
   const {
-    // openGraphType,
-    schemaType,
-    url,
-    exclusiveTitle,
-    title,
-    description,
-    imageUrl,
-    // width,
-    // height,
-    // alt,
-    // name,
-    // lastName,
-    // username,
-    // gender,
-    // createdAt,
-    // updatedAt,
-    // authorUrl,
-    // mainCategory,
-    // tagArray,
-    keywords
+    openGraphType = 'website',
+    schemaType = 'WebPage',
+    url = 'https://juancamiloqhz.com',
+    exclusiveTitle = '',
+    title = 'Home',
+    description = settings && settings.meta && settings.meta.description,
+    imageUrl = settings &&
+      settings.meta &&
+      settings.meta.social &&
+      settings.meta.social.graphic,
+    width = '300',
+    height = '190',
+    alt = 'Logo JuanCamiloQHz',
+    name = '',
+    lastName = '',
+    username = '',
+    gender = '',
+    createdAt = '',
+    updatedAt = '',
+    authorUrl = 'https://juancamiloqhz.com',
+    mainCategory = '',
+    tagArray = [''],
+    keywords = settings && settings.keywords
   } = props;
 
   return (
@@ -213,53 +238,3 @@ export default function SEO(props) {
     </Head>
   );
 }
-
-SEO.defaultProps = {
-  openGraphType: 'website',
-  schemaType: 'WebPage',
-  url: 'https://juancamiloqhz.com',
-  exclusiveTitle: '',
-  title: 'Home',
-  description: settings && settings.meta && settings.meta.description,
-  imageUrl:
-    settings &&
-    settings.meta &&
-    settings.meta.social &&
-    settings.meta.social.graphic,
-  width: '300',
-  height: '190',
-  alt: 'Logo JuanCamiloQHz',
-  name: '',
-  lastName: '',
-  username: '',
-  gender: '',
-  createdAt: '',
-  updatedAt: '',
-  authorUrl: 'https://juancamiloqhz.com',
-  mainCategory: '',
-  tagArray: [''],
-  keywords: settings && settings.keywords
-};
-
-SEO.propTypes = {
-  openGraphType: PropTypes.string,
-  schemaType: PropTypes.string,
-  url: PropTypes.string,
-  exclusiveTitle: PropTypes.string,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  imageUrl: PropTypes.string,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  alt: PropTypes.string,
-  name: PropTypes.string,
-  lastName: PropTypes.string,
-  username: PropTypes.string,
-  gender: PropTypes.string,
-  createdAt: PropTypes.string,
-  updatedAt: PropTypes.string,
-  authorUrl: PropTypes.string,
-  mainCategory: PropTypes.string,
-  tagArray: PropTypes.array,
-  keywords: PropTypes.string
-};

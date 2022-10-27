@@ -1,9 +1,9 @@
 import {
   ComputedFields,
   defineDocumentType,
+  defineNestedType,
   makeSource
 } from 'contentlayer/source-files';
-
 import readingTime from 'reading-time';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -29,7 +29,9 @@ const computedFields: ComputedFields = {
       const tweetMatches = doc.body.raw.match(
         /<StaticTweet\sid="[0-9]+"\s\/>/g
       );
-      const tweetIDs = tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)[0]);
+      const tweetIDs = tweetMatches?.map(
+        (tweet: any) => tweet.match(/[0-9]+/g)[0]
+      );
       return tweetIDs ?? [];
     }
   },
@@ -47,44 +49,53 @@ const computedFields: ComputedFields = {
       return getLocale(doc._raw.sourceFilePath);
     }
   },
-  categories: {
-    type: 'json',
-    resolve: (doc) => {
-      const categories = doc.categories;
-      // console.log(categories ?? []);
-      return categories ?? [];
-    }
-  },
-  tags: {
-    type: 'json',
-    resolve: (doc) => {
-      const tags = doc.tags;
-      // console.log(tags ?? []);
-      return tags ?? [];
-    }
-  },
-  blurDataURL: {
+  mainImageBlurDataURL: {
     type: 'string',
     resolve: async (doc) => {
       // const dataURL = doc.image;
-      const { imgBase64 } = await blurImage(doc.image);
+      const { imgBase64 } = await blurImage(doc.mainImage);
       // console.log(dataURL ?? '');
       return imgBase64;
     }
   }
 };
 
-const Blog = defineDocumentType(() => ({
-  name: 'Blog',
+const Category = defineNestedType(() => ({
+  name: 'Category',
+  fields: {
+    name: { type: 'string', required: true, description: 'Category name' },
+    slug: {
+      type: 'string',
+      required: true,
+      description: 'Category slug without spaces'
+    }
+  }
+}));
+
+const Tag = defineNestedType(() => ({
+  name: 'Tag',
+  fields: {
+    name: { type: 'string', required: true, description: 'Tag name' },
+    slug: {
+      type: 'string',
+      required: true,
+      description: 'Tag slug without spaces'
+    }
+  }
+}));
+
+const Post = defineDocumentType(() => ({
+  name: 'Post',
   filePathPattern: 'blog/*.mdx',
   contentType: 'mdx',
   fields: {
+    featured: { type: 'boolean', default: false },
     title: { type: 'string', required: true },
     summary: { type: 'string', required: true },
-    image: { type: 'string', required: true },
+    mainImage: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
-    categories: { type: 'json', required: true },
-    tags: { type: 'json', required: true }
+    categories: { type: 'list', of: Category, required: true },
+    tags: { type: 'list', of: Tag, required: true }
   },
   computedFields
 }));
@@ -97,7 +108,7 @@ const Newsletter = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     publishedAt: { type: 'string', required: true },
     summary: { type: 'string', required: true },
-    image: { type: 'string', required: true }
+    mainImage: { type: 'string', required: true }
   },
   computedFields
 }));
@@ -126,12 +137,7 @@ const Newsletter = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
-  documentTypes: [
-    Blog,
-    Newsletter
-    // Snippet,
-    //  OtherPage
-  ],
+  documentTypes: [Post, Newsletter],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

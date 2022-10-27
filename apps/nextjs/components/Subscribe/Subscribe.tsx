@@ -1,23 +1,22 @@
+import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { useMemo } from 'react';
-import { useRef, useState } from 'react';
 
 export default function Subscribe() {
   // 1. Create a reference to the input so we can fetch/clear it's value.
-  const inputEl = useRef(null);
+  const inputEl = React.useRef<HTMLInputElement>(null);
   // 2. Hold a message in state to handle the response from our API.
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(false);
+  const [message, setMessage] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState(false);
   const { t } = useTranslation('newsletter');
 
-  const subscribe = async (e) => {
+  const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     // 3. Send a request to our API with the user's email address.
     const res = await fetch('/api/subscribe', {
       body: JSON.stringify({
-        email: inputEl.current.value
+        email: inputEl.current!.value
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -36,12 +35,12 @@ export default function Subscribe() {
     }
 
     // 5. Clear the input value and show a success message.
-    inputEl.current.value = '';
+    inputEl.current!.value = '';
     setMessage('success');
     setLoading(false);
   };
 
-  const messageTxt = useMemo(() => {
+  const messageTxt = React.useMemo(() => {
     if (errorMessage) return errorMessage;
     if (message === 'success') {
       return t('success');

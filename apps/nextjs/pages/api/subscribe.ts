@@ -1,11 +1,11 @@
 import mailchimp from '@mailchimp/mailchimp_marketing';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-// Taken from https://leerob.io/blog/mailchimp-next-js
+// This code was taken from https://leerob.io/blog/mailchimp-next-js
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
-  server: process.env.MAILCHIMP_API_SERVER, // e.g. us1
+  server: process.env.MAILCHIMP_API_SERVER // e.g. us1
 });
 
 type Response = {
@@ -25,13 +25,13 @@ export default async function handler(
   }
 
   try {
-    await mailchimp.lists.addListMember(process.env.MAILCHIMP_AUDIENCE_ID, {
+    await mailchimp.lists.addListMember(process.env.MAILCHIMP_AUDIENCE_ID!, {
       email_address: email,
-      status: 'subscribed',
+      status: 'subscribed'
     });
 
     return res.status(201).json({ error: '' });
-  } catch (error) {
+  } catch (error: any) {
     return res.status(500).json({ error: error.message || error.toString() });
   }
 }

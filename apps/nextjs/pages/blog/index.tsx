@@ -1,17 +1,16 @@
-import { useState } from 'react';
-import { InferGetStaticPropsType } from 'next';
+import React from 'react';
 import { pick } from 'contentlayer/client';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-
-import { PostPreview } from '../../components/Post';
-import { allBlogs } from 'contentlayer/generated';
+import { allPosts, type Post } from 'contentlayer/generated';
+import { PostPreview } from 'components/Post';
 import Container from 'components/Container';
+import { GetStaticProps } from 'next';
 // import FeaturedPostCard from 'components/Post/FeaturedPostCard';
 // import Container from 'components/Container';
 
-export async function getStaticProps({ locale }) {
-  const posts = allBlogs
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const posts = allPosts
     .filter((post) => post.locale === locale)
     .map((post) =>
       pick(post, [
@@ -19,8 +18,8 @@ export async function getStaticProps({ locale }) {
         'title',
         'summary',
         'publishedAt',
-        'image',
-        'blurDataURL',
+        'mainImage',
+        'mainImageBlurDataURL',
         'categories',
         'tags'
       ])
@@ -33,7 +32,7 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       posts,
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         'single-post',
         'footer',
         'header',
@@ -41,18 +40,14 @@ export async function getStaticProps({ locale }) {
       ]))
     }
   };
-}
+};
 
-export default function BlogArchivePage({
-  posts
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function BlogArchivePage({ posts }: { posts: Post[] }) {
   const { t } = useTranslation('blog-archive');
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = React.useState('');
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchValue.toLowerCase())
   );
-  // console.log(posts);
-
   return (
     <Container
       title={t('pageTitle')}

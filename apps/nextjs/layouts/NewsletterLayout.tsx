@@ -26,12 +26,10 @@ export default function NewsletterLayout({
           <div className="flex items-center gap-2">
             <Image
               alt="JuanCamiloQHz"
-              height={30}
-              width={30}
+              height={40}
+              width={40}
               src="/avatar.png"
-              className="rounded-full"
-              objectFit="cover"
-              objectPosition="center"
+              className="rounded-full object-cover object-center"
             />
             <p className="text-sm text-gray-700 dark:text-gray-300">
               {'JuanCamiloQHz / '}

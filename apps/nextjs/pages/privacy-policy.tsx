@@ -1,19 +1,20 @@
+import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PageTitle from '../components/common/PageTitle';
 import Container from '../components/Container';
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         'privacy-policy',
         'header',
         'footer'
       ]))
     }
   };
-}
+};
 
 export default function PrivacyPolicy() {
   const { t } = useTranslation('privacy-policy');

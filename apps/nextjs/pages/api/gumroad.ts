@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Big from 'big.js';
 
-const getProductSales = async (id) => {
+const getProductSales = async (id: string) => {
   const response = await fetch(`https://api.gumroad.com/v2/products/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.GUMROAD_API_KEY}`,

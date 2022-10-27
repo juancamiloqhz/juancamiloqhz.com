@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     }
   });
 
-  const fallbackData = entries.map((entry) => ({
+  const fallbackData = entries.map((entry: any) => ({
     id: entry.id.toString(),
     body: entry.body,
     created_by: entry.created_by.toString(),
@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       fallbackData,
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         'guestbook-page',
         'header',
         'footer'
@@ -32,7 +32,11 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 
-export default function GuestbookPage({ fallbackData }) {
+export default function GuestbookPage({
+  fallbackData
+}: {
+  fallbackData: any[];
+}) {
   const { t } = useTranslation('guestbook-page');
   return (
     <Container title={t('metaTitle')} description={t('metaDescription')}>

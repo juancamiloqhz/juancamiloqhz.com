@@ -4,7 +4,6 @@ excerpt: '(Destacado 2) 8-bit butcher mustache kitsch succulents celiac palo san
 coverImage: '/assets/blog/hello-world/joshua-sortino-LqKhnDzSF-8-unsplash-hello-world.jpg'
 date: '2020-03-16T05:35:07.322Z'
 featured: true
-readTime: 10
 author:
   name: Tim Neutkens
   username: joe

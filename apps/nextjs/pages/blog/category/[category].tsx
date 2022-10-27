@@ -1,53 +1,47 @@
+import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Container from 'components/Container';
-import { allBlogs } from 'contentlayer/generated';
-import type { Blog } from 'contentlayer/generated';
-
-import PageTitle from '../../components/common/PageTitle';
-import { PostPreview } from '../../components/Post';
+import { allPosts, type Post } from 'contentlayer/generated';
+import PageTitle from 'components/common/PageTitle';
+import { PostPreview } from 'components/Post';
 import { pick } from 'contentlayer/client';
 
 export async function getStaticPaths() {
-  let uniqueCategories = [];
-  allBlogs
-    .flatMap((blog) =>
-      blog.categories.map((category: { name: string; slug: string }) => ({
-        slug: category.slug,
-        locale: blog.locale
-      }))
-    )
-    .filter((c) => {
-      const i = uniqueCategories.findIndex(
-        (u) => u.slug === c.slug && u.locale === c.locale
-      );
-      if (i === -1) {
-        uniqueCategories.push(c);
-        return true;
-      }
-      return false;
-    });
-  // console.log(uniqueCategories);
+  const allCategoriesSlugs = allPosts
+    .map((post) => post.categories.map((category) => category.slug))
+    .flat();
+  const uniqueCategoriesSlugs = [...new Set(allCategoriesSlugs)];
+  // console.log(uniqueCategoriesSlugs);
+
   return {
-    paths: uniqueCategories.map((c) => ({
-      params: { category: c.slug },
-      locale: c.locale
+    paths: uniqueCategoriesSlugs.map((category) => ({
+      params: {
+        category
+      }
     })),
     fallback: false
   };
 }
 
-export async function getStaticProps({ params, locale }) {
-  const posts = allBlogs
-    .filter((blog) => blog.locale === locale)
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+  if (!params || !params.category) return { notFound: true };
+  const allPostsByCategory = allPosts
+    .filter(
+      (post) =>
+        post.locale === locale &&
+        post.categories
+          .map((category) => category.slug)
+          .includes(params.category as string)
+    )
     .map((post) =>
       pick(post, [
         'slug',
         'title',
         'summary',
         'publishedAt',
-        'image',
-        'blurDataURL',
+        'mainImage',
+        'mainImageBlurDataURL',
         'categories',
         'tags'
       ])
@@ -60,21 +54,21 @@ export async function getStaticProps({ params, locale }) {
   return {
     props: {
       category: { name: params.category, slug: params.category },
-      posts,
-      ...(await serverSideTranslations(locale, [
+      posts: allPostsByCategory,
+      ...(await serverSideTranslations(locale ?? 'en', [
         'footer',
         'header',
         'category-archive'
       ]))
     }
   };
-}
+};
 
-export default function AllPostsByCategoryPage({
+export default function CategoryPostsPage({
   posts,
   category
 }: {
-  posts: Blog[];
+  posts: Post[];
   category: { name: string; slug: string };
 }) {
   const { t } = useTranslation('category-archive');

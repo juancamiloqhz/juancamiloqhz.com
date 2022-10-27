@@ -5,7 +5,6 @@ image: '/assets/blog/preview/esaias-tan-MKvjc2kar7Q-unsplash-preview.jpg'
 date: '2021-12-14'
 updated: '2021-11-01'
 featured: true
-readTime: 10
 author:
   name: Juan Camilo QHz
   username: juancamiloqhz

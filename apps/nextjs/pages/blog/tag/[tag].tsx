@@ -1,79 +1,75 @@
+import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Container from 'components/Container';
-import PageTitle from '../../components/common/PageTitle';
-import { PostPreview } from '../../components/Post';
-import { allBlogs } from 'contentlayer/generated';
-import type { Blog } from 'contentlayer/generated';
 import { pick } from 'contentlayer/client';
+import Container from 'components/Container';
+import PageTitle from 'components/common/PageTitle';
+import { PostPreview } from 'components/Post';
+import { allPosts, type Post } from 'contentlayer/generated';
 
 export async function getStaticPaths() {
-  let uniqueTags = [];
-  allBlogs
-    .flatMap((blog) =>
-      blog.tags.map((tag: { name: string; slug: string }) => ({
-        slug: tag.slug,
-        locale: blog.locale
-      }))
-    )
-    .filter((t) => {
-      const i = uniqueTags.findIndex(
-        (u) => u.slug === t.slug && u.locale === t.locale
-      );
-      if (i === -1) {
-        uniqueTags.push(t);
-        return true;
-      }
-      return false;
-    });
-  // console.log(uniqueTags);
+  const allTagsSlugs = allPosts
+    .map((post) => post.tags.map((tag) => tag.slug))
+    .flat();
+  const uniqueTagsSlugs = [...new Set(allTagsSlugs)];
+  console.log(uniqueTagsSlugs);
+
   return {
-    paths: uniqueTags.map((t) => ({
-      params: { tag: t.slug },
-      locale: t.locale
+    paths: uniqueTagsSlugs.map((tag) => ({
+      params: {
+        tag
+      }
     })),
     fallback: false
   };
 }
 
-export async function getStaticProps({ params, locale }) {
-  const posts = allBlogs
-    .filter((blog) => blog.locale === locale)
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+  console.log(params, locale);
+  if (!params || !params.tag) return { notFound: true };
+  const allPostsByTag = allPosts
+    .filter(
+      (post) =>
+        post.locale === locale &&
+        post.tags.map((tag) => tag.slug).includes(params.tag as string)
+    )
     .map((post) =>
       pick(post, [
         'slug',
         'title',
         'summary',
         'publishedAt',
-        'image',
-        'blurDataURL',
+        'mainImage',
+        'mainImageBlurDataURL',
         'categories',
-        'tags'
+        'tags',
+        'locale'
       ])
     )
     .sort(
       (a, b) =>
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
     );
+  console.log(allPostsByTag);
 
   return {
     props: {
       tag: { name: params.tag, slug: params.tag },
-      posts,
-      ...(await serverSideTranslations(locale, [
+      posts: allPostsByTag,
+      ...(await serverSideTranslations(locale ?? 'en', [
         'footer',
         'header',
         'tag-archive'
       ]))
     }
   };
-}
+};
 
-export default function AuthorPostsPage({
+export default function TagPostsPage({
   posts,
   tag
 }: {
-  posts: Blog[];
+  posts: Post[];
   tag: { name: string; slug: string };
 }) {
   const { t } = useTranslation('tag-archive');

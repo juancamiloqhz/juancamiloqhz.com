@@ -1,4 +1,10 @@
-export default function SuccessMessage({ children }) {
+import React from 'react';
+
+export default function SuccessMessage({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <p className="flex items-center text-sm font-bold text-green-700 dark:text-green-400">
       <svg

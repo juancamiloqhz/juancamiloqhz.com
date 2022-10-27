@@ -8,7 +8,7 @@ import Container from '../components/Container';
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'es', [
         'contact-page',
         'header',
         'footer'
@@ -19,33 +19,30 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 //Taken from https://greedytaker.in/nextjs/email-sending-contact-page-nextjs
 export default function AboutPage() {
+  const [Name, setName] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation('contact-page');
   // const [submitted, setSubmitted] = useState(false);
 
-  const UserData = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
     console.log('Sending');
     // setSubmitted(true);
-
-    let userData = {
-      Name: event.target.Name.value,
-      Email: event.target.Email.value,
-      Message: event.target.Message.value
-    };
 
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(userData)
+      body: JSON.stringify({ Name, Email, Message })
     });
     // console.log({ res });
-    event.target.Name.value = '';
-    event.target.Email.value = '';
-    event.target.Message.value = '';
+    setName('');
+    setEmail('');
+    setMessage('');
     setLoading(false);
   };
   return (
@@ -61,20 +58,37 @@ export default function AboutPage() {
         <p className="text-gray-600 dark:text-gray-300 mb-10">
           {t('pageDescription')}
         </p>
-        <form onSubmit={(e) => UserData(e)} className="flex flex-col w-full">
-          <label htmlFor="Name" className="mb-4 flex-col flex">
+        <form onSubmit={handleSubmit} className="flex flex-col w-full">
+          <label htmlFor="name" className="mb-4 flex-col flex">
             {t('name')}
-            <input name="Name" id="Name" type="text" required />
+            <input
+              name="name"
+              id="name"
+              type="text"
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
           </label>
-          <label htmlFor="Email" className="mb-4 flex-col flex">
+          <label htmlFor="email" className="mb-4 flex-col flex">
             {t('email')}
-            <input name="Email" id="Email" type="email" required />
+            <input
+              name="email"
+              id="email"
+              type="email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </label>
-          <label htmlFor="Message" className="mb-4 flex-col flex">
+          <label htmlFor="message" className="mb-4 flex-col flex">
             {t('message')}
-            <textarea id="Message" name="Message" required></textarea>
+            <textarea
+              id="message"
+              name="message"
+              required
+              onChange={(e) => setMessage(e.target.value)}
+            />
           </label>
-          <button type="submit" className="mt-6">
+          <button type="submit" className="mt-8">
             {loading ? t('sendingMessage') : t('sendMessage')}
           </button>
           {/* {submitted == true ? alert('submitted') : ''} */}

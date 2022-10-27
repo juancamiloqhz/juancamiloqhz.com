@@ -1,5 +1,5 @@
-import { ResponsiveBar } from '@nivo/bar';
 import React from 'react';
+import { ResponsiveBar } from '@nivo/bar';
 
 const data = [
   {
@@ -32,7 +32,7 @@ const data = [
   }
 ];
 
-const BarChart = () => {
+export default function BarChart() {
   return (
     <ResponsiveBar
       data={data}
@@ -56,6 +56,4 @@ const BarChart = () => {
       }}
     />
   );
-};
-
-export default BarChart;
+}

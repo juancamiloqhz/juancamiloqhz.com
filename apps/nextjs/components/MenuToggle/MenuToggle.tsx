@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Path = (props) => (
+const Path = (props: any) => (
   <motion.path
     className="stroke-current"
     fill="transparent"

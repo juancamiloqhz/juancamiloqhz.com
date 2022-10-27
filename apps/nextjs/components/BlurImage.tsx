@@ -1,10 +1,10 @@
-import Image, { ImageProps } from 'next/image';
-import { useState, useEffect } from 'react';
+import React from 'react';
+import Image, { type ImageProps } from 'next/image';
 
 export default function BlurImage(props: ImageProps) {
-  const [isLoading, setLoading] = useState(true);
-  const [src, setSrc] = useState(props.src);
-  useEffect(() => setSrc(props.src), [props.src]); // update the `src` value when the `prop.src` value changes
+  const [isLoading, setLoading] = React.useState(true);
+  const [src, setSrc] = React.useState(props.src);
+  React.useEffect(() => setSrc(props.src), [props.src]); // update the `src` value when the `prop.src` value changes
 
   return (
     <Image

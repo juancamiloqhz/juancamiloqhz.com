@@ -69,78 +69,106 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
         <XIcon />
       </motion.button> */}
       <div className="h-full flex flex-col">
-        <Link href="/" passHref>
-          <motion.a
-            variants={item}
-            onClick={onClose}
-            className="no-underline font-normal leading-4 pb-5 border-bottom"
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="pb-5 border-bottom"
+        >
+          <Link
+            href="/"
+            passHref
+            className="no-underline font-normal leading-4"
           >
             {t('home')}
-          </motion.a>
-        </Link>
-        <Link href="/blog" passHref>
-          <motion.a
-            variants={item}
-            onClick={onClose}
-            className="no-underline font-normal leading-4 py-5 border-bottom"
+          </Link>
+        </motion.li>
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-bottom"
+        >
+          <Link
+            href="/blog"
+            passHref
+            className="no-underline font-normal leading-4"
           >
             {t('blog')}
-          </motion.a>
-        </Link>
-        <Link href="/dashboard" passHref>
-          <motion.a
-            variants={item}
-            onClick={onClose}
-            className="no-underline font-normal leading-4 py-5 border-bottom"
+          </Link>
+        </motion.li>
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-bottom"
+        >
+          <Link
+            href="/dashboard"
+            passHref
+            className="no-underline font-normal leading-4"
           >
             Dashboard
-          </motion.a>
-        </Link>
-        <Link href="/newsletter" passHref>
-          <motion.a
-            variants={item}
-            onClick={onClose}
-            className="no-underline font-normal leading-4 py-5 border-bottom"
+          </Link>
+        </motion.li>
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-bottom"
+        >
+          <Link
+            href="/newsletter"
+            passHref
+            className="no-underline font-normal leading-4"
           >
             {t('mailList')}
-          </motion.a>
-        </Link>
-        <Link href="/work" passHref>
-          <motion.a
-            variants={item}
-            onClick={onClose}
-            className="no-underline font-normal leading-4 py-5 border-bottom"
+          </Link>
+        </motion.li>
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-bottom"
+        >
+          <Link
+            href="/work"
+            passHref
+            className="no-underline font-normal leading-4"
           >
             {t('work')}
-          </motion.a>
-        </Link>
-        <Link href="/guestbook" passHref>
-          <motion.a
-            variants={item}
-            onClick={onClose}
-            className="no-underline font-normal leading-4 py-5 border-bottom"
+          </Link>
+        </motion.li>
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-bottom"
+        >
+          <Link
+            href="/guestbook"
+            passHref
+            className="no-underline font-normal leading-4"
           >
             {t('guestbook')}
-          </motion.a>
-        </Link>
-        <Link href="/about" passHref>
-          <motion.a
-            variants={item}
-            onClick={onClose}
-            className="no-underline font-normal leading-4 py-5 border-bottom"
+          </Link>
+        </motion.li>
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-bottom"
+        >
+          <Link
+            href="/about"
+            passHref
+            className="no-underline font-normal leading-4"
           >
             {t('about')}
-          </motion.a>
-        </Link>
-        <Link href="/contact" passHref>
-          <motion.a
-            variants={item}
-            onClick={onClose}
-            className="no-underline font-normal leading-4 pt-5"
+          </Link>
+        </motion.li>
+        <motion.li variants={item} onClick={onClose} className="pt-5">
+          <Link
+            href="/contact"
+            passHref
+            className="no-underline font-normal leading-4"
           >
             {t('contact')}
-          </motion.a>
-        </Link>
+          </Link>
+        </motion.li>
       </div>
     </motion.div>
   );
@@ -155,7 +183,7 @@ ModalElement.propTypes = {
 export default function ModalMenuMobile(props) {
   if (!canUseDOM) return null;
   return createPortal(
-    <AnimatePresence initial={false} exitBeforeEnter>
+    <AnimatePresence initial={false} mode="wait">
       {props.isOpen && <ModalElement {...props} />}
     </AnimatePresence>,
     document.body

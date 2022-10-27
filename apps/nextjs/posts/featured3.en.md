@@ -4,7 +4,6 @@ excerpt: '(Featured 3) 8-bit butcher mustache kitsch succulents celiac palo sant
 coverImage: '/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg'
 date: '2020-03-16T05:35:07.322Z'
 featured: true
-readTime: 10
 author:
   name: Lorena Rojas
   username: lorena

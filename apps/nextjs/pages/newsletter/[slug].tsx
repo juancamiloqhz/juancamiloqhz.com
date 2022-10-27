@@ -1,7 +1,7 @@
+import { GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import components from 'components/MDXComponents';
-import { allNewsletters } from 'contentlayer/generated';
-import type { Newsletter } from 'contentlayer/generated';
+import { allNewsletters, type Newsletter } from 'contentlayer/generated';
 import NewsletterLayout from 'layouts/NewsletterLayout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -15,15 +15,15 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+  if (!params?.slug) return { notFound: true };
   const newsletter = allNewsletters.find(
     (newsletter) => newsletter.slug === params.slug
   );
-  // console.log(newsletter);
   return {
     props: {
       newsletter,
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         'newsletter-page',
         'newsletter',
         'header',
@@ -31,7 +31,7 @@ export async function getStaticProps({ params, locale }) {
       ]))
     }
   };
-}
+};
 
 export default function NewsletterPage({
   newsletter

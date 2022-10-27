@@ -1,7 +1,7 @@
 import { ResponsiveCalendar } from '@nivo/calendar';
 import React from 'react';
 
-const CalendarChart = () => {
+export default function CalendarChart() {
   return (
     <ResponsiveCalendar
       data={data}
@@ -28,9 +28,7 @@ const CalendarChart = () => {
       ]}
     />
   );
-};
-
-export default CalendarChart;
+}
 
 const data = [
   {

@@ -1,25 +1,25 @@
-import Container from 'components/Container';
-import Subscribe from 'components/Subscribe';
-import { Blog } from 'contentlayer/generated';
+import React from 'react';
 import Image from 'next/image';
 import { parseISO, format } from 'date-fns';
-import React, { PropsWithChildren } from 'react';
 import Link from 'next/link';
 import { es } from 'date-fns/locale';
 import { useRouter } from 'next/router';
+import Container from 'components/Container';
+import Subscribe from 'components/Subscribe';
+import { type Post } from 'contentlayer/generated';
 
 export default function PostLayout({
   children,
   post
-}: PropsWithChildren<{
-  post: Blog;
+}: React.PropsWithChildren<{
+  post: Post;
 }>) {
   const { locale } = useRouter();
   return (
     <Container
       title={post.title}
       description={post.summary}
-      imageUrl={post.image}
+      imageUrl={post.mainImage}
       openGraphType="article"
       schemaType="Article"
       createdAt={new Date(post.publishedAt).toISOString()}
@@ -32,21 +32,21 @@ export default function PostLayout({
           <div className="flex items-center gap-2">
             <Image
               alt="JuanCamiloQHz"
-              height={30}
-              width={30}
+              height={40}
+              width={40}
               src="/avatar.png"
-              className="rounded-full"
-              objectFit="cover"
-              objectPosition="center"
+              className="rounded-full object-cover object-center"
             />
             <p className="text-sm text-gray-700 dark:text-gray-300">
               <Link passHref href="/about">
                 JuanCamiloQHz
               </Link>
               {' / '}
-              {format(parseISO(post.publishedAt), 'MMMM dd, yyyy', {
-                locale: locale === 'es' ? es : undefined
-              })}
+              <time>
+                {format(parseISO(post.publishedAt), 'MMMM dd, yyyy', {
+                  locale: locale === 'es' ? es : undefined
+                })}
+              </time>
             </p>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -55,17 +55,17 @@ export default function PostLayout({
             {/* <ViewCounter slug={post.slug} /> */}
           </p>
         </div>
-        {post.image && (
+        {post.mainImage && (
           <div className="relative h-80 w-full mb-8">
             <Image
               alt={post.title}
-              src={post.image}
+              src={post.mainImage}
               // layout="fill"
               height={550}
               width={1200}
               priority
               placeholder="blur"
-              blurDataURL={post.blurDataURL}
+              blurDataURL={post.mainImageBlurDataURL}
               className="rounded-lg h-[450px] md:h-[550px]"
             />
           </div>

@@ -1,48 +1,28 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { type Post } from 'contentlayer/generated';
 
-interface CoverImageProps {
-  title: string;
-  src: string;
-  slug?: string;
-  blurDataURL: string;
-}
-
-export default function CoverImage({
-  title,
-  src,
-  slug,
-  blurDataURL
-}: CoverImageProps) {
-  if (!src) return null;
+export default function CoverImage({ post }: { post: Post }) {
   const image = (
     <Image
-      src={src}
-      alt={`Cover Image for ${title}`}
+      src={post.mainImage}
+      alt={`Cover Image for ${post.title}`}
       // layout="fill"
       height={550}
       width={1200}
-      className="rounded md:rounded-md"
-      objectFit="cover"
-      objectPosition="center"
+      className="rounded md:rounded-md object-cover object-center"
       placeholder="blur"
-      blurDataURL={blurDataURL}
+      blurDataURL={post.mainImageBlurDataURL}
     />
   );
   return (
-    <>
-      {slug ? (
-        <Link href={`/blog/${slug}`} passHref>
-          <a
-            aria-label={title}
-            className="relative w-full h-56 sm:h-[365px] flex"
-          >
-            {image}
-          </a>
-        </Link>
-      ) : (
-        image
-      )}
-    </>
+    <Link
+      href={`/blog/${post.slug}`}
+      passHref
+      aria-label={post.title}
+      className="relative w-full h-56 sm:h-[365px] flex"
+    >
+      {image}
+    </Link>
   );
 }

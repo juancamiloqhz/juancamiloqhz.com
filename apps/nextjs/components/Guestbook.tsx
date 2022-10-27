@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import { useState, useRef } from 'react';
+import React from 'react';
+import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
 import { signIn, useSession, signOut } from 'next-auth/react';
 import useSWR, { useSWRConfig } from 'swr';
@@ -9,13 +10,12 @@ import { Form, FormState } from 'lib/types';
 import SuccessMessage from 'components/SuccessMessage';
 import ErrorMessage from 'components/ErrorMessage';
 import LoadingSpinner from 'components/LoadingSpinner';
-import { useTranslation } from 'next-i18next';
 
-function GuestbookEntry({ entry, user }) {
-  const [deleting, setDeleting] = useState(false);
+function GuestbookEntry({ entry, user }: { entry: any; user: any }) {
+  const [deleting, setDeleting] = React.useState(false);
   const { t } = useTranslation('guestbook-page');
   const { mutate } = useSWRConfig();
-  const deleteEntry = async (e) => {
+  const deleteEntry = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setDeleting(true);
 
@@ -54,23 +54,23 @@ function GuestbookEntry({ entry, user }) {
   );
 }
 
-export default function Guestbook({ fallbackData }) {
+export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
+  const inputEl = React.useRef<HTMLInputElement>(null);
   const { t } = useTranslation('guestbook-page');
   const { data: session } = useSession();
   const { mutate } = useSWRConfig();
-  const [form, setForm] = useState<FormState>({ state: Form.Initial });
-  const inputEl = useRef(null);
-  const { data: entries } = useSWR('/api/guestbook', fetcher, {
+  const [form, setForm] = React.useState<FormState>({ state: Form.Initial });
+  const { data: entries }: any = useSWR('/api/guestbook', fetcher, {
     fallbackData
   });
 
-  const leaveEntry = async (e) => {
+  const leaveEntry = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setForm({ state: Form.Loading });
 
     const res = await fetch('/api/guestbook', {
       body: JSON.stringify({
-        body: inputEl.current.value
+        body: inputEl.current!.value
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ export default function Guestbook({ fallbackData }) {
       return;
     }
 
-    inputEl.current.value = '';
+    inputEl.current!.value = '';
     mutate('/api/guestbook');
     setForm({
       state: Form.Success,
@@ -165,7 +165,7 @@ export default function Guestbook({ fallbackData }) {
         )}
       </div>
       <div className="mt-4 w-full space-y-8">
-        {entries?.map((entry) => (
+        {entries?.map((entry: any) => (
           <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />
         ))}
       </div>

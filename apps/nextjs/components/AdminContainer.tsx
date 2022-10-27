@@ -1,14 +1,12 @@
-import { useRouter } from 'next/router';
-import Footer from './Footer';
+import React from 'react';
 import { AdminHeader } from './admin';
 
-interface ContainerProps {
+export default function Container({
+  children,
+  ...props
+}: {
   children: React.ReactNode;
-}
-
-export default function Container({ children, ...props }: ContainerProps) {
-  const { locale, asPath } = useRouter();
-
+}) {
   return (
     <div className="bg-gray-50 dark:bg-gray-900">
       <AdminHeader />

@@ -4,7 +4,6 @@ excerpt: '(Destacado 1) 8-bit butcher mustache kitsch succulents celiac palo san
 coverImage: '/assets/blog/preview/esaias-tan-MKvjc2kar7Q-unsplash-preview.jpg'
 date: '2020-03-16T05:35:07.322Z'
 featured: true
-readTime: 10
 author:
   name: Juan Camilo QHz
   username: juancamiloqhz

@@ -14,24 +14,20 @@ export default function Footer() {
             <p className="font-bold text-base">
               &copy; 2016 - {new Date().getFullYear()}
             </p>
-            <Link href="/">
-              <a className="decoration-gray-700 text-base">JuanCamiloQHz</a>
+            <Link href="/" className="decoration-gray-700 text-base">
+              JuanCamiloQHz
             </Link>
           </div>
           <div className="mb-6">
             <p className="font-bold text-base">{t('footer:subscribe')}</p>
-            <Link href="/newsletter">
-              <a className="decoration-gray-700 text-base">
-                {t('footer:newsletter')}
-              </a>
+            <Link href="/newsletter" className="decoration-gray-700 text-base">
+              {t('footer:newsletter')}
             </Link>
           </div>
           <div className="mb-6">
             <p className="font-bold text-base">{t('footer:guestbookTitle')}</p>
-            <Link href="/guestbook">
-              <a className="decoration-gray-700 text-base">
-                {t('footer:guestbook')}
-              </a>
+            <Link href="/guestbook" className="decoration-gray-700 text-base">
+              {t('footer:guestbook')}
             </Link>
           </div>
           <div className="mb-6">
@@ -56,10 +52,11 @@ export default function Footer() {
           </div>
           <div className="mb-6">
             <p className="font-bold text-base">Legal</p>
-            <Link href="/privacy-policy">
-              <a className="decoration-gray-700 text-base">
-                {t('privacy-policy')}
-              </a>
+            <Link
+              href="/privacy-policy"
+              className="decoration-gray-700 text-base"
+            >
+              {t('privacy-policy')}
             </Link>
           </div>
         </div>
@@ -72,10 +69,8 @@ export default function Footer() {
             <GitHub size={25} />
           </a>
 
-          <Link href="/feed.xml">
-            <a className="decoration-none text-base">
-              <Rss size="1.5rem" />
-            </a>
+          <Link href="/feed.xml" className="decoration-none text-base">
+            <Rss size="1.5rem" />
           </Link>
         </div>
       </div>

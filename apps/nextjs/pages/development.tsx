@@ -7,7 +7,7 @@ import Container from '../components/Container';
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         'development-page',
         'header',
         'footer'

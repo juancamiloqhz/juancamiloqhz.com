@@ -4,6 +4,6 @@ Personal Website [juancamiloqhz.com](https://juancamiloqhz.com/)
 
 - Next.js
 - Tailwind
-- Markdown
+- Markdown and MDX
 - Framer Motion for animations
 -

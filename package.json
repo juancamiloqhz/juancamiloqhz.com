@@ -11,6 +11,8 @@
     "dev": "turbo run dev --parallel",
     "dev:n": "turbo run dev --filter=nextjs",
     "dev:s": "turbo run dev --filter=sveltekit",
+    "build:n": "turbo run build --filter=nextjs",
+    "build:s": "turbo run build --filter=sveltekit",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "echo \"Error: no test specified\" && exit 1"

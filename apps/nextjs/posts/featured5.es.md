@@ -4,7 +4,6 @@ excerpt: '(Destacado 5) 8-bit butcher mustache kitsch succulents celiac palo san
 coverImage: '/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg'
 date: '2020-03-16T05:35:07.322Z'
 featured: false
-readTime: 10
 author:
   name: Lorena Rojas
   username: lorena
@@ -18,7 +17,7 @@ tags:
     'tag-7: Tag 7',
     'tag-8: Tag 8',
     'tag-9: Tag 9',
-    'tag-10: Tag 10',
+    'tag-10: Tag 10'
   ]
 ---
 

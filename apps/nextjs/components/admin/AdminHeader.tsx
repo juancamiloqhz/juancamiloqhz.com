@@ -1,12 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
+import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-// import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
-
-// import useDarkMode from '../hooks/useDarkMode';
-// import { XIcon } from './Icons';
 
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
@@ -17,36 +12,35 @@ import LocaleSwitcher from 'components/LocaleSwitcher';
 import ThemeButton from 'components/ThemeButton';
 import ModalMenuMobile from 'components/Modals/ModalMenuMobile';
 
-function NavItem({ href, text }) {
+function NavItem({ href, text }: { href: string; text: string }) {
   const router = useRouter();
   const isActive = router.asPath === href;
 
   return (
-    <Link href={href}>
-      <a
-        className={classNames(
-          isActive
-            ? 'font-semibold text-gray-800 dark:text-gray-200'
-            : 'font-normal text-gray-600 dark:text-gray-400',
-          'no-underline p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
-        )}
-      >
-        <span className="capsize">{text}</span>
-      </a>
+    <Link
+      href={href}
+      className={classNames(
+        isActive
+          ? 'font-semibold text-gray-800 dark:text-gray-200'
+          : 'font-normal text-gray-600 dark:text-gray-400',
+        'no-underline p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
+      )}
+    >
+      <span className="capsize">{text}</span>
     </Link>
   );
 }
 
 export default function AdminHeader({ pageTitle }: { pageTitle?: string }) {
-  const ref = useRef();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const { themePickerOpen, setThemePickerOpen } = useGlobalContext();
   const { t } = useTranslation('header');
   useOnClickOutside(ref, () => setThemePickerOpen(false));
 
   return (
     <>
-      <AnimatePresence initial={false} exitBeforeEnter>
+      <AnimatePresence initial={false} mode="wait">
         {themePickerOpen && (
           <motion.div
             ref={ref}

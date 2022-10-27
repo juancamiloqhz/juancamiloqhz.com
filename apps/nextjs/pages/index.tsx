@@ -3,11 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
 import Subscribe from 'components/Subscribe/Subscribe';
 import Container from 'components/Container';
 import FeaturedPostCard from 'components/Post/FeaturedPostCard';
-import BlurImage from 'components/BlurImage';
+import { GetStaticProps } from 'next';
+// import BlurImage from 'components/BlurImage';
 
 const variants = {
   hidden: {},
@@ -26,12 +26,12 @@ const item = {
   show: { opacity: 1, y: 0 }
 };
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   // const { imgBase64 } = await blurImage('/avatar-bw.png');
   // console.log(imgBase64);
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
+      ...(await serverSideTranslations(locale ?? 'en', [
         'home',
         'footer',
         'header',
@@ -40,11 +40,10 @@ export async function getStaticProps({ locale }) {
       ]))
     }
   };
-}
+};
 
-export default function Home({ posts }) {
+export default function Home() {
   const { t } = useTranslation(['home', 'index-page']);
-  // console.table(posts);
   return (
     <Container
       exclusiveTitle={t('index-page:metaTitle')}
@@ -94,9 +93,7 @@ export default function Home({ posts }) {
               alt="Juan Camilo&lsquo;s Avatar"
               height={176}
               width={176}
-              objectFit="cover"
-              objectPosition="center"
-              className="rounded-full"
+              className="rounded-full object-cover object-center"
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpklEQVQokT2SS0sbURzFB6H9AO2X0LWge7+Am7ZBBRcKipI0BhN8xImvZJJ5xISJRKPkYQSfqJCIMakKPlE3guDCLF200PoBxCT3lHMpXfyZO3Pnnv/vnPtXLi4uPpdKpT+FQgF7e3uN7e1tLC8vi9bWVrS0tKCnpwejo6Po7e1FR0cHmpub0dTUhLa2NhEIBODz+eoejwcjIyNVXdc/KuVy+fvh4SH29/ffNzc3sb6+LlZWVtDV1YVcLofz83NcXl6iXC7j4OAAbMi99vZ2TExMCK/XS7Ga0+mEx+P5ppydnf0gXSqVqpMslUohHA5jamoKNzc3uL+/x+PjI+7u7nB9fS3XJycn6Ovrg9vtJr1wu901l8vF97xye3v76+joCIFAgBaEaZqYmZnB2NgYNjY2+B1+vx+7u7uYm5vDwMAA5ufnMTQ0hPHxcczOzgpVVRuqqnL9pDw8PNRphxusWCwGVjAYRCQSgcPhQHd3N4rFIqanp9HZ2YnBwUFMTk5C0zToui6CwaBgk1AoVFOen5/rp6enpBKapgnbthGPx5FOp7GzsyNJSV2tVmWObJLP52FZlmxqmqY891/w5eXlJ4OnYCQSEYuLi2Ctrq7i+PhYim5tbUnCtbU1MB7aNwxDipqmyXMNimua9qS8vr5Wrq6uoKpq3TAMkUgkJB0pMpkMSqWSzJKkjIIXkkwmEY1GQTeWZQld12u0Hw6H88rb25uLt+f3+99pLZFICApxPChMWtKEQiFpkQcpRnH+u7CwwP0aozAM46sC4FOlUvnNwA3DaLBrNpsVtEjbFPL5fOjv78fw8LC8cdbS0pKMJxaL1f9Zr2YymQ+KZVlKMpl0MlRd199t2xbZbJbW5JNiJCMl55MDTJuMhHNr23aNxPF4/Es0GlX+ArFlQxVMtgyfAAAAAElFTkSuQmCC"
             />
@@ -127,24 +124,22 @@ export default function Home({ posts }) {
             gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
           />
         </div>
-        <Link href="/blog" passHref>
-          <a className="flex mb-10">
-            {t('index-page:seeAllPosts')}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="h-6 w-6 ml-1"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-              />
-            </svg>
-          </a>
+        <Link href="/blog" passHref className="flex mb-10">
+          {t('index-page:seeAllPosts')}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="h-6 w-6 ml-1"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
+            />
+          </svg>
         </Link>
       </div>
       <div className="max-w-3xl w-full flex flex-col mx-auto mt-10 mb-20">

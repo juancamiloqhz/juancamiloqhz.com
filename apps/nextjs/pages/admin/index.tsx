@@ -1,16 +1,20 @@
 import AdminContainer from 'components/AdminContainer';
+import { GetServerSideProps } from 'next';
 import { useSession, getSession } from 'next-auth/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
   //   console.log(session);
-  if (session && session.user.email === process.env.ADMIN_EMAIL) {
+  if (session?.user?.email === process.env.ADMIN_EMAIL) {
     return {
       props: {
         session,
-        ...(await serverSideTranslations(context.locale, ['header', 'footer']))
+        ...(await serverSideTranslations(context.locale ?? 'en', [
+          'header',
+          'footer'
+        ]))
       }
     };
   }
@@ -18,11 +22,7 @@ export async function getServerSideProps(context) {
   return {
     props: {}
   };
-
-  // return {
-  //   notFound: true
-  // };
-}
+};
 
 const BarChart = dynamic(() => import('components/admin/BarChart'), {
   ssr: false

@@ -1,4 +1,16 @@
-export default function MetricCard({ header, link, metric, isCurrency }) {
+interface MetricCardProps {
+  header: string;
+  link: string;
+  metric: Number;
+  isCurrency?: boolean;
+}
+
+export default function MetricCard({
+  header,
+  link,
+  metric,
+  isCurrency
+}: MetricCardProps) {
   return (
     <div className="metric-card bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-4 max-w-72 w-full">
       <a
