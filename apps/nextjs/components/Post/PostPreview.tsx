@@ -16,23 +16,30 @@ export default function PostPreview({ post }: { post: Post }) {
           <DateFormatter
             dateString={new Date(post.publishedAt).toISOString()}
           />
-          {/*
-            {' - '}
-            {post.categories?.map((c, index) => {
-              if (index === post.categories.length - 1) {
-                return (
-                  <Link href={`/category/${c.slug}`} key={index} className="post-category uppercase text-sm font-serif">
-                    {c.name}
-                  </Link>
-                );
-              }
+
+          {' - '}
+          {post.categories?.map((c, index) => {
+            if (index === post.categories.length - 1) {
               return (
-                <Link href={`/category/${c.slug}`} key={index} className="post-category mr-1 uppercase text-sm font-serif">
-                  {`${c.name},`}
+                <Link
+                  href={`/blog/category/${c.slug}`}
+                  key={index}
+                  className="post-category uppercase text-sm font-serif"
+                >
+                  {c.name}
                 </Link>
               );
-            })}
-          */}
+            }
+            return (
+              <Link
+                href={`/blog/category/${c.slug}`}
+                key={index}
+                className="post-category mr-1 uppercase text-sm font-serif"
+              >
+                {`${c.name},`}
+              </Link>
+            );
+          })}
         </p>
         <Link
           href={`/blog/${post.slug}`}

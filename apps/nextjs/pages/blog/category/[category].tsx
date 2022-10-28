@@ -11,6 +11,8 @@ export async function getStaticPaths() {
   const allCategoriesSlugs = allPosts
     .map((post) => post.categories.map((category) => category.slug))
     .flat();
+
+  // console.log(allCategoriesSlugs);
   const uniqueCategoriesSlugs = [...new Set(allCategoriesSlugs)];
   // console.log(uniqueCategoriesSlugs);
 
@@ -25,15 +27,12 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-  if (!params || !params.category) return { notFound: true };
+  console.log(params);
   const allPostsByCategory = allPosts
-    .filter(
-      (post) =>
-        post.locale === locale &&
-        post.categories
-          .map((category) => category.slug)
-          .includes(params.category as string)
+    .filter((post) =>
+      post.categories.some((category) => category.slug === params?.category)
     )
+    .filter((post) => post.locale === locale)
     .map((post) =>
       pick(post, [
         'slug',
@@ -53,7 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
 
   return {
     props: {
-      category: { name: params.category, slug: params.category },
+      category: { name: params?.category, slug: params?.category },
       posts: allPostsByCategory,
       ...(await serverSideTranslations(locale ?? 'en', [
         'footer',

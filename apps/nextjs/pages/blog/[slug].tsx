@@ -8,17 +8,16 @@ import PostLayout from 'layouts/PostLayout';
 export async function getStaticPaths() {
   return {
     paths: allPosts.map((p) => ({
-      params: { slug: p.slug },
-      locale: p.locale
+      params: { slug: p.slug }
+      // locale: p.locale
     })),
     fallback: false
   };
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  if (!params?.slug) return { notFound: true };
   const post = allPosts.find(
-    (post) => post.slug === params.slug && post.locale === locale
+    (post) => post.slug === params?.slug && post.locale === locale
   );
   return {
     props: {

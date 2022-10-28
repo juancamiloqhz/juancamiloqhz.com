@@ -25,13 +25,11 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-  console.log(params, locale);
-  if (!params || !params.tag) return { notFound: true };
   const allPostsByTag = allPosts
     .filter(
       (post) =>
         post.locale === locale &&
-        post.tags.map((tag) => tag.slug).includes(params.tag as string)
+        post.tags.map((tag) => tag.slug).includes(params?.tag as string)
     )
     .map((post) =>
       pick(post, [
@@ -54,7 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
 
   return {
     props: {
-      tag: { name: params.tag, slug: params.tag },
+      tag: { name: params?.tag, slug: params?.tag },
       posts: allPostsByTag,
       ...(await serverSideTranslations(locale ?? 'en', [
         'footer',

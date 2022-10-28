@@ -5,6 +5,7 @@ import { appWithTranslation } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';
 import { ContextProvider } from '../context/ContextProvider';
 import { SessionProvider } from 'next-auth/react';
+import { Analytics } from '@vercel/analytics/react';
 import '../styles/globals.css';
 
 type NextPageWithLayout = NextPage & {
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <ContextProvider>
           {getLayout(<Component {...pageProps} />)}
         </ContextProvider>
+        <Analytics />
       </ThemeProvider>
     </SessionProvider>
   );
