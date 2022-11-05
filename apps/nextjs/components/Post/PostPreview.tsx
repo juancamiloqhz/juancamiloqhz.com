@@ -7,7 +7,7 @@ import DateFormatter from './DateFormatter';
 export default function PostPreview({ post }: { post: Post }) {
   const { t } = useTranslation('header');
   return (
-    <article className="mb-12 overflow-hidden">
+    <article className="mb-8 overflow-hidden">
       {/* <div className="cover-wrapper relative w-full">
         <CoverImage post={post} />
       </div> */}
@@ -24,7 +24,7 @@ export default function PostPreview({ post }: { post: Post }) {
                 <Link
                   href={`/blog/category/${c.slug}`}
                   key={index}
-                  className="post-category uppercase text-sm font-serif"
+                  className="uppercase text-xs"
                 >
                   {c.name}
                 </Link>
@@ -34,7 +34,7 @@ export default function PostPreview({ post }: { post: Post }) {
               <Link
                 href={`/blog/category/${c.slug}`}
                 key={index}
-                className="post-category mr-1 uppercase text-sm font-serif"
+                className="mr-1 uppercase text-xs"
               >
                 {`${c.name},`}
               </Link>
@@ -46,19 +46,17 @@ export default function PostPreview({ post }: { post: Post }) {
           className="no-underline text-2xl md:text-3xl"
         >
           {/* <a className="no-underline text-blue-700 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400 text-xl">
-            <h2 className="m-0 font-serif font-bold">{post.title}</h2>
+            <h2 className="m-0 font-bold">{post.title}</h2>
           </a> */}
 
-          <h2 className="my-1 font-serif font-bold">{post.title}</h2>
+          <h2 className="my-1 font-bold">{post.title}</h2>
         </Link>
-        <p className="tex-base mb-3">{post.summary}</p>
-
-        <Link
-          href={`/blog/${post.slug}`}
-          className="no-underline hover:underline text-blue-700 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-500"
-        >
-          <span className="text-sm">{t('read-more')}</span>
-        </Link>
+        <p className="tex-base mb-3">
+          {post.summary}{' '}
+          <Link href={`/blog/${post.slug}`} className="link">
+            <span className="text-sm">{t('read-more')}</span>
+          </Link>
+        </p>
       </div>
     </article>
   );

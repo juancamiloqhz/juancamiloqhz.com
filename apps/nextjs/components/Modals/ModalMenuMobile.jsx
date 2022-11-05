@@ -69,11 +69,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
         <XIcon />
       </motion.button> */}
       <div className="h-full flex flex-col">
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="pb-5 border-bottom"
-        >
+        <motion.li variants={item} onClick={onClose} className="pb-5 border-b">
           <Link
             href="/"
             passHref
@@ -82,11 +78,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('home')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-bottom"
-        >
+        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
           <Link
             href="/blog"
             passHref
@@ -95,11 +87,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('blog')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-bottom"
-        >
+        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
           <Link
             href="/dashboard"
             passHref
@@ -108,11 +96,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             Dashboard
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-bottom"
-        >
+        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
           <Link
             href="/newsletter"
             passHref
@@ -121,11 +105,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('mailList')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-bottom"
-        >
+        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
           <Link
             href="/work"
             passHref
@@ -134,11 +114,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('work')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-bottom"
-        >
+        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
           <Link
             href="/guestbook"
             passHref
@@ -147,11 +123,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('guestbook')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-bottom"
-        >
+        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
           <Link
             href="/about"
             passHref

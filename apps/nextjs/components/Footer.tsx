@@ -11,31 +11,31 @@ export default function Footer() {
       <div className="gap-3 py-3 md:py-8 max-w-3xl mx-auto">
         <div className="my-8">
           <div className="mb-6">
-            <p className="font-bold text-base">
+            <p className="font-bold">
               &copy; 2016 - {new Date().getFullYear()}
             </p>
-            <Link href="/" className="decoration-gray-700 text-base">
+            <Link href="/" className="link">
               JuanCamiloQHz
             </Link>
           </div>
           <div className="mb-6">
-            <p className="font-bold text-base">{t('footer:subscribe')}</p>
-            <Link href="/newsletter" className="decoration-gray-700 text-base">
+            <p className="font-bold">{t('footer:subscribe')}</p>
+            <Link href="/newsletter" className="link">
               {t('footer:newsletter')}
             </Link>
           </div>
           <div className="mb-6">
-            <p className="font-bold text-base">{t('footer:guestbookTitle')}</p>
-            <Link href="/guestbook" className="decoration-gray-700 text-base">
+            <p className="font-bold">{t('footer:guestbookTitle')}</p>
+            <Link href="/guestbook" className="link">
               {t('footer:guestbook')}
             </Link>
           </div>
           <div className="mb-6">
-            <p className="font-bold text-base">Social</p>
+            <p className="font-bold">Social</p>
             <div className="flex items-center">
               <a
                 href="https://twitter.com/juancamiloqhz"
-                className="decoration-gray-700 text-base"
+                className="link"
                 rel="noopener noreferrer"
               >
                 Twitter
@@ -43,7 +43,7 @@ export default function Footer() {
               /
               <a
                 href="https://github.com/juancamiloqhz"
-                className="decoration-gray-700 text-base"
+                className="link"
                 rel="noopener noreferrer"
               >
                 GitHub
@@ -51,11 +51,8 @@ export default function Footer() {
             </div>
           </div>
           <div className="mb-6">
-            <p className="font-bold text-base">Legal</p>
-            <Link
-              href="/privacy-policy"
-              className="decoration-gray-700 text-base"
-            >
+            <p className="font-bold">Legal</p>
+            <Link href="/privacy-policy" className="link">
               {t('privacy-policy')}
             </Link>
           </div>

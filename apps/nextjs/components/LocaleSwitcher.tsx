@@ -23,7 +23,7 @@ export default function LocaleSwitcher() {
                 as={asPath}
                 locale={locale}
                 title={localeTxt}
-                className="rounded-full flex items-center justify-center text-sm w-8 h-8 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                className="rounded-full flex items-center justify-center text-sm w-8 h-8 bg-base-200 hover:bg-base-300"
               >
                 {locale.toUpperCase()}
               </Link>

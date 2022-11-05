@@ -221,7 +221,7 @@ export default function Container({ children, ...props }: ContainerProps) {
   } = props;
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
+    <>
       <Head>
         <title>{exclusiveTitle || `${title} | JuanCamiloQHz`}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -297,10 +297,10 @@ export default function Container({ children, ...props }: ContainerProps) {
         />
       </Head>
       <Header />
-      <main className="flex flex-col justify-center p-6 md:px-8 bg-gray-50 dark:bg-gray-900">
+      <div className="flex flex-col justify-center p-6 md:px-8">
         {children}
         <Footer />
-      </main>
-    </div>
+      </div>
+    </>
   );
 }

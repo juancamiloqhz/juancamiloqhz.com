@@ -11,6 +11,7 @@ interface SvgProps {
   width?: number;
   height?: number;
   children?: React.ReactNode;
+  [key: string]: any;
 }
 
 const Svg = ({
@@ -144,5 +145,18 @@ export const Rss = ({ size }: any) => (
       strokeWidth="2"
       d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"
     ></path>
+  </Svg>
+);
+
+export const ThemePaint = ({ size, fill }: any) => (
+  <Svg
+    stroke={0}
+    fill="none"
+    className="fill-base-content"
+    strokeWidth={0}
+    size={size}
+  >
+    <path fill="none" d="M0 0h24v24H0z"></path>
+    <path d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"></path>
   </Svg>
 );

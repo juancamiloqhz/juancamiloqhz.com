@@ -58,16 +58,14 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
         <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl ">
           Blog
         </h1>
-        <p className="mb-4 text-gray-600 dark:text-gray-400">
-          {t('blogDescription', { count: posts.length })}
-        </p>
+        <p className="mb-4">{t('blogDescription', { count: posts.length })}</p>
         <div className="relative w-full mb-4">
           <input
             aria-label={t('search')}
             type="text"
             onChange={(e) => setSearchValue(e.target.value)}
             placeholder={t('search')}
-            className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
+            className="input input-bordered w-full"
           />
           <svg
             className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
@@ -114,11 +112,7 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
             {t('pageTitle')}
           </h3>
         )}
-        {!filteredPosts.length && (
-          <p className="mb-4 text-gray-600 dark:text-gray-400">
-            No posts found.
-          </p>
-        )}
+        {!filteredPosts.length && <p className="mb-4">No posts found.</p>}
         {filteredPosts.map((post) => (
           <PostPreview key={post.slug} post={post} />
         ))}

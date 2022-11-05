@@ -55,40 +55,47 @@ export default function AboutPage() {
         <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4">
           {t('pageTitle')}
         </h1>
-        <p className="text-gray-600 dark:text-gray-300 mb-10">
-          {t('pageDescription')}
-        </p>
+        <p className="mb-10">{t('pageDescription')}</p>
         <form onSubmit={handleSubmit} className="flex flex-col w-full">
-          <label htmlFor="name" className="mb-4 flex-col flex">
-            {t('name')}
+          <div className="form-control w-full mb-4">
+            <label htmlFor="name" className="label">
+              <span className="label-text">{t('name')}</span>
+            </label>
             <input
+              className="input input-bordered w-full"
               name="name"
               id="name"
               type="text"
               required
               onChange={(e) => setName(e.target.value)}
             />
-          </label>
-          <label htmlFor="email" className="mb-4 flex-col flex">
-            {t('email')}
+          </div>
+          <div className="form-control w-full mb-4">
+            <label htmlFor="email" className="label">
+              <span className="label-text">{t('email')}</span>
+            </label>
             <input
+              className="input input-bordered w-full"
               name="email"
               id="email"
               type="email"
               required
               onChange={(e) => setEmail(e.target.value)}
             />
-          </label>
-          <label htmlFor="message" className="mb-4 flex-col flex">
-            {t('message')}
+          </div>
+          <div className="form-control w-full mb-4">
+            <label htmlFor="message" className="label">
+              <span className="label-text">{t('message')}</span>
+            </label>
             <textarea
               id="message"
               name="message"
               required
               onChange={(e) => setMessage(e.target.value)}
+              className="textarea textarea-bordered"
             />
-          </label>
-          <button type="submit" className="mt-8">
+          </div>
+          <button type="submit" className="mt-8 btn btn-primary w-fit">
             {loading ? t('sendingMessage') : t('sendMessage')}
           </button>
           {/* {submitted == true ? alert('submitted') : ''} */}
