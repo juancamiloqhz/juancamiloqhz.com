@@ -43,6 +43,7 @@ export default function Header({ pageTitle }: { pageTitle?: string }) {
     <>
       <motion.div
         ref={ref}
+        initial={false}
         animate={{
           height: themePickerOpen ? 'auto' : 0
         }}

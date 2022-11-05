@@ -113,19 +113,22 @@ export default function Home() {
           <FeaturedPostCard
             title={t('index-page:featured-one-title')}
             link="/blog/why-have-i-created-this-website"
-            gradient="from-primary via-secondary to-accent"
+            gradient="from-primary to-secondary"
+            // gradient="from-primary via-secondary to-accent"
             // gradient="from-[#4158D0] via-[#C850C0] to-[#FFCC70]"
           />
           <FeaturedPostCard
             title={t('index-page:dev')}
             link="/development"
-            gradient="from-accent via-primary to-secondary"
+            gradient="from-secondary to-accent"
+            // gradient="from-accent via-primary to-secondary"
             // gradient="from-[#00DBDE] to-[#FC00FF]"
           />
           <FeaturedPostCard
             title={t('index-page:dev')}
             link="/development"
-            gradient="from-secondary via-accent to-primary"
+            gradient="from-accent to-primary"
+            // gradient="from-secondary via-accent to-primary"
             // gradient="from-[#FFE53B] to-[#FF2525]"
           />
         </div>

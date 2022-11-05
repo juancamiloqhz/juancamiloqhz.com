@@ -51,7 +51,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
   return (
     <motion.div
       onClick={(e) => e.stopPropagation()}
-      className="bg-gray-50 dark:bg-gray-900 fixed top-16 bottom-0 left-0 right-0 py-4 px-6"
+      className="fixed bg-base-100 top-16 bottom-0 left-0 right-0 py-4 px-6"
       animate="visible"
       initial="hidden"
       exit="exit"
@@ -68,7 +68,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
       >
         <XIcon />
       </motion.button> */}
-      <div className="h-full flex flex-col">
+      <ul className="h-full flex flex-col">
         <motion.li variants={item} onClick={onClose} className="pb-5 border-b">
           <Link
             href="/"
@@ -141,7 +141,7 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('contact')}
           </Link>
         </motion.li>
-      </div>
+      </ul>
     </motion.div>
   );
 }
