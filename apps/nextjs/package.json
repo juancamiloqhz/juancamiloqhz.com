@@ -36,6 +36,7 @@
     "date-fns": "^2.29.3",
     "framer-motion": "^7.6.2",
     "gray-matter": "^4.0.3",
+    "keen-slider": "^6.8.3",
     "next": "^13.0.0",
     "next-auth": "^4.15.0",
     "next-contentlayer": "^0.2.8",

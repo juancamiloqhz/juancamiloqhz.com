@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-  console.log(params);
+  // console.log(params);
   const allPostsByCategory = allPosts
     .filter((post) =>
       post.categories.some((category) => category.slug === params?.category)

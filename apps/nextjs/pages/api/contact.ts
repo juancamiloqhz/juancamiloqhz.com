@@ -22,8 +22,8 @@ export default async function handler(
       secure: false,
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
+        pass: process.env.SMTP_PASSWORD
+      }
     });
     const data = {
       from: 'JuanCamiloQHz.com<juancamiloqhz@gmail.com>',
@@ -33,17 +33,17 @@ export default async function handler(
       <p>You have a contact form submission</p><br>
         <p><strong>Email: </strong> ${Email}</p><br>
         <p><strong>Message: </strong> ${Message}</p><br>
-      `,
+      `
     };
 
     transporter.sendMail(data, function (err, info) {
       if (err) {
-        console.log(err);
+        console.error(err);
         res
           .status(500)
           .json({ message: 'Sorry, something happened. Please try again.' });
       } else {
-        console.log(info);
+        // console.log(info);
         res.status(200).json({ message: 'Message Sent!' });
       }
     });

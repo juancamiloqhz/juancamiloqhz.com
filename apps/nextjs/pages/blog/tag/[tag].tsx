@@ -12,7 +12,7 @@ export async function getStaticPaths() {
     .map((post) => post.tags.map((tag) => tag.slug))
     .flat();
   const uniqueTagsSlugs = [...new Set(allTagsSlugs)];
-  console.log(uniqueTagsSlugs);
+  // console.log(uniqueTagsSlugs);
 
   return {
     paths: uniqueTagsSlugs.map((tag) => ({
@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       (a, b) =>
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
     );
-  console.log(allPostsByTag);
+  // console.log(allPostsByTag);
 
   return {
     props: {

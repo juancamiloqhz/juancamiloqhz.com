@@ -40,6 +40,7 @@ importers:
       eslint-config-next: 13.0.0
       framer-motion: ^7.6.2
       gray-matter: ^4.0.3
+      keen-slider: ^6.8.3
       next: ^13.0.0
       next-auth: ^4.15.0
       next-contentlayer: ^0.2.8
@@ -85,6 +86,7 @@ importers:
       date-fns: 2.29.3
       framer-motion: 7.6.2_biqbaboplfbrettd7655fr4n2y
       gray-matter: 4.0.3
+      keen-slider: 6.8.3
       next: 13.0.0_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.15.0_lpfza7lqpqeylqwoqom67hspdi
       next-contentlayer: 0.2.8_r5sq4deac3rmm2d5onhwvomqve
@@ -4425,6 +4427,10 @@ packages:
       array-includes: 3.1.5
       object.assign: 4.1.4
     dev: true
+
+  /keen-slider/6.8.3:
+    resolution: {integrity: sha512-tJFokyUiHAtbGGQHnNMm3MLCpOm+z1JZsaOOMVnzTYAfAqLDT/zI/cE1mf82Bxmp1uHSIeUUkH+EZGzRQrSO/w==}
+    dev: false
 
   /kind-of/6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}

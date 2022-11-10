@@ -51,8 +51,8 @@ export default function Subscribe() {
   return (
     <form
       onSubmit={subscribe}
-      // className="border p-4 md:p-5 lg:p-6 flex flex-col rounded-lg w-full bg-gradient-to-tr from-[#FF3CAC] via-[#784BA0] to-[#2B86C5]"
-      className="border p-4 md:p-5 lg:p-6 flex flex-col rounded-lg w-full bg-gradient-to-tr from-primary via-secondary to-accent"
+      // className="border p-4 md:p-5 lg:p-6 flex flex-col rounded-lg w-full bg-gradient-to-tr from-primary via-secondary to-accent"
+      className="border p-4 md:p-5 lg:p-6 flex flex-col rounded-lg w-full bg-gradient-to-r from-primary via-primary-focus to-primary"
     >
       <p className="text-white mb-2">💌 {t('title')}</p>
       <label htmlFor="email-input" className="flex flex-col relative">
@@ -66,7 +66,7 @@ export default function Subscribe() {
           type="email"
         />
         <div className="self-end absolute right-2 m-0 top-1/2 -translate-y-1/2 ">
-          <button type="submit" className="btn btn-primary btn-sm">
+          <button type="submit" className="btn btn-accent btn-sm">
             {/* {loading ? `✨ ${t('subscribing')} 💌` : `✨ ${t('subscribe')} 💌`} */}
             {loading ? t('subscribing') : t('subscribe')}
           </button>
