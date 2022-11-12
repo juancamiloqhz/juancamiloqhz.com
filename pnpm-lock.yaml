@@ -53,6 +53,7 @@ importers:
       prop-types: ^15.8.1
       react: ^18.2.0
       react-dom: ^18.2.0
+      react-icons: ^4.6.0
       reading-time: ^1.5.0
       rehype-autolink-headings: ^6.1.1
       rehype-code-titles: ^1.0.3
@@ -97,6 +98,7 @@ importers:
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      react-icons: 4.6.0_react@18.2.0
       reading-time: 1.5.0
       rehype-autolink-headings: 6.1.1
       rehype-code-titles: 1.1.0
@@ -6027,6 +6029,14 @@ packages:
       i18next: 21.10.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-icons/4.6.0_react@18.2.0:
+    resolution: {integrity: sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:

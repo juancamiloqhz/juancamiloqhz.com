@@ -1,5 +1,6 @@
 module.exports = {
   themes: [
+    'night',
     'light',
     'dark',
     'cupcake',
@@ -26,7 +27,6 @@ module.exports = {
     'business',
     'acid',
     'lemonade',
-    'night',
     'coffee',
     'winter'
   ]

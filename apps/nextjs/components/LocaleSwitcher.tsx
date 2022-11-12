@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export default function LocaleSwitcher() {
   const router = useRouter();
@@ -12,25 +13,31 @@ export default function LocaleSwitcher() {
   }, [activeLocale]);
 
   return (
-    <div className="mr-4">
-      <ul className="flex">
-        {otherLocales.map((locale) => {
-          const { pathname, query, asPath } = router;
-          return (
-            <li key={locale}>
+    <ul className="flex">
+      {otherLocales.map((locale) => {
+        const { pathname, query, asPath } = router;
+        return (
+          <li key={locale}>
+            <div className="tooltip tooltip-bottom" data-tip={localeTxt}>
               <Link
                 href={{ pathname, query }}
                 as={asPath}
                 locale={locale}
                 title={localeTxt}
-                className="rounded-full flex items-center justify-center text-sm w-8 h-8 bg-base-200 hover:bg-base-300"
+                className="btn btn-primary btn-outline text-sm flex items-center gap-2"
               >
+                <Image
+                  src={`/assets/flags/${locale === 'en' ? 'gb' : locale}.svg`}
+                  alt={localeTxt}
+                  width={20}
+                  height={20}
+                />
                 {locale.toUpperCase()}
               </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

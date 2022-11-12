@@ -260,7 +260,8 @@ export default function Container({ children, ...props }: ContainerProps) {
           name="msapplication-config"
           content="/favicons/browserconfig.xml"
         />
-        <meta name="theme-color" content="#000" />
+        {/* <meta name="theme-color" content="#000" /> */}
+        <meta name="theme-color" content="currentColor" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         {socialTags({
           openGraphType,
@@ -297,7 +298,7 @@ export default function Container({ children, ...props }: ContainerProps) {
         />
       </Head>
       <Header />
-      <div className="flex flex-col justify-center p-6 md:px-8">
+      <div>
         {children}
         <Footer />
       </div>

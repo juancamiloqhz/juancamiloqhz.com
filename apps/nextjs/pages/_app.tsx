@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <SessionProvider session={pageProps.session}>
-      <ThemeProvider defaultTheme="system">
+      <ThemeProvider defaultTheme="night">
         <ContextProvider>
           <main className={inter.className}>
             {<Component {...pageProps} />}

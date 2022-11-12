@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { FiGitBranch, FiStar } from 'react-icons/fi';
 import { GitHub, Rss } from './Icons';
 
 export default function Footer() {
@@ -7,26 +8,42 @@ export default function Footer() {
   // get current year
 
   return (
-    <footer className="w-full border-t">
-      <div className="gap-3 py-3 md:py-8 max-w-3xl mx-auto">
+    <footer className="w-full pb-2 flex items-center justify-center">
+      <a
+        href="https://github.com/juancamiloqhz"
+        target="_blank"
+        rel="noreferrer noopener"
+        className="text-sm text-center hover:text-primary"
+      >
+        Design and Built by JuanCamiloQHz <br />
+        <div className="flex items-center justify-center gap-4 mt-2">
+          <span className="flex items-center gap-2 text-sm">
+            <FiStar size={20} className="inline" /> 600
+          </span>
+          <span className="flex items-center gap-2">
+            <FiGitBranch size={20} className="inline" /> 600
+          </span>
+        </div>
+      </a>
+      {/* <div className="gap-3 py-3 md:py-8 max-w-3xl mx-auto">
         <div className="my-8">
           <div className="mb-6">
             <p className="font-bold">
               &copy; 2016 - {new Date().getFullYear()}
             </p>
-            <Link href="/" className="link">
+            <Link href="/" className="link link-primary">
               JuanCamiloQHz
             </Link>
           </div>
           <div className="mb-6">
             <p className="font-bold">{t('footer:subscribe')}</p>
-            <Link href="/newsletter" className="link">
+            <Link href="/newsletter" className="link link-primary">
               {t('footer:newsletter')}
             </Link>
           </div>
           <div className="mb-6">
             <p className="font-bold">{t('footer:guestbookTitle')}</p>
-            <Link href="/guestbook" className="link">
+            <Link href="/guestbook" className="link link-primary">
               {t('footer:guestbook')}
             </Link>
           </div>
@@ -35,7 +52,7 @@ export default function Footer() {
             <div className="flex items-center">
               <a
                 href="https://twitter.com/juancamiloqhz"
-                className="link"
+                className="link link-primary"
                 rel="noopener noreferrer"
               >
                 Twitter
@@ -43,7 +60,7 @@ export default function Footer() {
               /
               <a
                 href="https://github.com/juancamiloqhz"
-                className="link"
+                className="link link-primary"
                 rel="noopener noreferrer"
               >
                 GitHub
@@ -52,7 +69,7 @@ export default function Footer() {
           </div>
           <div className="mb-6">
             <p className="font-bold">Legal</p>
-            <Link href="/privacy-policy" className="link">
+            <Link href="/privacy-policy" className="link link-primary">
               {t('privacy-policy')}
             </Link>
           </div>
@@ -70,7 +87,7 @@ export default function Footer() {
             <Rss size="1.5rem" />
           </Link>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 }

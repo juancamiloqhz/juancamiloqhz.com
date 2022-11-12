@@ -25,9 +25,17 @@ html {
 }
 
 @layer base {
-  a {
-    @apply underline-offset-2 underline decoration-primary hover:underline-offset-[3px];
-    @apply transition-all duration-100 ease-in;
+  .link {
+    @apply relative !no-underline;
+  }
+  .link::before {
+    content: '';
+    @apply bg-primary absolute block w-full h-[2px] bottom-0 left-0 scale-x-0;
+    transition: transform 0.3s ease;
+    transform-origin: top left;
+  }
+  .link:hover::before {
+    @apply scale-100;
   }
 
   textarea {
