@@ -7,15 +7,12 @@ import classNames from 'classnames';
 import { useGlobalContext } from 'context/GlobalProvider';
 import MenuToggle from 'components/MenuToggle/MenuToggle';
 import ModalMenuMobile from 'components/Modals/ModalMenuMobile';
-// import ThemeButton from 'components/ThemeButton';
-// import { useOnClickOutside } from 'lib/hooks';
 import LocaleSwitcher from 'components/LocaleSwitcher';
 import { themes } from 'themes';
 import { ThemePaint, XIcon } from 'components/Icons';
 import { useTheme } from 'next-themes';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 function NavItem({
   href,
@@ -31,7 +28,7 @@ function NavItem({
 
   return (
     <Link
-      href={goTo ? `#${goTo}` : href}
+      href={goTo ? `/#${goTo}` : href}
       className={classNames(
         isActive ? 'text-primary' : '',
         ' text-sm hover:text-primary'
@@ -60,6 +57,7 @@ const liItem = {
 
 export default function Header() {
   const { setTheme, resolvedTheme } = useTheme();
+  const { locale } = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const { themePickerOpen, setThemePickerOpen } = useGlobalContext();
   const { t } = useTranslation('header');
@@ -68,7 +66,7 @@ export default function Header() {
   const [scrollDir, setScrollDir] = React.useState('');
   const [hasScrolled, setHasScrolled] = React.useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    initial: 0,
+    initial: themes.findIndex((theme) => theme === resolvedTheme),
     mode: 'free-snap',
     slides: {
       perView: 'auto',
@@ -162,36 +160,42 @@ export default function Header() {
               }}
               className="relative bg-base-300"
             >
-              <div className="w-full py-2">
-                <h5 className="text-sm font-bold text-center w-full mb-4">
+              <div className="w-full pt-3">
+                <h5 className="text-sm font-extrabold text-center w-full mb-4 text-primary">
                   SELECT THEME
                 </h5>
-                {/* <div className="overflow-x-scroll h-full flex items-center justify-start w-full"> */}
-                <div ref={sliderRef} className="keen-slider mb-2 px-4">
+                <div ref={sliderRef} className="keen-slider px-4">
                   {themes.map((theme) => (
                     <div
-                      className={`keen-slider__slide w-max min-w-max px-3 h-12 bg-base-100 flex gap-3 items-center font-semibold cursor-pointer rounded-xl border-2 border-spacing-3 border-transparent${
-                        theme === resolvedTheme ? ' border-base-content' : ''
-                      }`}
+                      className="relative keen-slider__slide w-max min-w-max bg-transparent"
                       key={theme}
                       data-theme={theme}
-                      onClick={() => setTheme(theme)}
                     >
-                      <span>
-                        {theme.charAt(0).toUpperCase() + theme.slice(1)}
-                      </span>
-                      <div className="flex items-center gap-1">
-                        <span className="bg-primary w-2 h-6 rounded-lg"></span>
-                        <span className="bg-secondary w-2 h-6 rounded-lg"></span>
-                        <span className="bg-accent w-2 h-6 rounded-lg"></span>
-                        <span className="bg-neutral w-2 h-6 rounded-lg"></span>
+                      <div
+                        className={`mb-6 px-3 h-12 bg-base-100 flex gap-3 items-center font-semibold cursor-pointer rounded-[var(--rounded-btn)] border-2 border-spacing-3 border-transparent hover:border-primary${
+                          theme === resolvedTheme ? ' border-primary' : ''
+                        }`}
+                        onClick={() => setTheme(theme)}
+                      >
+                        <span>
+                          {theme.charAt(0).toUpperCase() + theme.slice(1)}
+                        </span>
+                        <div className="flex items-center gap-1">
+                          <span className="bg-primary w-2 h-6 rounded-lg"></span>
+                          <span className="bg-secondary w-2 h-6 rounded-lg"></span>
+                          <span className="bg-accent w-2 h-6 rounded-lg"></span>
+                          <span className="bg-neutral w-2 h-6 rounded-lg"></span>
+                        </div>
                       </div>
+                      {theme === resolvedTheme && (
+                        <div className="border-l-[8px] border-r-[8px] border-b-[10px] border-l-transparent border-r-transparent border-b-primary w-0 h-0 absolute bottom-0 left-1/2 -translate-x-1/2" />
+                      )}
                     </div>
                   ))}
                 </div>
                 <motion.button
                   onClick={() => setThemePickerOpen(false)}
-                  className="absolute top-1.5 right-1.5 btn btn-ghost btn-circle btn-sm bg-base-200 hover:bg-base-300"
+                  className="absolute top-1.5 right-2 btn btn-ghost btn-circle btn-sm bg-base-200 hover:bg-base-300"
                 >
                   <XIcon />
                 </motion.button>
@@ -207,11 +211,17 @@ export default function Header() {
           <Link
             href="/"
             passHref
-            className="text-3xl text-primary font-bold flex items-center hover:text-primary/70 transition-colors duration-300"
+            className="text-3xl text-primary font-bold hover:text-primary/70 transition-colors duration-300"
           >
-            {'{ '}
-            JC
-            {' }'}
+            <motion.span
+              className="flex items-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              {'{ '}
+              JC
+              {' }'}
+            </motion.span>
           </Link>
           <motion.ul
             variants={ulContainer}
@@ -246,12 +256,17 @@ export default function Header() {
                 <LocaleSwitcher />
               </motion.li>
               <motion.li variants={liItem}>
-                <button
-                  className="btn btn-primary btn-outline group"
-                  onClick={() => setThemePickerOpen((d: boolean) => !d)}
+                <div
+                  className="tooltip tooltip-bottom"
+                  data-tip={locale === 'es' ? 'Cambiar Tema' : 'Color Theme'}
                 >
-                  <ThemePaint size={20} />
-                </button>
+                  <button
+                    className="btn btn-primary btn-outline group"
+                    onClick={() => setThemePickerOpen((d: boolean) => !d)}
+                  >
+                    <ThemePaint size={20} />
+                  </button>
+                </div>
               </motion.li>
             </div>
           </motion.ul>

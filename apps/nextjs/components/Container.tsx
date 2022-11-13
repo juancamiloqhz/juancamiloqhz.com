@@ -1,7 +1,15 @@
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
+import {
+  FiCodepen,
+  FiGithub,
+  FiInstagram,
+  FiLinkedin,
+  FiTwitter
+} from 'react-icons/fi';
 
 const settings = {
   meta: {
@@ -298,9 +306,95 @@ export default function Container({ children, ...props }: ContainerProps) {
         />
       </Head>
       <Header />
-      <div>
+      <div className="relative">
         {children}
         <Footer />
+        {/* Fixed Social Links */}
+        <motion.div
+          className="fixed bottom-0 left-8 h-80 hidden md:flex flex-col items-center gap-7 w-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8, duration: 0.6 }}
+        >
+          <div
+            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            data-tip="GitHub"
+          >
+            <a
+              href="https://github.com/juancamiloqhz"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <FiGithub size={20} />
+            </a>
+          </div>
+          <div
+            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            data-tip="Instagram"
+          >
+            <a
+              href="https://instagram.com/juancamiloqhz"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <FiInstagram size={20} />
+            </a>
+          </div>
+          <div
+            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            data-tip="Twitter"
+          >
+            <a
+              href="https://twitter.com/juancamiloqhz"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <FiTwitter size={20} />
+            </a>
+          </div>
+          <div
+            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            data-tip="LinkedIn"
+          >
+            <a
+              href="https://linkedin.com/juancamiloqhz"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <FiLinkedin size={20} />
+            </a>
+          </div>
+          <div
+            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            data-tip="Codepen"
+          >
+            <a
+              href="https://codepen.io/juancamiloqhz"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <FiCodepen size={20} />
+            </a>
+          </div>
+          <div className="w-[1px] h-full bg-base-content"></div>
+        </motion.div>
+        {/* Fixed Email */}
+        <motion.div
+          className="fixed bottom-0 right-8 h-56 hidden md:flex flex-col items-center gap-6 w-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8, duration: 0.6 }}
+        >
+          <a
+            href="mailto:juancamiloqhz@gmail.com"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="rotate-90 text-sm hover:text-primary hover:-translate-y-1 transition-all duration-300 tracking-wider"
+          >
+            juancamiloqhz@gmail.com
+          </a>
+          <div className="w-[1px] h-full max-h-24 bottom-0 fixed bg-base-content"></div>
+        </motion.div>
       </div>
     </>
   );

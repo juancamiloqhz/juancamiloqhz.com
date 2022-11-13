@@ -54,7 +54,7 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
       description={t('pageDescription')}
       schemaType="Blog"
     >
-      <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
+      <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mt-40 mb-16 w-full">
         <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl ">
           Blog
         </h1>
