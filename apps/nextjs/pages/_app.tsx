@@ -32,9 +32,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider defaultTheme="night">
         <ContextProvider>
           {/* <main className={`${playfairDisplay.className} ${inter.className}`}> */}
-          <main className={`${inter.className}`}>
+          <main className={`${inter.className}`} id="main">
             {<Component {...pageProps} />}
           </main>
+          <div id="modal-root" className={`${inter.className}`}></div>
           <Analytics />
         </ContextProvider>
       </ThemeProvider>

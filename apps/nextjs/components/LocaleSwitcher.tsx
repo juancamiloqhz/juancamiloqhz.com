@@ -9,7 +9,7 @@ export default function LocaleSwitcher() {
   const otherLocales = locales!.filter((locale) => locale !== activeLocale);
 
   const localeTxt = React.useMemo(() => {
-    return activeLocale === 'en' ? 'Español' : 'English';
+    return activeLocale === 'en' ? 'Ver en Español' : 'See in English';
   }, [activeLocale]);
 
   return (

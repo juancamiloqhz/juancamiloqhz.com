@@ -1,6 +1,6 @@
 {
   "pageTitle": "Get in touch",
-  "pageDescription": "Even if it's for saying hi or for work proposals, send me a message and I'll get back to you as soon as possible.",
+  "pageDescription": "Even if it's for saying hi or for work proposals, send me a message and I'll get back to you as soon as possible. If you prefer, you can also find me on social media or write me an email to",
   "contact": "Contact",
   "name": "Name",
   "email": "Email",
@@ -10,7 +10,7 @@
   "success": "Success",
   "sendMessage": "Send Message",
   "sendingMessage": "Sending Message...",
-  "sendMessageSuccess": "Message sent successfully",
+  "sendMessageSuccess": "Message sent successfully!",
   "sendMessageError": "Error sending message",
   "sendMessageErrorMessage": "Please check your internet connection and try again",
   "sendMessageErrorTitle": "Error sending message",

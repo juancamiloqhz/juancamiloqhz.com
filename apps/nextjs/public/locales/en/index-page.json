@@ -6,6 +6,26 @@
   "aboutMe": "About me",
   "where-ive-worked": "Where I've worked",
   "things-ive-built": "Some things I've built",
+  "co-founder": "Co-Founder",
+  "owner": "Owner & Art Director",
+  "present": "Present",
+  "vibra": {
+    "1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
+    "2": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
+    "3": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?"
+  },
+  "freelancer": {
+    "1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
+    "2": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
+    "3": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?"
+  },
+  "supernova": {
+    "1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
+    "2": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
+    "3": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?"
+  },
+  "featured-project": "Featured Project",
+  "vibra-project-description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur repudiandae quibusdam doloremque pariatur dol Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur repudiandae quibusdam doloremque pariatur dol amet consectetur adipisicing elit. Aspernatur repudiandae quibusdam doloremque pariatur dol",
 
   "featuredPosts": "Featured Posts",
   "seeAllPosts": "See All Posts",

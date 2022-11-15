@@ -1,6 +1,6 @@
 {
   "pageTitle": "Contáctame",
-  "pageDescription": "Ya sea para saludarme o para trabajar juntos, escríbeme un mensaje y te contestaré lo antes posible.",
+  "pageDescription": "Ya sea para saludarme o para trabajar juntos, escríbeme un mensaje y te contestaré lo antes posible. Si prefieres, puedes encontrarme en mis redes sociales puedes o enviarme un correo electrónico a",
   "contact": "Contacto",
   "name": "Nombre",
   "email": "Correo electrónico",
@@ -10,7 +10,7 @@
   "success": "Mensaje enviado",
   "sendMessage": "Enviar mensaje",
   "sendingMessage": "Enviando mensaje...",
-  "sendMessageSuccess": "Mensaje enviado con éxito",
+  "sendMessageSuccess": "Tu mensaje ha sido enviado!",
   "sendMessageError": "Error enviando el mensaje",
   "sendMessageErrorMessage": "Por favor verifica tu conexión a internet y vuelve a intentarlo",
   "sendMessageErrorTitle": "Error enviando el mensaje",

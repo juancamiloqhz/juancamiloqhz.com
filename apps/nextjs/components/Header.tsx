@@ -139,7 +139,7 @@ export default function Header() {
         initial={false}
         animate={scrollDir === 'down' ? { y: -220 } : { y: 0 }}
         transition={{ bounce: 0 }}
-        className={`w-full top-0 z-10 fixed${
+        className={`w-full top-0 fixed z-50${
           hasScrolled ? ' backdrop-blur bg-base-100/70' : ' bg-base-100'
         }`}
       >

@@ -32,6 +32,7 @@ export default function SomeThingsIveBuilt() {
 }
 
 function FeaturedProject() {
+  const { t } = useTranslation(['index-page']);
   return (
     <div className="grid sm:grid-cols-[60%_1fr]">
       <div className="group w-full h-fit relative justify-self-center lg:justify-self-auto">
@@ -49,7 +50,7 @@ function FeaturedProject() {
       </div>
 
       <div className="z-[2] mt-4 sm:mt-0 flex flex-col sm:items-end justify-center">
-        <h4 className="text-primary text-sm">Featured Project</h4>
+        <h4 className="text-primary text-sm">{t('featured-project')}</h4>
         <a
           href="https://vibra.la"
           target="_blank"
@@ -61,11 +62,7 @@ function FeaturedProject() {
         </a>
         <div className="sm:bg-neutral sm:px-6 sm:py-3 sm:-ml-28 mt-2 sm:mt-4 rounded-[var(--rounded-btn)] sm:shadow-md">
           <p className="sm:my-3 sm:text-right text-neutral-content">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            repudiandae quibusdam doloremque pariatur dol Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Aspernatur repudiandae quibusdam
-            doloremque pariatur dol amet consectetur adipisicing elit.
-            Aspernatur repudiandae quibusdam doloremque pariatur dol
+            {t('vibra-project-description')}
           </p>
         </div>
         <p className="font-mono text-sm sm:text-xs sm:text-right mt-4 flex flex-wrap items-center gap-3 sm:justify-end">

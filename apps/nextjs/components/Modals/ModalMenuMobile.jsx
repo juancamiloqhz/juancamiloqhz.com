@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useKeydown } from '../../lib/helpers';
-import { XIcon, Close } from '../Icons';
+// import { XIcon, Close } from '../Icons';
 import Link from 'next/link';
-import ThemeButton from '../ThemeButton';
+// import ThemeButton from '../ThemeButton';
 import { useTranslation } from 'next-i18next';
+import MenuToggle from 'components/MenuToggle';
 
 const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -21,20 +22,29 @@ const dialogVariants = {
     x: 0,
     transition: {
       bounce: 0,
-      staggerChildren: 0.1
+      staggerChildren: 0.1,
+      delayChildren: 0.2
       // when: 'beforeChildren'
     }
   },
-  hidden: { opacity: 0, x: '100%' },
-  exit: { opacity: 0, x: '100%' }
+  hidden: {
+    opacity: 0,
+    x: '100%',
+    transition: { staggerChildren: 0.05, staggerDirection: -1 }
+  },
+  exit: {
+    opacity: 0,
+    x: '100%',
+    transition: { staggerChildren: 0.05, staggerDirection: -1 }
+  }
 };
 
 const item = {
-  hidden: { opacity: 0, x: -8 },
-  visible: { opacity: 1, x: 0 }
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0 }
 };
 
-function ModalElement({ onClose }) {
+function ModalElement({ onClose, isOpen }) {
   const { t } = useTranslation('header');
   useKeydown('Escape', onClose);
   // useEffect(() => {
@@ -48,8 +58,8 @@ function ModalElement({ onClose }) {
 
   return (
     <motion.div
-      onClick={(e) => e.stopPropagation()}
-      className="fixed bg-black top-0 bottom-0 right-0 w-80 py-4 px-6 lg:hidden"
+      // onClick={(e) => e.stopPropagation()}
+      className="fixed bg-black top-0 bottom-0 right-0 w-80 py-4 px-6 lg:hidden z-50 shadow-lg"
       animate="visible"
       initial="hidden"
       exit="exit"
@@ -59,104 +69,89 @@ function ModalElement({ onClose }) {
       variants={dialogVariants}
       key="dialog"
     >
-      {/* <motion.button
+      <button
+        type="button"
         onClick={onClose}
-        className="absolute top-1 right-2 p-0 border-0"
+        className="absolute top-5 right-6 text-white"
       >
-        <XIcon />
-      </motion.button> */}
+        <MenuToggle isOpen={isOpen} size={24} />
+      </button>
       <ul className="h-full flex flex-col mt-20 text-white">
-        <motion.li variants={item} onClick={onClose} className="">
+        <motion.li variants={item}>
           <Link
             href="/"
             passHref
-            className="text-primary no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
+            onClick={onClose}
+            className="flex no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
           >
             {t('home')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-b border-white/20"
-        >
+        <motion.li variants={item} className="py-5 border-b border-white/20">
           <Link
             href="/blog"
             passHref
             className="no-underline font-normal leading-4"
+            onClick={onClose}
           >
             {t('blog')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-b border-white/20"
-        >
+        <motion.li variants={item} className="py-5 border-b border-white/20">
           <Link
             href="/dashboard"
             passHref
+            onClick={onClose}
             className="no-underline font-normal leading-4"
           >
             Dashboard
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-b border-white/20"
-        >
+        <motion.li variants={item} className="py-5 border-b border-white/20">
           <Link
             href="/mailinglist"
             passHref
+            onClick={onClose}
             className="no-underline font-normal leading-4"
           >
             {t('mailList')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-b border-white/20"
-        >
+        <motion.li variants={item} className="py-5 border-b border-white/20">
           <Link
             href="/work"
+            onClick={onClose}
             passHref
             className="no-underline font-normal leading-4"
           >
             {t('work')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-b border-white/20"
-        >
+        <motion.li variants={item} className="py-5 border-b border-white/20">
           <Link
             href="/guestbook"
+            onClick={onClose}
             passHref
             className="no-underline font-normal leading-4"
           >
             {t('guestbook')}
           </Link>
         </motion.li>
-        <motion.li
-          variants={item}
-          onClick={onClose}
-          className="py-5 border-b border-white/20"
-        >
+        <motion.li variants={item} className="py-5 border-b border-white/20">
           <Link
             href="/about"
             passHref
+            onClick={onClose}
             className="no-underline font-normal leading-4"
           >
             {t('about')}
           </Link>
         </motion.li>
-        <motion.li variants={item} onClick={onClose} className="pt-5">
+        <motion.li variants={item} className="pt-5">
           <Link
             href="/contact"
             passHref
+            onClick={onClose}
             className="no-underline font-normal leading-4"
           >
             {t('contact')}
@@ -179,6 +174,6 @@ export default function ModalMenuMobile(props) {
     <AnimatePresence initial={false} mode="wait">
       {props.isOpen && <ModalElement {...props} />}
     </AnimatePresence>,
-    document.body
+    document.getElementById('modal-root')
   );
 }
