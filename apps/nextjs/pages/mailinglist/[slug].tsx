@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import components from 'components/MDXComponents';
 import { allNewsletters, type Newsletter } from 'contentlayer/generated';
-import NewsletterLayout from 'layouts/NewsletterLayout';
+import MailingListLayout from 'layouts/MailingListLayout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export async function getStaticPaths() {
@@ -24,8 +24,8 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
     props: {
       newsletter,
       ...(await serverSideTranslations(locale ?? 'en', [
-        'newsletter-page',
-        'newsletter',
+        'mailinglist-page',
+        'mailinglist',
         'header',
         'footer'
       ]))
@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   };
 };
 
-export default function NewsletterPage({
+export default function MailingListSinglePage({
   newsletter
 }: {
   newsletter: Newsletter;
@@ -41,8 +41,8 @@ export default function NewsletterPage({
   const Component = useMDXComponent(newsletter.body.code);
 
   return (
-    <NewsletterLayout newsletter={newsletter}>
+    <MailingListLayout newsletter={newsletter}>
       <Component components={{ ...components } as any} />
-    </NewsletterLayout>
+    </MailingListLayout>
   );
 }

@@ -3,19 +3,22 @@ import { es } from 'date-fns/locale';
 import { useRouter } from 'next/router';
 
 export default function DateFormatter({
-  dateString
+  dateString,
+  normalSize = false
 }: {
   dateString: string;
-  locale?: string;
+  normalSize?: boolean;
 }) {
   const { locale } = useRouter();
   const date = parseISO(dateString);
   return (
     <time
       dateTime={dateString}
-      className="text-sm text-gray-500 dark:text-gray-300"
+      className={`${
+        normalSize ? 'text-base' : 'md:text-lg'
+      } text-base-content/60`}
     >
-      {format(date, 'LLLL	d, yyyy', {
+      {format(date, 'd MMM yyyy', {
         locale: locale === 'es' ? es : undefined
       })}
     </time>

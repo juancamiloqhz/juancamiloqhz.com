@@ -16,22 +16,35 @@ const CustomLink = (props: any) => {
 
   if (isInternalLink) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} className="link link-primary" {...props}>
         {props.children}
       </Link>
     );
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  return (
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      className="link link-primary"
+      {...props}
+    />
+  );
 };
 
 function RoundedImage(props: any) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+  return (
+    <Image
+      alt={props.alt}
+      className="rounded-[var(--rounded-btn)]"
+      {...props}
+    />
+  );
 }
 
 function Callout(props: any) {
   return (
-    <div className="flex bg-gray-200 dark:bg-gray-800 rounded-lg p-4">
+    <div className="flex bg-gray-200 dark:bg-gray-800 rounded-[var(--rounded-btn)] p-4">
       <div className="flex items-center w-4 mr-4">{props.emoji}</div>
       <div className="w-full callout">{props.children}</div>
     </div>

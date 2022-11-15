@@ -7,9 +7,9 @@ import PostLayout from 'layouts/PostLayout';
 
 export async function getStaticPaths() {
   return {
-    paths: allPosts.map((p) => ({
-      params: { slug: p.slug }
-      // locale: p.locale
+    paths: allPosts.map((post) => ({
+      params: { slug: post.slug },
+      locale: post.locale
     })),
     fallback: false
   };
@@ -19,23 +19,37 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const post = allPosts.find(
     (post) => post.slug === params?.slug && post.locale === locale
   );
+  const otherPosts = allPosts
+    .filter((p) => p.slug !== params?.slug && p.locale === locale)
+    .slice(0, 10)
+    .sort(
+      (a, b) =>
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+    );
   return {
     props: {
       post,
+      otherPosts,
       ...(await serverSideTranslations(locale ?? 'en', [
         'single-post',
         'footer',
         'header',
-        'newsletter'
+        'mailinglist'
       ]))
     }
   };
 };
 
-export default function Post({ post }: { post: Post }) {
+export default function Post({
+  post,
+  otherPosts
+}: {
+  post: Post;
+  otherPosts: Post[];
+}) {
   const Component = useMDXComponent(post.body.code);
   return (
-    <PostLayout post={post}>
+    <PostLayout post={post} otherPosts={otherPosts}>
       <Component components={components} />
     </PostLayout>
   );

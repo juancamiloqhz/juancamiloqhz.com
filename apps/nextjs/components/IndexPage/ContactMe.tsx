@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import { motion } from 'framer-motion';
 
 export default function SomeThingsIveBuilt() {
   const { t } = useTranslation('contact-page');
@@ -28,9 +29,13 @@ export default function SomeThingsIveBuilt() {
     setLoading(false);
   };
   return (
-    <div
+    <motion.div
       className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-40 scroll-mt-40"
       id="contact"
+      viewport={{ once: true }}
+      initial={{ opacity: 0, y: 100, scale: 0.8 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.3, bounce: 0 }}
     >
       <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
         <h2 className="text-primary">04. Contact Me</h2>
@@ -43,9 +48,9 @@ export default function SomeThingsIveBuilt() {
         </p>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col w-full max-w-lg mx-auto mt-10"
+          className="flex flex-col w-full max-w-lg mx-auto mt-6 sm:mt-10"
         >
-          <div className="form-control w-full mb-4">
+          <div className="form-control w-full mb-3 sm:mb-4">
             <label htmlFor="name" className="label">
               <span className="label-text">{t('name')}</span>
             </label>
@@ -58,7 +63,7 @@ export default function SomeThingsIveBuilt() {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="form-control w-full mb-4">
+          <div className="form-control w-full mb-3 sm:mb-4">
             <label htmlFor="email" className="label">
               <span className="label-text">{t('email')}</span>
             </label>
@@ -71,7 +76,7 @@ export default function SomeThingsIveBuilt() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="form-control w-full mb-4">
+          <div className="form-control w-full mb-3 sm:mb-4">
             <label htmlFor="message" className="label">
               <span className="label-text">{t('message')}</span>
             </label>
@@ -85,13 +90,13 @@ export default function SomeThingsIveBuilt() {
           </div>
           <button
             type="submit"
-            className="mt-8 btn btn-primary w-fit btn-outline"
+            className="mt-4 sm:mt-8 btn btn-primary w-fit btn-outline"
           >
             {loading ? t('sendingMessage') : t('sendMessage')}
           </button>
           {/* {submitted == true ? alert('submitted') : ''} */}
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }

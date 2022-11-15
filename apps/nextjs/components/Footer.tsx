@@ -16,14 +16,14 @@ export default function Footer() {
         className="text-sm text-center hover:text-primary"
       >
         Design and Built by JuanCamiloQHz <br />
-        <div className="flex items-center justify-center gap-4 mt-2">
+        {/* <div className="flex items-center justify-center gap-4 mt-2">
           <span className="flex items-center gap-2 text-sm">
             <FiStar size={20} className="inline" /> 600
           </span>
           <span className="flex items-center gap-2">
             <FiGitBranch size={20} className="inline" /> 600
           </span>
-        </div>
+        </div> */}
       </a>
       {/* <div className="gap-3 py-3 md:py-8 max-w-3xl mx-auto">
         <div className="my-8">
@@ -37,8 +37,8 @@ export default function Footer() {
           </div>
           <div className="mb-6">
             <p className="font-bold">{t('footer:subscribe')}</p>
-            <Link href="/newsletter" className="link link-primary">
-              {t('footer:newsletter')}
+            <Link href="/mailinglist" className="link link-primary">
+              {t('footer:mailinglist')}
             </Link>
           </div>
           <div className="mb-6">

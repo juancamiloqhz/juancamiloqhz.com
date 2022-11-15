@@ -1,0 +1,12 @@
+{
+  "title": "No te pierdas un sólo artículo",
+  "description": "Las personas en esta lista serán notificadas al publicar un nuevo artículo. Enviaré correo una o dos veces al mes sobre desarrollo web y el mundo de la tecnología. Puedes cancelar tu suscripción en cualquier momento.",
+  "//": {
+    "subtitle": "Get emails from me about web development, tech, and early access to new articles."
+  },
+  "name": "Nombre (opcional)",
+  "email": "Correo electrónico",
+  "subscribe": "Suscribirse",
+  "subscribing": "Suscribiéndose...",
+  "noMessage": "Solo enviaré correos cuando haya nuevo contenido. Nunca spam."
+}

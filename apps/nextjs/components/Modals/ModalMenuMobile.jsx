@@ -18,17 +18,15 @@ const canUseDOM = !!(
 const dialogVariants = {
   visible: {
     opacity: 1,
+    x: 0,
     transition: {
-      duration: 0.05,
-      type: 'spring',
-      damping: 50,
-      stiffness: 400,
-      staggerChildren: 0.07
+      bounce: 0,
+      staggerChildren: 0.1
       // when: 'beforeChildren'
     }
   },
-  hidden: { opacity: 0 },
-  exit: { opacity: 0 }
+  hidden: { opacity: 0, x: '100%' },
+  exit: { opacity: 0, x: '100%' }
 };
 
 const item = {
@@ -36,31 +34,30 @@ const item = {
   visible: { opacity: 1, x: 0 }
 };
 
-function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
+function ModalElement({ onClose }) {
   const { t } = useTranslation('header');
   useKeydown('Escape', onClose);
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.overflowY = 'auto';
-    }
-    return () => (document.body.style.overflowY = 'auto');
-  }, [isOpen]);
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflowY = 'hidden';
+  //   } else {
+  //     document.body.style.overflowY = 'auto';
+  //   }
+  //   return () => (document.body.style.overflowY = 'auto');
+  // }, [isOpen]);
 
   return (
     <motion.div
       onClick={(e) => e.stopPropagation()}
-      className="fixed bg-base-100 top-16 bottom-0 left-0 right-0 py-4 px-6"
+      className="fixed bg-black top-0 bottom-0 right-0 w-80 py-4 px-6 lg:hidden"
       animate="visible"
       initial="hidden"
       exit="exit"
-      ariaLabel={title}
+      ariaLabel="Menu"
       role="dialog"
       tabIndex="-1"
       variants={dialogVariants}
       key="dialog"
-      style={{ width: '100%', ...dialogStyles }}
     >
       {/* <motion.button
         onClick={onClose}
@@ -68,17 +65,21 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
       >
         <XIcon />
       </motion.button> */}
-      <ul className="h-full flex flex-col">
-        <motion.li variants={item} onClick={onClose} className="pb-5 border-b">
+      <ul className="h-full flex flex-col mt-20 text-white">
+        <motion.li variants={item} onClick={onClose} className="">
           <Link
             href="/"
             passHref
-            className="no-underline font-normal leading-4"
+            className="text-primary no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
           >
             {t('home')}
           </Link>
         </motion.li>
-        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-b border-white/20"
+        >
           <Link
             href="/blog"
             passHref
@@ -87,7 +88,11 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('blog')}
           </Link>
         </motion.li>
-        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-b border-white/20"
+        >
           <Link
             href="/dashboard"
             passHref
@@ -96,16 +101,24 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             Dashboard
           </Link>
         </motion.li>
-        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-b border-white/20"
+        >
           <Link
-            href="/newsletter"
+            href="/mailinglist"
             passHref
             className="no-underline font-normal leading-4"
           >
             {t('mailList')}
           </Link>
         </motion.li>
-        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-b border-white/20"
+        >
           <Link
             href="/work"
             passHref
@@ -114,7 +127,11 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('work')}
           </Link>
         </motion.li>
-        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-b border-white/20"
+        >
           <Link
             href="/guestbook"
             passHref
@@ -123,7 +140,11 @@ function ModalElement({ children, onClose, title, dialogStyles, isOpen }) {
             {t('guestbook')}
           </Link>
         </motion.li>
-        <motion.li variants={item} onClick={onClose} className="py-5 border-b">
+        <motion.li
+          variants={item}
+          onClick={onClose}
+          className="py-5 border-b border-white/20"
+        >
           <Link
             href="/about"
             passHref

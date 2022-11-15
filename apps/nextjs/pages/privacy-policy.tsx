@@ -49,13 +49,13 @@ export default function PrivacyPolicy() {
         <h3>When do we collect information?</h3>
         <p>
           We collect information from you when you register on our site,
-          subscribe to a newsletter, fill out a form or enter information on our
+          subscribe to a Mail List, fill out a form or enter information on our
           site.
         </p>
         <h3>How do we use your information?</h3>
         <p>
           We may use the information we collect from you when you register, make
-          a purchase, sign up for our newsletter, respond to a survey or
+          a purchase, sign up for our Mail List, respond to a survey or
           marketing communication, surf the website, or use certain other site
           features in the following ways:
         </p>

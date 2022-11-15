@@ -10,6 +10,7 @@ import {
   FiLinkedin,
   FiTwitter
 } from 'react-icons/fi';
+import { BsMastodon } from 'react-icons/bs';
 
 const settings = {
   meta: {
@@ -311,7 +312,7 @@ export default function Container({ children, ...props }: ContainerProps) {
         <Footer />
         {/* Fixed Social Links */}
         <motion.div
-          className="fixed bottom-0 left-8 h-80 hidden md:flex flex-col items-center gap-7 w-10"
+          className="fixed bottom-0 left-8 h-80 hidden md:flex flex-col items-center gap-5 w-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 0.6 }}
@@ -328,6 +329,19 @@ export default function Container({ children, ...props }: ContainerProps) {
               <FiGithub size={20} />
             </a>
           </div>
+          <div
+            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            data-tip="Mastodon"
+          >
+            <a
+              href="https://indieweb.social/@juancamiloqhz"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <BsMastodon size={20} />
+            </a>
+          </div>
+
           <div
             className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
             data-tip="Instagram"

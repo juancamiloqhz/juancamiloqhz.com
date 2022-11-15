@@ -6,7 +6,7 @@ import Subscribe from 'components/Subscribe';
 import type { Newsletter } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
 
-export default function NewsletterLayout({
+export default function MailingListLayout({
   children,
   newsletter
 }: PropsWithChildren<{ newsletter: Newsletter }>) {

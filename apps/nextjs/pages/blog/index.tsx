@@ -54,35 +54,38 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
       description={t('pageDescription')}
       schemaType="Blog"
     >
-      <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mt-40 mb-16 w-full">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl ">
-          Blog
-        </h1>
-        <p className="mb-4">{t('blogDescription', { count: posts.length })}</p>
-        <div className="relative w-full mb-4">
-          <input
-            aria-label={t('search')}
-            type="text"
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder={t('search')}
-            className="input input-bordered w-full"
-          />
-          <svg
-            className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
+        <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mt-28 lg:mt-48 mb-16 w-full">
+          <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+            Blog
+          </h1>
+          {/* <p className="mb-4">
+            {t('blogDescription', { count: posts.length })}
+          </p> */}
+          {/* <div className="relative w-full mb-4">
+            <input
+              aria-label={t('search')}
+              type="text"
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder={t('search')}
+              className="input input-bordered w-full"
             />
-          </svg>
-        </div>
-        {/* {!searchValue && (
+            <svg
+              className="absolute w-5 h-5 text-gray-400 right-3 top-3 dark:text-gray-300"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div> */}
+          {/* {!searchValue && (
           <div className="mb-10 w-full">
             <h3 className="mt-8 mb-4 text-2xl font-bold tracking-tight md:text-4xl">
               Most Popular
@@ -107,15 +110,16 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
             />
           </div>
         )} */}
-        {!searchValue && (
-          <h3 className="my-8 text-2xl font-bold tracking-tight md:text-4xl">
-            {t('pageTitle')}
-          </h3>
-        )}
-        {!filteredPosts.length && <p className="mb-4">No posts found.</p>}
-        {filteredPosts.map((post) => (
-          <PostPreview key={post.slug} post={post} />
-        ))}
+          {/* {!searchValue && (
+            <h3 className="my-8 text-2xl font-bold tracking-tight md:text-4xl">
+              {t('pageTitle')}
+            </h3>
+          )} */}
+          {!filteredPosts.length && <p className="mb-4">No posts found.</p>}
+          {filteredPosts.map((post) => (
+            <PostPreview key={post.slug} post={post} />
+          ))}
+        </div>
       </div>
     </Container>
   );

@@ -6,10 +6,14 @@ import { appWithTranslation } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';
 import { SessionProvider } from 'next-auth/react';
 import { Analytics } from '@vercel/analytics/react';
-import { Inter } from '@next/font/google';
+import { Inter, Playfair_Display } from '@next/font/google';
 import { ContextProvider } from 'context/ContextProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+// const playfairDisplay = Playfair_Display({
+//   subsets: ['latin'],
+//   variable: '--font-playfair-display'
+// });
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
@@ -27,7 +31,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <SessionProvider session={pageProps.session}>
       <ThemeProvider defaultTheme="night">
         <ContextProvider>
-          <main className={inter.className}>
+          {/* <main className={`${playfairDisplay.className} ${inter.className}`}> */}
+          <main className={`${inter.className}`}>
             {<Component {...pageProps} />}
           </main>
           <Analytics />

@@ -44,7 +44,7 @@ const ulContainer = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 0.5,
+      // delayChildren: 0.5,
       staggerChildren: 0.08
     }
   }
@@ -270,13 +270,21 @@ export default function Header() {
               </motion.li>
             </div>
           </motion.ul>
-          <button
-            type="button"
-            className="btn btn-ghost btn-circle btn-sm hover:bg-base-300 lg:hidden -mr-[0.4rem]"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <MenuToggle isOpen={mobileMenuOpen} size={24} />
-          </button>
+          <div className="lg:hidden flex items-center gap-4 -mr-[0.4rem]">
+            <button
+              className="btn btn-ghost btn-sm btn-circle group"
+              onClick={() => setThemePickerOpen((d: boolean) => !d)}
+            >
+              <ThemePaint size={20} />
+            </button>
+            <button
+              type="button"
+              className="flex items-center justify-center"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <MenuToggle isOpen={mobileMenuOpen} size={24} />
+            </button>
+          </div>
         </nav>
       </motion.header>
       <ModalMenuMobile

@@ -152,7 +152,7 @@ export const ThemePaint = ({ size, fill }: any) => (
   <Svg
     stroke={0}
     fill="none"
-    className="fill-primary group-hover:fill-primary-content"
+    className="fill-base-content lg:fill-primary lg:group-hover:fill-primary-content"
     strokeWidth={0}
     size={size}
   >

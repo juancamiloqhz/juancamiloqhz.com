@@ -5,9 +5,13 @@ import { CgShapeTriangle } from 'react-icons/cg';
 export default function WhereIveWorked() {
   const [active, setActive] = React.useState(1);
   return (
-    <div
-      className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-60 scroll-mt-60"
+    <motion.div
+      className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-32 sm:mb-60 scroll-mt-60"
       id="experience"
+      viewport={{ once: true }}
+      initial={{ opacity: 0, y: 100, scale: 0.8 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.3, bounce: 0 }}
     >
       <div className="w-full max-w-2xl mx-auto">
         <div className="grid grid-cols-[auto_1fr] gap-4 items-center mb-6">
@@ -17,8 +21,9 @@ export default function WhereIveWorked() {
           </h2>
           <div className="w-full h-[1px] bg-base-content/60" />
         </div>
-        <div className="grid grid-cols-[auto_1fr] gap-4">
-          <ul className="w-36 relative">
+        <div className="grid sm:grid-cols-[auto_1fr] gap-4">
+          {/* Places List Large Screens */}
+          <ul className="w-36 relative hidden sm:block">
             <li>
               <button
                 className={`border-l-2 border-base-content/20 w-full text-left px-4 h-12 cursor-pointer hover:bg-primary/10 hover:text-primary text-sm${
@@ -53,6 +58,45 @@ export default function WhereIveWorked() {
               className="absolute w-[2px] bg-primary h-12 left-0 top-0"
               initial={{ y: 0 }}
               animate={{ y: 48 * (active - 1) }}
+              transition={{ duration: 0.3, ease: [0.6, 0.05, -0.01, 0.9] }}
+            />
+          </ul>
+          {/* Places List Smalls Screens */}
+          <ul className="relative flex sm:hidden overflow-x-auto no-scrollbar">
+            <li>
+              <button
+                className={`border-b-2 border-base-content/20 w-28 px-4 h-12 cursor-pointer hover:bg-primary/10 hover:text-primary text-sm${
+                  active === 1 ? ' text-primary' : ''
+                }`}
+                onClick={() => setActive(1)}
+              >
+                Vibra
+              </button>
+            </li>
+            <li>
+              <button
+                className={`border-b-2 border-base-content/20 w-28 px-4 h-12 cursor-pointer hover:bg-primary/10 hover:text-primary text-sm${
+                  active === 2 ? ' text-primary' : ''
+                }`}
+                onClick={() => setActive(2)}
+              >
+                Freelancer
+              </button>
+            </li>
+            <li>
+              <button
+                className={`border-b-2 border-base-content/20 w-28 px-4 h-12 cursor-pointer hover:bg-primary/10 hover:text-primary text-sm${
+                  active === 3 ? ' text-primary' : ''
+                }`}
+                onClick={() => setActive(3)}
+              >
+                Supernova
+              </button>
+            </li>
+            <motion.div
+              className="absolute h-[2px] bg-primary w-28 left-0 bottom-0"
+              initial={{ x: 0 }}
+              animate={{ x: 112 * (active - 1) }}
               transition={{ duration: 0.3, ease: [0.6, 0.05, -0.01, 0.9] }}
             />
           </ul>
@@ -211,6 +255,6 @@ export default function WhereIveWorked() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

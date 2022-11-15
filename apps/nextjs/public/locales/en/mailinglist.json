@@ -1,9 +1,10 @@
 {
-  "title": "Subscribe to the Newsletter",
-  "subtitle": "Get emails about my latest blog posts and other interesting stuff I found on the web.",
+  "title": "Never miss an article",
+  "description": "People on the list will be notified first when new posts are published. I'll send emails once or twice a month about web development and the tech world. You can unsubscribe at any time.",
   "//": {
     "subtitle": "Get emails from me about web development, tech, and early access to new articles."
   },
+  "name": "Name (optional)",
   "email": "Your Email",
   "subscribe": "Subscribe",
   "subscribing": "Subscribing...",

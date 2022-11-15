@@ -4,7 +4,8 @@ const { themes } = require('./themes');
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}'
+    './components/**/*.{js,ts,jsx,tsx}',
+    './layouts/**/*.{js,ts,jsx,tsx}'
   ],
   // darkMode: 'class',
   // mode: 'jit',
@@ -30,7 +31,11 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans]
+        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans]
+        // serif: [
+        //   'var(--font-playfair-display)',
+        //   ...defaultTheme.fontFamily.serif
+        // ]
       }
       // typography: (theme) => ({
       //   DEFAULT: {

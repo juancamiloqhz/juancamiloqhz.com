@@ -7,6 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // import Subscribe from 'components/Subscribe/Subscribe';
 import Container from 'components/Container';
 // import FeaturedPostCard from 'components/Post/FeaturedPostCard';
+import { BsChevronCompactDown } from 'react-icons/bs';
 import {
   ContactMe,
   SomeThingsIveBuilt,
@@ -19,7 +20,7 @@ const variants = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 0.5 + 0.08 * 9,
+      delayChildren: 0.08 * 9,
       staggerChildren: 0.08
     }
   }
@@ -40,7 +41,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         'footer',
         'header',
         'index-page',
-        'newsletter',
+        'mailinglist',
         'contact-page'
       ]))
     }
@@ -56,7 +57,7 @@ export default function Home() {
       schemaType="WebSite"
     >
       {/* Hero */}
-      <div className="flex items-center justify-center w-full h-screen px-8 md:px-28 transition-all duration-500 ease-in-out">
+      <div className="relative flex items-center justify-center w-full h-screen px-8 md:px-28 transition-all duration-500 ease-in-out">
         <motion.div
           variants={variants}
           className="w-full mx-auto max-w-5xl"
@@ -127,11 +128,19 @@ export default function Home() {
             />
           </div> */}
         </motion.div>
+        <BsChevronCompactDown
+          size={30}
+          className="absolute left-1/2 -translate-x-1/2 bottom-5"
+        />
       </div>
       {/* About me */}
-      <div
-        className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-60 scroll-mt-60"
+      <motion.div
+        className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-32 sm:mb-60 scroll-mt-60"
         id="about"
+        viewport={{ once: true }}
+        initial={{ opacity: 0, y: 100, scale: 0.8 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.3, bounce: 0 }}
       >
         <div className="w-full max-w-4xl mx-auto">
           <div className="grid grid-cols-[1fr_auto] lg:gap-16">
@@ -188,7 +197,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       {/* Where I've Work */}
       <WhereIveWorked />
       {/* Some Things I’ve Built */}
