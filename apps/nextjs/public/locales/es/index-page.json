@@ -1,8 +1,19 @@
 {
   "metaTitle": "JuanCamiloQHz | Desarrollador de Software, Emprendedor, CTO en Vibra",
   "metaDescription": "JuanCamiloQHz | Desarrollador de Software, Emprendedor, CTO en Vibra",
+  "hi": "Hola, mi nombre es",
+  "iDo": "Desarrollo websites y apps.",
+  "aboutMe": "Sobre mi",
+  "where-ive-worked": "Donde he trabajado",
+  "things-ive-built": "Algunas cosas que he construido",
+
   "featuredPosts": "Artículos Destacados",
   "seeAllPosts": "Ver todos los artículos",
   "dev": "Artículo en desarrollo...",
-  "featured-one-title": "¿Quien soy, y por qué he creado esta página web?"
+  "featured-one-title": "¿Quien soy, y por qué he creado esta página web?",
+  "profession": "Director de Tecnología en",
+  "professionDescription": "Ayudando a crear las mejores herramientas tecnológicas para el sector de Bienes Raíces.",
+  "first": "Soy un Desarrollador full-stack, CTO y co-fundador de",
+  "second": ", una startup Inmobiliaria en America Latina. También escribo sobre tecnología, startups, y el futuro del internet en mi",
+  "third": "y en"
 }

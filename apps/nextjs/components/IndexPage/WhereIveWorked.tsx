@@ -1,15 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CgShapeTriangle } from 'react-icons/cg';
+import { useTranslation } from 'next-i18next';
 
 export default function WhereIveWorked() {
+  const { t } = useTranslation(['index-page']);
   const [active, setActive] = React.useState(1);
   return (
     <motion.div
       className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-32 sm:mb-60 scroll-mt-60"
       id="experience"
       viewport={{ once: true }}
-      initial={{ opacity: 0, y: 100, scale: 0.8 }}
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.3, bounce: 0 }}
     >
@@ -17,7 +19,7 @@ export default function WhereIveWorked() {
         <div className="grid grid-cols-[auto_1fr] gap-4 items-center mb-6">
           <h2 className="text-2xl font-bold ">
             <span className="text-primary font-normal text-xl mr-1">02.</span>{' '}
-            Where I've Work
+            {t('where-ive-worked')}
           </h2>
           <div className="w-full h-[1px] bg-base-content/60" />
         </div>

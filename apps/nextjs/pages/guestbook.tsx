@@ -40,14 +40,17 @@ export default function GuestbookPage({
   const { t } = useTranslation('guestbook-page');
   return (
     <Container title={t('metaTitle')} description={t('metaDescription')}>
-      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4">
-          {t('metaTitle')}
-        </h1>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
-          {t('pageDescription')}
-        </p>
-        <Guestbook fallbackData={fallbackData} />
+      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
+        <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mt-28 lg:mt-48 mb-16 w-full">
+          <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+            {t('metaTitle')}
+          </h1>
+
+          <p className="text-base-content/60 mb-4 text-xl">
+            {t('pageDescription')}
+          </p>
+          <Guestbook fallbackData={fallbackData} />
+        </div>
       </div>
     </Container>
   );

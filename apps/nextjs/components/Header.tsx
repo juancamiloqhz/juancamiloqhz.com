@@ -218,9 +218,7 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              {'{ '}
-              JC
-              {' }'}
+              {'{ JC }'}
             </motion.span>
           </Link>
           <motion.ul

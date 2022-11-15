@@ -97,3 +97,12 @@ html {
 .post-container {
   @apply mx-auto max-w-3xl w-full py-2 md:py-4;
 }
+
+.bar-chart g rect {
+  @apply fill-primary stroke-primary;
+}
+
+.bar-chart g line,
+.bar-chart g text {
+  @apply fill-base-content/60 stroke-base-content/60;
+}

@@ -37,10 +37,9 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale ?? 'en', [
-        'home',
+        'index-page',
         'footer',
         'header',
-        'index-page',
         'mailinglist',
         'contact-page'
       ]))
@@ -49,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 export default function Home() {
-  const { t } = useTranslation(['home', 'index-page']);
+  const { t } = useTranslation(['index-page']);
   return (
     <Container
       exclusiveTitle={t('index-page:metaTitle')}
@@ -68,7 +67,7 @@ export default function Home() {
             variants={item}
             className="text-primary text-lg mb-4 md:mb-6"
           >
-            Hi, my name is
+            👋 {t('hi')}
           </motion.h4>
           <motion.h1
             variants={item}
@@ -80,8 +79,7 @@ export default function Home() {
             variants={item}
             className="text-5xl md:text-6xl lg:text-7xl font-bold text-base-content/60 mt-1 md:mt-3"
           >
-            I craft things for the web.
-            {/* I'm a web craftsman */}
+            {t('iDo')}
           </motion.h2>
           {/* <motion.p variants={item} className="text-xl mt-1">
               {t('profession')}&nbsp;
@@ -138,7 +136,7 @@ export default function Home() {
         className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-32 sm:mb-60 scroll-mt-60"
         id="about"
         viewport={{ once: true }}
-        initial={{ opacity: 0, y: 100, scale: 0.8 }}
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.3, bounce: 0 }}
       >
@@ -149,7 +147,7 @@ export default function Home() {
                 <span className="text-primary font-normal text-xl mr-1">
                   01.
                 </span>{' '}
-                About me
+                {t('aboutMe')}
               </h2>
               <div className="w-full h-[1px] bg-base-content/60" />
             </div>

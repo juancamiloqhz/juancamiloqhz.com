@@ -11,7 +11,7 @@ importers:
   apps/nextjs:
     specifiers:
       '@mailchimp/mailchimp_marketing': ^3.0.75
-      '@next/font': ^13.0.2
+      '@next/font': ^13.0.3
       '@nivo/bar': ^0.80.0
       '@nivo/calendar': ^0.80.0
       '@nivo/core': ^0.80.0
@@ -69,7 +69,7 @@ importers:
       typescript: ^4.8.4
     dependencies:
       '@mailchimp/mailchimp_marketing': 3.0.78
-      '@next/font': 13.0.2
+      '@next/font': 13.0.3
       '@nivo/bar': 0.80.0_6zomopewppbkd5eeu2nbbcio3i
       '@nivo/calendar': 0.80.0_6zomopewppbkd5eeu2nbbcio3i
       '@nivo/core': 0.80.0_g5kln477lwx3caqucf3exzf3du
@@ -674,8 +674,8 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/font/13.0.2:
-    resolution: {integrity: sha512-tLbyZCA1uF8HjbUEN5c4zB453yEzt5aT9VDhXPw1/eJhX4U0Q4lD3s3Bs+gpCjuLrEgILd56jQuzxgrMnWHH8A==}
+  /@next/font/13.0.3:
+    resolution: {integrity: sha512-J3bZooNyhzhRshEJZlc4Kagfx6f8LQkPdCsP0nZm63dAUaoeMaQRidFFhbL68WZ3S5XleVfpGYypZuBSyJqYtw==}
     dev: false
 
   /@next/swc-android-arm-eabi/13.0.3:

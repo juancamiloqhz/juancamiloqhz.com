@@ -1,5 +1,6 @@
 import React from 'react';
 import { AdminHeader } from './admin';
+import Header from './Header';
 
 export default function Container({
   children,
@@ -8,11 +9,10 @@ export default function Container({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
-      <AdminHeader />
-      <main className="flex flex-col justify-center p-6 md:px-8 bg-gray-50 dark:bg-gray-900">
-        {children}
-      </main>
+    <div className="">
+      {/* <AdminHeader /> */}
+      <Header />
+      {children}
     </div>
   );
 }

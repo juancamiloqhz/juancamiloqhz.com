@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import PageTitle from '../components/common/PageTitle';
 import Container from '../components/Container';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
@@ -20,10 +19,12 @@ export default function MyWorkPage() {
   const { t } = useTranslation('work');
   return (
     <Container title={t('pageTitle')} description={t('pageDescription')}>
-      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mb-16 w-full">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4">
-          {t('pageTitle')}
-        </h1>
+      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
+        <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mt-28 lg:mt-48 mb-16 w-full">
+          <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+            {t('pageTitle')}
+          </h1>
+        </div>
       </div>
     </Container>
   );

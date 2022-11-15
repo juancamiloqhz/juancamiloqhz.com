@@ -331,6 +331,18 @@ export default function Container({ children, ...props }: ContainerProps) {
           </div>
           <div
             className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            data-tip="Twitter"
+          >
+            <a
+              href="https://twitter.com/juancamiloqhz"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <FiTwitter size={20} />
+            </a>
+          </div>
+          <div
+            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
             data-tip="Mastodon"
           >
             <a
@@ -341,7 +353,6 @@ export default function Container({ children, ...props }: ContainerProps) {
               <BsMastodon size={20} />
             </a>
           </div>
-
           <div
             className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
             data-tip="Instagram"
@@ -352,18 +363,6 @@ export default function Container({ children, ...props }: ContainerProps) {
               rel="noreferrer noopener"
             >
               <FiInstagram size={20} />
-            </a>
-          </div>
-          <div
-            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
-            data-tip="Twitter"
-          >
-            <a
-              href="https://twitter.com/juancamiloqhz"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <FiTwitter size={20} />
             </a>
           </div>
           <div

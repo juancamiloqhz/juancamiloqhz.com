@@ -20,7 +20,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   return {
-    props: {}
+    props: {
+      ...(await serverSideTranslations(context.locale ?? 'en', [
+        'header',
+        'footer'
+      ]))
+    }
   };
 };
 
@@ -44,24 +49,26 @@ export default function PersonalDashboard() {
     // title="Private Dashboard"
     // description="My Private Dashboard"
     >
-      <div className="flex flex-col justify-center items-start mx-auto mb-16 w-full">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4">
-          Dashboard
-        </h1>
+      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
+        <div className="flex flex-col items-start justify-center mx-auto mt-28 lg:mt-48 mb-16 w-full">
+          <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+            Dashboard
+          </h1>
 
-        <h2>A cuales datos quiero hacerles seguimiento?</h2>
-        <ol>
-          <li>Balanza deudas</li>
-        </ol>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          <div className="w-full h-96">
-            <BarChart />
-          </div>
-          <div className="w-full h-96">
-            <PieChart />
-          </div>
-          <div className="w-full h-96">
-            <CalendarChart />
+          <h2>A cuales datos quiero hacerles seguimiento?</h2>
+          <ol>
+            <li>Balanza deudas</li>
+          </ol>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+            <div className="w-full h-96 bar-chart">
+              <BarChart />
+            </div>
+            <div className="w-full h-96">
+              <PieChart />
+            </div>
+            <div className="w-full h-96">
+              <CalendarChart />
+            </div>
           </div>
         </div>
       </div>

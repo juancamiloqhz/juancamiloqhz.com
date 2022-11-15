@@ -1,6 +1,7 @@
 {
-  "pageTitle": "Contact Me",
-  "pageDescription": "Send me a message and I'll get back to you as soon as possible.",
+  "pageTitle": "Get in touch",
+  "pageDescription": "Even if it's for saying hi or for work proposals, send me a message and I'll get back to you as soon as possible.",
+  "contact": "Contact",
   "name": "Name",
   "email": "Email",
   "message": "Message",

@@ -12,13 +12,10 @@ const Path = (props: any) => (
 );
 
 interface MenuToggleProps {
-  isOpen?: boolean;
+  isOpen: boolean;
   size?: number;
 }
-export default function MenuToggle({
-  isOpen = false,
-  size = 23
-}: MenuToggleProps) {
+export default function MenuToggle({ isOpen, size = 23 }: MenuToggleProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 23 20">
       <Path

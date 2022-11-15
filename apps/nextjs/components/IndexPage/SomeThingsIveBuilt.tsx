@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiExternalLink } from 'react-icons/fi';
+import { useTranslation } from 'next-i18next';
 
 export default function SomeThingsIveBuilt() {
+  const { t } = useTranslation(['index-page']);
   return (
     <motion.div
       className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-32 sm:mb-52 scroll-mt-40"
       id="work"
       viewport={{ once: true }}
-      initial={{ opacity: 0, y: 100, scale: 0.8 }}
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.3, bounce: 0 }}
     >
@@ -17,7 +19,7 @@ export default function SomeThingsIveBuilt() {
           <div className="grid sm:grid-cols-[auto_1fr] gap-4 items-center mb-10 sm:mb-14">
             <h2 className="text-2xl font-bold ">
               <span className="text-primary font-normal text-xl mr-1">03.</span>{' '}
-              Some Things I've Built
+              {t('things-ive-built')}
             </h2>
             <div className="w-full h-[1px] bg-base-content/60" />
           </div>
