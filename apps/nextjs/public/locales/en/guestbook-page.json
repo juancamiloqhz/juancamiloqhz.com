@@ -1,15 +1,15 @@
 {
-    "metaTitle": "Guestbook",
-    "metaDescription": "Sign my digital guestbook and share some wisdom.",
-    "pageDescription": "Leave a comment below. It could be anything – appreciation, information, wisdom, or even humor. Surprise me!",
-    "cardTitle": "Sign the Guestbook",
-    "cardDescription": "Share a message for a future visitor of my site.",
-    "cardInfo": "Your information is only used to display your name and reply by email.",
-    "logInWithGitHub": "Login with GitHub",
-    "logInWithGoogle": "Login with Google",
-    "signOut": "Sign Out",
-    "sign": "Sign",
-    "delete": "Delete",
-    "hooray": "Hooray! Thanks for signing my Guestbook."
-
+  "metaTitle": "Guestbook",
+  "metaDescription": "Sign my digital guestbook and share some wisdom.",
+  "pageDescription": "Leave a comment below. It could be anything – appreciation, information, wisdom, or even humor. Surprise me!",
+  "cardTitle": "Sign the Guestbook",
+  "cardDescription": "Share a message for a future visitor of my site.",
+  "cardInfo": "Your information is only used to display your name and reply by email.",
+  "logInWithGitHub": "Login with GitHub",
+  "logInWithGoogle": "Login with Google",
+  "signOut": "Sign Out",
+  "sign": "Sign",
+  "delete": "Delete",
+  "hooray": "Hooray! Thanks for signing my Guestbook.",
+  "latest-messages": "Latest Messages"
 }

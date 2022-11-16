@@ -43,11 +43,11 @@ export default function GuestbookPage({
       <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
         <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mt-28 lg:mt-48 mb-16 w-full">
           <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
-            {t('metaTitle')}
+            {t('guestbook-page:metaTitle')}
           </h1>
 
           <p className="text-base-content/60 mb-4 text-xl">
-            {t('pageDescription')}
+            {t('guestbook-page:pageDescription')}
           </p>
           <Guestbook fallbackData={fallbackData} />
         </div>

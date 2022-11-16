@@ -87,72 +87,72 @@ function ModalElement({ onClose, isOpen }) {
             {t('home')}
           </Link>
         </motion.li>
-        <motion.li variants={item} className="py-5 border-b border-white/20">
+        <motion.li variants={item}>
           <Link
             href="/blog"
             passHref
-            className="no-underline font-normal leading-4"
+            className="flex no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
             onClick={onClose}
           >
             {t('blog')}
           </Link>
         </motion.li>
-        <motion.li variants={item} className="py-5 border-b border-white/20">
+        <motion.li variants={item}>
           <Link
             href="/dashboard"
             passHref
             onClick={onClose}
-            className="no-underline font-normal leading-4"
+            className="flex no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
           >
             Dashboard
           </Link>
         </motion.li>
-        <motion.li variants={item} className="py-5 border-b border-white/20">
+        <motion.li variants={item}>
           <Link
             href="/mailinglist"
             passHref
             onClick={onClose}
-            className="no-underline font-normal leading-4"
+            className="flex no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
           >
             {t('mailList')}
           </Link>
         </motion.li>
-        <motion.li variants={item} className="py-5 border-b border-white/20">
+        <motion.li variants={item}>
           <Link
             href="/work"
             onClick={onClose}
             passHref
-            className="no-underline font-normal leading-4"
+            className="flex no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
           >
             {t('work')}
           </Link>
         </motion.li>
-        <motion.li variants={item} className="py-5 border-b border-white/20">
+        <motion.li variants={item}>
           <Link
             href="/guestbook"
             onClick={onClose}
             passHref
-            className="no-underline font-normal leading-4"
+            className="flex no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
           >
             {t('guestbook')}
           </Link>
         </motion.li>
-        <motion.li variants={item} className="py-5 border-b border-white/20">
+        <motion.li variants={item}>
           <Link
             href="/about"
             passHref
             onClick={onClose}
-            className="no-underline font-normal leading-4"
+            className="flex no-underline font-normal leading-4 py-5 border-b border-white/20 w-full"
           >
             {t('about')}
           </Link>
         </motion.li>
-        <motion.li variants={item} className="pt-5">
+        <motion.li variants={item}>
           <Link
             href="/contact"
             passHref
             onClick={onClose}
-            className="no-underline font-normal leading-4"
+            className="flex no-underline font-normal leading-4 py-5 w-full"
           >
             {t('contact')}
           </Link>

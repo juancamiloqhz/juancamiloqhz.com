@@ -102,7 +102,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
 
   return (
     <>
-      <div className="border border-base-content/20 p-8 flex flex-col rounded-[var(--rounded-btn)] w-full bg-base-300 shadow-xl">
+      <div className="border border-base-content/20 p-8 flex flex-col rounded-[var(--rounded-btn)] w-full shadow-xl">
         <h5 className="text-xl md:text-2xl font-bold">{t('cardTitle')}</h5>
         <p className="mt-1">{t('cardDescription')}</p>
         {session && (
@@ -167,6 +167,9 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
           <p className="text-sm text-base-content/60">*{t('cardInfo')}</p>
         )}
       </div>
+      <h4 className="mt-16 text-xl sm:text-2xl font-bold">
+        {t('latest-messages')}
+      </h4>
       <div className="mt-4 w-full space-y-8">
         {entries?.map((entry: any) => (
           <GuestbookEntry key={entry.id} entry={entry} user={session?.user} />

@@ -61,7 +61,7 @@ function FeaturedProject() {
           <FiExternalLink size={22} className="sm:hidden" />
         </a>
         <div className="sm:bg-neutral sm:px-6 sm:py-3 sm:-ml-28 mt-2 sm:mt-4 rounded-[var(--rounded-btn)] sm:shadow-md">
-          <p className="sm:my-3 sm:text-right text-neutral-content">
+          <p className="sm:my-3 sm:text-right sm:text-neutral-content text-base-content">
             {t('vibra-project-description')}
           </p>
         </div>
