@@ -45,9 +45,7 @@ function GuestbookEntry({ entry, user }: { entry: any; user: any }) {
             <>
               <span>/</span>
               <button
-                className={`btn btn-error btn-outline btn-xs${
-                  deleting ? ' loading' : ''
-                }`}
+                className={`btn btn-error btn-xs${deleting ? ' loading' : ''}`}
                 onClick={deleteEntry}
               >
                 {t('delete')}
@@ -109,7 +107,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
           <button
             type="button"
             onClick={() => signOut()}
-            className="btn btn-primary btn-sm btn-outline mt-4"
+            className="btn btn-primary btn-sm mt-4"
           >
             {t('signOut')}
           </button>
@@ -118,7 +116,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
           <div className="grid lg:grid-cols-2 my-6 gap-3 lg:gap-6">
             <a
               href="/api/auth/signin/github"
-              className="btn btn-primary btn-sm btn-outline gap-2"
+              className="btn btn-primary btn-sm gap-2"
               onClick={(e) => {
                 e.preventDefault();
                 signIn('github');
@@ -129,7 +127,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
             </a>
             <a
               href="/api/auth/signin/google"
-              className="btn btn-primary btn-sm btn-outline gap-2"
+              className="btn btn-primary btn-sm gap-2"
               onClick={(e) => {
                 e.preventDefault();
                 signIn('google');
@@ -150,7 +148,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
               required
             />
             <button
-              className={`btn btn-primary btn-outline px-6 mt-4 float-right${
+              className={`btn btn-primary px-6 mt-4 float-right${
                 form.state === Form.Loading ? ' loading' : ''
               }`}
               type="submit"

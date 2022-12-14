@@ -22,25 +22,17 @@ export default function PostPreview({ post }: { post: Post }) {
 
         {' ⋅ '}
         {post.categories?.map((c, index) => {
-          if (index === post.categories.length - 1) {
-            return (
+          return (
+            <>
               <Link
                 href={`/blog/category/${c.slug}`}
                 key={index}
-                className="uppercase font-serif link text-base-content/60 md:text-xl"
+                className="link font-serif uppercase md:text-xl"
               >
                 {c.name}
               </Link>
-            );
-          }
-          return (
-            <Link
-              href={`/blog/category/${c.slug}`}
-              key={index}
-              className="mr-1 uppercase font-serif link text-base-content/60 md:text-xl"
-            >
-              {`${c.name},`}
-            </Link>
+              {index === post.categories.length - 1 ? '' : ', '}
+            </>
           );
         })}
       </div>

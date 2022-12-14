@@ -61,11 +61,11 @@ function FeaturedProject() {
           <FiExternalLink size={22} className="sm:hidden" />
         </a>
         <div className="sm:bg-neutral sm:px-6 sm:py-3 sm:-ml-28 mt-2 sm:mt-4 rounded-[var(--rounded-btn)] sm:shadow-md">
-          <p className="sm:my-3 sm:text-right sm:text-neutral-content text-base-content">
+          <p className="sm:my-3 sm:text-right sm:text-neutral-content text-base-content/60">
             {t('vibra-project-description')}
           </p>
         </div>
-        <p className="font-mono text-sm sm:text-xs sm:text-right mt-4 flex flex-wrap items-center gap-3 sm:justify-end">
+        <p className="font-mono text-sm sm:text-xs sm:text-right mt-4 flex flex-wrap items-center gap-4 sm:justify-end">
           <span>React</span>
           <span>NextJS</span>
           <span>Typescript</span>
@@ -73,6 +73,9 @@ function FeaturedProject() {
           <span>GraphQL</span>
           <span>PostgreSQL</span>
           <span>Styled Components</span>
+          <span>Google Maps</span>
+          <span>Cloudinary</span>
+          <span>AWS</span>
         </p>
         <div
           className="tooltip tooltip-left mt-2 hover:text-primary transition-all duration-300 hidden sm:block"

@@ -94,11 +94,15 @@ export default function Home() {
             </motion.p> */}
           <motion.p
             variants={item}
-            className="mt-4 md:mt-8 max-w-lg text-base-content/60"
+            className="mt-4 md:mt-8 max-w-xl text-base-content/60"
           >
-            {t('professionDescription')} Lorem, ipsum dolor sit amet consectetur
-            adipisicing elit. Cumque maxime dolorum expedita deserunt accusamus
-            veritatis sequi quae, delectus obcaecati?
+            {t('professionDescription.1')}
+          </motion.p>
+          <motion.p
+            variants={item}
+            className="mt-1 md:mt-2 max-w-xl text-base-content/60"
+          >
+            {t('professionDescription.2')}
           </motion.p>
           {/* <motion.p
               variants={item}

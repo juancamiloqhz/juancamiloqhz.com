@@ -2,7 +2,7 @@
   "metaTitle": "JuanCamiloQHz | Desarrollador de Software, Emprendedor, CTO en Vibra",
   "metaDescription": "JuanCamiloQHz | Desarrollador de Software, Emprendedor, CTO en Vibra",
   "hi": "Hola, mi nombre es",
-  "iDo": "Desarrollo websites y apps.",
+  "iDo": "Desarrollo web apps.",
   "aboutMe": "Sobre mi",
   "where-ive-worked": "Donde he trabajado",
   "things-ive-built": "Algunas cosas que he construido",
@@ -32,7 +32,10 @@
   "dev": "Artículo en desarrollo...",
   "featured-one-title": "¿Quien soy, y por qué he creado esta página web?",
   "profession": "Director de Tecnología en",
-  "professionDescription": "Ayudando a crear las mejores herramientas tecnológicas para el sector de Bienes Raíces.",
+  "professionDescription": {
+    "1": "Soy un desarrollador Full Stack viviendo en Medellín - Colombia con 6 años de experiencia. He desarrollado muchos tipos de proyectos, desde Social Marketplaces hasta plataformas de Ecommerce.",
+    "2": "Soy apasionado por las últimas tecnologías, por desarrollar productos perfectos y completamente intuitivos con una gran experiencia de usuario. Mi enfoque consiste en entregar soluciones de alta calidad, confiables y escalables a mis clientes."
+  },
   "first": "Soy un Desarrollador full-stack, CTO y co-fundador de",
   "second": ", una startup Inmobiliaria en America Latina. También escribo sobre tecnología, startups, y el futuro del internet en mi",
   "third": "y en"
