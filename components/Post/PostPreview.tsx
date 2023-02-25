@@ -1,21 +1,21 @@
-import { useTranslation } from 'next-i18next';
-import { type Post } from '@/contentlayer/generated';
 import Link from 'next/link';
+import { type Post } from '@/contentlayer/generated';
+import { useTranslation } from 'next-i18next';
 // import CoverImage from './CoverImage';
 import DateFormatter from './DateFormatter';
 
 export default function PostPreview({ post }: { post: Post }) {
   const { t } = useTranslation('header');
   return (
-    <article className="mb-10 sm:mb-16 overflow-hidden">
+    <article className="mb-10 overflow-hidden sm:mb-16">
       {/* <div className="cover-wrapper relative w-full">
         <CoverImage post={post} />
       </div> */}
       <Link
         href={`/blog/${post.slug}`}
-        className="text-3xl md:text-4xl lg:text-5xl text-primary"
+        className="text-3xl text-primary md:text-4xl lg:text-5xl"
       >
-        <h2 className="my-1 font-bold font-serif">{post.title}</h2>
+        <h2 className="my-1 font-serif font-bold">{post.title}</h2>
       </Link>
       <div className="mb-2">
         <DateFormatter dateString={new Date(post.publishedAt).toISOString()} />
@@ -23,7 +23,7 @@ export default function PostPreview({ post }: { post: Post }) {
         {' ⋅ '}
         {post.categories?.map((c, index) => {
           return (
-            <>
+            <span key={index}>
               <Link
                 href={`/blog/category/${c.slug}`}
                 key={index}
@@ -32,16 +32,16 @@ export default function PostPreview({ post }: { post: Post }) {
                 {c.name}
               </Link>
               {index === post.categories.length - 1 ? '' : ', '}
-            </>
+            </span>
           );
         })}
       </div>
 
-      <p className="text-lg md:text-xl  mb-3">
+      <p className="mb-3 text-lg  md:text-xl">
         {post.summary}{' '}
         <Link
           href={`/blog/${post.slug}`}
-          className="link link-primary whitespace-nowrap"
+          className="link-primary link whitespace-nowrap"
         >
           {t('read-more')}
         </Link>

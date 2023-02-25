@@ -239,7 +239,7 @@ export default function Container({ children, ...props }: ContainerProps) {
         <meta property="og:image" key="og:image" content={imageUrl} />
         {/* <link rel="icon" href="/favicon.ico" /> */}
         <link rel="canonical" href={url} />
-        {/* <link
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
           href="/favicons/apple-touch-icon.png"
@@ -258,10 +258,10 @@ export default function Container({ children, ...props }: ContainerProps) {
         />
         <link rel="manifest" href="/favicons/site.webmanifest" />
         <link
-        rel="mask-icon"
-        href="/favicons/safari-pinned-tab.svg"
-        color="#000000"
-      /> */}
+          rel="mask-icon"
+          href="/favicons/safari-pinned-tab.svg"
+          color="#000000"
+        />
         <link href="/favicons/site.webmanifest" rel="manifest" />
         <link rel="shortcut icon" href="/favicons/favicon.ico" />
         <meta name="msapplication-TileColor" content="#000000" />

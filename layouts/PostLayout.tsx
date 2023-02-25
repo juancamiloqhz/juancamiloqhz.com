@@ -23,7 +23,9 @@ export default function PostLayout({
     <Container
       title={post.title}
       description={post.summary}
-      imageUrl={post.mainImage}
+      // imageUrl={post.mainImage}
+      // imageUrl={`http://localhost:3000/api/og/post?title=${post.title}`}
+      imageUrl={`https://juancamiloqhz.com/api/og/post?title=${post.title}`}
       openGraphType="article"
       schemaType="Article"
       createdAt={new Date(post.publishedAt).toISOString()}

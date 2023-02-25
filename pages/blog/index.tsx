@@ -117,8 +117,8 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
             </h3>
           )} */}
           {!filteredPosts.length && <p className="mb-4">No posts found.</p>}
-          {filteredPosts.map((post) => (
-            <PostPreview key={post.slug} post={post} />
+          {filteredPosts.map((post, i) => (
+            <PostPreview key={i} post={post} />
           ))}
         </div>
       </div>
