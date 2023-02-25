@@ -1,19 +1,18 @@
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Container from 'components/Container';
-
 import { GetStaticProps } from 'next';
-import Subscribe from 'components/Subscribe/Subscribe';
-import { allNewsletters, type Newsletter } from 'contentlayer/generated';
-import { pick } from 'contentlayer/client';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { type Newsletter, allNewsletters } from '@/contentlayer/generated';
+import { pick } from 'contentlayer/client';
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Container from '@/components/Container';
+import Subscribe from '@/components/Subscribe/Subscribe';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const newsletters = allNewsletters.map((newsletter) =>
-    pick(newsletter, ['slug', 'title', 'summary', 'publishedAt'])
+    pick(newsletter, ['slug', 'title', 'summary', 'publishedAt']),
   );
   return {
     props: {
@@ -22,26 +21,29 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         'mailinglist-page',
         'mailinglist',
         'header',
-        'footer'
-      ]))
-    }
+        'footer',
+      ])),
+    },
   };
 };
 
 export default function MailingListPage({
-  newsletters
+  newsletters,
 }: {
   newsletters: Newsletter[];
 }) {
   const { t } = useTranslation('mailinglist-page');
   return (
-    <Container title={t('pageTitle')} description={t('pageDescription')}>
-      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
-        <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mt-28 lg:mt-48 mb-16 w-full">
-          <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+    <Container
+      title={`${t('pageTitle')}`}
+      description={`${t('pageDescription')}`}
+    >
+      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-28 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
+          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
             {t('pageTitle')}
           </h1>
-          <p className="text-3xl font-light mb-14">
+          <p className="mb-14 text-3xl font-light">
             I run an email list for people interested in front-end development,
             static sites and the IndieWeb. Want to join?
           </p>
@@ -70,14 +72,14 @@ export default function MailingListPage({
 
 function NewsletterLink({
   slug,
-  publishedAt
+  publishedAt,
 }: Pick<Newsletter, 'publishedAt' | 'slug'>) {
   const { locale } = useRouter();
   return (
     <li>
       <Link href={`/newsletter/${slug}`}>
         {format(parseISO(publishedAt), 'MMMM dd, yyyy', {
-          locale: locale === 'es' ? es : undefined
+          locale: locale === 'es' ? es : undefined,
         })}
       </Link>
     </li>

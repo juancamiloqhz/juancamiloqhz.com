@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next';
-import { type Post } from 'contentlayer/generated';
+import { type Post } from '@/contentlayer/generated';
 import Link from 'next/link';
 // import CoverImage from './CoverImage';
 import DateFormatter from './DateFormatter';

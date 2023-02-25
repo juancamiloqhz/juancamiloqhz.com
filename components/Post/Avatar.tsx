@@ -11,7 +11,7 @@ export default function Avatar({ author }: { author: any }) {
         src={author.picture}
         width={48}
         height={48}
-        className="w-12 h-12 rounded-full mr-4"
+        className="mr-4 h-12 w-12 rounded-full"
         alt={author.name}
       />
       <div className="text-xl font-bold">{author.name}</div>

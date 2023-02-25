@@ -1,7 +1,7 @@
-import React from 'react';
 import { useRouter } from 'next/router';
+import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ThemeButton({ withText = false }) {
   const [mounted, setMounted] = React.useState(false);
@@ -13,7 +13,7 @@ export default function ThemeButton({ withText = false }) {
   return (
     <button
       type="button"
-      className="flex items-center p-1 justify-center border-0 gap-2 m-0 bg-base-200 hover:bg-base-300 rounded-full h-8 w-8"
+      className="m-0 flex h-8 w-8 items-center justify-center gap-2 rounded-full border-0 bg-base-200 p-1 hover:bg-base-300"
       onClick={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
       title={locale === 'en' ? 'Change theme' : 'Cambiar tema'}
     >
@@ -26,7 +26,7 @@ export default function ThemeButton({ withText = false }) {
 }
 
 function MoonIcon({
-  className = 'w-6 h-6 text-base-content origin-center'
+  className = 'w-6 h-6 text-base-content origin-center',
 }: {
   className?: string;
 }) {
@@ -53,7 +53,7 @@ function MoonIcon({
 }
 
 function SunIcon({
-  className = 'w-6 h-6 text-base-content origin-center'
+  className = 'w-6 h-6 text-base-content origin-center',
 }: {
   className?: string;
 }) {

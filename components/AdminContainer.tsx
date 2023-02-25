@@ -1,6 +1,6 @@
 import React from 'react';
-import { AdminHeader } from './admin';
 import Header from './Header';
+import { AdminHeader } from './admin';
 
 export default function Container({
   children,

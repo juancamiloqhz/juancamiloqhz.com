@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next';
+import { type Post, allPosts } from '@/contentlayer/generated';
+import { pick } from 'contentlayer/client';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { pick } from 'contentlayer/client';
-import Container from 'components/Container';
-import PageTitle from 'components/common/PageTitle';
-import { PostPreview } from 'components/Post';
-import { allPosts, type Post } from 'contentlayer/generated';
+import Container from '@/components/Container';
+import { PostPreview } from '@/components/Post';
+import PageTitle from '@/components/shared/PageTitle';
 
 export async function getStaticPaths() {
   const allTagsSlugs = allPosts
@@ -17,10 +17,10 @@ export async function getStaticPaths() {
   return {
     paths: uniqueTagsSlugs.map((tag) => ({
       params: {
-        tag
-      }
+        tag,
+      },
     })),
-    fallback: false
+    fallback: false,
   };
 }
 
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
     .filter(
       (post) =>
         post.locale === locale &&
-        post.tags.map((tag) => tag.slug).includes(params?.tag as string)
+        post.tags.map((tag) => tag.slug).includes(params?.tag as string),
     )
     .map((post) =>
       pick(post, [
@@ -41,12 +41,12 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
         'mainImageBlurDataURL',
         'categories',
         'tags',
-        'locale'
-      ])
+        'locale',
+      ]),
     )
     .sort(
       (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
     );
   // console.log(allPostsByTag);
 
@@ -57,15 +57,15 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       ...(await serverSideTranslations(locale ?? 'en', [
         'footer',
         'header',
-        'tag-archive'
-      ]))
-    }
+        'tag-archive',
+      ])),
+    },
   };
 };
 
 export default function TagPostsPage({
   posts,
-  tag
+  tag,
 }: {
   posts: Post[];
   tag: { name: string; slug: string };
@@ -75,10 +75,10 @@ export default function TagPostsPage({
     <Container
       openGraphType="website"
       schemaType="SearchResultsPage"
-      title={t('tag-archive:pageTitle', { tag: tag.name })}
-      description={t('tag-archive:pageDescription')}
+      title={`${t('tag-archive:pageTitle')}`}
+      description={`${t('tag-archive:pageDescription')}`}
     >
-      <PageTitle>{t('tag-archive:pageTitle', { tag: tag.name })}</PageTitle>
+      <PageTitle>{`${t('tag-archive:pageTitle')}`}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post) => (
           <PostPreview key={post.slug} post={post} />

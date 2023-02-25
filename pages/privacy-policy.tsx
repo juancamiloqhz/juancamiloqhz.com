@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import PageTitle from '../components/common/PageTitle';
 import Container from '../components/Container';
+import PageTitle from '../components/shared/PageTitle';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
@@ -10,23 +10,26 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale ?? 'en', [
         'privacy-policy',
         'header',
-        'footer'
-      ]))
-    }
+        'footer',
+      ])),
+    },
   };
 };
 
 export default function PrivacyPolicy() {
   const { t } = useTranslation('privacy-policy');
   return (
-    <Container title={t('pageTitle')} description={t('pageDescription')}>
-      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
-        <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mt-28 lg:mt-48 mb-16 w-full">
-          <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+    <Container
+      title={`${t('pageTitle')}`}
+      description={`${t('pageDescription')}`}
+    >
+      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-28 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
+          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
             {t('pageTitle')}
           </h1>
         </div>
-        <div className="prose prose-lg prose-headings:font-serif prose-headings:font-semibold max-w-2xl mx-auto w-full mb-28">
+        <div className="prose-lg prose mx-auto mb-28 w-full max-w-2xl prose-headings:font-serif prose-headings:font-semibold">
           <p>
             This privacy policy has been compiled to better serve those who are
             concerned with how their &apos;Personally Identifiable

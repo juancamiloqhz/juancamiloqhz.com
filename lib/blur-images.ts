@@ -16,7 +16,7 @@ export default async function blurImage(imagePath: string) {
     .toBuffer()
     .then(
       (buffer: any) =>
-        `data:image/${meta.format};base64,${buffer.toString('base64')}`
+        `data:image/${meta.format};base64,${buffer.toString('base64')}`,
     );
   // console.log('blurred image', typeof imgBase64);
   return {
@@ -27,6 +27,6 @@ export default async function blurImage(imagePath: string) {
     //   .substring('public'.length),
     // width: meta.width,
     // height: meta.height,
-    imgBase64
+    imgBase64,
   };
 }

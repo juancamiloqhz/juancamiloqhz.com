@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next';
+import { type Post, allPosts } from '@/contentlayer/generated';
+import { pick } from 'contentlayer/client';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Container from 'components/Container';
-import { allPosts, type Post } from 'contentlayer/generated';
-import PageTitle from 'components/common/PageTitle';
-import { PostPreview } from 'components/Post';
-import { pick } from 'contentlayer/client';
+import Container from '@/components/Container';
+import { PostPreview } from '@/components/Post';
+import PageTitle from '@/components/shared/PageTitle';
 
 export async function getStaticPaths() {
   const allCategoriesSlugs = allPosts
@@ -19,10 +19,10 @@ export async function getStaticPaths() {
   return {
     paths: uniqueCategoriesSlugs.map((category) => ({
       params: {
-        category
-      }
+        category,
+      },
     })),
-    fallback: false
+    fallback: false,
   };
 }
 
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   // console.log(params);
   const allPostsByCategory = allPosts
     .filter((post) =>
-      post.categories.some((category) => category.slug === params?.category)
+      post.categories.some((category) => category.slug === params?.category),
     )
     .filter((post) => post.locale === locale)
     .map((post) =>
@@ -42,12 +42,12 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
         'mainImage',
         'mainImageBlurDataURL',
         'categories',
-        'tags'
-      ])
+        'tags',
+      ]),
     )
     .sort(
       (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
     );
 
   return {
@@ -57,15 +57,15 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       ...(await serverSideTranslations(locale ?? 'en', [
         'footer',
         'header',
-        'category-archive'
-      ]))
-    }
+        'category-archive',
+      ])),
+    },
   };
 };
 
 export default function CategoryPostsPage({
   posts,
-  category
+  category,
 }: {
   posts: Post[];
   category: { name: string; slug: string };
@@ -73,16 +73,12 @@ export default function CategoryPostsPage({
   const { t } = useTranslation('category-archive');
   return (
     <Container
-      title={t('category-archive:pageTitle', { category: category.name })}
-      description={t('category-archive:pageDescription', {
-        category: category.name
-      })}
+      title={`${t('category-archive:pageTitle')}`}
+      description={`${t('category-archive:pageDescription')}`}
       openGraphType="website"
       schemaType="SearchResultsPage"
     >
-      <PageTitle>
-        {t('category-archive:pageTitle', { category: category.name })}
-      </PageTitle>
+      <PageTitle>{t('category-archive:pageTitle')}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post, i) => (
           <PostPreview key={i} post={post} />

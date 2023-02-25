@@ -1,17 +1,16 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import React from 'react';
-import { useTranslation } from 'next-i18next';
 import { format } from 'date-fns';
-import { signIn, useSession, signOut } from 'next-auth/react';
-import useSWR, { useSWRConfig } from 'swr';
-import { FiGithub } from 'react-icons/fi';
-import { FaGoogle } from 'react-icons/fa';
-
 import fetcher from 'lib/fetcher';
 import { Form, FormState } from 'lib/types';
-import SuccessMessage from 'components/SuccessMessage';
-import ErrorMessage from 'components/ErrorMessage';
-import LoadingSpinner from 'components/LoadingSpinner';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { useTranslation } from 'next-i18next';
+import { FaGoogle } from 'react-icons/fa';
+import { FiGithub } from 'react-icons/fi';
+import useSWR, { useSWRConfig } from 'swr';
+import ErrorMessage from '@/components/ErrorMessage';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import SuccessMessage from '@/components/SuccessMessage';
 
 function GuestbookEntry({ entry, user }: { entry: any; user: any }) {
   const [deleting, setDeleting] = React.useState(false);
@@ -22,7 +21,7 @@ function GuestbookEntry({ entry, user }: { entry: any; user: any }) {
     setDeleting(true);
 
     await fetch(`/api/guestbook/${entry.id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
     setDeleting(false);
 
@@ -30,7 +29,7 @@ function GuestbookEntry({ entry, user }: { entry: any; user: any }) {
   };
 
   return (
-    <div className="flex flex-col space-y-2 mt-4 border p-4 border-base-content/30 rounded-[var(--rounded-btn)]">
+    <div className="mt-4 flex flex-col space-y-2 rounded-[var(--rounded-btn)] border border-base-content/30 p-4">
       <p className="text-lg">{entry.body}</p>
       <div className="flex items-center space-x-3">
         <p className="text-sm text-base-content/60">{entry.created_by}</p>
@@ -45,7 +44,7 @@ function GuestbookEntry({ entry, user }: { entry: any; user: any }) {
             <>
               <span>/</span>
               <button
-                className={`btn btn-error btn-xs${deleting ? ' loading' : ''}`}
+                className={`btn-error btn btn-xs${deleting ? ' loading' : ''}`}
                 onClick={deleteEntry}
               >
                 {t('delete')}
@@ -64,7 +63,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
   const { mutate } = useSWRConfig();
   const [form, setForm] = React.useState<FormState>({ state: Form.Initial });
   const { data: entries }: any = useSWR('/api/guestbook', fetcher, {
-    fallbackData
+    fallbackData,
   });
 
   const leaveEntry = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -73,19 +72,19 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
 
     const res = await fetch('/api/guestbook', {
       body: JSON.stringify({
-        body: inputEl.current!.value
+        body: inputEl.current!.value,
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      method: 'POST'
+      method: 'POST',
     });
 
     const { error } = await res.json();
     if (error) {
       setForm({
         state: Form.Error,
-        message: error
+        message: error,
       });
       return;
     }
@@ -94,29 +93,29 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
     mutate('/api/guestbook');
     setForm({
       state: Form.Success,
-      message: t('hooray')
+      message: `${t('hooray')}`,
     });
   };
 
   return (
     <>
-      <div className="border border-base-content/20 p-8 flex flex-col rounded-[var(--rounded-btn)] w-full shadow-xl">
-        <h5 className="text-xl md:text-2xl font-bold">{t('cardTitle')}</h5>
+      <div className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-base-content/20 p-8 shadow-xl">
+        <h5 className="text-xl font-bold md:text-2xl">{t('cardTitle')}</h5>
         <p className="mt-1">{t('cardDescription')}</p>
         {session && (
           <button
             type="button"
             onClick={() => signOut()}
-            className="btn btn-primary btn-sm mt-4"
+            className="btn-primary btn-sm btn mt-4"
           >
             {t('signOut')}
           </button>
         )}
         {!session && (
-          <div className="grid lg:grid-cols-2 my-6 gap-3 lg:gap-6">
+          <div className="my-6 grid gap-3 lg:grid-cols-2 lg:gap-6">
             <a
               href="/api/auth/signin/github"
-              className="btn btn-primary btn-sm gap-2"
+              className="btn-primary btn-sm btn gap-2"
               onClick={(e) => {
                 e.preventDefault();
                 signIn('github');
@@ -127,7 +126,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
             </a>
             <a
               href="/api/auth/signin/google"
-              className="btn btn-primary btn-sm gap-2"
+              className="btn-primary btn-sm btn gap-2"
               onClick={(e) => {
                 e.preventDefault();
                 signIn('google');
@@ -144,11 +143,11 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
               ref={inputEl}
               aria-label="Your message"
               placeholder="Your message..."
-              className="textarea textarea-bordered w-full"
+              className="textarea-bordered textarea w-full"
               required
             />
             <button
-              className={`btn btn-primary px-6 mt-4 float-right${
+              className={`btn-primary btn mt-4 px-6 float-right${
                 form.state === Form.Loading ? ' loading' : ''
               }`}
               type="submit"
@@ -165,7 +164,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
           <p className="text-sm text-base-content/60">*{t('cardInfo')}</p>
         )}
       </div>
-      <h4 className="mt-16 text-xl sm:text-2xl font-bold">
+      <h4 className="mt-16 text-xl font-bold sm:text-2xl">
         {t('latest-messages')}
       </h4>
       <div className="mt-4 w-full space-y-8">

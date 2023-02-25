@@ -8,11 +8,11 @@ const settings = {
       'Software Developer, Mechanical Engineer and Professional Pyrotechnician',
     social: {
       graphic: `https://juancamiloqhz.com/avatar.png`,
-      twitter: '@juancamiloqhz'
-    }
+      twitter: '@juancamiloqhz',
+    },
   },
   keywords:
-    'Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js'
+    'Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js',
 };
 
 const socialTags = ({
@@ -32,7 +32,7 @@ const socialTags = ({
   updatedAt,
   authorUrl,
   mainCategory,
-  tagArray
+  tagArray,
 }: SEOProps) => {
   const metaTags = [
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -42,7 +42,7 @@ const socialTags = ({
         settings &&
         settings.meta &&
         settings.meta.social &&
-        settings.meta.social.twitter
+        settings.meta.social.twitter,
     },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
@@ -52,7 +52,7 @@ const socialTags = ({
         settings &&
         settings.meta &&
         settings.meta.social &&
-        settings.meta.social.twitter
+        settings.meta.social.twitter,
     },
     { name: 'twitter:image:src', content: imageUrl },
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -62,15 +62,15 @@ const socialTags = ({
     { name: 'og:description', content: description },
     {
       name: 'og:site_name',
-      content: settings && settings.meta && settings.meta.title
+      content: settings && settings.meta && settings.meta.title,
     },
     {
       name: 'og:published_time',
-      content: createdAt || new Date().toISOString()
+      content: createdAt || new Date().toISOString(),
     },
     {
       name: 'og:modified_time',
-      content: updatedAt || new Date().toISOString()
+      content: updatedAt || new Date().toISOString(),
     },
 
     // Og Imagen
@@ -94,7 +94,7 @@ const socialTags = ({
           { name: 'og:profile:first_name', content: name },
           { name: 'og:profile:last_name', content: lastName },
           { name: 'og:profile:username', content: username },
-          { name: 'og:profile:gender', content: gender }
+          { name: 'og:profile:gender', content: gender },
         ]
       : []),
     // profile:first_name - string - A name normally given to an individual by a parent or self-chosen.
@@ -111,16 +111,16 @@ const socialTags = ({
           { name: 'og:profile:gender', content: gender },
           {
             name: 'og:article:published_time',
-            content: createdAt || new Date().toISOString()
+            content: createdAt || new Date().toISOString(),
           },
           {
             name: 'og:article:modified_time',
-            content: updatedAt || new Date().toISOString()
+            content: updatedAt || new Date().toISOString(),
           },
           // { name: 'og:article:expiration_time', content: expiration_time },
           { name: 'og:article:author', content: authorUrl },
           { name: 'og:article:section', content: mainCategory },
-          { name: 'og:article:tag', content: tagArray }
+          { name: 'og:article:tag', content: tagArray },
           // published_time - datetime - When the article was first published.
           // modified_time - datetime - When the article was last changed.
           // expiration_time - datetime - When the article is out of date after.
@@ -128,7 +128,7 @@ const socialTags = ({
           // section - string - A high-level section name. E.g. Technology
           // tag - string array - Tag words associated with this article.
         ]
-      : [])
+      : []),
   ];
 
   return metaTags;
@@ -181,7 +181,7 @@ export default function SEO(props: SEOProps) {
     authorUrl = 'https://juancamiloqhz.com',
     mainCategory = '',
     tagArray = [''],
-    keywords = settings && settings.keywords
+    keywords = settings && settings.keywords,
   } = props;
 
   return (
@@ -231,8 +231,8 @@ export default function SEO(props: SEOProps) {
             '@type': schemaType, // https://schema.org/docs/full.html
             name: title,
             description,
-            url: url
-          })
+            url: url,
+          }),
         }}
       />
     </Head>

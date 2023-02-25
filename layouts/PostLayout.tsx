@@ -1,18 +1,18 @@
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Container from 'components/Container';
-import Subscribe from 'components/Subscribe';
-import { type Post } from 'contentlayer/generated';
-import { DateFormatter } from 'components/Post';
-import { FaTwitter } from 'react-icons/fa';
+import React from 'react';
+import { type Post } from '@/contentlayer/generated';
 import { useTranslation } from 'next-i18next';
+import { FaTwitter } from 'react-icons/fa';
+import Container from '@/components/Container';
+import { DateFormatter } from '@/components/Post';
+import Subscribe from '@/components/Subscribe';
 
 export default function PostLayout({
   children,
   post,
-  otherPosts
+  otherPosts,
 }: React.PropsWithChildren<{
   post: Post;
   otherPosts: Post[];
@@ -28,10 +28,10 @@ export default function PostLayout({
       schemaType="Article"
       createdAt={new Date(post.publishedAt).toISOString()}
     >
-      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
-        <article className="mt-28 lg:mt-48 mb-24 w-full">
-          <div className="max-w-screen-2xl mx-auto w-full mb-8 md:mb-20 md:text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight font-serif">
+      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
+        <article className="mt-28 mb-24 w-full lg:mt-48">
+          <div className="mx-auto mb-8 w-full max-w-screen-2xl md:mb-20 md:text-center">
+            <h1 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-8xl">
               {post.title}
             </h1>
             <div className="my-4">
@@ -45,7 +45,7 @@ export default function PostLayout({
                     <Link
                       href={`/blog/category/${c.slug}`}
                       key={index}
-                      className="uppercase font-serif link text-base-content/60 md:text-xl"
+                      className="link font-serif uppercase text-base-content/60 md:text-xl"
                     >
                       {c.name}
                     </Link>
@@ -55,7 +55,7 @@ export default function PostLayout({
                   <Link
                     href={`/blog/category/${c.slug}`}
                     key={index}
-                    className="mr-1 uppercase font-serif link text-base-content/60 md:text-xl"
+                    className="link mr-1 font-serif uppercase text-base-content/60 md:text-xl"
                   >
                     {`${c.name},`}
                   </Link>
@@ -70,7 +70,7 @@ export default function PostLayout({
           </div>
 
           {post.mainImage && (
-            <div className="relative h-72 md:h-96 lg:h-[28rem] mb-8 md:mb-16 max-w-3xl mx-auto w-full">
+            <div className="relative mx-auto mb-8 h-72 w-full max-w-3xl md:mb-16 md:h-96 lg:h-[28rem]">
               <Image
                 alt={post.title}
                 src={post.mainImage}
@@ -83,11 +83,11 @@ export default function PostLayout({
             </div>
           )}
 
-          <div className="max-w-2xl mx-auto w-full border-b border-base-content/30 pb-24">
-            <div className="prose prose-lg prose-headings:font-serif prose-headings:font-semibold">
+          <div className="mx-auto w-full max-w-2xl border-b border-base-content/30 pb-24">
+            <div className="prose-lg prose prose-headings:font-serif prose-headings:font-semibold">
               {children}
             </div>
-            <div className="lg:flex items-center justify-between mt-24">
+            <div className="mt-24 items-center justify-between lg:flex">
               <div>
                 <p className="italic text-base-content/60">
                   {t('published-on')}
@@ -98,7 +98,7 @@ export default function PostLayout({
                         <Link
                           href={`/blog/category/${c.slug}`}
                           key={index}
-                          className="lowercase font-serif link"
+                          className="link font-serif lowercase"
                         >
                           {c.name}
                         </Link>
@@ -108,7 +108,7 @@ export default function PostLayout({
                       <Link
                         href={`/blog/category/${c.slug}`}
                         key={index}
-                        className="mr-1 lowercase font-serif link"
+                        className="link mr-1 font-serif lowercase"
                       >
                         {`${c.name},`}
                       </Link>
@@ -124,14 +124,14 @@ export default function PostLayout({
                   href={`https://github.com/juancamiloqhz/juancamiloqhz.com/tree/main/apps/nextjs/data/blog/${post.slug}.${locale}.mdx`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link link-primary italic"
+                  className="link-primary link italic"
                 >
                   {t('edit-this-post')}
                 </a>
               </div>
               <a
                 href="https://twitter.com/juancamiloqhz"
-                className="btn btn-primary normal-case gap-2 mt-6 lg:mt-0"
+                className="btn-primary btn mt-6 gap-2 normal-case lg:mt-0"
               >
                 <FaTwitter size={17} />
                 {t('follow')} @juancamiloqhz
@@ -139,11 +139,11 @@ export default function PostLayout({
             </div>
           </div>
         </article>
-        <div className="max-w-2xl mx-auto w-full">
+        <div className="mx-auto w-full max-w-2xl">
           <h3 className="font-bold uppercase">
             {t('other-things-ive-written')}
           </h3>
-          <ul className="flex flex-col gap-4 mt-6">
+          <ul className="mt-6 flex flex-col gap-4">
             {otherPosts.map((p) => (
               <li key={p.slug} className="group">
                 <Link
@@ -155,7 +155,7 @@ export default function PostLayout({
                       dateString={new Date(p.publishedAt).toISOString()}
                     />
                   </span>
-                  <span className="text-base-content/60 text-lg md:text-2xl group-hover:ml-3 group-hover:text-primary transition-all duration-300 ease-in-out tracking-tight">
+                  <span className="text-lg tracking-tight text-base-content/60 transition-all duration-300 ease-in-out group-hover:ml-3 group-hover:text-primary md:text-2xl">
                     {p.title}
                   </span>
                 </Link>
@@ -163,7 +163,7 @@ export default function PostLayout({
             ))}
           </ul>
         </div>
-        <div className="max-w-3xl mx-auto w-full my-24">
+        <div className="mx-auto my-24 w-full max-w-3xl">
           <Subscribe />
         </div>
       </div>

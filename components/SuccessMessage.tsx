@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function SuccessMessage({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {

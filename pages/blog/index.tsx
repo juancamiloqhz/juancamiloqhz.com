@@ -1,13 +1,14 @@
-import React from 'react';
-import { pick } from 'contentlayer/client';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import { allPosts, type Post } from 'contentlayer/generated';
-import { PostPreview } from 'components/Post';
-import Container from 'components/Container';
 import { GetStaticProps } from 'next';
-// import FeaturedPostCard from 'components/Post/FeaturedPostCard';
-// import Container from 'components/Container';
+import React from 'react';
+import { type Post, allPosts } from '@/contentlayer/generated';
+import { pick } from 'contentlayer/client';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Container from '@/components/Container';
+import { PostPreview } from '@/components/Post';
+
+// import FeaturedPostCard from '@/components/Post/FeaturedPostCard';
+// import Container from '@/components/Container';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const posts = allPosts
@@ -21,12 +22,12 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         'mainImage',
         'mainImageBlurDataURL',
         'categories',
-        'tags'
-      ])
+        'tags',
+      ]),
     )
     .sort(
       (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
     );
 
   return {
@@ -36,9 +37,9 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         'single-post',
         'footer',
         'header',
-        'blog-archive'
-      ]))
-    }
+        'blog-archive',
+      ])),
+    },
   };
 };
 
@@ -46,17 +47,17 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
   const { t } = useTranslation('blog-archive');
   const [searchValue, setSearchValue] = React.useState('');
   const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase())
+    post.title.toLowerCase().includes(searchValue.toLowerCase()),
   );
   return (
     <Container
-      title={t('pageTitle')}
-      description={t('pageDescription')}
+      title={`${t('pageTitle')}`}
+      description={`${t('pageDescription')}`}
       schemaType="Blog"
     >
-      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
-        <div className="flex flex-col items-start justify-center max-w-2xl mx-auto mt-28 lg:mt-48 mb-16 w-full">
-          <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-28 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
+          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
             Blog
           </h1>
           {/* <p className="mb-4">

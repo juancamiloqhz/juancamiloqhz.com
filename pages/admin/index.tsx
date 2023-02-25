@@ -1,8 +1,8 @@
-import AdminContainer from 'components/AdminContainer';
 import { GetServerSideProps } from 'next';
-import { useSession, getSession } from 'next-auth/react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import dynamic from 'next/dynamic';
+import { getSession, useSession } from 'next-auth/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import AdminContainer from '@/components/AdminContainer';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
@@ -13,9 +13,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         session,
         ...(await serverSideTranslations(context.locale ?? 'en', [
           'header',
-          'footer'
-        ]))
-      }
+          'footer',
+        ])),
+      },
     };
   }
 
@@ -23,22 +23,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       ...(await serverSideTranslations(context.locale ?? 'en', [
         'header',
-        'footer'
-      ]))
-    }
+        'footer',
+      ])),
+    },
   };
 };
 
 const BarChart = dynamic(() => import('components/admin/BarChart'), {
-  ssr: false
+  ssr: false,
 });
 
 const PieChart = dynamic(() => import('components/admin/PieChart'), {
-  ssr: false
+  ssr: false,
 });
 
 const CalendarChart = dynamic(() => import('components/admin/CalendarChart'), {
-  ssr: false
+  ssr: false,
 });
 
 export default function PersonalDashboard() {
@@ -49,9 +49,9 @@ export default function PersonalDashboard() {
     // title="Private Dashboard"
     // description="My Private Dashboard"
     >
-      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
-        <div className="flex flex-col items-start justify-center mx-auto mt-28 lg:mt-48 mb-16 w-full">
-          <h1 className="mb-8 md:mb-20 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-28 mb-16 flex w-full flex-col items-start justify-center lg:mt-48">
+          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
             Dashboard
           </h1>
 
@@ -59,14 +59,14 @@ export default function PersonalDashboard() {
           <ol>
             <li>Balanza deudas</li>
           </ol>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-            <div className="w-full h-96 bar-chart">
+          <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="bar-chart h-96 w-full">
               <BarChart />
             </div>
-            <div className="w-full h-96">
+            <div className="h-96 w-full">
               <PieChart />
             </div>
-            <div className="w-full h-96">
+            <div className="h-96 w-full">
               <CalendarChart />
             </div>
           </div>

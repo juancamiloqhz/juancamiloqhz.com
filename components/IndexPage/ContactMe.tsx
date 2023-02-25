@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 
 export default function SomeThingsIveBuilt() {
   const { t } = useTranslation('contact-page');
@@ -17,9 +17,9 @@ export default function SomeThingsIveBuilt() {
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ Name, Email, Message })
+      body: JSON.stringify({ Name, Email, Message }),
     });
     // console.log({ res });
     setName('');
@@ -30,21 +30,21 @@ export default function SomeThingsIveBuilt() {
   };
   return (
     <motion.div
-      className="px-8 md:px-28 transition-all duration-500 ease-in-out mb-40 scroll-mt-40"
+      className="mb-40 scroll-mt-40 px-8 transition-all duration-500 ease-in-out md:px-28"
       id="contact"
       viewport={{ once: true }}
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.3, bounce: 0 }}
     >
-      <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
+      <div className="mx-auto flex w-full max-w-2xl flex-col items-center">
         <h2 className="text-primary">04. {t('contact')}</h2>
-        <h3 className="text-5xl font-bold mt-5">{t('pageTitle')}</h3>
-        <p className="text-center text-lg text-base-content/60 mt-6">
+        <h3 className="mt-5 text-5xl font-bold">{t('pageTitle')}</h3>
+        <p className="mt-6 text-center text-lg text-base-content/60">
           {t('pageDescription')}{' '}
           <a
             href="mailto:juancamiloqhz@gmail.com"
-            className="link link-primary"
+            className="link-primary link"
           >
             juancamiloqhz@gmail.com
           </a>
@@ -52,15 +52,15 @@ export default function SomeThingsIveBuilt() {
         </p>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col w-full max-w-lg mx-auto mt-6 sm:mt-10"
+          className="mx-auto mt-6 flex w-full max-w-lg flex-col sm:mt-10"
         >
           <div className="grid sm:grid-cols-2 sm:gap-6">
-            <div className="form-control w-full mb-3 sm:mb-4">
+            <div className="form-control mb-3 w-full sm:mb-4">
               <label htmlFor="name" className="label">
                 <span className="label-text">{t('name')}</span>
               </label>
               <input
-                className="input input-bordered w-full bg-base-200"
+                className="input-bordered input w-full bg-base-200"
                 name="name"
                 id="name"
                 type="text"
@@ -69,12 +69,12 @@ export default function SomeThingsIveBuilt() {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className="form-control w-full mb-3 sm:mb-4">
+            <div className="form-control mb-3 w-full sm:mb-4">
               <label htmlFor="email" className="label">
                 <span className="label-text">{t('email')}</span>
               </label>
               <input
-                className="input input-bordered w-full bg-base-200"
+                className="input-bordered input w-full bg-base-200"
                 name="email"
                 id="email"
                 type="email"
@@ -84,7 +84,7 @@ export default function SomeThingsIveBuilt() {
               />
             </div>
           </div>
-          <div className="form-control w-full mb-3 sm:mb-4">
+          <div className="form-control mb-3 w-full sm:mb-4">
             <label htmlFor="message" className="label">
               <span className="label-text">{t('message')}</span>
             </label>
@@ -94,12 +94,12 @@ export default function SomeThingsIveBuilt() {
               value={Message}
               required
               onChange={(e) => setMessage(e.target.value)}
-              className="textarea textarea-bordered bg-base-200"
+              className="textarea-bordered textarea bg-base-200"
             />
           </div>
           <button
             type="submit"
-            className={`mt-4 sm:mt-8 btn btn-primary w-fit btn-outline${
+            className={`btn-primary btn mt-4 w-fit sm:mt-8 btn-outline${
               loading ? ' loading' : ''
             }`}
           >
@@ -107,11 +107,11 @@ export default function SomeThingsIveBuilt() {
           </button>
           {/* {submitted ? alert('submitted') : ''} */}
           {submitted && (
-            <div className="alert alert-success shadow-lg mt-6">
+            <div className="alert alert-success mt-6 shadow-lg">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="stroke-current flex-shrink-0 h-6 w-6"
+                  className="h-6 w-6 flex-shrink-0 stroke-current"
                   fill="none"
                   viewBox="0 0 24 24"
                 >
@@ -127,7 +127,7 @@ export default function SomeThingsIveBuilt() {
               <div className="flex-none">
                 <button
                   type="button"
-                  className="btn btn-sm btn-circle btn-ghost"
+                  className="btn-ghost btn-sm btn-circle btn"
                   onClick={() => setSubmitted(false)}
                 >
                   <svg

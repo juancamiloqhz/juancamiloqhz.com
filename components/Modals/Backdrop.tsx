@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Backdrop({
   children,
-  onClick
+  onClick,
 }: {
   children: React.ReactNode;
   onClick: (props: any) => void;
@@ -10,7 +10,7 @@ export default function Backdrop({
   return (
     <motion.div
       onClick={onClick}
-      className="fixed left-0 right-0 top-0 bottom-0 backdrop-filter backdrop-blur-sm backdrop-brightness-50 flex justify-center items-center"
+      className="fixed left-0 right-0 top-0 bottom-0 flex items-center justify-center backdrop-blur-sm backdrop-brightness-50 backdrop-filter"
       key="backdrop"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

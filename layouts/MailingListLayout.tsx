@@ -1,14 +1,13 @@
 import Image from 'next/image';
-import { parseISO, format } from 'date-fns';
-
-import Container from 'components/Container';
-import Subscribe from 'components/Subscribe';
-import type { Newsletter } from 'contentlayer/generated';
 import type { PropsWithChildren } from 'react';
+import type { Newsletter } from '@/contentlayer/generated';
+import { format, parseISO } from 'date-fns';
+import Container from '@/components/Container';
+import Subscribe from '@/components/Subscribe';
 
 export default function MailingListLayout({
   children,
-  newsletter
+  newsletter,
 }: PropsWithChildren<{ newsletter: Newsletter }>) {
   return (
     <Container
@@ -18,11 +17,11 @@ export default function MailingListLayout({
       openGraphType="article"
       schemaType="Article"
     >
-      <article className="flex flex-col items-start justify-center max-w-3xl mx-auto mb-16 w-full">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+      <article className="mx-auto mb-16 flex w-full max-w-3xl flex-col items-start justify-center">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-black dark:text-white md:text-5xl">
           {newsletter.title}
         </h1>
-        <div className="flex items-center justify-between w-full mb-4">
+        <div className="mb-4 flex w-full items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
               alt="JuanCamiloQHz"
@@ -36,11 +35,11 @@ export default function MailingListLayout({
               {format(parseISO(newsletter.publishedAt), 'MMMM dd, yyyy')}
             </p>
           </div>
-          <p className="mt-2 text-sm text-gray-500 min-w-32 md:mt-0">
+          <p className="min-w-32 mt-2 text-sm text-gray-500 md:mt-0">
             {newsletter.readingTime.text}
           </p>
         </div>
-        <div className="w-full prose dark:prose-dark mx-auto mt-4 mb-20">
+        <div className="dark:prose-dark prose mx-auto mt-4 mb-20 w-full">
           {children}
         </div>
         <Subscribe />

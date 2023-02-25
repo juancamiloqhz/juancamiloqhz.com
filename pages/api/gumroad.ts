@@ -5,9 +5,9 @@ const getProductSales = async (id: string) => {
   const response = await fetch(`https://api.gumroad.com/v2/products/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.GUMROAD_API_KEY}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    method: 'GET'
+    method: 'GET',
   });
 
   const { product } = await response.json();
@@ -17,17 +17,17 @@ const getProductSales = async (id: string) => {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const masteringNextSales = await getProductSales('sDpG');
   const react2025Sales = await getProductSales('TifxZ');
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
+    'public, s-maxage=1200, stale-while-revalidate=600',
   );
 
   return res.status(200).json({
-    sales: masteringNextSales.plus(react2025Sales).toFixed(0)
+    sales: masteringNextSales.plus(react2025Sales).toFixed(0),
   });
 }

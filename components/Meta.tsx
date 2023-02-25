@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 export default function Meta({
   title = '',
-  description = 'Software Developer, Mechanical Engineer and Professional Pyrotechnician'
+  description = 'Software Developer, Mechanical Engineer and Professional Pyrotechnician',
 }) {
   return (
     <Head>

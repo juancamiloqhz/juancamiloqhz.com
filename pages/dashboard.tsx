@@ -1,15 +1,16 @@
-import Link from 'next/link';
-// import Analytics from 'components/metrics/Analytics';
-// import Newsletter from 'components/metrics/Newsletter';
-import Container from 'components/Container';
-import GitHub from 'components/Metrics/Github';
 import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-// import Gumroad from 'components/metrics/Gumroad';
-// import Unsplash from 'components/metrics/Unsplash';
-// import YouTube from 'components/metrics/Youtube';
-// import TopTracks from 'components/TopTracks';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+// import Analytics from '@/components/metrics/Analytics';
+// import Newsletter from '@/components/metrics/Newsletter';
+import Container from '@/components/Container';
+import GitHub from '@/components/Metrics/Github';
+
+// import Gumroad from '@/components/metrics/Gumroad';
+// import Unsplash from '@/components/metrics/Unsplash';
+// import YouTube from '@/components/metrics/Youtube';
+// import TopTracks from '@/components/TopTracks';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
@@ -17,10 +18,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale ?? 'en', [
         'dashboard-page',
         'header',
-        'footer'
-      ]))
+        'footer',
+      ])),
     },
-    revalidate: 60
+    revalidate: 60,
   };
 };
 
@@ -28,12 +29,12 @@ export default function Dashboard() {
   const { t } = useTranslation(['dashboard-page']);
   return (
     <Container
-      title={t('dashboard-page:metaTitle')}
-      description={t('dashboard-page:metaDescription')}
+      title={`${t('dashboard-page:metaTitle')}`}
+      description={`${t('dashboard-page:metaDescription')}`}
     >
-      <div className="px-8 md:px-28 transition-all duration-500 ease-in-out">
-        <div className="flex flex-col items-start justify-center max-w-3xl mx-auto mt-28 lg:mt-48 mb-16 w-full">
-          <h1 className="mb-8 md:mb-10 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight font-serif md:text-center w-full">
+      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-28 mb-16 flex w-full max-w-3xl flex-col items-start justify-center lg:mt-48">
+          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-10 md:text-center md:text-7xl lg:text-8xl">
             {t('dashboard-page:metaTitle')}
           </h1>
 
@@ -42,7 +43,7 @@ export default function Dashboard() {
               {t('dashboard-page:pageDescription')}&nbsp;
               <Link
                 href="/blog/fetching-data-with-swr"
-                className="link link-primary"
+                className="link-primary link"
               >
                 blog series.
               </Link>
@@ -52,7 +53,7 @@ export default function Dashboard() {
           <Unsplash />
           <YouTube />
         </div> */}
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 my-2 w-full">
+          <div className="my-2 grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
             {/* <Analytics /> */}
             <GitHub />
           </div>

@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { type Post } from 'contentlayer/generated';
+import Link from 'next/link';
+import { type Post } from '@/contentlayer/generated';
 
 export default function CoverImage({ post }: { post: Post }) {
   const image = (
@@ -10,7 +10,7 @@ export default function CoverImage({ post }: { post: Post }) {
       // layout="fill"
       height={550}
       width={1200}
-      className="rounded md:rounded-md object-cover object-center"
+      className="rounded object-cover object-center md:rounded-md"
       placeholder="blur"
       blurDataURL={post.mainImageBlurDataURL}
     />
@@ -20,7 +20,7 @@ export default function CoverImage({ post }: { post: Post }) {
       href={`/blog/${post.slug}`}
       passHref
       aria-label={post.title}
-      className="relative w-full h-56 sm:h-[365px] flex"
+      className="relative flex h-56 w-full sm:h-[365px]"
     >
       {image}
     </Link>

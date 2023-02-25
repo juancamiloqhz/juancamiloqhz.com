@@ -7,11 +7,11 @@ export default NextAuth({
   providers: [
     GithubProvider({
       clientId: process.env.OAUTH_CLIENT_KEY!,
-      clientSecret: process.env.OAUTH_CLIENT_SECRET!
+      clientSecret: process.env.OAUTH_CLIENT_SECRET!,
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID!,
-      clientSecret: process.env.GOOGLE_SECRET!
-    })
-  ]
+      clientSecret: process.env.GOOGLE_SECRET!,
+    }),
+  ],
 });

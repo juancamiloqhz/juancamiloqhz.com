@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import nodemailer from 'nodemailer';
 
 type Response = {
   message: string;
@@ -7,7 +7,7 @@ type Response = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Response>
+  res: NextApiResponse<Response>,
 ) {
   if (req.method === 'POST') {
     // Process a POST request
@@ -22,8 +22,8 @@ export default async function handler(
       secure: false,
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD
-      }
+        pass: process.env.SMTP_PASSWORD,
+      },
     });
     const data = {
       from: 'JuanCamiloQHz.com<juancamiloqhz@gmail.com>',
@@ -33,7 +33,7 @@ export default async function handler(
       <p>You have a contact form submission</p><br>
         <p><strong>Email: </strong> ${Email}</p><br>
         <p><strong>Message: </strong> ${Message}</p><br>
-      `
+      `,
     };
 
     transporter.sendMail(data, function (err, info) {

@@ -1,7 +1,7 @@
-import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+import React from 'react';
 
 export default function LocaleSwitcher() {
   const router = useRouter();
@@ -23,8 +23,8 @@ export default function LocaleSwitcher() {
                 href={{ pathname, query }}
                 as={asPath}
                 locale={locale}
-                title={localeTxt}
-                className="btn btn-primary btn-outline text-sm flex items-center gap-2"
+                // title={localeTxt}
+                className="btn-outline btn-primary btn flex items-center gap-2 text-sm"
               >
                 <Image
                   src={`/assets/flags/${locale === 'en' ? 'gb' : locale}.svg`}

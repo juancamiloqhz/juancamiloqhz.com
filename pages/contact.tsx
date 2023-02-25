@@ -1,9 +1,9 @@
 import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-// import PageTitle from '../components/common/PageTitle';
+import { ContactMe } from '@/components/IndexPage';
+// import PageTitle from '../components/shared/PageTitle';
 import Container from '../components/Container';
-import { ContactMe } from 'components/IndexPage';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
@@ -11,9 +11,9 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale ?? 'es', [
         'contact-page',
         'header',
-        'footer'
-      ]))
-    }
+        'footer',
+      ])),
+    },
   };
 };
 
@@ -23,11 +23,11 @@ export default function AboutPage() {
 
   return (
     <Container
-      title={t('pageTitle')}
-      description={t('pageDescription')}
+      title={`${t('pageTitle')}`}
+      description={`${t('pageDescription')}`}
       schemaType="ContactPage"
     >
-      <div className="flex flex-col justify-center items-start max-w-3xl mx-auto mt-36 w-full">
+      <div className="mx-auto mt-36 flex w-full max-w-3xl flex-col items-start justify-center">
         {/* <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4">
           {t('pageTitle')}
         </h1>

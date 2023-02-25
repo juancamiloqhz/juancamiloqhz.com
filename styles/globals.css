@@ -46,7 +46,7 @@
 
 @layer components {
   .prose {
-    @apply max-w-none prose-lg lg:prose-xl;
+    @apply prose-lg max-w-none lg:prose-xl;
   }
 }
 
@@ -57,16 +57,20 @@ html {
 
 @layer base {
   .link {
-    @apply relative !no-underline;
+    @apply relative w-fit !no-underline;
   }
   .link::before {
     content: '';
-    @apply bg-primary absolute block w-full h-[2px] bottom-0 left-0 scale-x-0;
-    transition: transform 0.3s ease;
+    @apply absolute bottom-0 left-0 block h-[2px] min-h-[2px] w-full scale-x-0 bg-primary;
+    transition: transform 0.2s ease;
     transform-origin: top left;
   }
   .link:hover::before {
     @apply scale-100;
+  }
+  .link-nav::before {
+    @apply -bottom-1;
+    transform-origin: top center;
   }
 
   textarea {
@@ -74,7 +78,7 @@ html {
   }
   input,
   textarea {
-    @apply focus:ring-primary focus:border-primary;
+    @apply focus:border-primary focus:ring-primary;
   }
 }
 
@@ -92,10 +96,10 @@ html {
 }
 
 .page-container {
-  @apply mx-auto max-w-3xl w-full py-2 md:py-4;
+  @apply mx-auto w-full max-w-3xl py-2 md:py-4;
 }
 .post-container {
-  @apply mx-auto max-w-3xl w-full py-2 md:py-4;
+  @apply mx-auto w-full max-w-3xl py-2 md:py-4;
 }
 
 .bar-chart g rect {

@@ -1,5 +1,5 @@
-import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import { FiGitBranch, FiStar } from 'react-icons/fi';
 import { GitHub, Rss } from './Icons';
 
@@ -8,12 +8,12 @@ export default function Footer() {
   // get current year
 
   return (
-    <footer className="w-full pb-2 flex items-center justify-center">
+    <footer className="flex w-full items-center justify-center pb-2">
       <a
         href="https://github.com/juancamiloqhz"
         target="_blank"
         rel="noreferrer noopener"
-        className="text-sm text-center hover:text-primary"
+        className="text-center text-sm hover:text-primary"
       >
         Design and Built by JuanCamiloQHz <br />
         {/* <div className="flex items-center justify-center gap-4 mt-2">

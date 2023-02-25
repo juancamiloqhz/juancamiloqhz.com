@@ -16,7 +16,7 @@ export default function Subscribe() {
     setLoading(true);
     console.log({
       email: inputEmail.current?.value,
-      name: inputName.current?.value
+      name: inputName.current?.value,
     });
     // 3. Send a request to our API with the user's email address.
     // const res = await fetch('/api/subscribe', {
@@ -56,11 +56,11 @@ export default function Subscribe() {
   return (
     <form
       onSubmit={subscribe}
-      className="border border-base-content/20 p-8 flex flex-col rounded-[var(--rounded-btn)] w-full bg-base-300 shadow-xl"
+      className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-base-content/20 bg-base-300 p-8 shadow-xl"
     >
-      <h3 className="text-4xl font-semibold font-serif mb-2">{t('title')}</h3>
+      <h3 className="mb-2 font-serif text-4xl font-semibold">{t('title')}</h3>
       <p className="my-4 text-lg md:text-xl">{t('description')}</p>
-      <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
         <div className="form-control w-full">
           <label className="label" htmlFor="name">
             <span className="label-text font-semibold">{t('name')}</span>
@@ -69,7 +69,7 @@ export default function Subscribe() {
             type="text"
             name="name"
             id="name"
-            className="input input-bordered w-full"
+            className="input-bordered input w-full"
             placeholder="Juan"
             ref={inputName}
             required
@@ -83,7 +83,7 @@ export default function Subscribe() {
             type="email"
             id="email-input"
             name="email"
-            className="input input-bordered w-full"
+            className="input-bordered input w-full"
             placeholder="juan@website.com"
             ref={inputEmail}
             required
@@ -92,14 +92,14 @@ export default function Subscribe() {
       </div>
       <button
         type="submit"
-        className={`btn btn-primary w-fit btn-outline mt-6${
+        className={`btn-outline btn-primary btn w-fit mt-6${
           loading ? ' loading' : ''
         }`}
       >
         {/* {loading ? `✨ ${t('subscribing')} 💌` : `✨ ${t('subscribe')} 💌`} */}
         {loading ? t('subscribing') : t('subscribe')}
       </button>
-      <p className="text-base-content/60 mt-4 text-xs">*{messageTxt}</p>
+      <p className="mt-4 text-xs text-base-content/60">*{messageTxt}</p>
     </form>
   );
 }

@@ -1,24 +1,24 @@
 import { GetStaticProps } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import components from 'components/MDXComponents';
-import { allNewsletters, type Newsletter } from 'contentlayer/generated';
+import { type Newsletter, allNewsletters } from '@/contentlayer/generated';
 import MailingListLayout from 'layouts/MailingListLayout';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import components from '@/components/MDXComponents';
 
 export async function getStaticPaths() {
   return {
     paths: allNewsletters.map((newsletter) => ({
       params: { slug: newsletter.slug },
-      locale: newsletter.locale
+      locale: newsletter.locale,
     })),
-    fallback: false
+    fallback: false,
   };
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   if (!params?.slug) return { notFound: true };
   const newsletter = allNewsletters.find(
-    (newsletter) => newsletter.slug === params.slug
+    (newsletter) => newsletter.slug === params.slug,
   );
   return {
     props: {
@@ -27,14 +27,14 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
         'mailinglist-page',
         'mailinglist',
         'header',
-        'footer'
-      ]))
-    }
+        'footer',
+      ])),
+    },
   };
 };
 
 export default function MailingListSinglePage({
-  newsletter
+  newsletter,
 }: {
   newsletter: Newsletter;
 }) {

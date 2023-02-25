@@ -1,14 +1,14 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
-// import ProsCard from 'components/ProsCard';
-// import ConsCard from 'components/ConsCard';
-// import Gumroad from 'components/metrics/Gumroad';
-// import Unsplash from 'components/metrics/Unsplash';
-// import Analytics from 'components/metrics/Analytics';
-// import YouTube from 'components/metrics/Youtube';
-// import Step from 'components/Step';
-// import ImageWithTheme from 'components/ImageWithTheme';
+// import ProsCard from '@/components/ProsCard';
+// import ConsCard from '@/components/ConsCard';
+// import Gumroad from '@/components/metrics/Gumroad';
+// import Unsplash from '@/components/metrics/Unsplash';
+// import Analytics from '@/components/metrics/Analytics';
+// import YouTube from '@/components/metrics/Youtube';
+// import Step from '@/components/Step';
+// import ImageWithTheme from '@/components/ImageWithTheme';
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -16,7 +16,7 @@ const CustomLink = (props: any) => {
 
   if (isInternalLink) {
     return (
-      <Link href={href} className="link link-primary" {...props}>
+      <Link href={href} className="link-primary link" {...props}>
         {props.children}
       </Link>
     );
@@ -26,7 +26,7 @@ const CustomLink = (props: any) => {
     <a
       target="_blank"
       rel="noopener noreferrer"
-      className="link link-primary"
+      className="link-primary link"
       {...props}
     />
   );
@@ -44,9 +44,9 @@ function RoundedImage(props: any) {
 
 function Callout(props: any) {
   return (
-    <div className="flex bg-gray-200 dark:bg-gray-800 rounded-[var(--rounded-btn)] p-4">
-      <div className="flex items-center w-4 mr-4">{props.emoji}</div>
-      <div className="w-full callout">{props.children}</div>
+    <div className="flex rounded-[var(--rounded-btn)] bg-gray-200 p-4 dark:bg-gray-800">
+      <div className="mr-4 flex w-4 items-center">{props.emoji}</div>
+      <div className="callout w-full">{props.children}</div>
     </div>
   );
 }
@@ -55,7 +55,7 @@ const MDXComponents = {
   Image: RoundedImage,
   //   ImageWithTheme,
   a: CustomLink,
-  Callout
+  Callout,
   //   Analytics,
   //   ConsCard,
   //   Gumroad,

@@ -1,43 +1,40 @@
-import 'styles/globals.css';
-import React from 'react';
 import type { AppProps } from 'next/app';
-import type { NextPage } from 'next';
+import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
+import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
+import cx from 'classnames';
+import type { Session } from 'next-auth';
+import { SessionProvider } from 'next-auth/react';
 import { appWithTranslation } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';
-import { SessionProvider } from 'next-auth/react';
-import { Analytics } from '@vercel/analytics/react';
-import { Inter, Playfair_Display } from '@next/font/google';
-import { ContextProvider } from 'context/ContextProvider';
+import 'styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-// const playfairDisplay = Playfair_Display({
-//   subsets: ['latin'],
-//   variable: '--font-playfair-display'
-// });
+const satoshi = localFont({
+  src: '../styles/Satoshi-Variable.woff2',
+  variable: '--font-satoshi',
+  weight: '300 900',
+  display: 'swap',
+  style: 'normal',
+});
 
-type NextPageWithLayout = NextPage & {
-  getLayout?: (page: React.ReactElement) => React.ReactNode;
-};
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+});
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-function MyApp({ Component, pageProps }: AppProps) {
-  // Use the layout defined at the page level, if available
-  // const getLayout = Component.getLayout || ((page) => page);
-
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps<{ session: Session }>) {
   return (
-    <SessionProvider session={pageProps.session}>
+    <SessionProvider session={session}>
       <ThemeProvider defaultTheme="night">
-        <ContextProvider>
-          {/* <main className={`${playfairDisplay.className} ${inter.className}`}> */}
-          <main className={`${inter.className}`} id="main">
-            {<Component {...pageProps} />}
-          </main>
-          <div id="modal-root" className={`${inter.className}`}></div>
-          <Analytics />
-        </ContextProvider>
+        <main className={cx(satoshi.variable, inter.variable)} id="main">
+          {<Component {...pageProps} />}
+        </main>
+        {/* <div id="modal-root" className={`${inter.className}`}></div> */}
+        <Analytics />
       </ThemeProvider>
     </SessionProvider>
   );

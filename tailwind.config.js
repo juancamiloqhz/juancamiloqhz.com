@@ -7,10 +7,15 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './layouts/**/*.{js,ts,jsx,tsx}'
   ],
-  // darkMode: 'class',
-  // mode: 'jit',
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
+      fontFamily: {
+        display: ['var(--font-satoshi)', 'system-ui', 'sans-serif'],
+        default: ['var(--font-inter)', 'system-ui', 'sans-serif']
+      },
       screens: {
         xs: '475px',
         ...defaultTheme.screens
@@ -29,13 +34,6 @@ module.exports = {
           800: '#222222',
           900: '#111111'
         }
-      },
-      fontFamily: {
-        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans]
-        // serif: [
-        //   'var(--font-playfair-display)',
-        //   ...defaultTheme.fontFamily.serif
-        // ]
       }
       // typography: (theme) => ({
       //   DEFAULT: {
@@ -110,5 +108,9 @@ module.exports = {
   daisyui: {
     themes
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')]
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require('@tailwindcss/typography'),
+    require('daisyui')
+  ]
 };

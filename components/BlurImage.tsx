@@ -1,5 +1,5 @@
-import React from 'react';
 import Image, { type ImageProps } from 'next/image';
+import React from 'react';
 
 export default function BlurImage(props: ImageProps) {
   const [isLoading, setLoading] = React.useState(true);
@@ -13,8 +13,8 @@ export default function BlurImage(props: ImageProps) {
       alt={props.alt}
       className={`${props.className} transition-all ${
         isLoading
-          ? 'grayscale blur-2xl scale-110 rounded-full'
-          : 'grayscale-0 blur-0 scale-100 rounded-full'
+          ? 'scale-110 rounded-full blur-2xl grayscale'
+          : 'scale-100 rounded-full blur-0 grayscale-0'
       }`}
       placeholder="blur"
       blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2PYsGHDfwAHNAMQumvbogAAAABJRU5ErkJggg=="

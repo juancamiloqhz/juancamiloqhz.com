@@ -8,8 +8,8 @@ const sidebar = {
     transition: {
       type: 'spring',
       stiffness: 20,
-      restDelta: 2
-    }
+      restDelta: 2,
+    },
   }),
   closed: {
     clipPath: 'circle(1px at 26px 43px)',
@@ -17,9 +17,9 @@ const sidebar = {
       delay: 0.5,
       type: 'spring',
       stiffness: 400,
-      damping: 40
-    }
-  }
+      damping: 40,
+    },
+  },
 };
 
 export default function MotionCircleNavExample() {
@@ -42,7 +42,7 @@ export default function MotionCircleNavExample() {
       <Navigation />
       <button
         onClick={() => toggleOpen()}
-        className="absolute top-[18px] left-[15px] w-[50px] h-[50px] bg-transparent border-none outline-none rounded-full"
+        className="absolute top-[18px] left-[15px] h-[50px] w-[50px] rounded-full border-none bg-transparent outline-none"
       >
         <MenuToggle isOpen={isOpen} />
       </button>
@@ -55,16 +55,16 @@ const MenuItemVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000, velocity: -100 }
-    }
+      y: { stiffness: 1000, velocity: -100 },
+    },
   },
   closed: {
     y: 50,
     opacity: 0,
     transition: {
-      y: { stiffness: 1000 }
-    }
-  }
+      y: { stiffness: 1000 },
+    },
+  },
 };
 
 const colors = ['#FF008C', '#D309E1', '#9C1AFF', '#7700FF', '#4400FF'];
@@ -76,14 +76,14 @@ function MenuItem({ i }: { i: number }) {
       variants={MenuItemVariants}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      className="m-0 p-0 mb-5 flex items-center cursor-pointer"
+      className="m-0 mb-5 flex cursor-pointer items-center p-0"
     >
       <div
-        className="icon-placeholder w-10 h-5 rounded-full flex-[40px_0] mr-5"
+        className="icon-placeholder mr-5 h-5 w-10 flex-[40px_0] rounded-full"
         style={style}
       />
       <div
-        className="text-placeholder rounded w-52 h-5 flex-[1]"
+        className="text-placeholder h-5 w-52 flex-[1] rounded"
         style={style}
       />
     </motion.li>
@@ -92,16 +92,16 @@ function MenuItem({ i }: { i: number }) {
 
 const variants = {
   open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
   },
   closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 }
-  }
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
 };
 
 function Navigation() {
   return (
-    <motion.ul variants={variants} className="m-0 p-6 absolute top-24 w-full">
+    <motion.ul variants={variants} className="absolute top-24 m-0 w-full p-6">
       {itemIds.map((i) => (
         <MenuItem i={i} key={i} />
       ))}

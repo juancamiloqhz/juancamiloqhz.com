@@ -1,16 +1,16 @@
 import Head from 'next/head';
-import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import Footer from 'components/Footer';
-import Header from 'components/Header';
+import { motion } from 'framer-motion';
+import { BsMastodon } from 'react-icons/bs';
 import {
   FiCodepen,
   FiGithub,
   FiInstagram,
   FiLinkedin,
-  FiTwitter
+  FiTwitter,
 } from 'react-icons/fi';
-import { BsMastodon } from 'react-icons/bs';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 const settings = {
   meta: {
@@ -20,11 +20,11 @@ const settings = {
       'Software Developer, Mechanical Engineer and Professional Pyrotechnician',
     social: {
       graphic: `https://juancamiloqhz.com/avatar.png`,
-      twitter: '@juancamiloqhz'
-    }
+      twitter: '@juancamiloqhz',
+    },
   },
   keywords:
-    'Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js'
+    'Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js',
 };
 
 interface SocialTagsTypes {
@@ -64,7 +64,7 @@ const socialTags = ({
   updatedAt,
   authorUrl,
   mainCategory,
-  tagArray
+  tagArray,
 }: SocialTagsTypes) => {
   const metaTags = [
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -74,7 +74,7 @@ const socialTags = ({
         settings &&
         settings.meta &&
         settings.meta.social &&
-        settings.meta.social.twitter
+        settings.meta.social.twitter,
     },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
@@ -84,7 +84,7 @@ const socialTags = ({
         settings &&
         settings.meta &&
         settings.meta.social &&
-        settings.meta.social.twitter
+        settings.meta.social.twitter,
     },
     { name: 'twitter:image:src', content: imageUrl },
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -94,15 +94,15 @@ const socialTags = ({
     { name: 'og:description', content: description },
     {
       name: 'og:site_name',
-      content: settings && settings.meta && settings.meta.title
+      content: settings && settings.meta && settings.meta.title,
     },
     {
       name: 'og:published_time',
-      content: createdAt || new Date().toISOString()
+      content: createdAt || new Date().toISOString(),
     },
     {
       name: 'og:modified_time',
-      content: updatedAt || new Date().toISOString()
+      content: updatedAt || new Date().toISOString(),
     },
 
     // Og Imagen
@@ -126,7 +126,7 @@ const socialTags = ({
           { name: 'og:profile:first_name', content: name },
           { name: 'og:profile:last_name', content: lastName },
           { name: 'og:profile:username', content: username },
-          { name: 'og:profile:gender', content: gender }
+          { name: 'og:profile:gender', content: gender },
         ]
       : []),
     // profile:first_name - string - A name normally given to an individual by a parent or self-chosen.
@@ -143,16 +143,16 @@ const socialTags = ({
           { name: 'og:profile:gender', content: gender },
           {
             name: 'og:article:published_time',
-            content: createdAt || new Date().toISOString()
+            content: createdAt || new Date().toISOString(),
           },
           {
             name: 'og:article:modified_time',
-            content: updatedAt || new Date().toISOString()
+            content: updatedAt || new Date().toISOString(),
           },
           // { name: 'og:article:expiration_time', content: expiration_time },
           { name: 'og:article:author', content: authorUrl },
           { name: 'og:article:section', content: mainCategory },
-          { name: 'og:article:tag', content: tagArray }
+          { name: 'og:article:tag', content: tagArray },
           // published_time - datetime - When the article was first published.
           // modified_time - datetime - When the article was last changed.
           // expiration_time - datetime - When the article is out of date after.
@@ -160,7 +160,7 @@ const socialTags = ({
           // section - string - A high-level section name. E.g. Technology
           // tag - string array - Tag words associated with this article.
         ]
-      : [])
+      : []),
   ];
 
   return metaTags;
@@ -226,7 +226,7 @@ export default function Container({ children, ...props }: ContainerProps) {
     authorUrl = 'https://juancamiloqhz.com',
     mainCategory = '',
     tagArray = [''],
-    keywords = settings && settings.keywords
+    keywords = settings && settings.keywords,
   } = props;
 
   return (
@@ -289,7 +289,7 @@ export default function Container({ children, ...props }: ContainerProps) {
           updatedAt,
           authorUrl,
           mainCategory,
-          tagArray
+          tagArray,
         }).map(({ name, content }) => {
           return <meta key={name} name={name} content={content} />;
         })}
@@ -301,8 +301,8 @@ export default function Container({ children, ...props }: ContainerProps) {
               '@type': schemaType, // https://schema.org/docs/full.html
               name: title,
               description,
-              url: url
-            })
+              url: url,
+            }),
           }}
         />
       </Head>
@@ -312,13 +312,13 @@ export default function Container({ children, ...props }: ContainerProps) {
         <Footer />
         {/* Fixed Social Links */}
         <motion.div
-          className="fixed bottom-0 left-8 h-80 hidden md:flex flex-col items-center gap-5 w-10"
+          className="fixed bottom-0 left-8 hidden h-80 w-10 flex-col items-center gap-5 md:flex"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 0.6 }}
         >
           <div
-            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="GitHub"
           >
             <a
@@ -330,7 +330,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           <div
-            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Twitter"
           >
             <a
@@ -342,7 +342,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           <div
-            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Mastodon"
           >
             <a
@@ -354,7 +354,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           <div
-            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Instagram"
           >
             <a
@@ -366,7 +366,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           <div
-            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="LinkedIn"
           >
             <a
@@ -378,7 +378,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           <div
-            className="tooltip hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Codepen"
           >
             <a
@@ -389,11 +389,11 @@ export default function Container({ children, ...props }: ContainerProps) {
               <FiCodepen size={20} />
             </a>
           </div>
-          <div className="w-[1px] h-full bg-base-content"></div>
+          <div className="h-full w-[1px] bg-base-content"></div>
         </motion.div>
         {/* Fixed Email */}
         <motion.div
-          className="fixed bottom-0 right-8 h-56 hidden md:flex flex-col items-center gap-6 w-10"
+          className="fixed bottom-0 right-8 hidden h-56 w-10 flex-col items-center gap-6 md:flex"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 0.6 }}
@@ -402,11 +402,11 @@ export default function Container({ children, ...props }: ContainerProps) {
             href="mailto:juancamiloqhz@gmail.com"
             target="_blank"
             rel="noreferrer noopener"
-            className="rotate-90 text-sm hover:text-primary hover:-translate-y-1 transition-all duration-300 tracking-wider"
+            className="rotate-90 text-sm tracking-wider transition-all duration-300 hover:-translate-y-1 hover:text-primary"
           >
             juancamiloqhz@gmail.com
           </a>
-          <div className="w-[1px] h-full max-h-24 bottom-0 fixed bg-base-content"></div>
+          <div className="fixed bottom-0 h-full max-h-24 w-[1px] bg-base-content"></div>
         </motion.div>
       </div>
     </>

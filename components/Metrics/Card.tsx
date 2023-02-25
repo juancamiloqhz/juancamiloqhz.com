@@ -1,7 +1,7 @@
 interface MetricCardProps {
   header: string;
   link: string;
-  metric: Number;
+  metric: number;
   isCurrency?: boolean;
 }
 
@@ -9,10 +9,10 @@ export default function MetricCard({
   header,
   link,
   metric,
-  isCurrency
+  isCurrency,
 }: MetricCardProps) {
   return (
-    <div className="metric-card border border-primary rounded-[var(--rounded-btn)] p-4 max-w-72 w-full">
+    <div className="metric-card max-w-72 w-full rounded-[var(--rounded-btn)] border border-primary p-4">
       <a
         aria-label={header}
         target="_blank"
@@ -22,7 +22,7 @@ export default function MetricCard({
         <div className="flex items-center text-primary">
           {header}
           <svg
-            className="h-4 w-4 ml-1"
+            className="ml-1 h-4 w-4"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -37,7 +37,7 @@ export default function MetricCard({
           </svg>
         </div>
       </a>
-      <p className="mt-2 text-3xl font-bold spacing-sm text-primary">
+      <p className="spacing-sm mt-2 text-3xl font-bold text-primary">
         {metric > 0 && isCurrency && '$'}
         {metric > 0 ? metric.toLocaleString() : '-'}
       </p>
