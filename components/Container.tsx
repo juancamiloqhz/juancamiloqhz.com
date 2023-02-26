@@ -17,14 +17,14 @@ const settings = {
     rootUrl: 'https://juancamiloqhz.com',
     title: 'JuanCamiloQHz',
     description:
-      'Software Developer, Mechanical Engineer and Professional Pyrotechnician',
+      'Software Engineer, Mechanical Engineer and Professional Pyrotechnician',
     social: {
       graphic: `https://juancamiloqhz.com/avatar.png`,
       twitter: '@juancamiloqhz',
     },
   },
   keywords:
-    'Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js',
+    'Software Engineer, Web Developer, Full Stack Developer, Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js',
 };
 
 interface SocialTagsTypes {
@@ -341,7 +341,7 @@ export default function Container({ children, ...props }: ContainerProps) {
               <FiTwitter size={20} />
             </a>
           </div>
-          <div
+          {/* <div
             className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Mastodon"
           >
@@ -352,7 +352,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             >
               <BsMastodon size={20} />
             </a>
-          </div>
+          </div> */}
           <div
             className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Instagram"

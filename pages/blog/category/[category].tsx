@@ -73,12 +73,12 @@ export default function CategoryPostsPage({
   const { t } = useTranslation('category-archive');
   return (
     <Container
-      title={`${t('category-archive:pageTitle')}`}
-      description={`${t('category-archive:pageDescription')}`}
+      title={`${t('pageTitle')}`}
+      description={`${t('pageDescription')}`}
       openGraphType="website"
       schemaType="SearchResultsPage"
     >
-      <PageTitle>{t('category-archive:pageTitle')}</PageTitle>
+      <PageTitle>{t('pageTitle')}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post, i) => (
           <PostPreview key={i} post={post} />

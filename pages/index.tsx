@@ -1,8 +1,9 @@
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'next-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // import FeaturedPostCard from '@/components/Post/FeaturedPostCard';
 import { BsChevronCompactDown } from 'react-icons/bs';
@@ -49,11 +50,11 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 export default function Home() {
-  const { t } = useTranslation(['index-page']);
+  const { t } = useTranslation('index-page');
   return (
     <Container
-      exclusiveTitle={`${t('index-page:metaTitle')}`}
-      description={`${t('index-page:metaDescription')}`}
+      exclusiveTitle={`${t('metaTitle')}`}
+      description={`${t('metaDescription')}`}
       schemaType="WebSite"
     >
       {/* Hero */}
@@ -152,36 +153,46 @@ export default function Home() {
                 <span className="mr-1 text-xl font-normal text-primary">
                   01.
                 </span>{' '}
-                {t('aboutMe')}
+                {t('about-me.title')}
               </h2>
               <div className="h-[1px] w-full bg-base-content/60" />
             </div>
             <div className="w-0 lg:w-72"></div>
           </div>
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:gap-16">
-            <div>
-              <p className="text-base-content/60">
-                Hello, my name is Juan Camilo Quintero. Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Aspernatur repudiandae
-                quibusdam doloremque pariatur dolorem exercitationem molestiae,
-                ab a illum! Incidunt ipsam quod culpa, quae magnam harum quis
-                ex. Consequuntur amet corporis mollitia quam molestias dolor.
-                Iste, iure error, reprehenderit accusamus autem hic fugiat
-                impedit, corrupti facilis velit exercitationem. Quas, voluptate.
+            <div className="space-y-3 text-base-content/60">
+              <p>{t('about-me.1')}</p>
+              <p>
+                <Trans ns="index-page" i18nKey="about-me.2">
+                  I've always been fascinated by the internet and how it can
+                  impact people's and businesses'. I've spent the past 6 years
+                  working and developing different projects and companies, with
+                  an emphasis on the best user experience and performance. I'm
+                  currently the Co Founder and CTO at
+                  <Link href="https://vibra.la/" className="link text-primary">
+                    Vibra.la
+                  </Link>
+                  , a real estate startup that hopes to change the way people
+                  find, buy and sell homes by bringing the best tools to the
+                  real estate industry.
+                </Trans>
               </p>
-              <p className="my-3 text-base-content/60">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur repudiandae quibusdam doloremque pariatur dolorem
-                exercitationem molestiae, ab a illum! Incidunt ipsam quod culpa,
-                quae magnam harum quis ex. Consequuntur amet corporis mollitia
-                quam molestias dolor.
-              </p>
-              <p className="text-base-content/60">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur repudiandae quibusdam doloremque pariatur dolorem
-                exercitationem molestiae, Iste, iure error, reprehenderit
-                accusamus autem hic fugiat impedit, corrupti facilis velit
-                exercitationem. Quas, voluptate.
+              <p>{t('about-me.3')}</p>
+              <p>{t('about-me.4')}</p>
+              <p>
+                <Trans ns="index-page" i18nKey="about-me.5">
+                  If you have any questions or want to learn more about me, feel
+                  free to contact me through my social media or by my{' '}
+                  <Link href="/contact" className="link text-primary">
+                    contact section
+                  </Link>
+                  . If you're interested in reading some articles please check
+                  my{' '}
+                  <Link href="/blog" className="link text-primary">
+                    blog
+                  </Link>
+                  .
+                </Trans>
               </p>
             </div>
             <div className="group relative mt-4 h-72 w-72 justify-self-center lg:justify-self-auto">
@@ -201,11 +212,8 @@ export default function Home() {
           </div>
         </div>
       </motion.div>
-      {/* Where I've Work */}
       <WhereIveWorked />
-      {/* Some Things I’ve Built */}
       <SomeThingsIveBuilt />
-      {/* Contact Me */}
       <ContactMe />
 
       {/* Featured Posts */}

@@ -75,10 +75,10 @@ export default function TagPostsPage({
     <Container
       openGraphType="website"
       schemaType="SearchResultsPage"
-      title={`${t('tag-archive:pageTitle')}`}
-      description={`${t('tag-archive:pageDescription')}`}
+      title={`${t('pageTitle')}`}
+      description={`${t('pageDescription')}`}
     >
-      <PageTitle>{`${t('tag-archive:pageTitle')}`}</PageTitle>
+      <PageTitle>{`${t('pageTitle')}`}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post) => (
           <PostPreview key={post.slug} post={post} />

@@ -3,7 +3,14 @@
   "metaDescription": "JuanCamiloQHz | Desarrollador de Software, Emprendedor, CTO en Vibra",
   "hi": "Hola, mi nombre es",
   "iDo": "Desarrollo web apps.",
-  "aboutMe": "Sobre mi",
+  "about-me": {
+    "title": "Sobre mi",
+    "1": "👋 Hola, soy Juan Camilo Quintero! Soy Ingeniero de Software con una gran pasión y curiosidad por la Ciencia, las Nuevas Tecnologías, la Ingeniería, el Diseño, las Artes y los Grandes Espectáculos Artísticos. Actualmente vivo en Medellín, Colombia.",
+    "2": "Siempre he sentido una fascinación por el Internet y cómo puede impactar a las personas y a los negocios. He pasado los últimos 6 años trabajando y desarrollando diferentes proyectos y empresas, con énfasis en la mejor experiencia de usuario y rendimiento. Actualmente soy el Co Fundador y CTO de <1>Vibra.la</1>, una startup de bienes raíces que espera cambiar la forma en que las personas encuentran, compran y venden casas, brindando las mejores herramientas a la industria inmobiliaria.",
+    "3": "Además de mi trabajo, me encanta aprender cosas nuevas y siempre estoy buscando nuevos desafíos. En mi tiempo libre, generalmente puedes encontrarme aprendiendo sobre nuevas tecnologías, Inteligencia Artificial, Machine Learning o Aprendizaje Automático y Ciencia de Datos. Creo que la mejor manera de aprender es haciendo, por lo que siempre estoy buscando nuevos proyectos y desafíos para trabajar.",
+    "4": "Creé este sitio web para mantener un registro de mis proyectos, ideas y aprendizajes en un solo lugar y compartirlos con el mundo. A través de esta plataforma, espero inspirar a otros a crear y aprender cosas nuevas. ¡Espero que lo encuentres útil e interesante!",
+    "5": "Si tienes alguna pregunta o quieres saber mas sobre mí, no dudes en contactarme a través de mis redes sociales o por mi <2>sección de contacto</2>. Si estás interesado en leer algunos artículos, revisa mi <5>blog</5>."
+  },
   "where-ive-worked": "Donde he trabajado",
   "things-ive-built": "Algunas cosas que he construido",
   "co-founder": "Co-Fundador",

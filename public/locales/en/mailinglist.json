@@ -8,5 +8,6 @@
   "email": "Your Email",
   "subscribe": "Subscribe",
   "subscribing": "Subscribing...",
+  "success": "You're on the list! Expect an email from me soon.",
   "noMessage": "I'll only send emails when new content is posted. No spam."
 }

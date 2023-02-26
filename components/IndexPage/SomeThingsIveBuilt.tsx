@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { FiExternalLink } from 'react-icons/fi';
 
 export default function SomeThingsIveBuilt() {
-  const { t } = useTranslation(['index-page']);
+  const { t } = useTranslation('index-page');
   return (
     <motion.div
       className="mb-32 scroll-mt-40 px-8 transition-all duration-500 ease-in-out sm:mb-52 md:px-28"
@@ -32,7 +32,7 @@ export default function SomeThingsIveBuilt() {
 }
 
 function FeaturedProject() {
-  const { t } = useTranslation(['index-page']);
+  const { t } = useTranslation('index-page');
   return (
     <div className="grid sm:grid-cols-[60%_1fr]">
       <div className="group relative h-fit w-full justify-self-center lg:justify-self-auto">

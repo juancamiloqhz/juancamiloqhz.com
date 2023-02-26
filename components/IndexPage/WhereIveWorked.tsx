@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next';
 import { CgShapeTriangle } from 'react-icons/cg';
 
 export default function WhereIveWorked() {
-  const { t } = useTranslation(['index-page']);
+  const { t } = useTranslation('index-page');
   const { locale } = useRouter();
   const [active, setActive] = React.useState(1);
   return (

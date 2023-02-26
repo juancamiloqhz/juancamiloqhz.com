@@ -1,9 +1,16 @@
 {
   "metaTitle": "JuanCamiloQHz | Software Developer, Entrepreneur, CTO at Vibra",
-  "metaDescription": "JuanCamiloQHz is a Software Developer, Entrepreneur, CTO at Vibra. He is passionate about technology and the web. He is a self-taught developer and entrepreneur. He is a graduate of the University of the Philippines Los Baños with a Bachelor of Science in Computer Science and Information Technology.",
+  "metaDescription": "JuanCamiloQHz is a Software Developer, Entrepreneur, currently working as CTO at Vibra.la. He is passionate about new technologies and the web. He is a self-taught software engineer and entrepreneur. He is a graduate of the EAFIT University of Medellín with a Bachelor of Mechanical Engineering, also graduated of MBA from the same university.",
   "hi": "Hi, my name is",
   "iDo": "I craft things for the web.",
-  "aboutMe": "About me",
+  "about-me": {
+    "title":"About me",
+    "1": "👋 Hi, I'm Juan Camilo Quintero! I'm a Software Engineer with a great passion and curiosity for Science, New Technologies, Engineering, Design, Arts, and Great Artistic Shows. I currently live in Medellín, Colombia.",
+    "2": "I've always been fascinated by the internet and how it can impact people's and businesses'. I've spent the past 6 years working and developing different projects and companies, with an emphasis on the best user experience and performance. I'm currently the Co Founder and CTO at <1>Vibra.la</1>, a real estate startup that hopes to change the way people find, buy and sell homes by bringing the best tools to the real estate industry.",
+    "3": "In addition to my work, I love to learn new things, and I'm always looking for new challenges. In my free time, you can usually find me learning about New Technologies, Artificial Intelligence, Machine Learning and Data Science. I find that the best way to learn is to do, so I'm always looking for new projects and challenges to work on.",
+    "4": "I created this website to keep track of my projects, ideas, and learnings in one place and share them with the world. Through this platform, I hope to inspire others to create and learn new things. I hope you find it useful and interesting!",
+    "5": "If you have any questions or want to learn more about me, feel free to contact me through my social media or by my <2>contact section</2>. If you're interested in reading some articles please check my <5>blog</5>."
+  },
   "where-ive-worked": "Where I've worked",
   "things-ive-built": "Some things I've built",
   "co-founder": "Co-Founder",
@@ -33,7 +40,7 @@
   "featured-one-title": "Who am I, and why have I created this website?",
   "profession": "Director of Technology at",
   "professionDescription": {
-    "1": "I'm a Full Stack Developer living in Medellín - Colombia with 6 years of experience. I have developed many type of projects, from Social Marketplaces to Ecommerce platforms.",
+    "1": "I'm a Software Engineer living in Medellín, Colombia with 6 years of experience developing web applications. I have developed many type of projects, from Social Marketplaces to Ecommerce platforms.",
     "2": "I'm very passionate about the latest technologies, perfect designs interfaces, as well as excellent user experience. My Focus is to deliver high-quality, reliable, and scalable solutions for my clients."
   },
   "first": "I'm a full-stack developer, CTO and co-founder of",
