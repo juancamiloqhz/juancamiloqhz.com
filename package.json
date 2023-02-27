@@ -25,6 +25,7 @@
     "@nivo/pie": "^0.80.0",
     "@nivo/tooltip": "^0.80.0",
     "@prisma/client": "^4.10.1",
+    "@radix-ui/react-switch": "^1.0.1",
     "@reach/disclosure": "^0.18.0",
     "@reach/tooltip": "^0.18.0",
     "@tailwindcss/typography": "^0.5.9",

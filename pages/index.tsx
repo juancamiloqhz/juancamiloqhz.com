@@ -15,6 +15,8 @@ import {
   WhereIveWorked,
 } from '@/components/IndexPage';
 
+// import blurImage from '@/lib/blur-images';
+
 // import BlurImage from '@/components/BlurImage';
 
 const variants = {
@@ -34,7 +36,9 @@ const item = {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  // const { imgBase64 } = await blurImage('/avatar-bw.png');
+  // const { imgBase64 } = await blurImage(
+  //   '/assets/featured-projects/vibra-screenshot.png',
+  // );
   // console.log(imgBase64);
   return {
     props: {
@@ -67,33 +71,22 @@ export default function Home() {
         >
           <motion.h4
             variants={item}
-            className="mb-4 text-lg text-primary md:mb-6"
+            className="mb-4 text-lg text-primary xs:text-xl md:mb-6"
           >
             👋 {t('hi')}
           </motion.h4>
           <motion.h1
             variants={item}
-            className="text-5xl font-bold md:text-6xl lg:text-7xl"
+            className="text-4xl font-bold xs:text-5xl md:text-6xl lg:text-7xl"
           >
             Juan Camilo Quintero. <br />
           </motion.h1>
           <motion.h2
             variants={item}
-            className="mt-1 text-5xl font-bold text-base-content/60 md:mt-3 md:text-6xl lg:text-7xl"
+            className="mt-1 text-4xl font-bold text-primary/70 xs:text-5xl md:mt-3 md:text-6xl lg:text-7xl"
           >
             {t('iDo')}
           </motion.h2>
-          {/* <motion.p variants={item} className="text-xl mt-1">
-              {t('profession')}&nbsp;
-              <a
-                href="https://vibra.la"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="link link-primary"
-              >
-                <strong>Vibra.la</strong>
-              </a>{' '}
-            </motion.p> */}
           <motion.p
             variants={item}
             className="mt-4 max-w-xl text-base-content/60 md:mt-8"
@@ -106,31 +99,6 @@ export default function Home() {
           >
             {t('professionDescription.2')}
           </motion.p>
-          {/* <motion.p
-              variants={item}
-              className="text-2xl md:text-3xl font-light mt-4"
-            >
-              {t('home:first')}{' '}
-              <a href="https://vibra.la" target="_blank" rel="noreferrer noopener">
-                Vibra
-              </a>{' '}
-              {t('home:second')} <Link href="/blog">Blog</Link>{' '}
-              {t('home:third')}{' '}
-              <a href="https://twitter.com/juancamiloqhz">Twitter</a>.
-            </motion.p> */}
-
-          {/* <div className="w-[80px] sm:w-[176px] relative mb-4 sm:mb-0 mr-auto rounded-full bg-gradient-to-tr from-primary via-secondary to-accent">
-            <Image
-              src="/avatar-bw.png"
-              aria-label="Juan Camilo&lsquo;s Avatar"
-              alt="Juan Camilo&lsquo;s Avatar"
-              height={176}
-              width={176}
-              className="rounded-full object-cover object-center p-1"
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpklEQVQokT2SS0sbURzFB6H9AO2X0LWge7+Am7ZBBRcKipI0BhN8xImvZJJ5xISJRKPkYQSfqJCIMakKPlE3guDCLF200PoBxCT3lHMpXfyZO3Pnnv/vnPtXLi4uPpdKpT+FQgF7e3uN7e1tLC8vi9bWVrS0tKCnpwejo6Po7e1FR0cHmpub0dTUhLa2NhEIBODz+eoejwcjIyNVXdc/KuVy+fvh4SH29/ffNzc3sb6+LlZWVtDV1YVcLofz83NcXl6iXC7j4OAAbMi99vZ2TExMCK/XS7Ga0+mEx+P5ppydnf0gXSqVqpMslUohHA5jamoKNzc3uL+/x+PjI+7u7nB9fS3XJycn6Ovrg9vtJr1wu901l8vF97xye3v76+joCIFAgBaEaZqYmZnB2NgYNjY2+B1+vx+7u7uYm5vDwMAA5ufnMTQ0hPHxcczOzgpVVRuqqnL9pDw8PNRphxusWCwGVjAYRCQSgcPhQHd3N4rFIqanp9HZ2YnBwUFMTk5C0zToui6CwaBgk1AoVFOen5/rp6enpBKapgnbthGPx5FOp7GzsyNJSV2tVmWObJLP52FZlmxqmqY891/w5eXlJ4OnYCQSEYuLi2Ctrq7i+PhYim5tbUnCtbU1MB7aNwxDipqmyXMNimua9qS8vr5Wrq6uoKpq3TAMkUgkJB0pMpkMSqWSzJKkjIIXkkwmEY1GQTeWZQld12u0Hw6H88rb25uLt+f3+99pLZFICApxPChMWtKEQiFpkQcpRnH+u7CwwP0aozAM46sC4FOlUvnNwA3DaLBrNpsVtEjbFPL5fOjv78fw8LC8cdbS0pKMJxaL1f9Zr2YymQ+KZVlKMpl0MlRd199t2xbZbJbW5JNiJCMl55MDTJuMhHNr23aNxPF4/Es0GlX+ArFlQxVMtgyfAAAAAElFTkSuQmCC"
-            />
-          </div> */}
         </motion.div>
         <BsChevronCompactDown
           size={30}
@@ -169,9 +137,13 @@ export default function Home() {
                   working and developing different projects and companies, with
                   an emphasis on the best user experience and performance. I'm
                   currently the Co Founder and CTO at
-                  <Link href="https://vibra.la/" className="link text-primary">
+                  <a
+                    href="https://vibra.la/"
+                    target="_blank"
+                    className="link text-primary"
+                  >
                     Vibra.la
-                  </Link>
+                  </a>
                   , a real estate startup that hopes to change the way people
                   find, buy and sell homes by bringing the best tools to the
                   real estate industry.
@@ -195,7 +167,7 @@ export default function Home() {
                 </Trans>
               </p>
             </div>
-            <div className="group relative mt-4 h-72 w-72 justify-self-center lg:justify-self-auto">
+            <div className="group relative row-start-1 mt-4 h-72 w-72 justify-self-center lg:row-auto lg:justify-self-auto">
               <Image
                 src="/face.png"
                 aria-label="Juan Camilo&lsquo;s Avatar"

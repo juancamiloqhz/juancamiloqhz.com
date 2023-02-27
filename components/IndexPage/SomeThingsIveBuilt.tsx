@@ -41,28 +41,35 @@ function FeaturedProject() {
           alt="Vibra.la Screen Shot"
           height={380}
           width={700}
-          //   fill
           className="rounded-[var(--rounded-btn)] border border-base-300 transition-all duration-500 ease-in-out"
-          //   placeholder="blur"
-          //   blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpklEQVQokT2SS0sbURzFB6H9AO2X0LWge7+Am7ZBBRcKipI0BhN8xImvZJJ5xISJRKPkYQSfqJCIMakKPlE3guDCLF200PoBxCT3lHMpXfyZO3Pnnv/vnPtXLi4uPpdKpT+FQgF7e3uN7e1tLC8vi9bWVrS0tKCnpwejo6Po7e1FR0cHmpub0dTUhLa2NhEIBODz+eoejwcjIyNVXdc/KuVy+fvh4SH29/ffNzc3sb6+LlZWVtDV1YVcLofz83NcXl6iXC7j4OAAbMi99vZ2TExMCK/XS7Ga0+mEx+P5ppydnf0gXSqVqpMslUohHA5jamoKNzc3uL+/x+PjI+7u7nB9fS3XJycn6Ovrg9vtJr1wu901l8vF97xye3v76+joCIFAgBaEaZqYmZnB2NgYNjY2+B1+vx+7u7uYm5vDwMAA5ufnMTQ0hPHxcczOzgpVVRuqqnL9pDw8PNRphxusWCwGVjAYRCQSgcPhQHd3N4rFIqanp9HZ2YnBwUFMTk5C0zToui6CwaBgk1AoVFOen5/rp6enpBKapgnbthGPx5FOp7GzsyNJSV2tVmWObJLP52FZlmxqmqY891/w5eXlJ4OnYCQSEYuLi2Ctrq7i+PhYim5tbUnCtbU1MB7aNwxDipqmyXMNimua9qS8vr5Wrq6uoKpq3TAMkUgkJB0pMpkMSqWSzJKkjIIXkkwmEY1GQTeWZQld12u0Hw6H88rb25uLt+f3+99pLZFICApxPChMWtKEQiFpkQcpRnH+u7CwwP0aozAM46sC4FOlUvnNwA3DaLBrNpsVtEjbFPL5fOjv78fw8LC8cdbS0pKMJxaL1f9Zr2YymQ+KZVlKMpl0MlRd199t2xbZbJbW5JNiJCMl55MDTJuMhHNr23aNxPF4/Es0GlX+ArFlQxVMtgyfAAAAAElFTkSuQmCC"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpElEQVR4nIWO248adRiGf7VdYGYZhmFngIEZzrAsu8txDxRY2mVbtsAqNdumNj0kbZOa6KU3VjkvGLOXRm2i1db4D2rTax/D1nipb/J+efK9+d58Ile8ylrQQjctrESaUDSJaviIxbYZfPGS7378nh9e/sxPv7zh1a+/8er179SutUlvlklmC5jRNMuOUrXFVrmOiK4XUXw6WtDEb0cvbMZSqLqO21DRwwn0YIRQNE0iWyS5USab3ydb2KdSu0G9dUKz3eewc4fM1g5CD1nkSlUCdpw108IXCBHP5tE0DY/iQdMDRGJJbnY/pn/3Ed3b9zg46rFbP6J13L/4NhxfJ7NVRnJ7ELKqEIzGKOw1yO/UWN8qktwsU69dpd+7Rbvdodlocnh4k4ePn/Ls08958vwzjo4/pNU+IZXLEwhHCYQiXF5xItQ1H4rmJZHdoLRXZXO7QCa/T+OgzknnmP7tHifdGs2DPLXaLt1en9PTOyQTCWzbxrRjGOEIHq/GlRUHQlbcuD0qms+L4Q+gqV68qsaqJGNbBo3KA/r7CzrFKe3qfY6aFa5VK9T3CqRCOgkzgB1P45RlHE4HYtkqSy78ho4VMrF1D8WoRikdprSd4XrjmE86j7nXOuVu9yNOe3WaOxtUkgYZUyMXNgiFLVyKG6fLiXBJMm5ZIhWz2EjF8XtVbL+PWEAjl4xQKWS41czS2rW5vpOhmk9zUEyTX4+gKB4iQYOwZeNyK0jyKkIIsRxcuSxwuC5dsLj0fic+EIgVgdMtkJeWBJJDsOoQOJfZP7crDulfFoPRkOFoyJdfv+DF+CsG0yHj+ZjpYsJoNmJ0NmY8n7A4X7A4n/HN+ZTFtzPO5lMmkwmz2RmL+ZzZZMRgOEAA/PHnO96+fbfE/9Bf/5O/19//X4nI31KcUwAAAABJRU5ErkJggg=="
         />
         <div className="absolute top-0 bottom-0 left-0 right-0 rounded-[var(--rounded-btn)] bg-primary/40 transition-all duration-500 ease-in-out group-hover:bg-transparent" />
       </div>
 
       <div className="z-[2] mt-4 flex flex-col justify-center sm:mt-0 sm:items-end">
-        <h4 className="text-sm text-primary">{t('featured-project')}</h4>
-        <a
-          href="https://vibra.la"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="flex items-center justify-between transition-all duration-300 ease-in-out hover:text-primary"
+        <h4 className="text-primary">{t('featured-project')}</h4>
+        <div
+          className="tooltip tooltip-left transition-all duration-300 hover:text-primary"
+          data-tip="vibra.la"
         >
-          <h2 className="text-2xl font-bold">Vibra Real State</h2>
-          <FiExternalLink size={22} className="sm:hidden" />
-        </a>
+          <a
+            href="https://vibra.la"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="flex items-center justify-between transition-all duration-300 ease-in-out hover:text-primary"
+          >
+            <h2 className="flex items-center gap-2 text-2xl font-bold">
+              Vibra Real State <FiExternalLink size={22} />
+            </h2>
+          </a>
+        </div>
         <div className="mt-2 rounded-[var(--rounded-btn)] sm:-ml-28 sm:mt-4 sm:bg-neutral sm:px-6 sm:py-3 sm:shadow-md">
-          <p className="text-base-content/60 sm:my-3 sm:text-right sm:text-neutral-content">
-            {t('vibra-project-description')}
+          <p className="text-base text-base-content/60 sm:my-3 sm:text-right sm:text-neutral-content">
+            {t('vibra-project-description.1')}
+            <br />
+            {t('vibra-project-description.2')}
           </p>
         </div>
         <p className="mt-4 flex flex-wrap items-center gap-4 font-mono text-sm sm:justify-end sm:text-right sm:text-xs">
@@ -73,6 +80,8 @@ function FeaturedProject() {
           <span>GraphQL</span>
           <span>PostgreSQL</span>
           <span>Styled Components</span>
+          <span>Framer Motion</span>
+          <span>Radix UI</span>
           <span>Google Maps</span>
           <span>Cloudinary</span>
           <span>AWS</span>

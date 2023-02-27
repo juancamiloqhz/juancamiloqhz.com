@@ -13,9 +13,9 @@ export default function PostPreview({ post }: { post: Post }) {
       </div> */}
       <Link
         href={`/blog/${post.slug}`}
-        className="text-3xl text-primary md:text-4xl lg:text-5xl"
+        className="text-2xl text-primary md:text-3xl lg:text-4xl"
       >
-        <h2 className="my-1 font-serif font-bold">{post.title}</h2>
+        <h2 className="my-1 font-bold">{post.title}</h2>
       </Link>
       <div className="mb-2">
         <DateFormatter dateString={new Date(post.publishedAt).toISOString()} />

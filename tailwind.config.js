@@ -1,11 +1,12 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require("tailwindcss/plugin");
 const { themes } = require('./themes');
 
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './layouts/**/*.{js,ts,jsx,tsx}'
+    './layouts/**/*.{js,ts,jsx,tsx}',
   ],
   future: {
     hoverOnlyWhenSupported: true,
@@ -14,11 +15,11 @@ module.exports = {
     extend: {
       fontFamily: {
         display: ['var(--font-satoshi)', 'system-ui', 'sans-serif'],
-        default: ['var(--font-inter)', 'system-ui', 'sans-serif']
+        default: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       screens: {
         xs: '475px',
-        ...defaultTheme.screens
+        ...defaultTheme.screens,
       },
       colors: {
         'blue-opaque': 'rgb(13 42 148 / 18%)',
@@ -32,9 +33,9 @@ module.exports = {
           600: '#444444',
           700: '#333333',
           800: '#222222',
-          900: '#111111'
-        }
-      }
+          900: '#111111',
+        },
+      },
       // typography: (theme) => ({
       //   DEFAULT: {
       //     css: {
@@ -103,14 +104,24 @@ module.exports = {
       //     }
       //   }
       // })
-    }
+    },
   },
   daisyui: {
-    themes
+    themes,
   },
   plugins: [
-    require("@tailwindcss/line-clamp"),
+    require('@tailwindcss/line-clamp'),
     require('@tailwindcss/typography'),
-    require('daisyui')
-  ]
+    require('daisyui'),
+    plugin(({ addVariant }) => {
+      addVariant('radix-state-checked', '&[data-state="checked"]');
+      addVariant('radix-state-unchecked', '&[data-state="unchecked"]');
+      addVariant('radix-state-open', '&[data-state="open"]');
+      addVariant('radix-state-closed', '&[data-state="closed"]');
+      addVariant(
+        'group-radix-state-open',
+        ':merge(.group)[data-state="open"] &',
+      );
+    }),
+  ],
 };

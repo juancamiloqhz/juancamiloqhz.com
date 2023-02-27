@@ -1,7 +1,7 @@
 {
   "metaTitle": "JuanCamiloQHz | Software Developer, Entrepreneur, CTO at Vibra",
   "metaDescription": "JuanCamiloQHz is a Software Developer, Entrepreneur, currently working as CTO at Vibra.la. He is passionate about new technologies and the web. He is a self-taught software engineer and entrepreneur. He is a graduate of the EAFIT University of Medellín with a Bachelor of Mechanical Engineering, also graduated of MBA from the same university.",
-  "hi": "Hi, my name is",
+  "hi": "Hi, I am",
   "iDo": "I craft things for the web.",
   "about-me": {
     "title":"About me",
@@ -17,9 +17,9 @@
   "owner": "Owner & Art Director",
   "present": "Present",
   "vibra": {
-    "1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
-    "2": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
-    "3": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?"
+    "1": "At Vibra, I serve as both the Co-Founder and CTO. Since December 2019, I have been the sole developer responsible for overseeing the development of the entire platform, including both the backend and frontend components, as well as everything in between.",
+    "2": "The platform offers optimal solutions to all parties involved in the real estate market, ranging from clients and freelance brokers to real estate companies.",
+    "3": "From the beginning, we have been committed to the development of a platform that is easy to use, with a simple and intuitive interface, and that offers the best experience to all users."
   },
   "freelancer": {
     "1": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?",
@@ -32,8 +32,10 @@
     "3": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptatem corrupti nisi pariatur minus consequuntur tempore cumque id ex?"
   },
   "featured-project": "Featured Project",
-  "vibra-project-description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur repudiandae quibusdam doloremque pariatur dol Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur repudiandae quibusdam doloremque pariatur dol amet consectetur adipisicing elit. Aspernatur repudiandae quibusdam doloremque pariatur dol",
-
+  "vibra-project-description": {
+    "1": "Vibra is a real estate startup that hopes to change the way people find, buy and sell homes by bringing the best tools to the real estate industry.",
+    "2": "As a Co-Founder, CTO and the only developer since December 2019, I'm responsible for the development of the entire platform, from the frontend to the backend, and everything in between."
+  },
   "featuredPosts": "Featured Posts",
   "seeAllPosts": "See All Posts",
   "dev": "Article in development...",

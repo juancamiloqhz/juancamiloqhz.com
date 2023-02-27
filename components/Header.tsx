@@ -30,7 +30,7 @@ function NavItem({
       href={goTo ? `/#${goTo}` : href}
       className={`link ${classNames(
         isActive ? 'text-primary' : '',
-        ' text-sm hover:text-primary',
+        ' hover:text-primary',
       )}`}
     >
       <span className="capsize">{text}</span>
@@ -224,7 +224,7 @@ export default function Header() {
             variants={ulContainer}
             initial="hidden"
             animate="show"
-            className="hidden items-center gap-8 lg:flex"
+            className="hidden items-center gap-4 lg:flex xl:gap-6"
           >
             {navItems.map((item, i) => (
               <motion.li
@@ -246,11 +246,11 @@ export default function Header() {
                   locale="en"
                   target="_blank"
                 >
-                  Resume
+                  {t('resume')}
                 </Link>
               </motion.li>
               <motion.li variants={liItem}>
-                <LocaleSwitcher />
+                <LocaleSwitcher isHeader />
               </motion.li>
               <motion.li variants={liItem}>
                 <div
@@ -301,10 +301,7 @@ export default function Header() {
           </div>
         </nav>
       </motion.header>
-      <ModalMenuMobile
-        isOpen={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-      />
+      <ModalMenuMobile isOpen={mobileMenuOpen} setIsOpen={setMobileMenuOpen} />
     </div>
   );
 }

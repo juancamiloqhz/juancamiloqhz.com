@@ -108,18 +108,26 @@ export default function WhereIveWorked() {
           </ul>
           <div className="pt-2">
             {active === 1 && (
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ bounce: 0 }}
+              >
                 <h3 className="mb-1 text-xl font-semibold">
                   {t('co-founder')} & CTO{' '}
-                  <span className="text-primary">@</span>{' '}
-                  <a
-                    className="link-primary link"
-                    href="https://vibra.la"
-                    target="_blank"
-                    rel="noreferrer noopener"
+                  <div
+                    className="tooltip transition-all duration-300 hover:text-primary"
+                    data-tip="vibra.la"
                   >
-                    Vibra
-                  </a>
+                    <a
+                      className="link-primary link whitespace-nowrap"
+                      href="https://vibra.la"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      @ Vibra
+                    </a>
+                  </div>
                 </h3>
                 <p className="text-sm text-base-content/60">
                   {format(new Date(2019, 11), 'MMM yyyy', {
@@ -150,10 +158,14 @@ export default function WhereIveWorked() {
                     <p>{t('vibra.3')}</p>
                   </li>
                 </ul>
-              </div>
+              </motion.div>
             )}
             {active === 2 && (
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ bounce: 0 }}
+              >
                 <h3 className="mb-1 text-xl font-semibold">
                   Freelancer Full Stack Developer
                 </h3>
@@ -189,19 +201,23 @@ export default function WhereIveWorked() {
                     <p>{t('freelancer.3')}</p>
                   </li>
                 </ul>
-              </div>
+              </motion.div>
             )}
             {active === 3 && (
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ bounce: 0 }}
+              >
                 <h3 className="mb-1 text-xl font-semibold">
-                  {t('owner')} <span className="text-primary">@</span>{' '}
+                  {t('owner')}{' '}
                   <a
-                    className="link-primary link"
+                    className="link-primary link whitespace-nowrap"
                     href="https://www.youtube.com/watch?v=a4SC9yAnXok"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    Supernova Fireworks
+                    @ Supernova Fireworks
                   </a>
                 </h3>
                 <p className="text-sm text-base-content/60">
@@ -236,7 +252,7 @@ export default function WhereIveWorked() {
                     <p>{t('supernova.3')}</p>
                   </li>
                 </ul>
-              </div>
+              </motion.div>
             )}
           </div>
         </div>

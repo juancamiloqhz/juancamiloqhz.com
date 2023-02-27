@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import SocialLinks from '@/shared/SocialLinks';
 import { useTranslation } from 'next-i18next';
-import { FiGitBranch, FiStar } from 'react-icons/fi';
 import { GitHub, Rss } from './Icons';
 
 export default function Footer() {
@@ -8,14 +8,15 @@ export default function Footer() {
   // get current year
 
   return (
-    <footer className="flex w-full items-center justify-center pb-2">
-      <a
-        href="https://github.com/juancamiloqhz"
-        target="_blank"
-        rel="noreferrer noopener"
-        className="text-center text-sm hover:text-primary"
+    <footer className="flex w-full flex-col items-center justify-center gap-5 pb-2">
+      <div className="flex items-center gap-5 md:hidden">
+        <SocialLinks />
+      </div>
+      <Link
+        href="/"
+        className="link mb-1 text-center text-sm hover:text-primary"
       >
-        Design and Built by JuanCamiloQHz <br />
+        {t('made-by')}
         {/* <div className="flex items-center justify-center gap-4 mt-2">
           <span className="flex items-center gap-2 text-sm">
             <FiStar size={20} className="inline" /> 600
@@ -24,7 +25,7 @@ export default function Footer() {
             <FiGitBranch size={20} className="inline" /> 600
           </span>
         </div> */}
-      </a>
+      </Link>
       {/* <div className="gap-3 py-3 md:py-8 max-w-3xl mx-auto">
         <div className="my-8">
           <div className="mb-6">

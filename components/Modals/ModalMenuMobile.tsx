@@ -8,6 +8,8 @@ import { useTranslation } from 'next-i18next';
 import { createPortal } from 'react-dom';
 import MenuToggle from '@/components/MenuToggle';
 import { useKeydown } from '@/lib/helpers';
+import LocaleSwitcher from '../LocaleSwitcher';
+import SocialLinks from '../shared/SocialLinks';
 
 const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -19,7 +21,7 @@ const list = {
   hidden: {
     opacity: 0,
     transition: {
-      staggerChildren: 0.07,
+      staggerChildren: 0.04,
       when: 'afterChildren',
       staggerDirection: -1,
     },
@@ -48,13 +50,13 @@ const item = {
 };
 
 type ModalProps = {
-  onClose: () => void;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
 };
 
-function ModalElement({ onClose, isOpen }: ModalProps) {
+function ModalElement({ setIsOpen, isOpen }: ModalProps) {
   const { t } = useTranslation('header');
-  useKeydown('Escape', onClose);
+  useKeydown('Escape', () => setIsOpen(false));
 
   React.useEffect(() => {
     if (isOpen) {
@@ -69,15 +71,11 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
 
   return (
     <>
-      <div
-        className="fixed inset-0 z-50 w-full bg-base-300"
-        role="dialog"
-        key="dialog"
-      />
+      <div className="fixed inset-0 z-50 w-full bg-base-300" /> {/* backdrop */}
       <button
         type="button"
-        onClick={onClose}
-        className="fixed top-6 right-10 z-[110] md:top-8 md:right-12"
+        onClick={() => setIsOpen(false)}
+        className="fixed top-6 right-6 z-[110] md:top-8 md:right-12"
       >
         <MenuToggle isOpen={isOpen} size={24} />
       </button>
@@ -92,7 +90,7 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
           <Link
             href="/"
             passHref
-            onClick={onClose}
+            onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
           >
             {t('home')}
@@ -103,7 +101,7 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
             href="/blog"
             passHref
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
-            onClick={onClose}
+            onClick={() => setIsOpen(false)}
           >
             {t('blog')}
           </Link>
@@ -112,7 +110,7 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
           <Link
             href="/dashboard"
             passHref
-            onClick={onClose}
+            onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
           >
             Dashboard
@@ -122,7 +120,7 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
           <Link
             href="/mailinglist"
             passHref
-            onClick={onClose}
+            onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
           >
             {t('mailList')}
@@ -130,8 +128,9 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
         </motion.li>
         <motion.li variants={item}>
           <Link
-            href="/work"
-            onClick={onClose}
+            // href="/work"
+            href="/#work"
+            onClick={() => setIsOpen(false)}
             passHref
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
           >
@@ -141,7 +140,7 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
         <motion.li variants={item}>
           <Link
             href="/guestbook"
-            onClick={onClose}
+            onClick={() => setIsOpen(false)}
             passHref
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
           >
@@ -152,7 +151,7 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
           <Link
             href="/about"
             passHref
-            onClick={onClose}
+            onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
           >
             {t('about')}
@@ -162,11 +161,27 @@ function ModalElement({ onClose, isOpen }: ModalProps) {
           <Link
             href="/contact"
             passHref
-            onClick={onClose}
+            onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
           >
             {t('contact')}
           </Link>
+        </motion.li>
+        <motion.li variants={item}>
+          <Link
+            href="/resume.pdf"
+            passHref
+            onClick={() => setIsOpen(false)}
+            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+          >
+            {t('resume')}
+          </Link>
+        </motion.li>
+        <motion.li variants={item} className="mt-4">
+          <LocaleSwitcher />
+        </motion.li>
+        <motion.li variants={item} className="mt-4 flex items-center gap-5">
+          <SocialLinks />
         </motion.li>
       </motion.ul>
     </>
