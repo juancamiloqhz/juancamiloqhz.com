@@ -24,7 +24,7 @@ export default function MyWorkPage() {
     >
       <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
         <div className="mx-auto mt-20 mb-16 flex w-full max-w-3xl flex-col items-start justify-center lg:mt-48">
-          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
+          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl ">
             {t('pageTitle')}
           </h1>
         </div>

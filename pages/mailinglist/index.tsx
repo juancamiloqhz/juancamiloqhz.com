@@ -40,7 +40,7 @@ export default function MailingListPage({
     >
       <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
         <div className="mx-auto mt-20 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
-          <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
+          <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl ">
             {t('pageTitle')}
           </h1>
           <p className="mb-14 text-xl text-base-content/60">

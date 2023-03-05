@@ -38,7 +38,7 @@ export default function SomeThingsIveBuilt() {
       transition={{ duration: 0.3, bounce: 0 }}
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col items-center">
-        <h2 className="text-primary">04. {t('contact')}</h2>
+        <h2 className="whitespace-nowrap text-primary">04. {t('contact')}</h2>
         <h3 className="mt-5 text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
           {t('pageTitle')}
         </h3>
@@ -101,7 +101,7 @@ export default function SomeThingsIveBuilt() {
           </div>
           <button
             type="submit"
-            className={`btn-primary btn mt-4 w-full xs:w-fit sm:mt-8 btn-outline${
+            className={`btn-primary btn mt-4 w-full text-base xs:w-fit sm:mt-8${
               loading ? ' loading' : ''
             }`}
           >

@@ -56,14 +56,18 @@ export default function Subscribe() {
   return (
     <form
       onSubmit={subscribe}
-      className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-primary bg-base-300 py-8 px-4 shadow-xl sm:px-8"
+      className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-primary bg-base-300 py-4 px-4 shadow-xl sm:py-8 sm:px-8"
     >
-      <h3 className="mb-2 text-4xl font-semibold">{t('title')}</h3>
-      <p className="my-4 text-lg md:text-xl">{t('description')}</p>
-      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+      <h3 className="text-4xl font-semibold">{t('title')}</h3>
+      <p className="mt-4 text-lg text-base-content/60 md:text-xl">
+        {t('description')}
+      </p>
+      <div className="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-4">
         <div className="form-control w-full">
           <label className="label" htmlFor="name">
-            <span className="label-text font-semibold">{t('name')}</span>
+            <span className="label-text text-base font-semibold">
+              {t('name')}
+            </span>
           </label>
           <input
             type="text"
@@ -77,7 +81,9 @@ export default function Subscribe() {
         </div>
         <div className="form-control w-full">
           <label className="label" htmlFor="email-input">
-            <span className="label-text font-semibold">{t('email')}</span>
+            <span className="label-text text-base font-semibold">
+              {t('email')}
+            </span>
           </label>
           <input
             type="email"
@@ -98,7 +104,7 @@ export default function Subscribe() {
       >
         {loading ? `✨ ${t('subscribing')} 💌` : `✨ ${t('subscribe')} 💌`}
       </button>
-      <p className="mt-4 text-sm text-base-content/60">*{messageTxt}</p>
+      <p className="mt-10 text-sm text-base-content/60">*{messageTxt}</p>
     </form>
   );
 }

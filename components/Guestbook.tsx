@@ -99,7 +99,7 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
 
   return (
     <>
-      <div className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-base-content/20 p-8 shadow-xl">
+      <div className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-primary p-8 shadow-xl">
         <h5 className="text-xl font-bold md:text-2xl">{t('cardTitle')}</h5>
         <p className="mt-1">{t('cardDescription')}</p>
         {session && (

@@ -163,7 +163,7 @@ export default function Home() {
                 </Trans>
               </p>
             </div>
-            <div className="group relative row-start-1 mt-4 h-72 w-72 justify-self-center lg:row-auto lg:justify-self-auto">
+            <div className="group relative row-start-1 mt-4 mb-4 h-80 w-full justify-self-center sm:h-72 sm:w-72 lg:row-auto lg:justify-self-auto">
               <Image
                 src="/face.png"
                 aria-label="Juan Camilo&lsquo;s Avatar"

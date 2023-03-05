@@ -32,7 +32,7 @@ export default function PostLayout({
     >
       <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
         <article className="mt-20 mb-24 w-full lg:mt-48">
-          <div className="mx-auto mb-8 w-full max-w-screen-2xl md:mb-20 md:text-center">
+          <div className="mx-auto mb-8 w-full max-w-screen-lg md:mb-20 md:text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               {post.title}
             </h1>
@@ -123,7 +123,7 @@ export default function PostLayout({
                   />
                 </p>
                 <a
-                  href={`https://github.com/juancamiloqhz/juancamiloqhz.com/tree/main/apps/nextjs/data/blog/${post.slug}.${locale}.mdx`}
+                  href={`https://github.com/juancamiloqhz/juancamiloqhz.com/tree/main/data/blog/${post.slug}.${locale}.mdx`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-primary link italic"
@@ -133,7 +133,7 @@ export default function PostLayout({
               </div>
               <a
                 href="https://twitter.com/juancamiloqhz"
-                className="btn-primary btn mt-6 gap-2 normal-case lg:mt-0"
+                className="btn-primary btn mt-6 gap-2 text-base normal-case lg:mt-0"
               >
                 <FaTwitter size={17} />
                 {t('follow')} @juancamiloqhz
