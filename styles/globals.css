@@ -57,7 +57,8 @@ html {
 
 @layer base {
   p {
-    @apply text-base sm:text-lg;
+    /* @apply text-base sm:text-lg; */
+    @apply text-lg;
   }
   .link {
     @apply relative w-fit !no-underline;

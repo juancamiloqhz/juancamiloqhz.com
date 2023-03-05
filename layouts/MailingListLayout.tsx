@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import type { PropsWithChildren } from 'react';
 import type { Newsletter } from '@/contentlayer/generated';
+import Container from '@/shared/Container';
+import Subscribe from '@/shared/Subscribe';
 import { format, parseISO } from 'date-fns';
-import Container from '@/components/Container';
-import Subscribe from '@/components/Subscribe';
 
 export default function MailingListLayout({
   children,

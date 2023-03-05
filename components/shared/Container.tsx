@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Footer from '@/shared/Footer';
+import Header from '@/shared/Header';
 import { motion } from 'framer-motion';
-import { BsMastodon } from 'react-icons/bs';
 import {
   FiCodepen,
   FiGithub,
@@ -9,15 +10,13 @@ import {
   FiLinkedin,
   FiTwitter,
 } from 'react-icons/fi';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 
 const settings = {
   meta: {
     rootUrl: 'https://juancamiloqhz.com',
     title: 'JuanCamiloQHz',
     description:
-      'Software Engineer, Mechanical Engineer and Professional Pyrotechnician',
+      'Software Engineer, Mechanical Engineer, MBA and Professional Pyrotechnician',
     social: {
       graphic: `https://juancamiloqhz.com/avatar.png`,
       twitter: '@juancamiloqhz',

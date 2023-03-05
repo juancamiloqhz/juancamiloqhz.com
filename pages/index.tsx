@@ -2,13 +2,11 @@ import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import Container from '@/shared/Container';
 import { motion } from 'framer-motion';
 import { Trans, useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-// import FeaturedPostCard from '@/components/Post/FeaturedPostCard';
 import { BsChevronCompactDown } from 'react-icons/bs';
-// import Subscribe from '@/components/Subscribe/Subscribe';
-import Container from '@/components/Container';
 import {
   ContactMe,
   SomeThingsIveBuilt,
@@ -16,8 +14,6 @@ import {
 } from '@/components/IndexPage';
 
 // import blurImage from '@/lib/blur-images';
-
-// import BlurImage from '@/components/BlurImage';
 
 const variants = {
   hidden: { opacity: 0 },
@@ -62,7 +58,7 @@ export default function Home() {
       schemaType="WebSite"
     >
       {/* Hero */}
-      <div className="relative flex h-screen w-full items-center justify-center px-8 transition-all duration-500 ease-in-out md:px-28">
+      <div className="relative flex h-screen w-full items-center justify-center px-4 transition-all duration-500 ease-in-out md:px-28">
         <motion.div
           variants={variants}
           className="mx-auto w-full max-w-5xl"
@@ -83,7 +79,7 @@ export default function Home() {
           </motion.h1>
           <motion.h2
             variants={item}
-            className="mt-1 text-4xl font-bold text-primary/70 xs:text-5xl md:mt-3 md:text-6xl lg:text-7xl"
+            className="mt-1 text-4xl font-bold text-primary xs:text-5xl md:mt-3 md:text-6xl lg:text-7xl"
           >
             {t('iDo')}
           </motion.h2>
@@ -107,7 +103,7 @@ export default function Home() {
       </div>
       {/* About me */}
       <motion.div
-        className="mb-32 scroll-mt-60 px-8 transition-all duration-500 ease-in-out sm:mb-60 md:px-28"
+        className="mb-32 scroll-mt-60 px-4 transition-all duration-500 ease-in-out sm:mb-60 md:px-28"
         id="about"
         viewport={{ once: true }}
         initial={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -187,57 +183,6 @@ export default function Home() {
       <WhereIveWorked />
       <SomeThingsIveBuilt />
       <ContactMe />
-
-      {/* Featured Posts */}
-      {/* <div className="max-w-3xl w-full flex flex-col mx-auto">
-        <h2 className="mb-6 text-3xl font-semibold">
-          {t('index-page:featuredPosts')}
-        </h2>
-        <div className="flex gap-6 flex-col md:flex-row mb-8">
-          <FeaturedPostCard
-            title={t('index-page:featured-one-title')}
-            link="/blog/why-have-i-created-this-website"
-            gradient="from-primary to-secondary"
-            // gradient="from-primary via-secondary to-accent"
-            // gradient="from-[#4158D0] via-[#C850C0] to-[#FFCC70]"
-          />
-          <FeaturedPostCard
-            title={t('index-page:dev')}
-            link="/development"
-            gradient="from-secondary to-accent"
-            // gradient="from-accent via-primary to-secondary"
-            // gradient="from-[#00DBDE] to-[#FC00FF]"
-          />
-          <FeaturedPostCard
-            title={t('index-page:dev')}
-            link="/development"
-            gradient="from-accent to-primary"
-            // gradient="from-secondary via-accent to-primary"
-            // gradient="from-[#FFE53B] to-[#FF2525]"
-          />
-        </div>
-        <Link href="/blog" passHref className="flex mb-10 w-fit link">
-          {t('index-page:seeAllPosts')}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="h-6 w-6 ml-1 stroke-primary"
-          >
-            <path
-              // stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-            />
-          </svg>
-        </Link>
-      </div> */}
-      {/* Subscribe */}
-      {/* <div className="max-w-3xl w-full flex flex-col mx-auto mt-10 mb-20">
-        <Subscribe />
-      </div> */}
     </Container>
   );
 }

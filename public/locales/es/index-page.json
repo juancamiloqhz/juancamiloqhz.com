@@ -1,8 +1,12 @@
 {
-  "metaTitle": "JuanCamiloQHz | Desarrollador de Software, Emprendedor, CTO en Vibra",
-  "metaDescription": "JuanCamiloQHz | Desarrollador de Software, Emprendedor, CTO en Vibra",
+  "metaTitle": "JuanCamiloQHz",
+  "metaDescription": "Ingeniero de Software, Emprendedor, Ingeniero Mecánico, MBA y Pirotécnico Profesional.",
   "hi": "Hola, soy",
   "iDo": "Desarrollo web apps.",
+  "professionDescription": {
+    "1": "Soy un desarrollador Full Stack viviendo en Medellín, Colombia con 6 años de experiencia. He desarrollado muchos tipos de proyectos, desde Social Marketplaces hasta plataformas de Ecommerce.",
+    "2": "Soy apasionado por las últimas tecnologías, por desarrollar productos perfectos y completamente intuitivos con una gran experiencia de usuario. Mi enfoque consiste en entregar soluciones de alta calidad, confiables y escalables a mis clientes."
+  },
   "about-me": {
     "title": "Sobre mi",
     "1": "👋 Hola, soy Juan Camilo Quintero! Soy Ingeniero de Software con una gran pasión y curiosidad por la Ciencia, las Nuevas Tecnologías, la Ingeniería, el Diseño, las Artes y los Grandes Espectáculos Artísticos. Actualmente vivo en Medellín, Colombia.",
@@ -42,10 +46,6 @@
   "dev": "Artículo en desarrollo...",
   "featured-one-title": "¿Quien soy, y por qué he creado esta página web?",
   "profession": "Director de Tecnología en",
-  "professionDescription": {
-    "1": "Soy un desarrollador Full Stack viviendo en Medellín - Colombia con 6 años de experiencia. He desarrollado muchos tipos de proyectos, desde Social Marketplaces hasta plataformas de Ecommerce.",
-    "2": "Soy apasionado por las últimas tecnologías, por desarrollar productos perfectos y completamente intuitivos con una gran experiencia de usuario. Mi enfoque consiste en entregar soluciones de alta calidad, confiables y escalables a mis clientes."
-  },
   "first": "Soy un Desarrollador full-stack, CTO y co-fundador de",
   "second": ", una startup Inmobiliaria en America Latina. También escribo sobre tecnología, startups, y el futuro del internet en mi",
   "third": "y en"

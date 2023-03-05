@@ -1,6 +1,6 @@
 import React from 'react';
+import MenuToggle from '@/shared/MenuToggle';
 import { motion, useCycle } from 'framer-motion';
-import MenuToggle from './MenuToggle';
 
 const sidebar = {
   open: (height = 1000) => ({

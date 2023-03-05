@@ -1,6 +1,7 @@
 import { writeFileSync } from 'fs';
 import RSS from 'rss';
 import * as api from './lib/blog-api.mjs';
+
 const { getAllPosts } = api;
 
 async function generate() {

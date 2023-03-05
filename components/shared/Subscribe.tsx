@@ -56,9 +56,9 @@ export default function Subscribe() {
   return (
     <form
       onSubmit={subscribe}
-      className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-base-content/20 bg-base-300 p-8 shadow-xl"
+      className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-primary bg-base-300 py-8 px-4 shadow-xl sm:px-8"
     >
-      <h3 className="mb-2 font-serif text-4xl font-semibold">{t('title')}</h3>
+      <h3 className="mb-2 text-4xl font-semibold">{t('title')}</h3>
       <p className="my-4 text-lg md:text-xl">{t('description')}</p>
       <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
         <div className="form-control w-full">
@@ -92,14 +92,13 @@ export default function Subscribe() {
       </div>
       <button
         type="submit"
-        className={`btn-outline btn-primary btn w-fit mt-6${
+        className={`btn-primary btn w-full text-base sm:w-fit mt-6${
           loading ? ' loading' : ''
         }`}
       >
-        {/* {loading ? `✨ ${t('subscribing')} 💌` : `✨ ${t('subscribe')} 💌`} */}
-        {loading ? t('subscribing') : t('subscribe')}
+        {loading ? `✨ ${t('subscribing')} 💌` : `✨ ${t('subscribe')} 💌`}
       </button>
-      <p className="mt-4 text-xs text-base-content/60">*{messageTxt}</p>
+      <p className="mt-4 text-sm text-base-content/60">*{messageTxt}</p>
     </form>
   );
 }

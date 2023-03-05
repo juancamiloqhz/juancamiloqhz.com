@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
+import LocaleSwitcher from '@/shared/LocaleSwitcher';
+import MenuToggle from '@/shared/MenuToggle';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import 'keen-slider/keen-slider.min.css';
@@ -9,8 +11,6 @@ import { useTranslation } from 'next-i18next';
 import { useTheme } from 'next-themes';
 import { themes } from 'themes';
 import { ThemePaint, XIcon } from '@/components/Icons';
-import LocaleSwitcher from '@/components/LocaleSwitcher';
-import MenuToggle from '@/components/MenuToggle/MenuToggle';
 import ModalMenuMobile from '@/components/Modals/ModalMenuMobile';
 
 function NavItem({
@@ -172,12 +172,16 @@ export default function Header() {
                     >
                       <div
                         className={`mb-6 flex h-12 border-spacing-3 cursor-pointer items-center gap-3 rounded-[var(--rounded-btn)] border-2 border-transparent bg-base-100 px-3 font-semibold hover:border-primary${
-                          theme === resolvedTheme ? ' border-primary' : ''
+                          theme === resolvedTheme ? ' !border-primary' : ''
                         }`}
                         onClick={() => setTheme(theme)}
                       >
                         <span>
-                          {theme.charAt(0).toUpperCase() + theme.slice(1)}
+                          {theme === 'night' && locale === 'en'
+                            ? 'Main'
+                            : theme === 'night' && locale === 'es'
+                            ? 'Principal'
+                            : theme.charAt(0).toUpperCase() + theme.slice(1)}
                         </span>
                         <div className="flex items-center gap-1">
                           <span className="h-6 w-2 rounded-lg bg-primary"></span>
@@ -203,7 +207,7 @@ export default function Header() {
           )}
         </AnimatePresence>
         <nav
-          className={`flex h-16 w-full justify-between px-8 md:px-10 lg:h-24 items-center${
+          className={`flex h-16 w-full justify-between px-4 md:px-10 lg:h-24 items-center${
             hasScrolled ? ' shadow-[0_4px_5px_rgba(0,0,0,0.1)]' : ''
           }`}
         >

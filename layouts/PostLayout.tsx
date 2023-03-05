@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { type Post } from '@/contentlayer/generated';
+import Container from '@/shared/Container';
+import Subscribe from '@/shared/Subscribe';
 import { useTranslation } from 'next-i18next';
 import { FaTwitter } from 'react-icons/fa';
-import Container from '@/components/Container';
 import { DateFormatter } from '@/components/Post';
-import Subscribe from '@/components/Subscribe';
 
 export default function PostLayout({
   children,
@@ -30,10 +30,10 @@ export default function PostLayout({
       schemaType="Article"
       createdAt={new Date(post.publishedAt).toISOString()}
     >
-      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
-        <article className="mt-28 mb-24 w-full lg:mt-48">
+      <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
+        <article className="mt-20 mb-24 w-full lg:mt-48">
           <div className="mx-auto mb-8 w-full max-w-screen-2xl md:mb-20 md:text-center">
-            <h1 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-8xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               {post.title}
             </h1>
             <div className="my-4">
@@ -86,7 +86,7 @@ export default function PostLayout({
           )}
 
           <div className="mx-auto w-full max-w-2xl border-b border-base-content/30 pb-24">
-            <div className="prose-lg prose prose-headings:font-serif prose-headings:font-semibold">
+            <div className="prose-lg prose prose-headings:font-semibold">
               {children}
             </div>
             <div className="mt-24 items-center justify-between lg:flex">

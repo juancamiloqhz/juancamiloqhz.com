@@ -1,8 +1,12 @@
 {
-  "metaTitle": "JuanCamiloQHz | Software Developer, Entrepreneur, CTO at Vibra",
-  "metaDescription": "JuanCamiloQHz is a Software Developer, Entrepreneur, currently working as CTO at Vibra.la. He is passionate about new technologies and the web. He is a self-taught software engineer and entrepreneur. He is a graduate of the EAFIT University of Medellín with a Bachelor of Mechanical Engineering, also graduated of MBA from the same university.",
+  "metaTitle": "JuanCamiloQHz",
+  "metaDescription": "Software Engineer, Entrepreneur, Mechanical Engineer, MBA and Professional Pyrotechnician.",
   "hi": "Hi, I am",
   "iDo": "I craft things for the web.",
+  "professionDescription": {
+    "1": "I'm a Software Engineer living in Medellín, Colombia with 6 years of experience developing web applications. I have developed many type of projects, from Social Marketplaces to Ecommerce platforms.",
+    "2": "I'm very passionate about the latest technologies, perfect designs interfaces, as well as excellent user experience. My Focus is to deliver high-quality, reliable, and scalable solutions for my clients."
+  },
   "about-me": {
     "title":"About me",
     "1": "👋 Hi, I'm Juan Camilo Quintero! I'm a Software Engineer with a great passion and curiosity for Science, New Technologies, Engineering, Design, Arts, and Great Artistic Shows. I currently live in Medellín, Colombia.",
@@ -41,10 +45,6 @@
   "dev": "Article in development...",
   "featured-one-title": "Who am I, and why have I created this website?",
   "profession": "Director of Technology at",
-  "professionDescription": {
-    "1": "I'm a Software Engineer living in Medellín, Colombia with 6 years of experience developing web applications. I have developed many type of projects, from Social Marketplaces to Ecommerce platforms.",
-    "2": "I'm very passionate about the latest technologies, perfect designs interfaces, as well as excellent user experience. My Focus is to deliver high-quality, reliable, and scalable solutions for my clients."
-  },
   "first": "I'm a full-stack developer, CTO and co-founder of",
   "second": ", a real estate startup in Latin America. I also write about tech, startups, and the future of the web on my",
   "third": "and on"

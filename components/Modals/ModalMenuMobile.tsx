@@ -1,15 +1,15 @@
 // import { XIcon, Close } from '../Icons';
 import Link from 'next/link';
 import React from 'react';
+import LocaleSwitcher from '@/shared/LocaleSwitcher';
+import MenuToggle from '@/shared/MenuToggle';
+import SocialLinks from '@/shared/SocialLinks';
 import FocusTrap from 'focus-trap-react';
 import { AnimatePresence, motion } from 'framer-motion';
-// import ThemeButton from '../ThemeButton';
+// import ThemeButton from '@/shared/ThemeButton';
 import { useTranslation } from 'next-i18next';
 import { createPortal } from 'react-dom';
-import MenuToggle from '@/components/MenuToggle';
 import { useKeydown } from '@/lib/helpers';
-import LocaleSwitcher from '../LocaleSwitcher';
-import SocialLinks from '../shared/SocialLinks';
 
 const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -181,7 +181,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
           <LocaleSwitcher />
         </motion.li>
         <motion.li variants={item} className="mt-4 flex items-center gap-5">
-          <SocialLinks />
+          <SocialLinks size={24} />
         </motion.li>
       </motion.ul>
     </>

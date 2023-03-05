@@ -7,7 +7,7 @@ export default function SomeThingsIveBuilt() {
   const { t } = useTranslation('index-page');
   return (
     <motion.div
-      className="mb-32 scroll-mt-40 px-8 transition-all duration-500 ease-in-out sm:mb-52 md:px-28"
+      className="mb-32 scroll-mt-40 px-4 transition-all duration-500 ease-in-out sm:mb-52 md:px-28"
       id="work"
       viewport={{ once: true }}
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
@@ -49,9 +49,9 @@ function FeaturedProject() {
       </div>
 
       <div className="z-[2] mt-4 flex flex-col justify-center sm:mt-0 sm:items-end">
-        <h4 className="text-primary">{t('featured-project')}</h4>
+        <h4 className="text-lg text-primary">{t('featured-project')}</h4>
         <div
-          className="tooltip tooltip-left transition-all duration-300 hover:text-primary"
+          className="tooltip transition-all duration-300 hover:text-primary"
           data-tip="vibra.la"
         >
           <a
@@ -61,30 +61,55 @@ function FeaturedProject() {
             className="flex items-center justify-between transition-all duration-300 ease-in-out hover:text-primary"
           >
             <h2 className="flex items-center gap-2 text-2xl font-bold">
-              Vibra Real State <FiExternalLink size={22} />
+              Vibra.la
+              <FiExternalLink size={22} />
             </h2>
           </a>
         </div>
-        <div className="mt-2 rounded-[var(--rounded-btn)] sm:-ml-28 sm:mt-4 sm:bg-neutral sm:px-6 sm:py-3 sm:shadow-md">
-          <p className="text-base text-base-content/60 sm:my-3 sm:text-right sm:text-neutral-content">
+        <div className="mt-2 rounded-[var(--rounded-btn)] sm:-ml-36 sm:mt-4 sm:bg-neutral sm:px-6 sm:py-3 sm:shadow-md">
+          <p className="text-lg text-base-content/60 sm:my-3 sm:text-right sm:text-base sm:text-neutral-content">
             {t('vibra-project-description.1')}
             <br />
             {t('vibra-project-description.2')}
           </p>
         </div>
-        <p className="mt-4 flex flex-wrap items-center gap-4 font-mono text-sm sm:justify-end sm:text-right sm:text-xs">
-          <span>React</span>
-          <span>NextJS</span>
-          <span>Typescript</span>
-          <span>Node</span>
-          <span>GraphQL</span>
-          <span>PostgreSQL</span>
-          <span>Styled Components</span>
-          <span>Framer Motion</span>
-          <span>Radix UI</span>
-          <span>Google Maps</span>
-          <span>Cloudinary</span>
-          <span>AWS</span>
+        <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-sm sm:-ml-36 sm:justify-end sm:text-right">
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            React
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            NextJS
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            Typescript
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            Node
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            GraphQL
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            PostgreSQL
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            Framer Motion
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            Radix UI
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            Styled Components
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            Google Maps
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            Cloudinary
+          </span>
+          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+            AWS
+          </span>
         </p>
         <div
           className="tooltip tooltip-left mt-2 hidden transition-all duration-300 hover:text-primary sm:block"

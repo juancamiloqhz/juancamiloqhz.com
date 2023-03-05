@@ -30,7 +30,7 @@ export default function SomeThingsIveBuilt() {
   };
   return (
     <motion.div
-      className="mb-40 scroll-mt-40 px-8 transition-all duration-500 ease-in-out md:px-28"
+      className="mb-40 scroll-mt-40 px-4 transition-all duration-500 ease-in-out md:px-28"
       id="contact"
       viewport={{ once: true }}
       initial={{ opacity: 0, y: 50, scale: 0.9 }}

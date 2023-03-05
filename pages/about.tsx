@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
+import Container from '@/shared/Container';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Container from '@/components/Container';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
@@ -24,9 +24,9 @@ export default function AboutPage() {
       description={`${t('pageDescription')}`}
       schemaType="AboutPage"
     >
-      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
-        <div className="mx-auto mt-28 mb-16 flex w-full max-w-3xl flex-col items-start justify-center lg:mt-48">
-          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
+      <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-20 mb-16 flex w-full max-w-3xl flex-col items-start justify-center lg:mt-48">
+          <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
             {t('pageTitle')}
           </h1>
 

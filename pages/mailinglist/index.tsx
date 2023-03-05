@@ -2,13 +2,13 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { type Newsletter, allNewsletters } from '@/contentlayer/generated';
+import Container from '@/shared/Container';
+import Subscribe from '@/shared/Subscribe';
 import { pick } from 'contentlayer/client';
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Container from '@/components/Container';
-import Subscribe from '@/components/Subscribe/Subscribe';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const newsletters = allNewsletters.map((newsletter) =>
@@ -38,12 +38,12 @@ export default function MailingListPage({
       title={`${t('pageTitle')}`}
       description={`${t('pageDescription')}`}
     >
-      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
-        <div className="mx-auto mt-28 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
-          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
+      <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-20 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
+          <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
             {t('pageTitle')}
           </h1>
-          <p className="mb-14 text-3xl font-light">
+          <p className="mb-14 text-xl text-base-content/60">
             I run an email list for people interested in front-end development,
             static sites and the IndieWeb. Want to join?
           </p>

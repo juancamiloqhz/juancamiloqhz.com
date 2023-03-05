@@ -33,7 +33,6 @@ function MyApp({
         <main className={cx(satoshi.variable, inter.variable)} id="main">
           {<Component {...pageProps} />}
         </main>
-        {/* <div id="modal-root" className={`${inter.className}`}></div> */}
         <Analytics />
       </ThemeProvider>
     </SessionProvider>

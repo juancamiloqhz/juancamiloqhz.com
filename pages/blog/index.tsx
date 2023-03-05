@@ -1,14 +1,14 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
 import { type Post, allPosts } from '@/contentlayer/generated';
+import Container from '@/shared/Container';
 import { pick } from 'contentlayer/client';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Container from '@/components/Container';
 import { PostPreview } from '@/components/Post';
 
 // import FeaturedPostCard from '@/components/Post/FeaturedPostCard';
-// import Container from '@/components/Container';
+// import Container from '@/shared/Container';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const posts = allPosts
@@ -55,8 +55,8 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
       description={`${t('pageDescription')}`}
       schemaType="Blog"
     >
-      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
-        <div className="mx-auto mt-28 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
+      <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-20 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
           <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl lg:text-8xl">
             Blog
           </h1>

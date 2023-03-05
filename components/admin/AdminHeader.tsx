@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
+import LocaleSwitcher from '@/shared/LocaleSwitcher';
+import MenuToggle from '@/shared/MenuToggle';
+import ThemeButton from '@/shared/ThemeButton';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOnClickOutside } from 'lib/hooks';
 import { useTranslation } from 'next-i18next';
-import LocaleSwitcher from '@/components/LocaleSwitcher';
-import MenuToggle from '@/components/MenuToggle';
 import ModalMenuMobile from '@/components/Modals/ModalMenuMobile';
-import ThemeButton from '@/components/ThemeButton';
 
 function NavItem({ href, text }: { href: string; text: string }) {
   const router = useRouter();

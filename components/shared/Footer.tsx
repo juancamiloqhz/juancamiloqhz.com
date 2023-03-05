@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import SocialLinks from '@/shared/SocialLinks';
 import { useTranslation } from 'next-i18next';
-import { GitHub, Rss } from './Icons';
+
+// import { GitHub, Rss } from '../Icons';
 
 export default function Footer() {
   const { t } = useTranslation('footer');

@@ -12,7 +12,7 @@ export default function WhereIveWorked() {
   const [active, setActive] = React.useState(1);
   return (
     <motion.div
-      className="mb-32 scroll-mt-60 px-8 transition-all duration-500 ease-in-out sm:mb-60 md:px-28"
+      className="mb-32 scroll-mt-60 px-4 transition-all duration-500 ease-in-out sm:mb-60 md:px-28"
       id="experience"
       viewport={{ once: true }}
       initial={{ opacity: 0, y: 50, scale: 0.9 }}

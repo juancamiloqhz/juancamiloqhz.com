@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // import Analytics from '@/components/metrics/Analytics';
 // import Newsletter from '@/components/metrics/Newsletter';
-import Container from '@/components/Container';
+import Container from '@/shared/Container';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import GitHub from '@/components/Metrics/Github';
 
 // import Gumroad from '@/components/metrics/Gumroad';
@@ -32,19 +32,16 @@ export default function Dashboard() {
       title={`${t('metaTitle')}`}
       description={`${t('metaDescription')}`}
     >
-      <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
-        <div className="mx-auto mt-28 mb-16 flex w-full max-w-3xl flex-col items-start justify-center lg:mt-48">
-          <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-10 md:text-center md:text-7xl lg:text-8xl">
+      <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
+        <div className="mx-auto mt-20 mb-16 flex w-full max-w-3xl flex-col items-start justify-center lg:mt-48">
+          <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-10 md:text-center md:text-7xl lg:text-8xl">
             {t('metaTitle')}
           </h1>
 
           <div className="mb-8">
             <p className="mb-4 text-base-content/60">
               {t('pageDescription')}&nbsp;
-              <Link
-                href="/blog/fetching-data-with-swr"
-                className="link-primary link"
-              >
+              <Link href="/blog" className="link-primary link">
                 blog series.
               </Link>
             </p>
