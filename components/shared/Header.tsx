@@ -245,7 +245,7 @@ export default function Header() {
             <div className="flex items-center gap-4">
               <motion.li variants={liItem}>
                 <Link
-                  href="/resume.pdf"
+                  href="/JuanCamiloQHz_Resume_2023.pdf"
                   className="btn-outline btn-primary btn normal-case"
                   locale="en"
                   target="_blank"

@@ -317,7 +317,7 @@ export default function Container({ children, ...props }: ContainerProps) {
           transition={{ delay: 1.8, duration: 0.6 }}
         >
           <div
-            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
+            className="tooltip tooltip-right transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="GitHub"
           >
             <a
@@ -329,7 +329,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           <div
-            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
+            className="tooltip tooltip-right transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Twitter"
           >
             <a
@@ -341,7 +341,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           {/* <div
-            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
+            className="tooltip tooltip-right transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Mastodon"
           >
             <a
@@ -353,7 +353,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div> */}
           <div
-            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
+            className="tooltip tooltip-right transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Instagram"
           >
             <a
@@ -365,7 +365,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           <div
-            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
+            className="tooltip tooltip-right transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="LinkedIn"
           >
             <a
@@ -377,7 +377,7 @@ export default function Container({ children, ...props }: ContainerProps) {
             </a>
           </div>
           <div
-            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
+            className="tooltip tooltip-right transition-all duration-300 hover:-translate-y-1 hover:text-primary"
             data-tip="Codepen"
           >
             <a

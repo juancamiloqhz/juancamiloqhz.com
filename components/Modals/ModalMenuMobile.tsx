@@ -169,7 +169,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
         </motion.li>
         <motion.li variants={item}>
           <Link
-            href="/resume.pdf"
+            href="/JuanCamiloQHz_Resume_2023.pdf"
             passHref
             onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
