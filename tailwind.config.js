@@ -1,5 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-const plugin = require("tailwindcss/plugin");
+const plugin = require('tailwindcss/plugin');
 const { themes } = require('./themes');
 
 module.exports = {
@@ -18,6 +18,7 @@ module.exports = {
         default: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       screens: {
+        xxs: '360px',
         xs: '475px',
         ...defaultTheme.screens,
       },

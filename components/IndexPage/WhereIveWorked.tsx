@@ -221,11 +221,11 @@ export default function WhereIveWorked() {
                   </a>
                 </h3>
                 <p className="text-sm text-base-content/60">
-                  {format(new Date(2011, 0), 'MMM yyyy', {
+                  {format(new Date(2010, 0), 'MMM yyyy', {
                     locale: locale === 'es' ? es : undefined,
                   })}
                   {' - '}
-                  {format(new Date(2016, 6), 'MMM yyyy', {
+                  {format(new Date(2015, 11), 'MMM yyyy', {
                     locale: locale === 'es' ? es : undefined,
                   })}
                 </p>

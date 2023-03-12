@@ -45,7 +45,7 @@ function FeaturedProject() {
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpElEQVR4nIWO248adRiGf7VdYGYZhmFngIEZzrAsu8txDxRY2mVbtsAqNdumNj0kbZOa6KU3VjkvGLOXRm2i1db4D2rTax/D1nipb/J+efK9+d58Ile8ylrQQjctrESaUDSJaviIxbYZfPGS7378nh9e/sxPv7zh1a+/8er179SutUlvlklmC5jRNMuOUrXFVrmOiK4XUXw6WtDEb0cvbMZSqLqO21DRwwn0YIRQNE0iWyS5USab3ydb2KdSu0G9dUKz3eewc4fM1g5CD1nkSlUCdpw108IXCBHP5tE0DY/iQdMDRGJJbnY/pn/3Ed3b9zg46rFbP6J13L/4NhxfJ7NVRnJ7ELKqEIzGKOw1yO/UWN8qktwsU69dpd+7Rbvdodlocnh4k4ePn/Ls08958vwzjo4/pNU+IZXLEwhHCYQiXF5xItQ1H4rmJZHdoLRXZXO7QCa/T+OgzknnmP7tHifdGs2DPLXaLt1en9PTOyQTCWzbxrRjGOEIHq/GlRUHQlbcuD0qms+L4Q+gqV68qsaqJGNbBo3KA/r7CzrFKe3qfY6aFa5VK9T3CqRCOgkzgB1P45RlHE4HYtkqSy78ho4VMrF1D8WoRikdprSd4XrjmE86j7nXOuVu9yNOe3WaOxtUkgYZUyMXNgiFLVyKG6fLiXBJMm5ZIhWz2EjF8XtVbL+PWEAjl4xQKWS41czS2rW5vpOhmk9zUEyTX4+gKB4iQYOwZeNyK0jyKkIIsRxcuSxwuC5dsLj0fic+EIgVgdMtkJeWBJJDsOoQOJfZP7crDulfFoPRkOFoyJdfv+DF+CsG0yHj+ZjpYsJoNmJ0NmY8n7A4X7A4n/HN+ZTFtzPO5lMmkwmz2RmL+ZzZZMRgOEAA/PHnO96+fbfE/9Bf/5O/19//X4nI31KcUwAAAABJRU5ErkJggg=="
         />
-        <div className="absolute top-0 bottom-0 left-0 right-0 rounded-[var(--rounded-btn)] bg-primary/40 transition-all duration-500 ease-in-out group-hover:bg-transparent" />
+        <div className="absolute top-0 bottom-0 left-0 right-0 rounded-[var(--rounded-btn)] bg-primary/20 transition-all duration-500 ease-in-out group-hover:bg-transparent" />
       </div>
 
       <div className="z-[2] mt-4 flex flex-col justify-center sm:mt-0 sm:items-end">

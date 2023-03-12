@@ -1,5 +1,8 @@
 import type { AppProps } from 'next/app';
-import { Inter } from 'next/font/google';
+import {
+  // Encode_Sans,
+  Inter,
+} from 'next/font/google';
 import localFont from 'next/font/local';
 import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
@@ -22,6 +25,11 @@ const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
 });
+
+// const encode = Encode_Sans({
+//   variable: '--font-encode',
+//   subsets: ['latin'],
+// });
 
 function MyApp({
   Component,
