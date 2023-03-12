@@ -14,6 +14,12 @@ async function generate() {
   const enPosts = getAllPosts(['title', 'date', 'slug', 'excerpt'], 'en');
   const esPosts = getAllPosts(['title', 'date', 'slug', 'excerpt'], 'es');
   enPosts.map((post) => {
+    console.log({
+      title: post.title,
+      url: `https://juancamiloqhz.com/blog/${post.slug}`,
+      date: post.date,
+      description: post.excerpt,
+    });
     enFeed.item({
       title: post.title,
       url: `https://juancamiloqhz.com/blog/${post.slug}`,

@@ -42,7 +42,7 @@ export default function AboutPage() {
                   className="link-primary link transition-all duration-300 ease-in-out hover:ml-2"
                   href="https://github.com/juancamiloqhz"
                 >
-                  @juancamiloqhz
+                  https://github.com/juancamiloqhz
                 </a>
               </li>
               <li>
@@ -51,7 +51,16 @@ export default function AboutPage() {
                   className="link-primary link transition-all duration-300 ease-in-out hover:ml-2"
                   href="https://twitter.com/juancamiloqhz"
                 >
-                  @juancamiloqhz
+                  https://twitter.com/juancamiloqhz
+                </a>
+              </li>
+              <li>
+                Instagram:{' '}
+                <a
+                  className="link-primary link transition-all duration-300 ease-in-out hover:ml-2"
+                  href="https://instagram.com/juancamiloqhz"
+                >
+                  https://instagram.com/juancamiloqhz
                 </a>
               </li>
               <li>
@@ -89,6 +98,7 @@ export default function AboutPage() {
               <a className="link-primary link" href="https://vibra.la">
                 Vibra.la
               </a>
+              .
             </p>
             <h3 className="my-4 text-xl font-bold">
               {t('longThirdPersonTitle')}

@@ -43,10 +43,7 @@ export default function MailingListPage({
           <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl ">
             {t('pageTitle')}
           </h1>
-          <p className="mb-14 text-xl text-base-content/60">
-            I run an email list for people interested in front-end development,
-            static sites and the IndieWeb. Want to join?
-          </p>
+          <p className="mb-14 text-xl text-base-content/60">{t('subtitle')}</p>
           <Subscribe />
           {/* <h3 className="mt-8 mb-4 text-2xl font-bold font-serif tracking-tight md:text-4xl">
             {t('archive')}

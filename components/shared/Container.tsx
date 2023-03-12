@@ -16,7 +16,7 @@ const settings = {
     rootUrl: 'https://juancamiloqhz.com',
     title: 'JuanCamiloQHz',
     description:
-      'Software Engineer, Mechanical Engineer, MBA and Professional Pyrotechnician',
+      'Software Engineer, MBA, Mechanical Engineer and Professional Pyrotechnician',
     social: {
       graphic: `https://juancamiloqhz.com/avatar.png`,
       twitter: '@juancamiloqhz',

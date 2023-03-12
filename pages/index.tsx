@@ -75,7 +75,7 @@ export default function Home() {
             variants={item}
             className="text-4xl font-bold xs:text-5xl md:text-6xl lg:text-7xl"
           >
-            Juan Camilo Quintero.
+            Juan Camilo Quintero
           </motion.h1>
           <motion.h2
             variants={item}
@@ -86,13 +86,13 @@ export default function Home() {
           <div className="space-y-1">
             <motion.p
               variants={item}
-              className="mt-2 max-w-xl leading-6 text-base-content/60 md:mt-8"
+              className="mt-2 max-w-xl leading-6 text-base-content/60 xs:leading-7 md:mt-8"
             >
               {t('professionDescription.1')}
             </motion.p>
             <motion.p
               variants={item}
-              className="max-w-xl leading-6 text-base-content/60 md:mt-2"
+              className="max-w-xl leading-6 text-base-content/60 xs:leading-7 md:mt-2"
             >
               {t('professionDescription.2')}
             </motion.p>
@@ -100,7 +100,7 @@ export default function Home() {
         </motion.div>
         <BsChevronCompactDown
           size={30}
-          className="absolute left-1/2 bottom-3 -translate-x-1/2"
+          className="absolute left-1/2 bottom-3 -translate-x-1/2 cursor-pointer"
           onClick={() => {
             document
               .getElementById('about')

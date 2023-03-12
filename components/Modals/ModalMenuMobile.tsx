@@ -84,14 +84,14 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
         initial="hidden"
         animate="show"
         exit="hidden"
-        className="fixed top-0 bottom-0 right-0 z-[100] flex w-full flex-col items-center justify-center gap-4 md:gap-6"
+        className="fixed top-0 bottom-0 right-0 z-[100] flex w-full flex-col items-center justify-center gap-3"
       >
         <motion.li variants={item}>
           <Link
             href="/"
             passHref
             onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
             {t('home')}
           </Link>
@@ -100,7 +100,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
           <Link
             href="/blog"
             passHref
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
             onClick={() => setIsOpen(false)}
           >
             {t('blog')}
@@ -111,7 +111,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             href="/dashboard"
             passHref
             onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
             Dashboard
           </Link>
@@ -121,7 +121,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             href="/mailinglist"
             passHref
             onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
             {t('mailList')}
           </Link>
@@ -132,7 +132,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             href="/#work"
             onClick={() => setIsOpen(false)}
             passHref
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
             {t('work')}
           </Link>
@@ -142,7 +142,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             href="/guestbook"
             onClick={() => setIsOpen(false)}
             passHref
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
             {t('guestbook')}
           </Link>
@@ -152,7 +152,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             href="/about"
             passHref
             onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
             {t('about')}
           </Link>
@@ -162,7 +162,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             href="/contact"
             passHref
             onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
             {t('contact')}
           </Link>
@@ -172,7 +172,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             href="/JuanCamiloQHz_Resume_2023.pdf"
             passHref
             onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-4xl"
+            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
             {t('resume')}
           </Link>

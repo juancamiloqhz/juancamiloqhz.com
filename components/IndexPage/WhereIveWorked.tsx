@@ -6,6 +6,38 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { CgShapeTriangle } from 'react-icons/cg';
 
+const list = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      staggerChildren: 0.04,
+      when: 'afterChildren',
+      staggerDirection: -1,
+    },
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: {
+    opacity: 0,
+    y: 25,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      bounce: 0,
+    },
+  },
+};
+
 export default function WhereIveWorked() {
   const { t } = useTranslation('index-page');
   const { locale } = useRouter();
@@ -135,29 +167,44 @@ export default function WhereIveWorked() {
                   })}{' '}
                   - {t('present')}
                 </p>
-                <ul className="mt-4 grid gap-3 text-base-content/60">
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                <motion.ul
+                  variants={list}
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  className="mt-4 grid gap-3 text-base-content/60"
+                >
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('vibra.1')}</p>
-                  </li>
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                  </motion.li>
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('vibra.2')}</p>
-                  </li>
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                  </motion.li>
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('vibra.3')}</p>
-                  </li>
-                </ul>
+                  </motion.li>
+                </motion.ul>
               </motion.div>
             )}
             {active === 2 && (
@@ -178,29 +225,44 @@ export default function WhereIveWorked() {
                     locale: locale === 'es' ? es : undefined,
                   })}
                 </p>
-                <ul className="mt-4 grid gap-3 text-base-content/60">
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                <motion.ul
+                  variants={list}
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  className="mt-4 grid gap-3 text-base-content/60"
+                >
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('freelancer.1')}</p>
-                  </li>
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                  </motion.li>
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('freelancer.2')}</p>
-                  </li>
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                  </motion.li>
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('freelancer.3')}</p>
-                  </li>
-                </ul>
+                  </motion.li>
+                </motion.ul>
               </motion.div>
             )}
             {active === 3 && (
@@ -229,29 +291,44 @@ export default function WhereIveWorked() {
                     locale: locale === 'es' ? es : undefined,
                   })}
                 </p>
-                <ul className="mt-4 grid gap-3 text-base-content/60">
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                <motion.ul
+                  variants={list}
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  className="mt-4 grid gap-3 text-base-content/60"
+                >
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('supernova.1')}</p>
-                  </li>
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                  </motion.li>
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('supernova.2')}</p>
-                  </li>
-                  <li className="grid grid-cols-[auto_1fr] gap-4">
+                  </motion.li>
+                  <motion.li
+                    variants={item}
+                    className="grid grid-cols-[auto_1fr] gap-4"
+                  >
                     <CgShapeTriangle
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
                     <p>{t('supernova.3')}</p>
-                  </li>
-                </ul>
+                  </motion.li>
+                </motion.ul>
               </motion.div>
             )}
           </div>

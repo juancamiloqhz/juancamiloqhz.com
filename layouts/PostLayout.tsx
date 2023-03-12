@@ -23,8 +23,6 @@ export default function PostLayout({
     <Container
       title={post.title}
       description={post.summary}
-      // imageUrl={post.mainImage}
-      // imageUrl={`http://localhost:3000/api/og/post?title=${post.title}`}
       imageUrl={`https://juancamiloqhz.com/api/og/post?title=${post.title}`}
       openGraphType="article"
       schemaType="Article"
@@ -32,15 +30,16 @@ export default function PostLayout({
     >
       <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
         <article className="mt-20 mb-24 w-full lg:mt-48">
-          <div className="mx-auto mb-8 w-full max-w-screen-lg md:mb-20 md:text-center">
+          <div className="mx-auto mb-8 w-full max-w-screen-lg md:mb-16 md:text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               {post.title}
             </h1>
-            <div className="my-4">
+            <div className="my-4 flex items-center justify-center">
               <DateFormatter
                 dateString={new Date(post.publishedAt).toISOString()}
               />
-              {' ⋅ '}
+              <p className="text-base-content/60">, {post.readingTime.text}</p>
+              {/* {' ⋅ '}
               {post.categories?.map((c, index) => {
                 if (index === post.categories.length - 1) {
                   return (
@@ -62,13 +61,8 @@ export default function PostLayout({
                     {`${c.name},`}
                   </Link>
                 );
-              })}
+              })} */}
             </div>
-            <p className="text-base-content/60">
-              {post.readingTime.text}
-              {/* {` • `} */}
-              {/* <ViewCounter slug={post.slug} /> */}
-            </p>
           </div>
 
           {post.mainImage && (
@@ -92,7 +86,7 @@ export default function PostLayout({
             <div className="mt-24 items-center justify-between lg:flex">
               <div>
                 <p className="italic text-base-content/60">
-                  {t('published-on')}
+                  {/* {t('published-on')}
                   {' ['}
                   {post.categories?.map((c, index) => {
                     if (index === post.categories.length - 1) {
@@ -116,7 +110,7 @@ export default function PostLayout({
                       </Link>
                     );
                   })}
-                  {'] ⋅ '}
+                  {'] ⋅ '} */}
                   <DateFormatter
                     dateString={new Date(post.publishedAt).toISOString()}
                     normalSize

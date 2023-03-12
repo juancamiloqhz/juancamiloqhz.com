@@ -13,14 +13,14 @@ export default function PostPreview({ post }: { post: Post }) {
       </div> */}
       <Link
         href={`/blog/${post.slug}`}
-        className="text-2xl text-primary md:text-3xl lg:text-4xl"
+        className="text-2xl text-primary transition-all hover:text-primary/80 md:text-3xl lg:text-4xl"
       >
         <h2 className="my-1 font-bold">{post.title}</h2>
       </Link>
       <div className="mb-2">
         <DateFormatter dateString={new Date(post.publishedAt).toISOString()} />
 
-        {' ⋅ '}
+        {/* {' ⋅ '}
         {post.categories?.map((c, index) => {
           return (
             <span key={index}>
@@ -34,7 +34,7 @@ export default function PostPreview({ post }: { post: Post }) {
               {index === post.categories.length - 1 ? '' : ', '}
             </span>
           );
-        })}
+        })} */}
       </div>
 
       <p className="mb-3 text-lg  md:text-xl">
