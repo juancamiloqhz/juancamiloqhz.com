@@ -74,40 +74,40 @@ function FeaturedProject() {
           </p>
         </div>
         <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-sm sm:-ml-36 sm:justify-end sm:text-right">
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             React
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             NextJS
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             Typescript
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             Node
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             GraphQL
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             PostgreSQL
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             Framer Motion
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             Radix UI
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             Styled Components
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             Google Maps
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             Cloudinary
           </span>
-          <span className="rounded-full border border-primary bg-base-100 px-2 py-1">
+          <span className="rounded-[var(--rounded-btn)] border border-primary bg-base-100 px-2 py-1">
             AWS
           </span>
         </p>

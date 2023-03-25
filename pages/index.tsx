@@ -51,6 +51,29 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 export default function Home() {
   const { t } = useTranslation('index-page');
+
+  React.useEffect(() => {
+    const face = document.getElementById('face') as HTMLDivElement;
+    const height = face.clientHeight;
+    const width = face.clientWidth;
+    function handleMouseMove(e: MouseEvent) {
+      const x = e.offsetX;
+      const y = e.offsetY;
+      const yRotation = 20 * ((x - width / 2) / width);
+      const xRotation = 20 * ((y - height / 2) / height);
+      face.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) perspective(500px) scale(1.1)`;
+    }
+    function handleMouseLeave() {
+      face.style.transform =
+        'rotateX(0deg) rotateY(0deg) scale(1) perspective(500px)';
+    }
+    face.addEventListener('mousemove', handleMouseMove);
+    face.addEventListener('mouseleave', handleMouseLeave);
+    return () => {
+      face.removeEventListener('mousemove', handleMouseMove);
+      face.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
   return (
     <Container
       exclusiveTitle={`${t('metaTitle')}`}
@@ -86,13 +109,13 @@ export default function Home() {
           <div className="space-y-1">
             <motion.p
               variants={item}
-              className="mt-2 max-w-xl leading-6 text-base-content/60 xs:leading-7 md:mt-8"
+              className="mt-2 max-w-3xl leading-6 text-base-content/60 xs:leading-7 md:mt-8"
             >
               {t('professionDescription.1')}
             </motion.p>
             <motion.p
               variants={item}
-              className="max-w-xl leading-6 text-base-content/60 xs:leading-7 md:mt-2"
+              className="max-w-3xl leading-6 text-base-content/60 xs:leading-7 md:mt-2"
             >
               {t('professionDescription.2')}
             </motion.p>
@@ -171,18 +194,24 @@ export default function Home() {
               </p>
             </div>
             <div className="group relative row-start-1 mt-4 mb-4 h-80 w-full justify-self-center sm:h-72 sm:w-72 lg:row-auto lg:justify-self-auto">
-              <Image
+              {/* <Image
                 src="/face.png"
-                aria-label="Juan Camilo&lsquo;s Avatar"
-                alt="Juan Camilo&lsquo;s Avatar"
+                aria-label="Face of Juan Camilo QHz"
+                alt="Face of Juan Camilo QHz"
                 // height={176}
                 // width={176}
                 fill
                 className="rounded-[var(--rounded-btn)] object-cover object-center ring ring-primary ring-offset-8 ring-offset-base-100 transition-all duration-500 ease-in-out group-hover:ring-offset-0 group-hover:ring-offset-base-200"
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACpklEQVQokT2SS0sbURzFB6H9AO2X0LWge7+Am7ZBBRcKipI0BhN8xImvZJJ5xISJRKPkYQSfqJCIMakKPlE3guDCLF200PoBxCT3lHMpXfyZO3Pnnv/vnPtXLi4uPpdKpT+FQgF7e3uN7e1tLC8vi9bWVrS0tKCnpwejo6Po7e1FR0cHmpub0dTUhLa2NhEIBODz+eoejwcjIyNVXdc/KuVy+fvh4SH29/ffNzc3sb6+LlZWVtDV1YVcLofz83NcXl6iXC7j4OAAbMi99vZ2TExMCK/XS7Ga0+mEx+P5ppydnf0gXSqVqpMslUohHA5jamoKNzc3uL+/x+PjI+7u7nB9fS3XJycn6Ovrg9vtJr1wu901l8vF97xye3v76+joCIFAgBaEaZqYmZnB2NgYNjY2+B1+vx+7u7uYm5vDwMAA5ufnMTQ0hPHxcczOzgpVVRuqqnL9pDw8PNRphxusWCwGVjAYRCQSgcPhQHd3N4rFIqanp9HZ2YnBwUFMTk5C0zToui6CwaBgk1AoVFOen5/rp6enpBKapgnbthGPx5FOp7GzsyNJSV2tVmWObJLP52FZlmxqmqY891/w5eXlJ4OnYCQSEYuLi2Ctrq7i+PhYim5tbUnCtbU1MB7aNwxDipqmyXMNimua9qS8vr5Wrq6uoKpq3TAMkUgkJB0pMpkMSqWSzJKkjIIXkkwmEY1GQTeWZQld12u0Hw6H88rb25uLt+f3+99pLZFICApxPChMWtKEQiFpkQcpRnH+u7CwwP0aozAM46sC4FOlUvnNwA3DaLBrNpsVtEjbFPL5fOjv78fw8LC8cdbS0pKMJxaL1f9Zr2YymQ+KZVlKMpl0MlRd199t2xbZbJbW5JNiJCMl55MDTJuMhHNr23aNxPF4/Es0GlX+ArFlQxVMtgyfAAAAAElFTkSuQmCC"
-              />
-              <div className="absolute top-0 bottom-0 left-0 right-0 rounded-[var(--rounded-btn)] bg-primary/20 transition-all duration-500 ease-in-out group-hover:bg-transparent" />
+              /> */}
+
+              {/* <div className="absolute top-0 bottom-0 left-0 right-0 rounded-[var(--rounded-btn)] bg-primary/20 transition-all duration-500 ease-in-out group-hover:bg-transparent" /> */}
+              <div
+                id="face"
+                className="transition-scale h-96 w-full rounded-[var(--rounded-btn)] bg-[url('/face_squared.png')] bg-cover 
+                        bg-center bg-no-repeat transition-[shadow] duration-100 ease-in-out hover:shadow-[0_0_30px_4px_rgba(0,0,0,0.3)] hover:shadow-primary sm:h-72 sm:w-72"
+              ></div>
             </div>
           </div>
         </div>
@@ -193,3 +222,4 @@ export default function Home() {
     </Container>
   );
 }
+// box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
