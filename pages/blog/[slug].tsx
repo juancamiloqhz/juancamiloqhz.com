@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import components from '@/components/MDXComponents';
-import { allPosts, type Post } from '@/contentlayer/generated';
+import { allPosts, type Post } from 'contentlayer/generated';
 import PostLayout from 'layouts/PostLayout';  
 
 export async function getStaticPaths() {

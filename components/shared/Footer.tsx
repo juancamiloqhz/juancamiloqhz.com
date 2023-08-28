@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import SocialLinks from '@/shared/SocialLinks';
+import SocialLinks from '@/components/shared/SocialLinks';
 import { useTranslation } from 'next-i18next';
 
 // import { GitHub, Rss } from '../Icons';

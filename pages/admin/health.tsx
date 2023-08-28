@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
-import AdminContainer from '@/shared/AdminContainer';
+import AdminContainer from '@/components/shared/AdminContainer';
 import { getSession, useSession } from 'next-auth/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 

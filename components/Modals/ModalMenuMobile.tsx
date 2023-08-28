@@ -1,12 +1,12 @@
 // import { XIcon, Close } from '../Icons';
 import Link from 'next/link';
 import React from 'react';
-import LocaleSwitcher from '@/shared/LocaleSwitcher';
-import MenuToggle from '@/shared/MenuToggle';
-import SocialLinks from '@/shared/SocialLinks';
+import LocaleSwitcher from '@/components/shared/LocaleSwitcher';
+import MenuToggle from '@/components/shared/MenuToggle';
+import SocialLinks from '@/components/shared/SocialLinks';
 import FocusTrap from 'focus-trap-react';
 import { AnimatePresence, motion } from 'framer-motion';
-// import ThemeButton from '@/shared/ThemeButton';
+// import ThemeButton from '@/components/shared/ThemeButton';
 import { useTranslation } from 'next-i18next';
 import { createPortal } from 'react-dom';
 import { useKeydown } from '@/lib/helpers';

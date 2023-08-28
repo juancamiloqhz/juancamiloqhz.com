@@ -1,14 +1,14 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import { type Post, allPosts } from '@/contentlayer/generated';
-import Container from '@/shared/Container';
+import { type Post, allPosts } from 'contentlayer/generated';
+import Container from '@/components/shared/Container';
 import { pick } from 'contentlayer/client';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PostPreview } from '@/components/Post';
 
 // import FeaturedPostCard from '@/components/Post/FeaturedPostCard';
-// import Container from '@/shared/Container';
+// import Container from '@/components/shared/Container';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const posts = allPosts

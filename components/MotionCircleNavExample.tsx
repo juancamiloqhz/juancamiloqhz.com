@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuToggle from '@/shared/MenuToggle';
+import MenuToggle from '@/components/shared/MenuToggle';
 import { motion, useCycle } from 'framer-motion';
 
 const sidebar = {

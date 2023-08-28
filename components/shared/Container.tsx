@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import Footer from '@/shared/Footer';
-import Header from '@/shared/Header';
+import Footer from '@/components/shared/Footer';
+import Header from '@/components/shared/Header';
 import { motion } from 'framer-motion';
 import {
   FiCodepen,

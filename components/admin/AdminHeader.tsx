@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import LocaleSwitcher from '@/shared/LocaleSwitcher';
-import MenuToggle from '@/shared/MenuToggle';
-import ThemeButton from '@/shared/ThemeButton';
+import LocaleSwitcher from '@/components/shared/LocaleSwitcher';
+import MenuToggle from '@/components/shared/MenuToggle';
+import ThemeButton from '@/components/shared/ThemeButton';
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOnClickOutside } from 'lib/hooks';

@@ -1,9 +1,9 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { type Newsletter, allNewsletters } from '@/contentlayer/generated';
-import Container from '@/shared/Container';
-import Subscribe from '@/shared/Subscribe';
+import { type Newsletter, allNewsletters } from 'contentlayer/generated';
+import Container from '@/components/shared/Container';
+import Subscribe from '@/components/shared/Subscribe';
 import { pick } from 'contentlayer/client';
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';

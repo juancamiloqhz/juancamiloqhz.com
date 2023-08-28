@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@/shared/Header';
+import Header from '@/components/shared/Header';
 
 // import { AdminHeader } from '../admin';
 

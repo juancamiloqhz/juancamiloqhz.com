@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import Container from '@/shared/Container';
+import Container from '@/components/shared/Container';
 import prisma from 'lib/prisma';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';

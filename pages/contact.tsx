@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 // import PageTitle from '../components/shared/PageTitle';
-import Container from '@/shared/Container';
+import Container from '@/components/shared/Container';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ContactMe } from '@/components/IndexPage';

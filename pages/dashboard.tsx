@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 // import Analytics from '@/components/metrics/Analytics';
 // import Newsletter from '@/components/metrics/Newsletter';
-import Container from '@/shared/Container';
+import Container from '@/components/shared/Container';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import GitHub from '@/components/Metrics/Github';

@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
-import { type Post, allPosts } from '@/contentlayer/generated';
-import Container from '@/shared/Container';
+import { type Post, allPosts } from 'contentlayer/generated';
+import Container from '@/components/shared/Container';
 import { pick } from 'contentlayer/client';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';

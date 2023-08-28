@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { type Newsletter, allNewsletters } from '@/contentlayer/generated';
+import { type Newsletter, allNewsletters } from 'contentlayer/generated';
 import MailingListLayout from 'layouts/MailingListLayout';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
