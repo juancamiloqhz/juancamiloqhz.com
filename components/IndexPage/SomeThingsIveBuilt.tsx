@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'next-i18next';
-import { FiExternalLink } from 'react-icons/fi';
+import Image from "next/image"
+import { motion } from "framer-motion"
+import { useTranslation } from "next-i18next"
+import { FiExternalLink } from "react-icons/fi"
 
 export default function SomeThingsIveBuilt() {
-  const { t } = useTranslation('index-page');
+  const { t } = useTranslation("index-page")
   return (
     <motion.div
       className="mb-32 scroll-mt-40 px-4 transition-all duration-500 ease-in-out sm:mb-52 md:px-28"
@@ -18,8 +18,8 @@ export default function SomeThingsIveBuilt() {
         <div className="grid grid-cols-[1fr_auto] lg:gap-16">
           <div className="mb-10 grid items-center gap-4 sm:mb-14 sm:grid-cols-[auto_1fr]">
             <h2 className="text-2xl font-bold ">
-              <span className="mr-1 text-xl font-normal text-primary">03.</span>{' '}
-              {t('things-ive-built')}
+              <span className="mr-1 text-xl font-normal text-primary">03.</span>{" "}
+              {t("things-ive-built")}
             </h2>
             <div className="h-[1px] w-full bg-base-content/60" />
           </div>
@@ -28,11 +28,11 @@ export default function SomeThingsIveBuilt() {
         <FeaturedProject />
       </div>
     </motion.div>
-  );
+  )
 }
 
 function FeaturedProject() {
-  const { t } = useTranslation('index-page');
+  const { t } = useTranslation("index-page")
   return (
     <div className="grid sm:grid-cols-[60%_1fr]">
       <div className="group relative h-fit w-full justify-self-center lg:justify-self-auto">
@@ -49,7 +49,7 @@ function FeaturedProject() {
       </div>
 
       <div className="z-[2] mt-4 flex flex-col justify-center sm:mt-0 sm:items-end">
-        <h4 className="text-lg text-primary">{t('featured-project')}</h4>
+        <h4 className="text-lg text-primary">{t("featured-project")}</h4>
         <div
           className="tooltip transition-all duration-300 hover:text-primary"
           data-tip="vibra.la"
@@ -68,9 +68,9 @@ function FeaturedProject() {
         </div>
         <div className="mt-2 rounded-[var(--rounded-btn)] sm:-ml-36 sm:mt-4 sm:bg-neutral sm:px-6 sm:py-3 sm:shadow-md">
           <p className="text-lg text-base-content/60 sm:my-3 sm:text-right sm:text-base sm:text-neutral-content">
-            {t('vibra-project-description.1')}
+            {t("vibra-project-description.1")}
             <br />
-            {t('vibra-project-description.2')}
+            {t("vibra-project-description.2")}
           </p>
         </div>
         <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-sm sm:-ml-36 sm:justify-end sm:text-right">
@@ -121,5 +121,5 @@ function FeaturedProject() {
         </div>
       </div>
     </div>
-  );
+  )
 }

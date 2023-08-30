@@ -1,12 +1,12 @@
-import Head from 'next/head';
+import Head from "next/head"
 
 export default function Meta({
-  title = '',
-  description = 'Software Developer, Mechanical Engineer and Professional Pyrotechnician',
+  title = "",
+  description = "Software Developer, Mechanical Engineer and Professional Pyrotechnician",
 }) {
   return (
     <Head>
-      <title>{title || 'JuanCamiloQHz - Personal Website'}</title>
+      <title>{title || "JuanCamiloQHz - Personal Website"}</title>
       <meta
         name="keywords"
         content="Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js"
@@ -46,5 +46,5 @@ export default function Meta({
       <meta name="theme-color" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
     </Head>
-  );
+  )
 }

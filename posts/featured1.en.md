@@ -1,17 +1,17 @@
 ---
-title: 'Preview Mode for Static Generation'
-excerpt: '(Featured 1) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
-coverImage: '/assets/blog/preview/esaias-tan-MKvjc2kar7Q-unsplash-preview.jpg'
-date: '2020-03-16T05:35:07.322Z'
+title: "Preview Mode for Static Generation"
+excerpt: "(Featured 1) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick."
+coverImage: "/assets/blog/preview/esaias-tan-MKvjc2kar7Q-unsplash-preview.jpg"
+date: "2020-03-16T05:35:07.322Z"
 featured: true
 author:
   name: Juan Camilo QHz
   username: juancamiloqhz
-  picture: '/assets/blog/authors/blonde.jpg'
+  picture: "/assets/blog/authors/blonde.jpg"
 ogImage:
-  url: '/assets/blog/preview/esaias-tan-MKvjc2kar7Q-unsplash-preview.jpg'
-categories: ['category-1: Category 1', 'category-2: Category 2']
-tags: ['tag-1: Tag 1', 'tag-2: Tag 2']
+  url: "/assets/blog/preview/esaias-tan-MKvjc2kar7Q-unsplash-preview.jpg"
+categories: ["category-1: Category 1", "category-2: Category 2"]
+tags: ["tag-1: Tag 1", "tag-2: Tag 2"]
 ---
 
 ## My Headline

@@ -1,33 +1,33 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'next-i18next';
+import React from "react"
+import { motion } from "framer-motion"
+import { useTranslation } from "next-i18next"
 
 export default function SomeThingsIveBuilt() {
-  const { t } = useTranslation('contact-page');
-  const [Name, setName] = React.useState('');
-  const [Email, setEmail] = React.useState('');
-  const [Message, setMessage] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
-  const [submitted, setSubmitted] = React.useState(false);
+  const { t } = useTranslation("contact-page")
+  const [Name, setName] = React.useState("")
+  const [Email, setEmail] = React.useState("")
+  const [Message, setMessage] = React.useState("")
+  const [loading, setLoading] = React.useState(false)
+  const [submitted, setSubmitted] = React.useState(false)
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setLoading(true);
+    event.preventDefault()
+    setLoading(true)
     // console.log('Sending');
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
+    const res = await fetch("/api/contact", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ Name, Email, Message }),
-    });
+    })
     // console.log({ res });
-    setName('');
-    setEmail('');
-    setMessage('');
-    setLoading(false);
-    setSubmitted(true);
-  };
+    setName("")
+    setEmail("")
+    setMessage("")
+    setLoading(false)
+    setSubmitted(true)
+  }
   return (
     <motion.div
       className="mb-40 scroll-mt-40 px-4 transition-all duration-500 ease-in-out md:px-28"
@@ -38,12 +38,12 @@ export default function SomeThingsIveBuilt() {
       transition={{ duration: 0.3, bounce: 0 }}
     >
       <div className="mx-auto flex w-full max-w-2xl flex-col items-center">
-        <h2 className="whitespace-nowrap text-primary">04. {t('contact')}</h2>
+        <h2 className="whitespace-nowrap text-primary">04. {t("contact")}</h2>
         <h3 className="mt-5 text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-          {t('pageTitle')}
+          {t("pageTitle")}
         </h3>
         <p className="mt-6 text-center text-base-content/60">
-          {t('pageDescription')}{' '}
+          {t("pageDescription")}{" "}
           <a
             href="mailto:juancamiloqhz@gmail.com"
             className="link-primary link"
@@ -59,7 +59,7 @@ export default function SomeThingsIveBuilt() {
           <div className="grid sm:grid-cols-2 sm:gap-6">
             <div className="form-control mb-3 w-full sm:mb-4">
               <label htmlFor="name" className="label">
-                <span className="label-text">{t('name')}</span>
+                <span className="label-text">{t("name")}</span>
               </label>
               <input
                 className="input-bordered input w-full bg-base-200"
@@ -73,7 +73,7 @@ export default function SomeThingsIveBuilt() {
             </div>
             <div className="form-control mb-3 w-full sm:mb-4">
               <label htmlFor="email" className="label">
-                <span className="label-text">{t('email')}</span>
+                <span className="label-text">{t("email")}</span>
               </label>
               <input
                 className="input-bordered input w-full bg-base-200"
@@ -88,7 +88,7 @@ export default function SomeThingsIveBuilt() {
           </div>
           <div className="form-control mb-3 w-full sm:mb-4">
             <label htmlFor="message" className="label">
-              <span className="label-text">{t('message')}</span>
+              <span className="label-text">{t("message")}</span>
             </label>
             <textarea
               id="message"
@@ -102,10 +102,10 @@ export default function SomeThingsIveBuilt() {
           <button
             type="submit"
             className={`btn-primary btn mt-4 w-full text-base xs:w-fit sm:mt-8${
-              loading ? ' loading' : ''
+              loading ? " loading" : ""
             }`}
           >
-            {loading ? t('sendingMessage') : t('sendMessage')}
+            {loading ? t("sendingMessage") : t("sendMessage")}
           </button>
           {/* {submitted ? alert('submitted') : ''} */}
           {submitted && (
@@ -124,7 +124,7 @@ export default function SomeThingsIveBuilt() {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>{t('sendMessageSuccess')}</span>
+                <span>{t("sendMessageSuccess")}</span>
               </div>
               <div className="flex-none">
                 <button
@@ -153,5 +153,5 @@ export default function SomeThingsIveBuilt() {
         </form>
       </div>
     </motion.div>
-  );
+  )
 }

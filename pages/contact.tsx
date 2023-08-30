@@ -1,30 +1,31 @@
-import { GetStaticProps } from 'next';
+import { GetStaticProps } from "next"
+import { useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+import { ContactMe } from "@/components/IndexPage"
 // import PageTitle from '../components/shared/PageTitle';
-import Container from '@/components/shared/Container';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { ContactMe } from '@/components/IndexPage';
+import Container from "@/components/shared/Container"
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'es', [
-        'contact-page',
-        'header',
-        'footer',
+      ...(await serverSideTranslations(locale ?? "es", [
+        "contact-page",
+        "header",
+        "footer",
       ])),
     },
-  };
-};
+  }
+}
 
 //Taken from https://greedytaker.in/nextjs/email-sending-contact-page-nextjs
 export default function AboutPage() {
-  const { t } = useTranslation('contact-page');
+  const { t } = useTranslation("contact-page")
 
   return (
     <Container
-      title={`${t('pageTitle')}`}
-      description={`${t('pageDescription')}`}
+      title={`${t("pageTitle")}`}
+      description={`${t("pageDescription")}`}
       schemaType="ContactPage"
     >
       <div className="mx-auto mt-36 flex w-full max-w-3xl flex-col items-start justify-center">
@@ -35,5 +36,5 @@ export default function AboutPage() {
         <ContactMe />
       </div>
     </Container>
-  );
+  )
 }

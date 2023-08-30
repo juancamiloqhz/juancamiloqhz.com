@@ -1,14 +1,15 @@
-import fetcher from 'lib/fetcher';
-import { GitHub } from 'lib/types';
-import useSWR from 'swr';
-import MetricCard from '@/components/Metrics/Card';
+import fetcher from "lib/fetcher"
+import { GitHub } from "lib/types"
+import useSWR from "swr"
+
+import MetricCard from "@/components/Metrics/Card"
 
 export default function GitHubCard() {
-  const { data } = useSWR<GitHub>('/api/github', fetcher);
+  const { data } = useSWR<GitHub>("/api/github", fetcher)
 
-  const stars = new Number(data?.stars);
-  const followers = data?.followers || 0;
-  const link = 'https://github.com/juancamiloqhz';
+  const stars = new Number(data?.stars)
+  const followers = data?.followers || 0
+  const link = "https://github.com/juancamiloqhz"
   // console.log(data);
 
   return (
@@ -24,5 +25,5 @@ export default function GitHubCard() {
       metric={followers}
       isCurrency={false}
     />
-  );
+  )
 }

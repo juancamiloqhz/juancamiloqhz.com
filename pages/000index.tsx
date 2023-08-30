@@ -1,17 +1,18 @@
-import { GetStaticProps } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import Container from '@/components/shared/Container';
-import { motion } from 'framer-motion';
-import { Trans, useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { BsChevronCompactDown } from 'react-icons/bs';
+import React from "react"
+import { GetStaticProps } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import { motion } from "framer-motion"
+import { Trans, useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { BsChevronCompactDown } from "react-icons/bs"
+
 import {
   ContactMe,
   SomeThingsIveBuilt,
   WhereIveWorked,
-} from '@/components/IndexPage';
+} from "@/components/IndexPage"
+import Container from "@/components/shared/Container"
 
 // import blurImage from '@/lib/blur-images';
 
@@ -24,12 +25,12 @@ const variants = {
       staggerChildren: 0.08,
     },
   },
-};
+}
 
 const item = {
   hidden: { opacity: 0, y: 50 },
   show: { opacity: 1, y: 0, transition: { bounce: 0 } },
-};
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   // const { imgBase64 } = await blurImage(
@@ -38,46 +39,46 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   // console.log(imgBase64);
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', [
-        'index-page',
-        'footer',
-        'header',
-        'mailinglist',
-        'contact-page',
+      ...(await serverSideTranslations(locale ?? "en", [
+        "index-page",
+        "footer",
+        "header",
+        "mailinglist",
+        "contact-page",
       ])),
     },
-  };
-};
+  }
+}
 
 export default function Home() {
-  const { t } = useTranslation('index-page');
+  const { t } = useTranslation("index-page")
 
   React.useEffect(() => {
-    const face = document.getElementById('face') as HTMLDivElement;
-    const height = face.clientHeight;
-    const width = face.clientWidth;
+    const face = document.getElementById("face") as HTMLDivElement
+    const height = face.clientHeight
+    const width = face.clientWidth
     function handleMouseMove(e: MouseEvent) {
-      const x = e.offsetX;
-      const y = e.offsetY;
-      const yRotation = 20 * ((x - width / 2) / width);
-      const xRotation = 20 * ((y - height / 2) / height);
-      face.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) perspective(500px) scale(1.1)`;
+      const x = e.offsetX
+      const y = e.offsetY
+      const yRotation = 20 * ((x - width / 2) / width)
+      const xRotation = 20 * ((y - height / 2) / height)
+      face.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) perspective(500px) scale(1.1)`
     }
     function handleMouseLeave() {
       face.style.transform =
-        'rotateX(0deg) rotateY(0deg) scale(1) perspective(500px)';
+        "rotateX(0deg) rotateY(0deg) scale(1) perspective(500px)"
     }
-    face.addEventListener('mousemove', handleMouseMove);
-    face.addEventListener('mouseleave', handleMouseLeave);
+    face.addEventListener("mousemove", handleMouseMove)
+    face.addEventListener("mouseleave", handleMouseLeave)
     return () => {
-      face.removeEventListener('mousemove', handleMouseMove);
-      face.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
+      face.removeEventListener("mousemove", handleMouseMove)
+      face.removeEventListener("mouseleave", handleMouseLeave)
+    }
+  }, [])
   return (
     <Container
-      exclusiveTitle={`${t('metaTitle')}`}
-      description={`${t('metaDescription')}`}
+      exclusiveTitle={`${t("metaTitle")}`}
+      description={`${t("metaDescription")}`}
       schemaType="WebSite"
     >
       {/* Hero */}
@@ -92,7 +93,7 @@ export default function Home() {
             variants={item}
             className="mb-1 text-lg text-primary xs:mb-4 xs:text-xl md:mb-6"
           >
-            👋 {t('hi')}
+            👋 {t("hi")}
           </motion.h4>
           <motion.h1
             variants={item}
@@ -104,20 +105,20 @@ export default function Home() {
             variants={item}
             className="mt-1 text-4xl font-bold text-primary xs:text-5xl md:mt-3 md:text-6xl lg:text-7xl"
           >
-            {t('iDo')}
+            {t("iDo")}
           </motion.h2>
           <div className="space-y-1">
             <motion.p
               variants={item}
               className="mt-2 max-w-3xl leading-6 text-base-content/60 xs:leading-7 md:mt-8"
             >
-              {t('professionDescription.1')}
+              {t("professionDescription.1")}
             </motion.p>
             <motion.p
               variants={item}
               className="max-w-3xl leading-6 text-base-content/60 xs:leading-7 md:mt-2"
             >
-              {t('professionDescription.2')}
+              {t("professionDescription.2")}
             </motion.p>
           </div>
         </motion.div>
@@ -126,8 +127,8 @@ export default function Home() {
           className="absolute left-1/2 bottom-3 -translate-x-1/2 cursor-pointer"
           onClick={() => {
             document
-              .getElementById('about')
-              ?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              .getElementById("about")
+              ?.scrollIntoView({ behavior: "smooth", block: "nearest" })
           }}
         />
       </div>
@@ -146,8 +147,8 @@ export default function Home() {
               <h2 className="text-2xl font-bold ">
                 <span className="mr-1 text-xl font-normal text-primary">
                   01.
-                </span>{' '}
-                {t('about-me.title')}
+                </span>{" "}
+                {t("about-me.title")}
               </h2>
               <div className="h-[1px] w-full bg-base-content/60" />
             </div>
@@ -155,7 +156,7 @@ export default function Home() {
           </div>
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:gap-16">
             <div className="space-y-3 text-base-content/60">
-              <p>{t('about-me.1')}</p>
+              <p>{t("about-me.1")}</p>
               <p>
                 <Trans ns="index-page" i18nKey="about-me.2">
                   I've always been fascinated by the internet and how it can
@@ -175,17 +176,17 @@ export default function Home() {
                   real estate industry.
                 </Trans>
               </p>
-              <p>{t('about-me.3')}</p>
-              <p>{t('about-me.4')}</p>
+              <p>{t("about-me.3")}</p>
+              <p>{t("about-me.4")}</p>
               <p>
                 <Trans ns="index-page" i18nKey="about-me.5">
                   If you have any questions or want to learn more about me, feel
-                  free to contact me through my social media or by my{' '}
+                  free to contact me through my social media or by my{" "}
                   <Link href="/contact" className="link text-primary">
                     contact section
                   </Link>
                   . If you're interested in reading some articles please check
-                  my{' '}
+                  my{" "}
                   <Link href="/blog" className="link text-primary">
                     blog
                   </Link>
@@ -209,7 +210,7 @@ export default function Home() {
               {/* <div className="absolute top-0 bottom-0 left-0 right-0 rounded-[var(--rounded-btn)] bg-primary/20 transition-all duration-500 ease-in-out group-hover:bg-transparent" /> */}
               <div
                 id="face"
-                className="transition-scale h-96 w-full rounded-[var(--rounded-btn)] bg-[url('/face_squared.png')] bg-cover 
+                className="transition-scale h-96 w-full rounded-[var(--rounded-btn)] bg-[url('/face_squared.png')] bg-cover
                         bg-center bg-no-repeat transition-[shadow] duration-100 ease-in-out hover:shadow-[0_0_30px_4px_rgba(0,0,0,0.3)] hover:shadow-primary sm:h-72 sm:w-72"
               ></div>
             </div>
@@ -220,6 +221,5 @@ export default function Home() {
       <SomeThingsIveBuilt />
       <ContactMe />
     </Container>
-  );
+  )
 }
-// box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;

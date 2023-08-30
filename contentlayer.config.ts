@@ -7,9 +7,10 @@ import {
 import readingTime from 'reading-time';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
-import rehypeCodeTitles from 'rehype-code-titles';
+// import rehypeCodeTitles from 'rehype-code-titles';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrism from 'rehype-prism-plus';
+import rehypePrettyCode from "rehype-pretty-code"
+// import rehypePrism from 'rehype-prism-plus';
 import blurImage from './lib/blur-images';
 
 const getLocale = (path: string) => {
@@ -23,18 +24,18 @@ const computedFields: ComputedFields = {
     type: 'number',
     resolve: (doc) => doc.body.raw.split(/\s+/gu).length
   },
-  tweetIds: {
-    type: 'json',
-    resolve: (doc) => {
-      const tweetMatches = doc.body.raw.match(
-        /<StaticTweet\sid="[0-9]+"\s\/>/g
-      );
-      const tweetIDs = tweetMatches?.map(
-        (tweet: any) => tweet.match(/[0-9]+/g)[0]
-      );
-      return tweetIDs ?? [];
-    }
-  },
+  // tweetIds: {
+  //   type: 'json',
+  //   resolve: (doc) => {
+  //     const tweetMatches = doc.body.raw.match(
+  //       /<StaticTweet\sid="[0-9]+"\s\/>/g
+  //     );
+  //     const tweetIDs = tweetMatches?.map(
+  //       (tweet: any) => tweet.match(/[0-9]+/g)[0]
+  //     );
+  //     return tweetIDs ?? [];
+  //   }
+  // },
   slug: {
     type: 'string',
     resolve: (doc) => {
@@ -86,7 +87,7 @@ const Tag = defineNestedType(() => ({
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: 'blog/*.mdx',
+  filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',
   fields: {
     featured: { type: 'boolean', default: false },
@@ -102,7 +103,7 @@ const Post = defineDocumentType(() => ({
 
 const Newsletter = defineDocumentType(() => ({
   name: 'Newsletter',
-  filePathPattern: 'newsletter/*.mdx',
+  filePathPattern: 'newsletter/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -136,24 +137,58 @@ const Newsletter = defineDocumentType(() => ({
 // }));
 
 const contentLayerConfig = makeSource({
-  contentDirPath: 'data',
+  contentDirPath: './data',
   documentTypes: [Post, Newsletter],
+  // mdx: {
+  //   remarkPlugins: [remarkGfm],
+  //   rehypePlugins: [
+  //     rehypeSlug,
+  //     rehypeCodeTitles,
+  //     rehypePrism,
+  //     [
+  //       rehypeAutolinkHeadings,
+  //       {
+  //         properties: {
+  //           className: ['anchor']
+  //         }
+  //       }
+  //     ]
+  //   ]
+  // }
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
-      rehypeCodeTitles,
-      rehypePrism,
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+          onVisitLine(node: any) {
+            // Prevent lines from collapsing in `display: grid` mode, and allow empty
+            // lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }]
+            }
+          },
+          onVisitHighlightedLine(node: any) {
+            node.properties.className.push("line--highlighted")
+          },
+          onVisitHighlightedWord(node: any) {
+            node.properties.className = ["word--highlighted"]
+          },
+        },
+      ],
       [
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ['anchor']
-          }
-        }
-      ]
-    ]
-  }
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
+          },
+        },
+      ],
+    ],
+  },
 });
 
 export default contentLayerConfig;

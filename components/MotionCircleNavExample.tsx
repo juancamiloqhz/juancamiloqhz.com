@@ -1,36 +1,37 @@
-import React from 'react';
-import MenuToggle from '@/components/shared/MenuToggle';
-import { motion, useCycle } from 'framer-motion';
+import React from "react"
+import { motion, useCycle } from "framer-motion"
+
+import MenuToggle from "@/components/shared/MenuToggle"
 
 const sidebar = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 26px 43px)`,
     transition: {
-      type: 'spring',
+      type: "spring",
       stiffness: 20,
       restDelta: 2,
     },
   }),
   closed: {
-    clipPath: 'circle(1px at 26px 43px)',
+    clipPath: "circle(1px at 26px 43px)",
     transition: {
       delay: 0.5,
-      type: 'spring',
+      type: "spring",
       stiffness: 400,
       damping: 40,
     },
   },
-};
+}
 
 export default function MotionCircleNavExample() {
-  const [isOpen, toggleOpen] = useCycle(false, true);
-  const containerRef = React.useRef(null);
-  const { height } = useDimensions(containerRef);
+  const [isOpen, toggleOpen] = useCycle(false, true)
+  const containerRef = React.useRef(null)
+  const { height } = useDimensions(containerRef)
 
   return (
     <motion.nav
       initial={false}
-      animate={isOpen ? 'open' : 'closed'}
+      animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
       className="fixed top-0 left-0 bottom-0 right-0 z-50"
@@ -47,7 +48,7 @@ export default function MotionCircleNavExample() {
         <MenuToggle isOpen={isOpen} />
       </button>
     </motion.nav>
-  );
+  )
 }
 
 const MenuItemVariants = {
@@ -65,12 +66,12 @@ const MenuItemVariants = {
       y: { stiffness: 1000 },
     },
   },
-};
+}
 
-const colors = ['#FF008C', '#D309E1', '#9C1AFF', '#7700FF', '#4400FF'];
+const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"]
 
 function MenuItem({ i }: { i: number }) {
-  const style = { border: `2px solid ${colors[i]}` };
+  const style = { border: `2px solid ${colors[i]}` }
   return (
     <motion.li
       variants={MenuItemVariants}
@@ -87,7 +88,7 @@ function MenuItem({ i }: { i: number }) {
         style={style}
       />
     </motion.li>
-  );
+  )
 }
 
 const variants = {
@@ -97,7 +98,7 @@ const variants = {
   closed: {
     transition: { staggerChildren: 0.05, staggerDirection: -1 },
   },
-};
+}
 
 function Navigation() {
   return (
@@ -106,18 +107,18 @@ function Navigation() {
         <MenuItem i={i} key={i} />
       ))}
     </motion.ul>
-  );
+  )
 }
 
-const itemIds = [0, 1, 2, 3, 4];
+const itemIds = [0, 1, 2, 3, 4]
 
 function useDimensions(ref: React.MutableRefObject<any>) {
-  const dimensions = React.useRef({ width: 0, height: 0 });
+  const dimensions = React.useRef({ width: 0, height: 0 })
 
   React.useEffect(() => {
-    dimensions.current.width = ref.current.offsetWidth;
-    dimensions.current.height = ref.current.offsetHeight;
-  }, []);
+    dimensions.current.width = ref.current.offsetWidth
+    dimensions.current.height = ref.current.offsetHeight
+  }, [])
 
-  return dimensions.current;
+  return dimensions.current
 }

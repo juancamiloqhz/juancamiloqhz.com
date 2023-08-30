@@ -1,41 +1,45 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react';
-import LocaleSwitcher from '@/components/shared/LocaleSwitcher';
-import MenuToggle from '@/components/shared/MenuToggle';
-import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
-import 'keen-slider/keen-slider.min.css';
-import { useKeenSlider } from 'keen-slider/react';
-import { useTranslation } from 'next-i18next';
-import { useTheme } from 'next-themes';
-import { themes } from 'themes';
-import { ThemePaint, XIcon } from '@/components/Icons';
-import ModalMenuMobile from '@/components/Modals/ModalMenuMobile';
+import React from "react"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import classNames from "classnames"
+import { AnimatePresence, motion } from "framer-motion"
+
+import LocaleSwitcher from "@/components/shared/LocaleSwitcher"
+import MenuToggle from "@/components/shared/MenuToggle"
+
+import "keen-slider/keen-slider.min.css"
+
+import { useKeenSlider } from "keen-slider/react"
+import { useTranslation } from "next-i18next"
+import { useTheme } from "next-themes"
+import { themes } from "themes"
+
+import { ThemePaint, XIcon } from "@/components/Icons"
+import ModalMenuMobile from "@/components/Modals/ModalMenuMobile"
 
 function NavItem({
   href,
   text,
   goTo,
 }: {
-  href: string;
-  text: string;
-  goTo?: string;
+  href: string
+  text: string
+  goTo?: string
 }) {
-  const router = useRouter();
-  const isActive = router.asPath === href;
+  const router = useRouter()
+  const isActive = router.asPath === href
 
   return (
     <Link
       href={goTo ? `/#${goTo}` : href}
       className={`link ${classNames(
-        isActive ? 'text-primary' : '',
-        ' hover:text-primary',
+        isActive ? "text-primary" : "",
+        " hover:text-primary"
       )}`}
     >
       <span className="capsize">{text}</span>
     </Link>
-  );
+  )
 }
 
 const ulContainer = {
@@ -47,99 +51,99 @@ const ulContainer = {
       staggerChildren: 0.08,
     },
   },
-};
+}
 
 const liItem = {
   hidden: { opacity: 0, y: -20 },
   show: { opacity: 1, y: 0, transition: { bounce: 0 } },
-};
+}
 
 export default function Header() {
-  const { setTheme, resolvedTheme } = useTheme();
-  const { locale } = useRouter();
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const [showThemePicker, setShowThemePicker] = React.useState(false);
-  const { t } = useTranslation('header');
-  const [currentSlide, setCurrentSlide] = React.useState(0);
-  const [loaded, setLoaded] = React.useState(false);
-  const [scrollDir, setScrollDir] = React.useState('');
-  const [hasScrolled, setHasScrolled] = React.useState(false);
+  const { setTheme, resolvedTheme } = useTheme()
+  const { locale } = useRouter()
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+  const [showThemePicker, setShowThemePicker] = React.useState(false)
+  const { t } = useTranslation("header")
+  const [currentSlide, setCurrentSlide] = React.useState(0)
+  const [loaded, setLoaded] = React.useState(false)
+  const [scrollDir, setScrollDir] = React.useState("")
+  const [hasScrolled, setHasScrolled] = React.useState(false)
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: themes.findIndex((theme) => theme === resolvedTheme),
-    mode: 'free-snap',
+    mode: "free-snap",
     slides: {
-      perView: 'auto',
+      perView: "auto",
       spacing: 15,
     },
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
+      setCurrentSlide(slider.track.details.rel)
     },
     created() {
-      setLoaded(true);
+      setLoaded(true)
     },
-  });
+  })
 
   const navItems = [
-    { href: '/about', text: t('about'), goTo: 'about' },
-    { href: '/experience', text: t('experience'), goTo: 'experience' },
-    { href: '/work', text: t('work'), goTo: 'work' },
-    { href: '/contact', text: t('contact'), goTo: 'contact' },
-    { href: '/blog', text: t('blog') },
-  ];
+    { href: "/about", text: t("about"), goTo: "about" },
+    { href: "/experience", text: t("experience"), goTo: "experience" },
+    { href: "/work", text: t("work"), goTo: "work" },
+    { href: "/contact", text: t("contact"), goTo: "contact" },
+    { href: "/blog", text: t("blog") },
+  ]
 
   const handleScroll = () => {
     if (window.scrollY > 40) {
-      setHasScrolled(true);
+      setHasScrolled(true)
     } else {
-      setHasScrolled(false);
+      setHasScrolled(false)
     }
-  };
+  }
 
   React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   React.useEffect(() => {
-    const threshold = 0;
-    let lastScrollY = window.pageYOffset;
-    let ticking = false;
+    const threshold = 0
+    let lastScrollY = window.pageYOffset
+    let ticking = false
 
     const updateScrollDir = () => {
-      const scrollY = window.pageYOffset;
+      const scrollY = window.pageYOffset
 
       if (Math.abs(scrollY - lastScrollY) < threshold) {
-        ticking = false;
-        return;
+        ticking = false
+        return
       }
-      setScrollDir(scrollY > lastScrollY ? 'down' : 'up');
-      lastScrollY = scrollY > 0 ? scrollY : 0;
-      ticking = false;
-    };
+      setScrollDir(scrollY > lastScrollY ? "down" : "up")
+      lastScrollY = scrollY > 0 ? scrollY : 0
+      ticking = false
+    }
 
     const onScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateScrollDir);
-        ticking = true;
+        window.requestAnimationFrame(updateScrollDir)
+        ticking = true
       }
-    };
+    }
 
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll)
     // console.log(scrollDir);
 
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [scrollDir]);
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [scrollDir])
 
   return (
     <div className="relative">
       <motion.header
         initial={false}
-        animate={scrollDir === 'down' ? { y: -220 } : { y: 0 }}
+        animate={scrollDir === "down" ? { y: -220 } : { y: 0 }}
         transition={{ bounce: 0 }}
         className={`fixed top-0 w-full z-50${
-          hasScrolled ? ' bg-base-100/70 backdrop-blur' : ' bg-base-100'
+          hasScrolled ? " bg-base-100/70 backdrop-blur" : " bg-base-100"
         }`}
       >
         <AnimatePresence mode="wait">
@@ -147,7 +151,7 @@ export default function Header() {
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{
-                height: 'auto',
+                height: "auto",
                 opacity: 1,
               }}
               exit={{
@@ -172,15 +176,15 @@ export default function Header() {
                     >
                       <div
                         className={`mb-6 flex h-12 border-spacing-3 cursor-pointer items-center gap-3 rounded-[var(--rounded-btn)] border-2 border-transparent bg-base-100 px-3 font-semibold hover:border-primary${
-                          theme === resolvedTheme ? ' !border-primary' : ''
+                          theme === resolvedTheme ? " !border-primary" : ""
                         }`}
                         onClick={() => setTheme(theme)}
                       >
                         <span>
-                          {theme === 'night' && locale === 'en'
-                            ? 'Main'
-                            : theme === 'night' && locale === 'es'
-                            ? 'Principal'
+                          {theme === "night" && locale === "en"
+                            ? "Main"
+                            : theme === "night" && locale === "es"
+                            ? "Principal"
                             : theme.charAt(0).toUpperCase() + theme.slice(1)}
                         </span>
                         <div className="flex items-center gap-1">
@@ -208,7 +212,7 @@ export default function Header() {
         </AnimatePresence>
         <nav
           className={`flex h-16 w-full justify-between px-4 md:px-10 lg:h-24 items-center${
-            hasScrolled ? ' shadow-[0_4px_5px_rgba(0,0,0,0.1)]' : ''
+            hasScrolled ? " shadow-[0_4px_5px_rgba(0,0,0,0.1)]" : ""
           }`}
         >
           <Link
@@ -221,7 +225,7 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              {'{ JC }'}
+              {"{ JC }"}
             </motion.span>
           </Link>
           <motion.ul
@@ -238,7 +242,7 @@ export default function Header() {
               >
                 <span className="text-sm leading-none text-primary">
                   0{i + 1}.
-                </span>{' '}
+                </span>{" "}
                 <NavItem key={item.href} {...item} />
               </motion.li>
             ))}
@@ -250,7 +254,7 @@ export default function Header() {
                   locale="en"
                   target="_blank"
                 >
-                  {t('resume')}
+                  {t("resume")}
                 </Link>
               </motion.li>
               <motion.li variants={liItem}>
@@ -259,7 +263,7 @@ export default function Header() {
               <motion.li variants={liItem}>
                 <div
                   className="tooltip tooltip-bottom"
-                  data-tip={locale === 'es' ? 'Cambiar Tema' : 'Color Theme'}
+                  data-tip={locale === "es" ? "Cambiar Tema" : "Color Theme"}
                 >
                   <button
                     className="group btn-outline btn-primary btn"
@@ -275,7 +279,7 @@ export default function Header() {
               >
                 <div
                   className="tooltip tooltip-bottom"
-                  data-tip={locale === 'es' ? 'Menú' : 'Menu'}
+                  data-tip={locale === "es" ? "Menú" : "Menu"}
                 >
                   <button
                     type="button"
@@ -307,5 +311,5 @@ export default function Header() {
       </motion.header>
       <ModalMenuMobile isOpen={mobileMenuOpen} setIsOpen={setMobileMenuOpen} />
     </div>
-  );
+  )
 }

@@ -1,9 +1,10 @@
-import Image from 'next/image';
-import type { PropsWithChildren } from 'react';
-import type { Newsletter } from 'contentlayer/generated';
-import Container from '@/components/shared/Container';
-import Subscribe from '@/components/shared/Subscribe';
-import { format, parseISO } from 'date-fns';
+import type { PropsWithChildren } from "react"
+import Image from "next/image"
+import type { Newsletter } from "contentlayer/generated"
+import { format, parseISO } from "date-fns"
+
+import Container from "@/components/shared/Container"
+import Subscribe from "@/components/shared/Subscribe"
 
 export default function MailingListLayout({
   children,
@@ -31,8 +32,8 @@ export default function MailingListLayout({
               className="rounded-full object-cover object-center"
             />
             <p className="text-sm text-gray-700 dark:text-gray-300">
-              {'JuanCamiloQHz / '}
-              {format(parseISO(newsletter.publishedAt), 'MMMM dd, yyyy')}
+              {"JuanCamiloQHz / "}
+              {format(parseISO(newsletter.publishedAt), "MMMM dd, yyyy")}
             </p>
           </div>
           <p className="min-w-32 mt-2 text-sm text-gray-500 md:mt-0">
@@ -45,5 +46,5 @@ export default function MailingListLayout({
         <Subscribe />
       </article>
     </Container>
-  );
+  )
 }

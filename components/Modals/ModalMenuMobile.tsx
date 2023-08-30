@@ -1,28 +1,29 @@
 // import { XIcon, Close } from '../Icons';
-import Link from 'next/link';
-import React from 'react';
-import LocaleSwitcher from '@/components/shared/LocaleSwitcher';
-import MenuToggle from '@/components/shared/MenuToggle';
-import SocialLinks from '@/components/shared/SocialLinks';
-import FocusTrap from 'focus-trap-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import React from "react"
+import Link from "next/link"
+import FocusTrap from "focus-trap-react"
+import { AnimatePresence, motion } from "framer-motion"
 // import ThemeButton from '@/components/shared/ThemeButton';
-import { useTranslation } from 'next-i18next';
-import { createPortal } from 'react-dom';
-import { useKeydown } from '@/lib/helpers';
+import { useTranslation } from "next-i18next"
+import { createPortal } from "react-dom"
+
+import { useKeydown } from "@/lib/helpers"
+import LocaleSwitcher from "@/components/shared/LocaleSwitcher"
+import MenuToggle from "@/components/shared/MenuToggle"
+import SocialLinks from "@/components/shared/SocialLinks"
 
 const canUseDOM = !!(
-  typeof window !== 'undefined' &&
+  typeof window !== "undefined" &&
   window.document &&
   window.document.createElement
-);
+)
 
 const list = {
   hidden: {
     opacity: 0,
     transition: {
       staggerChildren: 0.04,
-      when: 'afterChildren',
+      when: "afterChildren",
       staggerDirection: -1,
     },
   },
@@ -33,7 +34,7 @@ const list = {
       staggerChildren: 0.1,
     },
   },
-};
+}
 
 const item = {
   hidden: {
@@ -47,27 +48,27 @@ const item = {
       bounce: 0,
     },
   },
-};
+}
 
 type ModalProps = {
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  isOpen: boolean;
-};
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  isOpen: boolean
+}
 
 function ModalElement({ setIsOpen, isOpen }: ModalProps) {
-  const { t } = useTranslation('header');
-  useKeydown('Escape', () => setIsOpen(false));
+  const { t } = useTranslation("header")
+  useKeydown("Escape", () => setIsOpen(false))
 
   React.useEffect(() => {
     if (isOpen) {
-      document.body.style.overflowY = 'hidden';
+      document.body.style.overflowY = "hidden"
     } else {
-      document.body.style.overflowY = 'auto';
+      document.body.style.overflowY = "auto"
     }
     return () => {
-      document.body.style.overflowY = 'auto';
-    };
-  }, [isOpen]);
+      document.body.style.overflowY = "auto"
+    }
+  }, [isOpen])
 
   return (
     <>
@@ -93,7 +94,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
-            {t('home')}
+            {t("home")}
           </Link>
         </motion.li>
         <motion.li variants={item}>
@@ -103,7 +104,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
             onClick={() => setIsOpen(false)}
           >
-            {t('blog')}
+            {t("blog")}
           </Link>
         </motion.li>
         <motion.li variants={item}>
@@ -123,7 +124,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
-            {t('mailList')}
+            {t("mailList")}
           </Link>
         </motion.li>
         <motion.li variants={item}>
@@ -134,7 +135,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             passHref
             className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
-            {t('work')}
+            {t("work")}
           </Link>
         </motion.li>
         <motion.li variants={item}>
@@ -144,7 +145,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             passHref
             className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
-            {t('guestbook')}
+            {t("guestbook")}
           </Link>
         </motion.li>
         <motion.li variants={item}>
@@ -154,7 +155,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
-            {t('about')}
+            {t("about")}
           </Link>
         </motion.li>
         <motion.li variants={item}>
@@ -164,7 +165,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
-            {t('contact')}
+            {t("contact")}
           </Link>
         </motion.li>
         <motion.li variants={item}>
@@ -174,7 +175,7 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
             onClick={() => setIsOpen(false)}
             className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
           >
-            {t('resume')}
+            {t("resume")}
           </Link>
         </motion.li>
         <motion.li variants={item} className="mt-4">
@@ -185,11 +186,11 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
         </motion.li>
       </motion.ul>
     </>
-  );
+  )
 }
 
 export default function ModalMenuMobile(props: ModalProps) {
-  if (!canUseDOM) return null;
+  if (!canUseDOM) return null
   return createPortal(
     <AnimatePresence initial={false} mode="wait">
       {props.isOpen && (
@@ -200,6 +201,6 @@ export default function ModalMenuMobile(props: ModalProps) {
         </FocusTrap>
       )}
     </AnimatePresence>,
-    document.body as HTMLElement,
-  );
+    document.body as HTMLElement
+  )
 }

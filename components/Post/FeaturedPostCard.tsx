@@ -1,13 +1,13 @@
-import Link from 'next/link';
+import Link from "next/link"
 
 export default function FeaturedPostCard({
   title,
   link,
   gradient,
 }: {
-  title: string;
-  link: string;
-  gradient: string;
+  title: string
+  link: string
+  gradient: string
 }) {
   return (
     <Link
@@ -20,5 +20,5 @@ export default function FeaturedPostCard({
         </div>
       </div>
     </Link>
-  );
+  )
 }

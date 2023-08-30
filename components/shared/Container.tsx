@@ -1,49 +1,50 @@
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import Footer from '@/components/shared/Footer';
-import Header from '@/components/shared/Header';
-import { motion } from 'framer-motion';
+import Head from "next/head"
+import { useRouter } from "next/router"
+import { motion } from "framer-motion"
 import {
   FiCodepen,
   FiGithub,
   FiInstagram,
   FiLinkedin,
   FiTwitter,
-} from 'react-icons/fi';
+} from "react-icons/fi"
+
+import Footer from "@/components/shared/Footer"
+import Header from "@/components/shared/Header"
 
 const settings = {
   meta: {
-    rootUrl: 'https://juancamiloqhz.com',
-    title: 'JuanCamiloQHz',
+    rootUrl: "https://juancamiloqhz.com",
+    title: "JuanCamiloQHz",
     description:
-      'Software Engineer, MBA, Mechanical Engineer and Professional Pyrotechnician',
+      "Software Engineer, MBA, Mechanical Engineer and Professional Pyrotechnician",
     social: {
       graphic: `https://juancamiloqhz.com/avatar.png`,
-      twitter: '@juancamiloqhz',
+      twitter: "@juancamiloqhz",
     },
   },
   keywords:
-    'Software Engineer, Web Developer, Full Stack Developer, Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js',
-};
+    "Software Engineer, Web Developer, Full Stack Developer, Software Developer, Mechanical Engineer, Professional Pyrotechnician, React, Next.js, Node.js",
+}
 
 interface SocialTagsTypes {
-  openGraphType?: 'profile' | 'article' | 'website';
-  url?: string;
-  title?: string;
-  description?: string;
-  imageUrl?: string;
-  width?: string;
-  height?: string;
-  alt?: string;
-  name?: string;
-  lastName?: string;
-  username?: string;
-  gender?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  authorUrl?: string;
-  mainCategory?: string;
-  tagArray?: any;
+  openGraphType?: "profile" | "article" | "website"
+  url?: string
+  title?: string
+  description?: string
+  imageUrl?: string
+  width?: string
+  height?: string
+  alt?: string
+  name?: string
+  lastName?: string
+  username?: string
+  gender?: string
+  createdAt?: string
+  updatedAt?: string
+  authorUrl?: string
+  mainCategory?: string
+  tagArray?: any
 }
 
 const socialTags = ({
@@ -66,51 +67,51 @@ const socialTags = ({
   tagArray,
 }: SocialTagsTypes) => {
   const metaTags = [
-    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: "twitter:card", content: "summary_large_image" },
     {
-      name: 'twitter:site',
+      name: "twitter:site",
       content:
         settings &&
         settings.meta &&
         settings.meta.social &&
         settings.meta.social.twitter,
     },
-    { name: 'twitter:title', content: title },
-    { name: 'twitter:description', content: description },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
     {
-      name: 'twitter:creator',
+      name: "twitter:creator",
       content:
         settings &&
         settings.meta &&
         settings.meta.social &&
         settings.meta.social.twitter,
     },
-    { name: 'twitter:image:src', content: imageUrl },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'og:title', content: title },
-    { name: 'og:type', content: openGraphType },
-    { name: 'og:url', content: url },
-    { name: 'og:description', content: description },
+    { name: "twitter:image:src", content: imageUrl },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "og:title", content: title },
+    { name: "og:type", content: openGraphType },
+    { name: "og:url", content: url },
+    { name: "og:description", content: description },
     {
-      name: 'og:site_name',
+      name: "og:site_name",
       content: settings && settings.meta && settings.meta.title,
     },
     {
-      name: 'og:published_time',
+      name: "og:published_time",
       content: createdAt || new Date().toISOString(),
     },
     {
-      name: 'og:modified_time',
+      name: "og:modified_time",
       content: updatedAt || new Date().toISOString(),
     },
 
     // Og Imagen
-    { name: 'og:image:url', content: imageUrl },
-    { name: 'og:image:secure_url', content: imageUrl },
+    { name: "og:image:url", content: imageUrl },
+    { name: "og:image:secure_url", content: imageUrl },
     // { name: 'og:image:type', content: imageType },
-    { name: 'og:image:width', content: width },
-    { name: 'og:image:height', content: height },
-    { name: 'og:image:alt', content: alt },
+    { name: "og:image:width", content: width },
+    { name: "og:image:height", content: height },
+    { name: "og:image:alt", content: alt },
 
     // og:image:url - Identical to og:image.
     // og:image:secure_url - An alternate url to use if the webpage requires HTTPS.
@@ -120,12 +121,12 @@ const socialTags = ({
     // og:image:alt - A description of what is in the image (not a caption). If the page specifies an og:image it should specify og:image:alt.
 
     // Profile
-    ...(openGraphType === 'profile'
+    ...(openGraphType === "profile"
       ? [
-          { name: 'og:profile:first_name', content: name },
-          { name: 'og:profile:last_name', content: lastName },
-          { name: 'og:profile:username', content: username },
-          { name: 'og:profile:gender', content: gender },
+          { name: "og:profile:first_name", content: name },
+          { name: "og:profile:last_name", content: lastName },
+          { name: "og:profile:username", content: username },
+          { name: "og:profile:gender", content: gender },
         ]
       : []),
     // profile:first_name - string - A name normally given to an individual by a parent or self-chosen.
@@ -134,24 +135,24 @@ const socialTags = ({
     // profile:gender - enum(male, female) - Their gender.
 
     // Article
-    ...(openGraphType === 'article'
+    ...(openGraphType === "article"
       ? [
-          { name: 'og:profile:first_name', content: name },
-          { name: 'og:profile:last_name', content: lastName },
-          { name: 'og:profile:username', content: username },
-          { name: 'og:profile:gender', content: gender },
+          { name: "og:profile:first_name", content: name },
+          { name: "og:profile:last_name", content: lastName },
+          { name: "og:profile:username", content: username },
+          { name: "og:profile:gender", content: gender },
           {
-            name: 'og:article:published_time',
+            name: "og:article:published_time",
             content: createdAt || new Date().toISOString(),
           },
           {
-            name: 'og:article:modified_time',
+            name: "og:article:modified_time",
             content: updatedAt || new Date().toISOString(),
           },
           // { name: 'og:article:expiration_time', content: expiration_time },
-          { name: 'og:article:author', content: authorUrl },
-          { name: 'og:article:section', content: mainCategory },
-          { name: 'og:article:tag', content: tagArray },
+          { name: "og:article:author", content: authorUrl },
+          { name: "og:article:section", content: mainCategory },
+          { name: "og:article:tag", content: tagArray },
           // published_time - datetime - When the article was first published.
           // modified_time - datetime - When the article was last changed.
           // expiration_time - datetime - When the article is out of date after.
@@ -160,73 +161,73 @@ const socialTags = ({
           // tag - string array - Tag words associated with this article.
         ]
       : []),
-  ];
+  ]
 
-  return metaTags;
-};
+  return metaTags
+}
 
 interface ContainerProps {
-  children: React.ReactNode;
-  openGraphType?: 'profile' | 'article' | 'website';
+  children: React.ReactNode
+  openGraphType?: "profile" | "article" | "website"
   schemaType?:
-    | 'WebPage'
-    | 'Article'
-    | 'Profile'
-    | 'WebSite'
-    | 'AboutPage'
-    | 'ContactPage'
-    | 'SearchResultsPage'
-    | 'Blog';
-  exclusiveTitle?: string;
-  title?: string;
-  description?: string;
-  imageUrl?: string;
-  url?: string;
-  width?: string;
-  height?: string;
-  alt?: string;
-  name?: string;
-  lastName?: string;
-  username?: string;
-  gender?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  authorUrl?: string;
-  mainCategory?: string;
-  tagArray?: any;
-  keywords?: string;
+    | "WebPage"
+    | "Article"
+    | "Profile"
+    | "WebSite"
+    | "AboutPage"
+    | "ContactPage"
+    | "SearchResultsPage"
+    | "Blog"
+  exclusiveTitle?: string
+  title?: string
+  description?: string
+  imageUrl?: string
+  url?: string
+  width?: string
+  height?: string
+  alt?: string
+  name?: string
+  lastName?: string
+  username?: string
+  gender?: string
+  createdAt?: string
+  updatedAt?: string
+  authorUrl?: string
+  mainCategory?: string
+  tagArray?: any
+  keywords?: string
 }
 
 export default function Container({ children, ...props }: ContainerProps) {
-  const { locale, asPath } = useRouter();
+  const { locale, asPath } = useRouter()
 
   const {
-    openGraphType = 'website',
-    schemaType = 'WebPage',
+    openGraphType = "website",
+    schemaType = "WebPage",
     url = `https://juancamiloqhz.com${
-      locale === 'en' ? '' : `/${locale}`
+      locale === "en" ? "" : `/${locale}`
     }${asPath}`,
-    exclusiveTitle = '',
-    title = 'Home',
+    exclusiveTitle = "",
+    title = "Home",
     description = settings && settings.meta && settings.meta.description,
     imageUrl = settings &&
       settings.meta &&
       settings.meta.social &&
       settings.meta.social.graphic,
-    width = '300',
-    height = '190',
-    alt = 'Logo JuanCamiloQHz',
-    name = 'Juan Camilo',
-    lastName = 'Qhz',
-    username = 'juancamiloqhz',
-    gender = 'male',
-    createdAt = '',
-    updatedAt = '',
-    authorUrl = 'https://juancamiloqhz.com',
-    mainCategory = '',
-    tagArray = [''],
+    width = "300",
+    height = "190",
+    alt = "Logo JuanCamiloQHz",
+    name = "Juan Camilo",
+    lastName = "Qhz",
+    username = "juancamiloqhz",
+    gender = "male",
+    createdAt = "",
+    updatedAt = "",
+    authorUrl = "https://juancamiloqhz.com",
+    mainCategory = "",
+    tagArray = [""],
     keywords = settings && settings.keywords,
-  } = props;
+  } = props
 
   return (
     <>
@@ -290,14 +291,14 @@ export default function Container({ children, ...props }: ContainerProps) {
           mainCategory,
           tagArray,
         }).map(({ name, content }) => {
-          return <meta key={name} name={name} content={content} />;
+          return <meta key={name} name={name} content={content} />
         })}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              '@context': 'http://schema.org',
-              '@type': schemaType, // https://schema.org/docs/full.html
+              "@context": "http://schema.org",
+              "@type": schemaType, // https://schema.org/docs/full.html
               name: title,
               description,
               url: url,
@@ -409,5 +410,5 @@ export default function Container({ children, ...props }: ContainerProps) {
         </motion.div>
       </div>
     </>
-  );
+  )
 }

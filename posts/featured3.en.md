@@ -1,17 +1,17 @@
 ---
-title: 'Dynamic Routing and Static Generation'
-excerpt: '(Featured 3) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
-coverImage: '/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg'
-date: '2020-03-16T05:35:07.322Z'
+title: "Dynamic Routing and Static Generation"
+excerpt: "(Featured 3) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick."
+coverImage: "/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
+date: "2020-03-16T05:35:07.322Z"
 featured: true
 author:
   name: Lorena Rojas
   username: lorena
-  picture: '/assets/blog/authors/blonde.jpg'
+  picture: "/assets/blog/authors/blonde.jpg"
 ogImage:
-  url: '/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg'
-categories: ['category-1: Category 1', 'category-2: Category 2']
-tags: ['tag-1: Tag 1', 'tag-2: Tag 2', 'tag-3: Tag 3', 'tag-4: Tag 4']
+  url: "/assets/blog/dynamic-routing/maximalfocus-HakTxidk36I-unsplash-cover.jpg"
+categories: ["category-1: Category 1", "category-2: Category 2"]
+tags: ["tag-1: Tag 1", "tag-2: Tag 2", "tag-3: Tag 3", "tag-4: Tag 4"]
 ---
 
 ## My Headline

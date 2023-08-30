@@ -1,17 +1,17 @@
-import { useRouter } from 'next/router';
-import React from 'react';
-import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'next-i18next';
-import { CgShapeTriangle } from 'react-icons/cg';
+import React from "react"
+import { useRouter } from "next/router"
+import { format } from "date-fns"
+import { es } from "date-fns/locale"
+import { motion } from "framer-motion"
+import { useTranslation } from "next-i18next"
+import { CgShapeTriangle } from "react-icons/cg"
 
 const list = {
   hidden: {
     opacity: 0,
     transition: {
       staggerChildren: 0.04,
-      when: 'afterChildren',
+      when: "afterChildren",
       staggerDirection: -1,
     },
   },
@@ -22,7 +22,7 @@ const list = {
       staggerChildren: 0.1,
     },
   },
-};
+}
 
 const item = {
   hidden: {
@@ -36,12 +36,12 @@ const item = {
       bounce: 0,
     },
   },
-};
+}
 
 export default function WhereIveWorked() {
-  const { t } = useTranslation('index-page');
-  const { locale } = useRouter();
-  const [active, setActive] = React.useState(1);
+  const { t } = useTranslation("index-page")
+  const { locale } = useRouter()
+  const [active, setActive] = React.useState(1)
   return (
     <motion.div
       className="mb-32 scroll-mt-60 px-4 transition-all duration-500 ease-in-out sm:mb-60 md:px-28"
@@ -54,8 +54,8 @@ export default function WhereIveWorked() {
       <div className="mx-auto w-full max-w-2xl">
         <div className="mb-6 grid grid-cols-[auto_1fr] items-center gap-4">
           <h2 className="text-2xl font-bold ">
-            <span className="mr-1 text-xl font-normal text-primary">02.</span>{' '}
-            {t('where-ive-worked')}
+            <span className="mr-1 text-xl font-normal text-primary">02.</span>{" "}
+            {t("where-ive-worked")}
           </h2>
           <div className="h-[1px] w-full bg-base-content/60" />
         </div>
@@ -65,7 +65,7 @@ export default function WhereIveWorked() {
             <li>
               <button
                 className={`h-12 w-full border-l-[3px] border-base-content/20 px-4 text-left hover:bg-primary/10 hover:text-primary${
-                  active === 1 ? ' text-primary' : ''
+                  active === 1 ? " text-primary" : ""
                 }`}
                 onClick={() => setActive(1)}
               >
@@ -75,7 +75,7 @@ export default function WhereIveWorked() {
             <li>
               <button
                 className={`h-12 w-full border-l-[3px] border-base-content/20 px-4 text-left hover:bg-primary/10 hover:text-primary${
-                  active === 2 ? ' text-primary' : ''
+                  active === 2 ? " text-primary" : ""
                 }`}
                 onClick={() => setActive(2)}
               >
@@ -85,7 +85,7 @@ export default function WhereIveWorked() {
             <li>
               <button
                 className={`h-12 w-full border-l-[3px] border-base-content/20 px-4 text-left hover:bg-primary/10 hover:text-primary${
-                  active === 3 ? ' text-primary' : ''
+                  active === 3 ? " text-primary" : ""
                 }`}
                 onClick={() => setActive(3)}
               >
@@ -104,7 +104,7 @@ export default function WhereIveWorked() {
             <li>
               <button
                 className={`h-12 w-28 border-b-[3px] border-base-content/20 px-4 hover:bg-primary/10 hover:text-primary${
-                  active === 1 ? ' text-primary' : ''
+                  active === 1 ? " text-primary" : ""
                 }`}
                 onClick={() => setActive(1)}
               >
@@ -114,7 +114,7 @@ export default function WhereIveWorked() {
             <li>
               <button
                 className={`h-12 w-28 border-b-[3px] border-base-content/20 px-4 hover:bg-primary/10 hover:text-primary${
-                  active === 2 ? ' text-primary' : ''
+                  active === 2 ? " text-primary" : ""
                 }`}
                 onClick={() => setActive(2)}
               >
@@ -124,7 +124,7 @@ export default function WhereIveWorked() {
             <li>
               <button
                 className={`h-12 w-28 border-b-[3px] border-base-content/20 px-4 hover:bg-primary/10 hover:text-primary${
-                  active === 3 ? ' text-primary' : ''
+                  active === 3 ? " text-primary" : ""
                 }`}
                 onClick={() => setActive(3)}
               >
@@ -146,7 +146,7 @@ export default function WhereIveWorked() {
                 transition={{ bounce: 0 }}
               >
                 <h3 className="mb-1 text-xl font-semibold">
-                  {t('co-founder')} & CTO{' '}
+                  {t("co-founder")} & CTO{" "}
                   <div
                     className="tooltip transition-all duration-300 hover:text-primary"
                     data-tip="vibra.la"
@@ -162,10 +162,10 @@ export default function WhereIveWorked() {
                   </div>
                 </h3>
                 <p className="text-sm text-base-content/60">
-                  {format(new Date(2019, 11), 'MMM yyyy', {
-                    locale: locale === 'es' ? es : undefined,
-                  })}{' '}
-                  - {t('present')}
+                  {format(new Date(2019, 11), "MMM yyyy", {
+                    locale: locale === "es" ? es : undefined,
+                  })}{" "}
+                  - {t("present")}
                 </p>
                 <motion.ul
                   variants={list}
@@ -182,7 +182,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('vibra.1')}</p>
+                    <p>{t("vibra.1")}</p>
                   </motion.li>
                   <motion.li
                     variants={item}
@@ -192,7 +192,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('vibra.2')}</p>
+                    <p>{t("vibra.2")}</p>
                   </motion.li>
                   <motion.li
                     variants={item}
@@ -202,7 +202,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('vibra.3')}</p>
+                    <p>{t("vibra.3")}</p>
                   </motion.li>
                 </motion.ul>
               </motion.div>
@@ -217,12 +217,12 @@ export default function WhereIveWorked() {
                   Freelancer Full Stack Developer
                 </h3>
                 <p className="text-sm text-base-content/60">
-                  {format(new Date(2016, 0), 'MMM yyyy', {
-                    locale: locale === 'es' ? es : undefined,
+                  {format(new Date(2016, 0), "MMM yyyy", {
+                    locale: locale === "es" ? es : undefined,
                   })}
-                  {' - '}
-                  {format(new Date(2019, 11), 'MMM yyyy', {
-                    locale: locale === 'es' ? es : undefined,
+                  {" - "}
+                  {format(new Date(2019, 11), "MMM yyyy", {
+                    locale: locale === "es" ? es : undefined,
                   })}
                 </p>
                 <motion.ul
@@ -240,7 +240,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('freelancer.1')}</p>
+                    <p>{t("freelancer.1")}</p>
                   </motion.li>
                   <motion.li
                     variants={item}
@@ -250,7 +250,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('freelancer.2')}</p>
+                    <p>{t("freelancer.2")}</p>
                   </motion.li>
                   <motion.li
                     variants={item}
@@ -260,7 +260,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('freelancer.3')}</p>
+                    <p>{t("freelancer.3")}</p>
                   </motion.li>
                 </motion.ul>
               </motion.div>
@@ -272,7 +272,7 @@ export default function WhereIveWorked() {
                 transition={{ bounce: 0 }}
               >
                 <h3 className="mb-1 text-xl font-semibold">
-                  {t('owner')}{' '}
+                  {t("owner")}{" "}
                   <a
                     className="link-primary link whitespace-nowrap"
                     href="https://www.youtube.com/watch?v=a4SC9yAnXok"
@@ -283,12 +283,12 @@ export default function WhereIveWorked() {
                   </a>
                 </h3>
                 <p className="text-sm text-base-content/60">
-                  {format(new Date(2010, 0), 'MMM yyyy', {
-                    locale: locale === 'es' ? es : undefined,
+                  {format(new Date(2010, 0), "MMM yyyy", {
+                    locale: locale === "es" ? es : undefined,
                   })}
-                  {' - '}
-                  {format(new Date(2015, 11), 'MMM yyyy', {
-                    locale: locale === 'es' ? es : undefined,
+                  {" - "}
+                  {format(new Date(2015, 11), "MMM yyyy", {
+                    locale: locale === "es" ? es : undefined,
                   })}
                 </p>
                 <motion.ul
@@ -306,7 +306,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('supernova.1')}</p>
+                    <p>{t("supernova.1")}</p>
                   </motion.li>
                   <motion.li
                     variants={item}
@@ -316,7 +316,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('supernova.2')}</p>
+                    <p>{t("supernova.2")}</p>
                   </motion.li>
                   <motion.li
                     variants={item}
@@ -326,7 +326,7 @@ export default function WhereIveWorked() {
                       className="mt-1 rotate-90 text-primary"
                       size={16}
                     />
-                    <p>{t('supernova.3')}</p>
+                    <p>{t("supernova.3")}</p>
                   </motion.li>
                 </motion.ul>
               </motion.div>
@@ -335,5 +335,5 @@ export default function WhereIveWorked() {
         </div>
       </div>
     </motion.div>
-  );
+  )
 }

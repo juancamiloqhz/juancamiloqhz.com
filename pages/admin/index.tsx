@@ -1,48 +1,49 @@
-import { GetServerSideProps } from 'next';
-import dynamic from 'next/dynamic';
-import AdminContainer from '@/components/shared/AdminContainer';
-import { getSession, useSession } from 'next-auth/react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { GetServerSideProps } from "next"
+import dynamic from "next/dynamic"
+import { getSession, useSession } from "next-auth/react"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+import AdminContainer from "@/components/shared/AdminContainer"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const session = await getSession(context);
+  const session = await getSession(context)
   //   console.log(session);
   if (session?.user?.email === process.env.ADMIN_EMAIL) {
     return {
       props: {
         session,
-        ...(await serverSideTranslations(context.locale ?? 'en', [
-          'header',
-          'footer',
+        ...(await serverSideTranslations(context.locale ?? "en", [
+          "header",
+          "footer",
         ])),
       },
-    };
+    }
   }
 
   return {
     props: {
-      ...(await serverSideTranslations(context.locale ?? 'en', [
-        'header',
-        'footer',
+      ...(await serverSideTranslations(context.locale ?? "en", [
+        "header",
+        "footer",
       ])),
     },
-  };
-};
+  }
+}
 
-const BarChart = dynamic(() => import('components/admin/BarChart'), {
+const BarChart = dynamic(() => import("components/admin/BarChart"), {
   ssr: false,
-});
+})
 
-const PieChart = dynamic(() => import('components/admin/PieChart'), {
+const PieChart = dynamic(() => import("components/admin/PieChart"), {
   ssr: false,
-});
+})
 
-const CalendarChart = dynamic(() => import('components/admin/CalendarChart'), {
+const CalendarChart = dynamic(() => import("components/admin/CalendarChart"), {
   ssr: false,
-});
+})
 
 export default function PersonalDashboard() {
-  const { data: session } = useSession();
+  const { data: session } = useSession()
 
   return (
     <AdminContainer
@@ -73,5 +74,5 @@ export default function PersonalDashboard() {
         </div>
       </div>
     </AdminContainer>
-  );
+  )
 }

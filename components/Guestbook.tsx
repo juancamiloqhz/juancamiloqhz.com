@@ -1,32 +1,33 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import React from 'react';
-import { format } from 'date-fns';
-import fetcher from 'lib/fetcher';
-import { Form, FormState } from 'lib/types';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import { useTranslation } from 'next-i18next';
-import { FaGoogle } from 'react-icons/fa';
-import { FiGithub } from 'react-icons/fi';
-import useSWR, { useSWRConfig } from 'swr';
-import ErrorMessage from '@/components/ErrorMessage';
-import LoadingSpinner from '@/components/LoadingSpinner';
-import SuccessMessage from '@/components/SuccessMessage';
+import React from "react"
+import { format } from "date-fns"
+import fetcher from "lib/fetcher"
+import { Form, FormState } from "lib/types"
+import { signIn, signOut, useSession } from "next-auth/react"
+import { useTranslation } from "next-i18next"
+import { FaGoogle } from "react-icons/fa"
+import { FiGithub } from "react-icons/fi"
+import useSWR, { useSWRConfig } from "swr"
+
+import ErrorMessage from "@/components/ErrorMessage"
+import LoadingSpinner from "@/components/LoadingSpinner"
+import SuccessMessage from "@/components/SuccessMessage"
 
 function GuestbookEntry({ entry, user }: { entry: any; user: any }) {
-  const [deleting, setDeleting] = React.useState(false);
-  const { t } = useTranslation('guestbook-page');
-  const { mutate } = useSWRConfig();
+  const [deleting, setDeleting] = React.useState(false)
+  const { t } = useTranslation("guestbook-page")
+  const { mutate } = useSWRConfig()
   const deleteEntry = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setDeleting(true);
+    e.preventDefault()
+    setDeleting(true)
 
     await fetch(`/api/guestbook/${entry.id}`, {
-      method: 'DELETE',
-    });
-    setDeleting(false);
+      method: "DELETE",
+    })
+    setDeleting(false)
 
-    mutate('/api/guestbook');
-  };
+    mutate("/api/guestbook")
+  }
 
   return (
     <div className="mt-4 flex flex-col space-y-2 rounded-[var(--rounded-btn)] border border-base-content/30 p-4">
@@ -40,75 +41,75 @@ function GuestbookEntry({ entry, user }: { entry: any; user: any }) {
 
         {user &&
           (entry.created_by === user.name ||
-            user.name === 'Juan Camilo QHz') && (
+            user.name === "Juan Camilo QHz") && (
             <>
               <span>/</span>
               <button
-                className={`btn-error btn btn-xs${deleting ? ' loading' : ''}`}
+                className={`btn-error btn btn-xs${deleting ? " loading" : ""}`}
                 onClick={deleteEntry}
               >
-                {t('delete')}
+                {t("delete")}
               </button>
             </>
           )}
       </div>
     </div>
-  );
+  )
 }
 
 export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
-  const inputEl = React.useRef<HTMLTextAreaElement>(null);
-  const { t } = useTranslation('guestbook-page');
-  const { data: session } = useSession();
-  const { mutate } = useSWRConfig();
-  const [form, setForm] = React.useState<FormState>({ state: Form.Initial });
-  const { data: entries }: any = useSWR('/api/guestbook', fetcher, {
+  const inputEl = React.useRef<HTMLTextAreaElement>(null)
+  const { t } = useTranslation("guestbook-page")
+  const { data: session } = useSession()
+  const { mutate } = useSWRConfig()
+  const [form, setForm] = React.useState<FormState>({ state: Form.Initial })
+  const { data: entries }: any = useSWR("/api/guestbook", fetcher, {
     fallbackData,
-  });
+  })
 
   const leaveEntry = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setForm({ state: Form.Loading });
+    e.preventDefault()
+    setForm({ state: Form.Loading })
 
-    const res = await fetch('/api/guestbook', {
+    const res = await fetch("/api/guestbook", {
       body: JSON.stringify({
         body: inputEl.current!.value,
       }),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      method: 'POST',
-    });
+      method: "POST",
+    })
 
-    const { error } = await res.json();
+    const { error } = await res.json()
     if (error) {
       setForm({
         state: Form.Error,
         message: error,
-      });
-      return;
+      })
+      return
     }
 
-    inputEl.current!.value = '';
-    mutate('/api/guestbook');
+    inputEl.current!.value = ""
+    mutate("/api/guestbook")
     setForm({
       state: Form.Success,
-      message: `${t('hooray')}`,
-    });
-  };
+      message: `${t("hooray")}`,
+    })
+  }
 
   return (
     <>
       <div className="flex w-full flex-col rounded-[var(--rounded-btn)] border border-primary p-8 shadow-xl">
-        <h5 className="text-xl font-bold md:text-2xl">{t('cardTitle')}</h5>
-        <p className="mt-1">{t('cardDescription')}</p>
+        <h5 className="text-xl font-bold md:text-2xl">{t("cardTitle")}</h5>
+        <p className="mt-1">{t("cardDescription")}</p>
         {session && (
           <button
             type="button"
             onClick={() => signOut()}
             className="btn-primary btn-sm btn mt-4"
           >
-            {t('signOut')}
+            {t("signOut")}
           </button>
         )}
         {!session && (
@@ -117,23 +118,23 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
               href="/api/auth/signin/github"
               className="btn-primary btn-sm btn gap-2"
               onClick={(e) => {
-                e.preventDefault();
-                signIn('github');
+                e.preventDefault()
+                signIn("github")
               }}
             >
               <FiGithub size={16} />
-              {t('logInWithGitHub')}
+              {t("logInWithGitHub")}
             </a>
             <a
               href="/api/auth/signin/google"
               className="btn-primary btn-sm btn gap-2"
               onClick={(e) => {
-                e.preventDefault();
-                signIn('google');
+                e.preventDefault()
+                signIn("google")
               }}
             >
               <FaGoogle size={16} />
-              {t('logInWithGoogle')}
+              {t("logInWithGoogle")}
             </a>
           </div>
         )}
@@ -148,11 +149,11 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
             />
             <button
               className={`btn-primary btn mt-4 px-6 float-right${
-                form.state === Form.Loading ? ' loading' : ''
+                form.state === Form.Loading ? " loading" : ""
               }`}
               type="submit"
             >
-              {t('sign')}
+              {t("sign")}
             </button>
           </form>
         )}
@@ -161,11 +162,11 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
         ) : form.state === Form.Success ? (
           <SuccessMessage>{form.message}</SuccessMessage>
         ) : (
-          <p className="text-sm text-base-content/60">*{t('cardInfo')}</p>
+          <p className="text-sm text-base-content/60">*{t("cardInfo")}</p>
         )}
       </div>
       <h4 className="mt-16 text-xl font-bold sm:text-2xl">
-        {t('latest-messages')}
+        {t("latest-messages")}
       </h4>
       <div className="mt-4 w-full space-y-8">
         {entries?.map((entry: any) => (
@@ -173,5 +174,5 @@ export default function Guestbook({ fallbackData }: { fallbackData: any[] }) {
         ))}
       </div>
     </>
-  );
+  )
 }

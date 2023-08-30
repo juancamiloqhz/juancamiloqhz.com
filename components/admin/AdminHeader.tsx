@@ -1,40 +1,41 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react';
-import LocaleSwitcher from '@/components/shared/LocaleSwitcher';
-import MenuToggle from '@/components/shared/MenuToggle';
-import ThemeButton from '@/components/shared/ThemeButton';
-import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useOnClickOutside } from 'lib/hooks';
-import { useTranslation } from 'next-i18next';
-import ModalMenuMobile from '@/components/Modals/ModalMenuMobile';
+import React from "react"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import classNames from "classnames"
+import { AnimatePresence, motion } from "framer-motion"
+import { useOnClickOutside } from "lib/hooks"
+import { useTranslation } from "next-i18next"
+
+import ModalMenuMobile from "@/components/Modals/ModalMenuMobile"
+import LocaleSwitcher from "@/components/shared/LocaleSwitcher"
+import MenuToggle from "@/components/shared/MenuToggle"
+import ThemeButton from "@/components/shared/ThemeButton"
 
 function NavItem({ href, text }: { href: string; text: string }) {
-  const router = useRouter();
-  const isActive = router.asPath === href;
+  const router = useRouter()
+  const isActive = router.asPath === href
 
   return (
     <Link
       href={href}
       className={classNames(
         isActive
-          ? 'font-semibold text-gray-800 dark:text-gray-200'
-          : 'font-normal text-gray-600 dark:text-gray-400',
-        'rounded-lg p-1 no-underline transition-all hover:bg-gray-200 dark:hover:bg-gray-800 sm:px-3 sm:py-2',
+          ? "font-semibold text-gray-800 dark:text-gray-200"
+          : "font-normal text-gray-600 dark:text-gray-400",
+        "rounded-lg p-1 no-underline transition-all hover:bg-gray-200 dark:hover:bg-gray-800 sm:px-3 sm:py-2"
       )}
     >
       <span className="capsize">{text}</span>
     </Link>
-  );
+  )
 }
 
 export default function AdminHeader({ pageTitle }: { pageTitle?: string }) {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const [showThemePicker, setShowThemePicker] = React.useState(false);
-  const { t } = useTranslation('header');
-  useOnClickOutside(ref, () => setShowThemePicker(false));
+  const ref = React.useRef<HTMLDivElement>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+  const [showThemePicker, setShowThemePicker] = React.useState(false)
+  const { t } = useTranslation("header")
+  useOnClickOutside(ref, () => setShowThemePicker(false))
 
   return (
     <>
@@ -43,15 +44,15 @@ export default function AdminHeader({ pageTitle }: { pageTitle?: string }) {
           <motion.div
             ref={ref}
             exit={{
-              height: '0',
-              transition: { ease: 'easeOut', duration: 0.3 },
+              height: "0",
+              transition: { ease: "easeOut", duration: 0.3 },
             }}
             animate={{
-              height: 'auto',
-              transition: { ease: 'easeIn', duration: 0.3 },
+              height: "auto",
+              transition: { ease: "easeIn", duration: 0.3 },
             }}
             initial={{
-              height: '0',
+              height: "0",
             }}
             className="relative flex overflow-y-hidden bg-gray-100 pt-4 dark:bg-neutral-900"
           >
@@ -124,8 +125,8 @@ export default function AdminHeader({ pageTitle }: { pageTitle?: string }) {
               <MenuToggle isOpen={mobileMenuOpen} size={20} />
             </button>
             <div className="mr-5 ml-[-0.60rem] hidden items-center sm:flex">
-              <NavItem href="/" text={t('home')} />
-              <NavItem href="/blog" text={t('blog')} />
+              <NavItem href="/" text={t("home")} />
+              <NavItem href="/blog" text={t("blog")} />
               <NavItem href="/admin" text="Admin Dashboard" />
               <NavItem href="/admin/health" text="Health" />
             </div>
@@ -147,5 +148,5 @@ export default function AdminHeader({ pageTitle }: { pageTitle?: string }) {
       )}
       <ModalMenuMobile isOpen={mobileMenuOpen} setIsOpen={setMobileMenuOpen} />
     </>
-  );
+  )
 }

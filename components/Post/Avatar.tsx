@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image"
+import Link from "next/link"
 
 export default function Avatar({ author }: { author: any }) {
   return (
@@ -16,5 +16,5 @@ export default function Avatar({ author }: { author: any }) {
       />
       <div className="text-xl font-bold">{author.name}</div>
     </Link>
-  );
+  )
 }

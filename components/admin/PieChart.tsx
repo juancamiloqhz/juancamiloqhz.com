@@ -1,27 +1,27 @@
-import React from 'react';
-import { ResponsivePie } from '@nivo/pie';
+import React from "react"
+import { ResponsivePie } from "@nivo/pie"
 
 export const data = [
   {
-    id: 'c',
-    label: 'c',
+    id: "c",
+    label: "c",
     value: 80,
-    color: 'hsl(8, 70%, 50%)'
+    color: "hsl(8, 70%, 50%)",
   },
   {
-    id: 'lisp',
-    label: 'lisp',
+    id: "lisp",
+    label: "lisp",
     value: 188,
-    color: 'hsl(122, 70%, 50%)'
+    color: "hsl(122, 70%, 50%)",
   },
 
   {
-    id: 'go',
-    label: 'go',
+    id: "go",
+    label: "go",
     value: 161,
-    color: 'hsl(111, 70%, 50%)'
-  }
-];
+    color: "hsl(111, 70%, 50%)",
+  },
+]
 
 export default function PieChart() {
   return (
@@ -33,33 +33,33 @@ export default function PieChart() {
       cornerRadius={3}
       activeOuterRadiusOffset={8}
       borderWidth={1}
-      borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
+      borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
       arcLinkLabelsSkipAngle={10}
       arcLinkLabelsTextColor="#333333"
       arcLinkLabelsThickness={2}
-      arcLinkLabelsColor={{ from: 'color' }}
+      arcLinkLabelsColor={{ from: "color" }}
       arcLabelsSkipAngle={10}
-      arcLabelsTextColor={{ from: 'color', modifiers: [['darker', 2]] }}
+      arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
       defs={[
         {
-          id: 'dots',
-          type: 'patternDots',
-          background: 'inherit',
-          color: 'rgba(255, 255, 255, 0.3)',
+          id: "dots",
+          type: "patternDots",
+          background: "inherit",
+          color: "rgba(255, 255, 255, 0.3)",
           size: 4,
           padding: 1,
-          stagger: true
+          stagger: true,
         },
         {
-          id: 'lines',
-          type: 'patternLines',
-          background: 'inherit',
-          color: 'rgba(255, 255, 255, 0.3)',
+          id: "lines",
+          type: "patternLines",
+          background: "inherit",
+          color: "rgba(255, 255, 255, 0.3)",
           rotation: -45,
           lineWidth: 6,
-          spacing: 10
-        }
+          spacing: 10,
+        },
       ]}
     />
-  );
+  )
 }

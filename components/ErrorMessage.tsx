@@ -15,5 +15,5 @@ export default function ErrorMessage({ children }: { children: any }) {
       </svg>
       {children}
     </p>
-  );
+  )
 }

@@ -1,17 +1,18 @@
-import { GetStaticProps } from 'next';
-import { type Post, allPosts } from 'contentlayer/generated';
-import Container from '@/components/shared/Container';
-import { pick } from 'contentlayer/client';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PostPreview } from '@/components/Post';
-import PageTitle from '@/components/shared/PageTitle';
+import { GetStaticProps } from "next"
+import { pick } from "contentlayer/client"
+import { allPosts, type Post } from "contentlayer/generated"
+import { useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+import { PostPreview } from "@/components/Post"
+import Container from "@/components/shared/Container"
+import PageTitle from "@/components/shared/PageTitle"
 
 export async function getStaticPaths() {
   const allTagsSlugs = allPosts
     .map((post) => post.tags.map((tag) => tag.slug))
-    .flat();
-  const uniqueTagsSlugs = [...new Set(allTagsSlugs)];
+    .flat()
+  const uniqueTagsSlugs = [...new Set(allTagsSlugs)]
   // console.log(uniqueTagsSlugs);
 
   return {
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
       },
     })),
     fallback: false,
-  };
+  }
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
@@ -29,61 +30,61 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
     .filter(
       (post) =>
         post.locale === locale &&
-        post.tags.map((tag) => tag.slug).includes(params?.tag as string),
+        post.tags.map((tag) => tag.slug).includes(params?.tag as string)
     )
     .map((post) =>
       pick(post, [
-        'slug',
-        'title',
-        'summary',
-        'publishedAt',
-        'mainImage',
-        'mainImageBlurDataURL',
-        'categories',
-        'tags',
-        'locale',
-      ]),
+        "slug",
+        "title",
+        "summary",
+        "publishedAt",
+        "mainImage",
+        "mainImageBlurDataURL",
+        "categories",
+        "tags",
+        "locale",
+      ])
     )
     .sort(
       (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
-    );
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+    )
   // console.log(allPostsByTag);
 
   return {
     props: {
       tag: { name: params?.tag, slug: params?.tag },
       posts: allPostsByTag,
-      ...(await serverSideTranslations(locale ?? 'en', [
-        'footer',
-        'header',
-        'tag-archive',
+      ...(await serverSideTranslations(locale ?? "en", [
+        "footer",
+        "header",
+        "tag-archive",
       ])),
     },
-  };
-};
+  }
+}
 
 export default function TagPostsPage({
   posts,
   tag,
 }: {
-  posts: Post[];
-  tag: { name: string; slug: string };
+  posts: Post[]
+  tag: { name: string; slug: string }
 }) {
-  const { t } = useTranslation('tag-archive');
+  const { t } = useTranslation("tag-archive")
   return (
     <Container
       openGraphType="website"
       schemaType="SearchResultsPage"
-      title={`${t('pageTitle')}`}
-      description={`${t('pageDescription')}`}
+      title={`${t("pageTitle")}`}
+      description={`${t("pageDescription")}`}
     >
-      <PageTitle>{`${t('pageTitle')}`}</PageTitle>
+      <PageTitle>{`${t("pageTitle")}`}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post) => (
           <PostPreview key={post.slug} post={post} />
         ))}
       </div>
     </Container>
-  );
+  )
 }

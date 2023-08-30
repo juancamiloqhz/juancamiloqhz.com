@@ -1,11 +1,12 @@
-import { GetStaticProps } from 'next';
-import Link from 'next/link';
+import { GetStaticProps } from "next"
+import Link from "next/link"
+import { useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+import GitHub from "@/components/Metrics/Github"
 // import Analytics from '@/components/metrics/Analytics';
 // import Newsletter from '@/components/metrics/Newsletter';
-import Container from '@/components/shared/Container';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import GitHub from '@/components/Metrics/Github';
+import Container from "@/components/shared/Container"
 
 // import Gumroad from '@/components/metrics/Gumroad';
 // import Unsplash from '@/components/metrics/Unsplash';
@@ -15,32 +16,32 @@ import GitHub from '@/components/Metrics/Github';
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', [
-        'dashboard-page',
-        'header',
-        'footer',
+      ...(await serverSideTranslations(locale ?? "en", [
+        "dashboard-page",
+        "header",
+        "footer",
       ])),
     },
     revalidate: 60,
-  };
-};
+  }
+}
 
 export default function Dashboard() {
-  const { t } = useTranslation('dashboard-page');
+  const { t } = useTranslation("dashboard-page")
   return (
     <Container
-      title={`${t('metaTitle')}`}
-      description={`${t('metaDescription')}`}
+      title={`${t("metaTitle")}`}
+      description={`${t("metaDescription")}`}
     >
       <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
         <div className="mx-auto mt-20 mb-16 flex w-full max-w-3xl flex-col items-start justify-center lg:mt-48">
           <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-10 md:text-center md:text-7xl ">
-            {t('metaTitle')}
+            {t("metaTitle")}
           </h1>
 
           <div className="mb-8">
             <p className="mb-4 text-base-content/60">
-              {t('pageDescription')}&nbsp;
+              {t("pageDescription")}&nbsp;
               <Link href="/blog" className="link-primary link">
                 blog series.
               </Link>
@@ -69,5 +70,5 @@ export default function Dashboard() {
         </div>
       </div>
     </Container>
-  );
+  )
 }

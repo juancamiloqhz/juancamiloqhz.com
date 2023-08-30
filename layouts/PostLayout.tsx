@@ -1,24 +1,25 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import React from 'react';
-import { type Post } from 'contentlayer/generated';
-import Container from '@/components/shared/Container';
-import Subscribe from '@/components/shared/Subscribe';
-import { useTranslation } from 'next-i18next';
-import { FaTwitter } from 'react-icons/fa';
-import { DateFormatter } from '@/components/Post';
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { type Post } from "contentlayer/generated"
+import { useTranslation } from "next-i18next"
+import { FaTwitter } from "react-icons/fa"
+
+import { DateFormatter } from "@/components/Post"
+import Container from "@/components/shared/Container"
+import Subscribe from "@/components/shared/Subscribe"
 
 export default function PostLayout({
   children,
   post,
   otherPosts,
 }: React.PropsWithChildren<{
-  post: Post;
-  otherPosts: Post[];
+  post: Post
+  otherPosts: Post[]
 }>) {
-  const { t } = useTranslation('single-post');
-  const { locale } = useRouter();
+  const { t } = useTranslation("single-post")
+  const { locale } = useRouter()
   return (
     <Container
       title={post.title}
@@ -122,7 +123,7 @@ export default function PostLayout({
                   rel="noopener noreferrer"
                   className="link-primary link italic"
                 >
-                  {t('edit-this-post')}
+                  {t("edit-this-post")}
                 </a>
               </div>
               <a
@@ -130,14 +131,14 @@ export default function PostLayout({
                 className="btn-primary btn mt-6 gap-2 text-base normal-case lg:mt-0"
               >
                 <FaTwitter size={17} />
-                {t('follow')} @juancamiloqhz
+                {t("follow")} @juancamiloqhz
               </a>
             </div>
           </div>
         </article>
         <div className="mx-auto w-full max-w-2xl">
           <h3 className="font-bold uppercase">
-            {t('other-things-ive-written')}
+            {t("other-things-ive-written")}
           </h3>
           <ul className="mt-6 flex flex-col gap-4">
             {otherPosts.map((p) => (
@@ -164,5 +165,5 @@ export default function PostLayout({
         </div>
       </div>
     </Container>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import { NextRequest } from 'next/server';
-import { ImageResponse } from '@vercel/og';
+import { NextRequest } from "next/server"
+import { ImageResponse } from "@vercel/og"
 
 export const config = {
-  runtime: 'edge',
-};
+  runtime: "edge",
+}
 
 const satoshi = fetch(
-  new URL('../../../styles/Satoshi-Black.ttf', import.meta.url),
-).then((res) => res.arrayBuffer());
+  new URL("../../../styles/Satoshi-Black.ttf", import.meta.url)
+).then((res) => res.arrayBuffer())
 
 // const inter = fetch(
 //   new URL('../../../styles/Inter-Bold.ttf', import.meta.url),
@@ -15,51 +15,51 @@ const satoshi = fetch(
 
 export default async function handler(req: NextRequest) {
   // const [satoshiData, interData] = await Promise.all([satoshi, inter]);
-  const [satoshiData] = await Promise.all([satoshi]);
+  const [satoshiData] = await Promise.all([satoshi])
 
-  const { searchParams } = req.nextUrl;
-  const title = searchParams.get('title');
+  const { searchParams } = req.nextUrl
+  const title = searchParams.get("title")
 
   return new ImageResponse(
     (
       <div
         style={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          backgroundColor: 'white',
-          padding: '0 100px',
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "white",
+          padding: "0 100px",
           backgroundImage: `url(${new URL(
-            '../../../public/background.png',
-            import.meta.url,
+            "../../../public/background.png",
+            import.meta.url
           ).toString()})`,
         }}
       >
         <h1
           style={{
-            fontSize: '80px',
-            fontWeight: 'bold',
-            fontFamily: 'Satoshi',
+            fontSize: "80px",
+            fontWeight: "bold",
+            fontFamily: "Satoshi",
             background:
-              'linear-gradient(95.78deg, #C7BF00 21.66%, #E43838 86.47%)',
-            backgroundClip: 'text',
-            color: 'transparent',
-            marginTop: '100px',
+              "linear-gradient(95.78deg, #C7BF00 21.66%, #E43838 86.47%)",
+            backgroundClip: "text",
+            color: "transparent",
+            marginTop: "100px",
           }}
         >
           Juan Camilo QHz
         </h1>
         <p
           style={{
-            fontSize: '50px',
-            fontWeight: 'bold',
+            fontSize: "50px",
+            fontWeight: "bold",
             // fontFamily: 'Inter',
-            color: 'black',
+            color: "black",
             opacity: 0.6,
-            marginTop: '16px',
-            textAlign: 'center',
+            marginTop: "16px",
+            textAlign: "center",
           }}
         >
           {title}
@@ -71,7 +71,7 @@ export default async function handler(req: NextRequest) {
       height: 630,
       fonts: [
         {
-          name: 'Satoshi',
+          name: "Satoshi",
           data: satoshiData,
         },
         // {
@@ -79,6 +79,6 @@ export default async function handler(req: NextRequest) {
         //   data: interData,
         // },
       ],
-    },
-  );
+    }
+  )
 }

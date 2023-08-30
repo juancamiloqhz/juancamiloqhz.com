@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image"
+import Link from "next/link"
 
 // import ProsCard from '@/components/ProsCard';
 // import ConsCard from '@/components/ConsCard';
@@ -11,15 +11,15 @@ import Link from 'next/link';
 // import ImageWithTheme from '@/components/ImageWithTheme';
 
 const CustomLink = (props: any) => {
-  const href = props.href;
-  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
+  const href = props.href
+  const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"))
 
   if (isInternalLink) {
     return (
       <Link href={href} className="link-primary link" {...props}>
         {props.children}
       </Link>
-    );
+    )
   }
 
   return (
@@ -29,8 +29,8 @@ const CustomLink = (props: any) => {
       className="link-primary link"
       {...props}
     />
-  );
-};
+  )
+}
 
 function RoundedImage(props: any) {
   return (
@@ -39,7 +39,7 @@ function RoundedImage(props: any) {
       className="rounded-[var(--rounded-btn)]"
       {...props}
     />
-  );
+  )
 }
 
 function Callout(props: any) {
@@ -48,7 +48,7 @@ function Callout(props: any) {
       <div className="mr-4 flex w-4 items-center">{props.emoji}</div>
       <div className="callout w-full">{props.children}</div>
     </div>
-  );
+  )
 }
 
 const MDXComponents = {
@@ -63,6 +63,6 @@ const MDXComponents = {
   //   Step,
   //   Unsplash,
   //   YouTube
-};
+}
 
-export default MDXComponents;
+export default MDXComponents

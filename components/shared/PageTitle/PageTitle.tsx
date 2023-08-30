@@ -7,5 +7,5 @@ export default function PageTitle({ children }: { children: React.ReactNode }) {
         </h1>
       </div>
     </div>
-  );
+  )
 }

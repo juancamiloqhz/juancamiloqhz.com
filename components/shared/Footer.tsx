@@ -1,11 +1,12 @@
-import Link from 'next/link';
-import SocialLinks from '@/components/shared/SocialLinks';
-import { useTranslation } from 'next-i18next';
+import Link from "next/link"
+import { useTranslation } from "next-i18next"
+
+import SocialLinks from "@/components/shared/SocialLinks"
 
 // import { GitHub, Rss } from '../Icons';
 
 export default function Footer() {
-  const { t } = useTranslation('footer');
+  const { t } = useTranslation("footer")
   // get current year
 
   return (
@@ -17,7 +18,7 @@ export default function Footer() {
         href="/"
         className="link mb-1 text-center text-sm hover:text-primary"
       >
-        {t('made-by')}
+        {t("made-by")}
         {/* <div className="flex items-center justify-center gap-4 mt-2">
           <span className="flex items-center gap-2 text-sm">
             <FiStar size={20} className="inline" /> 600
@@ -91,5 +92,5 @@ export default function Footer() {
         </div>
       </div> */}
     </footer>
-  );
+  )
 }

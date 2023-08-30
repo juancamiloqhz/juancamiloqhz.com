@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion"
 
 export default function Backdrop({
   children,
   onClick,
 }: {
-  children: React.ReactNode;
-  onClick: (props: any) => void;
+  children: React.ReactNode
+  onClick: (props: any) => void
 }) {
   return (
     <motion.div
@@ -18,5 +18,5 @@ export default function Backdrop({
     >
       {children}
     </motion.div>
-  );
+  )
 }

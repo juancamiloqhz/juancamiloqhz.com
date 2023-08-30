@@ -1,32 +1,33 @@
-import { GetStaticProps } from 'next';
-import Container from '@/components/shared/Container';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import PageTitle from '@/components/shared/PageTitle';
+import { GetStaticProps } from "next"
+import { useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+import Container from "@/components/shared/Container"
+import PageTitle from "@/components/shared/PageTitle"
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en', [
-        'privacy-policy',
-        'header',
-        'footer',
+      ...(await serverSideTranslations(locale ?? "en", [
+        "privacy-policy",
+        "header",
+        "footer",
       ])),
     },
-  };
-};
+  }
+}
 
 export default function PrivacyPolicy() {
-  const { t } = useTranslation('privacy-policy');
+  const { t } = useTranslation("privacy-policy")
   return (
     <Container
-      title={`${t('pageTitle')}`}
-      description={`${t('pageDescription')}`}
+      title={`${t("pageTitle")}`}
+      description={`${t("pageDescription")}`}
     >
       <div className="px-8 transition-all duration-500 ease-in-out md:px-28">
         <div className="mx-auto mt-20 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
           <h1 className="mb-8 w-full font-serif text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl ">
-            {t('pageTitle')}
+            {t("pageTitle")}
           </h1>
         </div>
         <div className="prose-lg prose mx-auto mb-28 w-full max-w-2xl prose-headings:font-serif prose-headings:font-semibold">
@@ -177,5 +178,5 @@ export default function PrivacyPolicy() {
         </div>
       </div>
     </Container>
-  );
+  )
 }

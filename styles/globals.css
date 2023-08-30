@@ -64,7 +64,7 @@ html {
     @apply relative w-fit !no-underline;
   }
   .link::before {
-    content: '';
+    content: "";
     @apply absolute bottom-0 left-0 block h-[2px] min-h-[2px] w-full scale-x-0 bg-primary;
     transition: transform 0.2s ease;
     transform-origin: top left;
@@ -88,13 +88,13 @@ html {
 
 /* https://seek-oss.github.io/capsize/ */
 .capsize::before {
-  content: '';
+  content: "";
   margin-bottom: -0.098em;
   display: table;
 }
 
 .capsize::after {
-  content: '';
+  content: "";
   margin-top: -0.219em;
   display: table;
 }

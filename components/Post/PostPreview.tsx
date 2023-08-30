@@ -1,11 +1,12 @@
-import Link from 'next/link';
-import { type Post } from '@/contentlayer/generated';
-import { useTranslation } from 'next-i18next';
+import Link from "next/link"
+import { type Post } from "contentlayer/generated"
+import { useTranslation } from "next-i18next"
+
 // import CoverImage from './CoverImage';
-import DateFormatter from './DateFormatter';
+import DateFormatter from "./DateFormatter"
 
 export default function PostPreview({ post }: { post: Post }) {
-  const { t } = useTranslation('header');
+  const { t } = useTranslation("header")
   return (
     <article className="mb-10 overflow-hidden sm:mb-16">
       {/* <div className="cover-wrapper relative w-full">
@@ -38,14 +39,14 @@ export default function PostPreview({ post }: { post: Post }) {
       </div>
 
       <p className="mb-3 text-lg  md:text-xl">
-        {post.summary}{' '}
+        {post.summary}{" "}
         <Link
           href={`/blog/${post.slug}`}
           className="link-primary link whitespace-nowrap"
         >
-          {t('read-more')}
+          {t("read-more")}
         </Link>
       </p>
     </article>
-  );
+  )
 }

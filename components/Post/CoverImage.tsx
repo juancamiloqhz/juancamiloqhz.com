@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { type Post } from '@/contentlayer/generated';
+import Image from "next/image"
+import Link from "next/link"
+import { type Post } from "contentlayer/generated"
 
 export default function CoverImage({ post }: { post: Post }) {
   const image = (
@@ -14,7 +14,7 @@ export default function CoverImage({ post }: { post: Post }) {
       placeholder="blur"
       blurDataURL={post.mainImageBlurDataURL}
     />
-  );
+  )
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -24,5 +24,5 @@ export default function CoverImage({ post }: { post: Post }) {
     >
       {image}
     </Link>
-  );
+  )
 }

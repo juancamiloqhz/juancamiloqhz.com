@@ -1,11 +1,12 @@
-import { GetStaticProps } from 'next';
-import React from 'react';
-import { type Post, allPosts } from 'contentlayer/generated';
-import Container from '@/components/shared/Container';
-import { pick } from 'contentlayer/client';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PostPreview } from '@/components/Post';
+import React from "react"
+import { GetStaticProps } from "next"
+import { pick } from "contentlayer/client"
+import { allPosts, type Post } from "contentlayer/generated"
+import { useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+import { PostPreview } from "@/components/Post"
+import Container from "@/components/shared/Container"
 
 // import FeaturedPostCard from '@/components/Post/FeaturedPostCard';
 // import Container from '@/components/shared/Container';
@@ -15,44 +16,44 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     .filter((post) => post.locale === locale)
     .map((post) =>
       pick(post, [
-        'slug',
-        'title',
-        'summary',
-        'publishedAt',
-        'mainImage',
-        'mainImageBlurDataURL',
-        'categories',
-        'tags',
-      ]),
+        "slug",
+        "title",
+        "summary",
+        "publishedAt",
+        "mainImage",
+        "mainImageBlurDataURL",
+        "categories",
+        "tags",
+      ])
     )
     .sort(
       (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
-    );
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+    )
 
   return {
     props: {
       posts,
-      ...(await serverSideTranslations(locale ?? 'en', [
-        'single-post',
-        'footer',
-        'header',
-        'blog-archive',
+      ...(await serverSideTranslations(locale ?? "en", [
+        "single-post",
+        "footer",
+        "header",
+        "blog-archive",
       ])),
     },
-  };
-};
+  }
+}
 
 export default function BlogArchivePage({ posts }: { posts: Post[] }) {
-  const { t } = useTranslation('blog-archive');
-  const [searchValue, setSearchValue] = React.useState('');
+  const { t } = useTranslation("blog-archive")
+  const [searchValue, setSearchValue] = React.useState("")
   const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase()),
-  );
+    post.title.toLowerCase().includes(searchValue.toLowerCase())
+  )
   return (
     <Container
-      title={`${t('pageTitle')}`}
-      description={`${t('pageDescription')}`}
+      title={`${t("pageTitle")}`}
+      description={`${t("pageDescription")}`}
       schemaType="Blog"
     >
       <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
@@ -123,5 +124,5 @@ export default function BlogArchivePage({ posts }: { posts: Post[] }) {
         </div>
       </div>
     </Container>
-  );
+  )
 }

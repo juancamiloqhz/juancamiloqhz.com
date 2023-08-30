@@ -1,8 +1,8 @@
 interface MetricCardProps {
-  header: string;
-  link: string;
-  metric: number;
-  isCurrency?: boolean;
+  header: string
+  link: string
+  metric: number
+  isCurrency?: boolean
 }
 
 export default function MetricCard({
@@ -38,9 +38,9 @@ export default function MetricCard({
         </div>
       </a>
       <p className="spacing-sm mt-2 text-3xl font-bold text-primary">
-        {metric > 0 && isCurrency && '$'}
-        {metric > 0 ? metric.toLocaleString() : '-'}
+        {metric > 0 && isCurrency && "$"}
+        {metric > 0 ? metric.toLocaleString() : "-"}
       </p>
     </div>
-  );
+  )
 }

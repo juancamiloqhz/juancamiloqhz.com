@@ -1,19 +1,20 @@
-import { GetStaticProps } from 'next';
-import { type Post, allPosts } from 'contentlayer/generated';
-import Container from '@/components/shared/Container';
-import { pick } from 'contentlayer/client';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { PostPreview } from '@/components/Post';
-import PageTitle from '@/components/shared/PageTitle';
+import { GetStaticProps } from "next"
+import { pick } from "contentlayer/client"
+import { allPosts, type Post } from "contentlayer/generated"
+import { useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+import { PostPreview } from "@/components/Post"
+import Container from "@/components/shared/Container"
+import PageTitle from "@/components/shared/PageTitle"
 
 export async function getStaticPaths() {
   const allCategoriesSlugs = allPosts
     .map((post) => post.categories.map((category) => category.slug))
-    .flat();
+    .flat()
 
   // console.log(allCategoriesSlugs);
-  const uniqueCategoriesSlugs = [...new Set(allCategoriesSlugs)];
+  const uniqueCategoriesSlugs = [...new Set(allCategoriesSlugs)]
   // console.log(uniqueCategoriesSlugs);
 
   return {
@@ -23,67 +24,67 @@ export async function getStaticPaths() {
       },
     })),
     fallback: false,
-  };
+  }
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   // console.log(params);
   const allPostsByCategory = allPosts
     .filter((post) =>
-      post.categories.some((category) => category.slug === params?.category),
+      post.categories.some((category) => category.slug === params?.category)
     )
     .filter((post) => post.locale === locale)
     .map((post) =>
       pick(post, [
-        'slug',
-        'title',
-        'summary',
-        'publishedAt',
-        'mainImage',
-        'mainImageBlurDataURL',
-        'categories',
-        'tags',
-      ]),
+        "slug",
+        "title",
+        "summary",
+        "publishedAt",
+        "mainImage",
+        "mainImageBlurDataURL",
+        "categories",
+        "tags",
+      ])
     )
     .sort(
       (a, b) =>
-        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt)),
-    );
+        Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+    )
 
   return {
     props: {
       category: { name: params?.category, slug: params?.category },
       posts: allPostsByCategory,
-      ...(await serverSideTranslations(locale ?? 'en', [
-        'footer',
-        'header',
-        'category-archive',
+      ...(await serverSideTranslations(locale ?? "en", [
+        "footer",
+        "header",
+        "category-archive",
       ])),
     },
-  };
-};
+  }
+}
 
 export default function CategoryPostsPage({
   posts,
   category,
 }: {
-  posts: Post[];
-  category: { name: string; slug: string };
+  posts: Post[]
+  category: { name: string; slug: string }
 }) {
-  const { t } = useTranslation('category-archive');
+  const { t } = useTranslation("category-archive")
   return (
     <Container
-      title={`${t('pageTitle')}`}
-      description={`${t('pageDescription')}`}
+      title={`${t("pageTitle")}`}
+      description={`${t("pageDescription")}`}
       openGraphType="website"
       schemaType="SearchResultsPage"
     >
-      <PageTitle>{t('pageTitle')}</PageTitle>
+      <PageTitle>{t("pageTitle")}</PageTitle>
       <div className="page-container post-container">
         {posts.map((post, i) => (
           <PostPreview key={i} post={post} />
         ))}
       </div>
     </Container>
-  );
+  )
 }

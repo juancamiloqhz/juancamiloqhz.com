@@ -1,49 +1,50 @@
-import { GetStaticProps } from 'next';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { type Newsletter, allNewsletters } from 'contentlayer/generated';
-import Container from '@/components/shared/Container';
-import Subscribe from '@/components/shared/Subscribe';
-import { pick } from 'contentlayer/client';
-import { format, parseISO } from 'date-fns';
-import { es } from 'date-fns/locale';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { GetStaticProps } from "next"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { pick } from "contentlayer/client"
+import { allNewsletters, type Newsletter } from "contentlayer/generated"
+import { format, parseISO } from "date-fns"
+import { es } from "date-fns/locale"
+import { useTranslation } from "next-i18next"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+
+import Container from "@/components/shared/Container"
+import Subscribe from "@/components/shared/Subscribe"
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const newsletters = allNewsletters.map((newsletter) =>
-    pick(newsletter, ['slug', 'title', 'summary', 'publishedAt']),
-  );
+    pick(newsletter, ["slug", "title", "summary", "publishedAt"])
+  )
   return {
     props: {
       newsletters,
-      ...(await serverSideTranslations(locale ?? 'en', [
-        'mailinglist-page',
-        'mailinglist',
-        'header',
-        'footer',
+      ...(await serverSideTranslations(locale ?? "en", [
+        "mailinglist-page",
+        "mailinglist",
+        "header",
+        "footer",
       ])),
     },
-  };
-};
+  }
+}
 
 export default function MailingListPage({
   newsletters,
 }: {
-  newsletters: Newsletter[];
+  newsletters: Newsletter[]
 }) {
-  const { t } = useTranslation('mailinglist-page');
+  const { t } = useTranslation("mailinglist-page")
   return (
     <Container
-      title={`${t('pageTitle')}`}
-      description={`${t('pageDescription')}`}
+      title={`${t("pageTitle")}`}
+      description={`${t("pageDescription")}`}
     >
       <div className="px-4 transition-all duration-500 ease-in-out md:px-28">
         <div className="mx-auto mt-20 mb-16 flex w-full max-w-2xl flex-col items-start justify-center lg:mt-48">
           <h1 className="mb-8 w-full text-5xl font-bold tracking-tight md:mb-20 md:text-center md:text-7xl ">
-            {t('pageTitle')}
+            {t("pageTitle")}
           </h1>
-          <p className="mb-14 text-xl text-base-content/60">{t('subtitle')}</p>
+          <p className="mb-14 text-xl text-base-content/60">{t("subtitle")}</p>
           <Subscribe />
           {/* <h3 className="mt-8 mb-4 text-2xl font-bold font-serif tracking-tight md:text-4xl">
             {t('archive')}
@@ -64,21 +65,21 @@ export default function MailingListPage({
         </div>
       </div>
     </Container>
-  );
+  )
 }
 
 function NewsletterLink({
   slug,
   publishedAt,
-}: Pick<Newsletter, 'publishedAt' | 'slug'>) {
-  const { locale } = useRouter();
+}: Pick<Newsletter, "publishedAt" | "slug">) {
+  const { locale } = useRouter()
   return (
     <li>
       <Link href={`/newsletter/${slug}`}>
-        {format(parseISO(publishedAt), 'MMMM dd, yyyy', {
-          locale: locale === 'es' ? es : undefined,
+        {format(parseISO(publishedAt), "MMMM dd, yyyy", {
+          locale: locale === "es" ? es : undefined,
         })}
       </Link>
     </li>
-  );
+  )
 }

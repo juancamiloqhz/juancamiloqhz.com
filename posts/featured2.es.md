@@ -1,17 +1,17 @@
 ---
-title: 'Learn How to Pre-render Pages Using Static Generation with Next.js'
-excerpt: '(Destacado 2) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.'
-coverImage: '/assets/blog/hello-world/joshua-sortino-LqKhnDzSF-8-unsplash-hello-world.jpg'
-date: '2020-03-16T05:35:07.322Z'
+title: "Learn How to Pre-render Pages Using Static Generation with Next.js"
+excerpt: "(Destacado 2) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick."
+coverImage: "/assets/blog/hello-world/joshua-sortino-LqKhnDzSF-8-unsplash-hello-world.jpg"
+date: "2020-03-16T05:35:07.322Z"
 featured: true
 author:
   name: Tim Neutkens
   username: joe
-  picture: '/assets/blog/authors/blonde.jpg'
+  picture: "/assets/blog/authors/blonde.jpg"
 ogImage:
-  url: '/assets/blog/hello-world/joshua-sortino-LqKhnDzSF-8-unsplash-hello-world.jpg'
-categories: ['category-1: Category 1', 'category-2: Category 2']
-tags: ['tag-1: Tag 1', 'tag-2: Tag 2']
+  url: "/assets/blog/hello-world/joshua-sortino-LqKhnDzSF-8-unsplash-hello-world.jpg"
+categories: ["category-1: Category 1", "category-2: Category 2"]
+tags: ["tag-1: Tag 1", "tag-2: Tag 2"]
 ---
 
 ## My Headline

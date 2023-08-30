@@ -4,7 +4,7 @@ import {
   FiInstagram,
   FiLinkedin,
   FiTwitter,
-} from 'react-icons/fi';
+} from "react-icons/fi"
 
 export default function SocialLinks({ size = 20 }: { size?: number }) {
   return (
@@ -82,5 +82,5 @@ export default function SocialLinks({ size = 20 }: { size?: number }) {
         </a>
       </div>
     </>
-  );
+  )
 }
