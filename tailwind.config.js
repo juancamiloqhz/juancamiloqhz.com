@@ -1,127 +1,76 @@
-const defaultTheme = require("tailwindcss/defaultTheme")
-const plugin = require("tailwindcss/plugin")
-const { themes } = require("./themes")
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./layouts/**/*.{js,ts,jsx,tsx}",
-  ],
-  future: {
-    hoverOnlyWhenSupported: true,
-  },
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
   theme: {
-    extend: {
-      fontFamily: {
-        display: ["var(--font-satoshi)", "system-ui", "sans-serif"],
-        default: ["var(--font-inter)", "system-ui", "sans-serif"],
-      },
+    container: {
+      center: true,
+      padding: "2rem",
       screens: {
-        xxs: "360px",
-        xs: "475px",
-        ...defaultTheme.screens,
+        "2xl": "1400px",
       },
+    },
+    extend: {
       colors: {
-        "blue-opaque": "rgb(13 42 148 / 18%)",
-        gray: {
-          0: "#fff",
-          100: "#fafafa",
-          200: "#eaeaea",
-          300: "#999999",
-          400: "#888888",
-          500: "#666666",
-          600: "#444444",
-          700: "#333333",
-          800: "#222222",
-          900: "#111111",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
       },
-      // typography: (theme) => ({
-      //   DEFAULT: {
-      //     css: {
-      //       color: theme('colors.gray.700'),
-      //       a: {
-      //         color: theme('colors.blue.500'),
-      //         '&:hover': {
-      //           color: theme('colors.blue.700')
-      //         },
-      //         code: { color: theme('colors.blue.400') }
-      //       },
-      //       'h2,h3,h4': {
-      //         color: theme('colors.gray.900'),
-      //         fontFamily: theme('fontFamily.serif'),
-      //         'scroll-margin-top': defaultTheme.spacing[32]
-      //       },
-      //       thead: {
-      //         borderBottomColor: theme('colors.gray.200')
-      //       },
-      //       code: { color: theme('colors.pink.500') },
-      //       'blockquote p:first-of-type::before': false,
-      //       'blockquote p:last-of-type::after': false
-      //     }
-      //   },
-      //   dark: {
-      //     css: {
-      //       color: theme('colors.gray.200'),
-      //       a: {
-      //         color: theme('colors.blue.400'),
-      //         '&:hover': {
-      //           color: theme('colors.blue.600')
-      //         },
-      //         code: { color: theme('colors.blue.400') }
-      //       },
-      //       blockquote: {
-      //         borderLeftColor: theme('colors.gray.700'),
-      //         color: theme('colors.gray.300')
-      //       },
-      //       'h2,h3,h4': {
-      //         color: theme('colors.gray.100'),
-      //         'scroll-margin-top': defaultTheme.spacing[32]
-      //       },
-      //       hr: { borderColor: theme('colors.gray.700') },
-      //       ol: {
-      //         li: {
-      //           '&:before': { color: theme('colors.gray.500') }
-      //         }
-      //       },
-      //       ul: {
-      //         li: {
-      //           '&:before': { backgroundColor: theme('colors.gray.500') }
-      //         }
-      //       },
-      //       strong: { color: theme('colors.gray.100') },
-      //       thead: {
-      //         th: {
-      //           color: theme('colors.gray.100')
-      //         },
-      //         borderBottomColor: theme('colors.gray.600')
-      //       },
-      //       tbody: {
-      //         tr: {
-      //           borderBottomColor: theme('colors.gray.700')
-      //         }
-      //       }
-      //     }
-      //   }
-      // })
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
-  daisyui: {
-    themes,
-  },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("daisyui"),
-    plugin(({ addVariant }) => {
-      addVariant("radix-state-checked", '&[data-state="checked"]')
-      addVariant("radix-state-unchecked", '&[data-state="unchecked"]')
-      addVariant("radix-state-open", '&[data-state="open"]')
-      addVariant("radix-state-closed", '&[data-state="closed"]')
-      addVariant(
-        "group-radix-state-open",
-        ':merge(.group)[data-state="open"] &'
-      )
-    }),
-  ],
+  plugins: [require("tailwindcss-animate")],
 }
