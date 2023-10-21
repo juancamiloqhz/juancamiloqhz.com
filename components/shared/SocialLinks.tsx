@@ -1,86 +1,65 @@
 import {
-  FiCodepen,
-  FiGithub,
-  FiInstagram,
-  FiLinkedin,
-  FiTwitter,
-} from "react-icons/fi"
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { Icons } from "@/components/icons"
+
+const iconList: {
+  name: string
+  href: string
+  icon: "github" | "twitter" | "instagram" | "linkedIn" | "codepen"
+}[] = [
+  {
+    name: "GitHub",
+    href: "https://github.com/juancamiloqhz",
+    icon: "github",
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/juancamiloqhz",
+    icon: "twitter",
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/juancamiloqhz",
+    icon: "instagram",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/juancamiloqhz",
+    icon: "linkedIn",
+  },
+  {
+    name: "Codepen",
+    href: "https://codepen.io/juancamiloqhz",
+    icon: "codepen",
+  },
+]
 
 export default function SocialLinks({ size = 20 }: { size?: number }) {
-  return (
-    <>
-      <div
-        className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
-        data-tip="GitHub"
-      >
-        <a
-          href="https://github.com/juancamiloqhz"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <FiGithub size={size} />
-        </a>
-      </div>
-      <div
-        className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
-        data-tip="Twitter"
-      >
-        <a
-          href="https://twitter.com/juancamiloqhz"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <FiTwitter size={size} />
-        </a>
-      </div>
-      {/* <div
-            className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
-            data-tip="Mastodon"
-          >
+  return iconList.map((icon) => {
+    const IconComponent = Icons[icon.icon]
+
+    return (
+      <TooltipProvider delayDuration={0} key={icon.name}>
+        <Tooltip>
+          <TooltipTrigger asChild>
             <a
-              href="https://indieweb.social/@juancamiloqhz"
+              href={icon.href}
               target="_blank"
               rel="noreferrer noopener"
+              className="transition-all duration-300 hover:-translate-y-1 hover:text-muted-foreground"
             >
-              <BsMastodon size={size} />
+              <IconComponent size={size} />
             </a>
-          </div> */}
-      <div
-        className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
-        data-tip="Instagram"
-      >
-        <a
-          href="https://instagram.com/juancamiloqhz"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <FiInstagram size={size} />
-        </a>
-      </div>
-      <div
-        className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
-        data-tip="LinkedIn"
-      >
-        <a
-          href="https://linkedin.com/juancamiloqhz"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <FiLinkedin size={size} />
-        </a>
-      </div>
-      <div
-        className="tooltip transition-all duration-300 hover:-translate-y-1 hover:text-primary"
-        data-tip="Codepen"
-      >
-        <a
-          href="https://codepen.io/juancamiloqhz"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <FiCodepen size={size} />
-        </a>
-      </div>
-    </>
-  )
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{icon.name}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    )
+  })
 }

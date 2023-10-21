@@ -1,16 +1,17 @@
-// import { XIcon, Close } from '../Icons';
 import React from "react"
 import Link from "next/link"
 import FocusTrap from "focus-trap-react"
 import { AnimatePresence, motion } from "framer-motion"
-// import ThemeButton from '@/components/shared/ThemeButton';
-import { useTranslation } from "next-i18next"
+// import { useTranslation } from "next-i18next"
 import { createPortal } from "react-dom"
 
 import { useKeydown } from "@/lib/helpers"
-import LocaleSwitcher from "@/components/shared/LocaleSwitcher"
+import { useLockBody } from "@/hooks/use-lock-body"
+// import LocaleSwitcher from "@/components/shared/LocaleSwitcher"
 import MenuToggle from "@/components/shared/MenuToggle"
 import SocialLinks from "@/components/shared/SocialLinks"
+
+const MotionLink = motion(Link)
 
 const canUseDOM = !!(
   typeof window !== "undefined" &&
@@ -56,23 +57,14 @@ type ModalProps = {
 }
 
 function ModalElement({ setIsOpen, isOpen }: ModalProps) {
-  const { t } = useTranslation("header")
+  // const { t } = useTranslation("header")
   useKeydown("Escape", () => setIsOpen(false))
-
-  React.useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflowY = "hidden"
-    } else {
-      document.body.style.overflowY = "auto"
-    }
-    return () => {
-      document.body.style.overflowY = "auto"
-    }
-  }, [isOpen])
+  useLockBody()
 
   return (
     <>
-      <div className="fixed inset-0 z-50 w-full bg-base-300" /> {/* backdrop */}
+      <div className="fixed inset-0 z-50 w-full bg-background" />{" "}
+      {/* backdrop */}
       <button
         type="button"
         onClick={() => setIsOpen(false)}
@@ -80,111 +72,118 @@ function ModalElement({ setIsOpen, isOpen }: ModalProps) {
       >
         <MenuToggle isOpen={isOpen} size={24} />
       </button>
-      <motion.ul
+      <motion.nav
         variants={list}
         initial="hidden"
         animate="show"
         exit="hidden"
         className="fixed top-0 bottom-0 right-0 z-[100] flex w-full flex-col items-center justify-center gap-3"
       >
-        <motion.li variants={item}>
-          <Link
-            href="/"
-            passHref
-            onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-          >
-            {t("home")}
-          </Link>
-        </motion.li>
-        <motion.li variants={item}>
-          <Link
-            href="/blog"
-            passHref
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-            onClick={() => setIsOpen(false)}
-          >
-            {t("blog")}
-          </Link>
-        </motion.li>
-        <motion.li variants={item}>
-          <Link
-            href="/dashboard"
-            passHref
-            onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-          >
-            Dashboard
-          </Link>
-        </motion.li>
-        <motion.li variants={item}>
-          <Link
-            href="/mailinglist"
-            passHref
-            onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-          >
-            {t("mailList")}
-          </Link>
-        </motion.li>
-        <motion.li variants={item}>
-          <Link
-            // href="/work"
-            href="/#work"
-            onClick={() => setIsOpen(false)}
-            passHref
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-          >
-            {t("work")}
-          </Link>
-        </motion.li>
-        <motion.li variants={item}>
-          <Link
-            href="/guestbook"
-            onClick={() => setIsOpen(false)}
-            passHref
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-          >
-            {t("guestbook")}
-          </Link>
-        </motion.li>
-        <motion.li variants={item}>
-          <Link
-            href="/about"
-            passHref
-            onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-          >
-            {t("about")}
-          </Link>
-        </motion.li>
-        <motion.li variants={item}>
-          <Link
-            href="/contact"
-            passHref
-            onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-          >
-            {t("contact")}
-          </Link>
-        </motion.li>
-        <motion.li variants={item}>
-          <Link
-            href="/JuanCamiloQHz_Resume_2023.pdf"
-            passHref
-            onClick={() => setIsOpen(false)}
-            className="link flex w-full text-2xl font-semibold no-underline md:text-3xl"
-          >
-            {t("resume")}
-          </Link>
-        </motion.li>
-        <motion.li variants={item} className="mt-4">
+        <MotionLink
+          variants={item}
+          href="/"
+          passHref
+          onClick={() => setIsOpen(false)}
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+        >
+          {/* {t("home")} */}
+          Home
+        </MotionLink>
+
+        <MotionLink
+          variants={item}
+          href="/blog"
+          passHref
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+          onClick={() => setIsOpen(false)}
+        >
+          {/* {t("blog")} */}
+          Blog
+        </MotionLink>
+
+        <MotionLink
+          variants={item}
+          href="/dashboard"
+          passHref
+          onClick={() => setIsOpen(false)}
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+        >
+          Dashboard
+        </MotionLink>
+
+        <MotionLink
+          variants={item}
+          href="/mailinglist"
+          passHref
+          onClick={() => setIsOpen(false)}
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+        >
+          {/* {t("mailList")} */}
+          Mailing List
+        </MotionLink>
+
+        <MotionLink
+          variants={item}
+          href="/#work"
+          onClick={() => setIsOpen(false)}
+          passHref
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+        >
+          {/* {t("work")} */}
+          Work
+        </MotionLink>
+
+        <MotionLink
+          variants={item}
+          href="/guestbook"
+          onClick={() => setIsOpen(false)}
+          passHref
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+        >
+          {/* {t("guestbook")} */}
+          Guestbook
+        </MotionLink>
+
+        <MotionLink
+          variants={item}
+          href="/about"
+          passHref
+          onClick={() => setIsOpen(false)}
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+        >
+          {/* {t("about")} */}
+          About
+        </MotionLink>
+
+        <MotionLink
+          variants={item}
+          href="/contact"
+          passHref
+          onClick={() => setIsOpen(false)}
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+        >
+          {/* {t("contact")} */}
+          Contact
+        </MotionLink>
+
+        <MotionLink
+          variants={item}
+          href="/JuanCamiloQHz_Resume_2023.pdf"
+          passHref
+          onClick={() => setIsOpen(false)}
+          className="link flex text-2xl font-semibold no-underline md:text-3xl"
+        >
+          {/* {t("resume")} */}
+          Resume
+        </MotionLink>
+
+        {/* <motion.div variants={item} className="mt-4">
           <LocaleSwitcher />
-        </motion.li>
-        <motion.li variants={item} className="mt-4 flex items-center gap-5">
+        </motion.div>*/}
+        <motion.div variants={item} className="mt-4 flex items-center gap-5">
           <SocialLinks size={24} />
-        </motion.li>
-      </motion.ul>
+        </motion.div>
+      </motion.nav>
     </>
   )
 }

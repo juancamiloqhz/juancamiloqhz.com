@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -14,7 +16,8 @@ import { useTranslation } from "next-i18next"
 import { useTheme } from "next-themes"
 import { themes } from "themes"
 
-import { ThemePaint, XIcon } from "@/components/Icons"
+import { Icons } from "@/components/icons"
+// import { ThemePaint, XIcon } from "@/components/Icons"
 import ModalMenuMobile from "@/components/Modals/ModalMenuMobile"
 
 function NavItem({
@@ -204,7 +207,7 @@ export default function Header() {
                   onClick={() => setShowThemePicker(false)}
                   className="btn-ghost btn-sm btn-circle btn absolute top-1.5 right-2 bg-base-200 hover:bg-base-300"
                 >
-                  <XIcon />
+                  <Icons.close />
                 </motion.button>
               </div>
             </motion.div>
@@ -269,7 +272,7 @@ export default function Header() {
                     className="group btn-outline btn-primary btn"
                     onClick={() => setShowThemePicker((d: boolean) => !d)}
                   >
-                    <ThemePaint size={20} />
+                    <Icons.paintBrush2 size={20} />
                   </button>
                 </div>
               </motion.li>
@@ -297,7 +300,7 @@ export default function Header() {
               className="group btn-ghost btn-sm btn-circle btn"
               onClick={() => setShowThemePicker((d: boolean) => !d)}
             >
-              <ThemePaint size={20} />
+              <Icons.paintBrush2 size={20} />
             </button>
             <button
               type="button"
