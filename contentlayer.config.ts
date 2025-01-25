@@ -2,27 +2,28 @@ import {
   ComputedFields,
   defineDocumentType,
   defineNestedType,
-  makeSource
-} from 'contentlayer/source-files';
-import readingTime from 'reading-time';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
+  makeSource,
+} from "contentlayer/source-files"
+import readingTime from "reading-time"
 // import rehypeCodeTitles from 'rehype-code-titles';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypePrettyCode from "rehype-pretty-code"
+import rehypeSlug from "rehype-slug"
+import remarkGfm from "remark-gfm"
+
 // import rehypePrism from 'rehype-prism-plus';
-import blurImage from './lib/blur-images';
+import blurImage from "@/lib/blur-images"
 
 const getLocale = (path: string) => {
-  const pathArray = path.split('.');
-  return pathArray.length > 2 ? pathArray.slice(-2)[0] : 'en';
-};
+  const pathArray = path.split(".")
+  return pathArray.length > 2 ? pathArray.slice(-2)[0] : "en"
+}
 
 const computedFields: ComputedFields = {
-  readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
+  readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
   wordCount: {
-    type: 'number',
-    resolve: (doc) => doc.body.raw.split(/\s+/gu).length
+    type: "number",
+    resolve: (doc) => doc.body.raw.split(/\s+/g).length,
   },
   // tweetIds: {
   //   type: 'json',
@@ -37,82 +38,82 @@ const computedFields: ComputedFields = {
   //   }
   // },
   slug: {
-    type: 'string',
+    type: "string",
     resolve: (doc) => {
       // console.log(doc._raw.sourceFileName.split('.')[0]);
-      return doc._raw.sourceFileName.split('.')[0];
-    }
+      return doc._raw.sourceFileName.split(".")[0]
+    },
   },
   locale: {
-    type: 'string',
+    type: "string",
     resolve: (doc) => {
       // console.log(getLocale(doc._raw.sourceFilePath));
-      return getLocale(doc._raw.sourceFilePath);
-    }
+      return getLocale(doc._raw.sourceFilePath)
+    },
   },
   mainImageBlurDataURL: {
-    type: 'string',
+    type: "string",
     resolve: async (doc) => {
       // const dataURL = doc.image;
-      const { imgBase64 } = await blurImage(doc.mainImage);
+      const { imgBase64 } = await blurImage(doc.mainImage)
       // console.log(dataURL ?? '');
-      return imgBase64;
-    }
-  }
-};
+      return imgBase64
+    },
+  },
+}
 
 const Category = defineNestedType(() => ({
-  name: 'Category',
+  name: "Category",
   fields: {
-    name: { type: 'string', required: true, description: 'Category name' },
+    name: { type: "string", required: true, description: "Category name" },
     slug: {
-      type: 'string',
+      type: "string",
       required: true,
-      description: 'Category slug without spaces'
-    }
-  }
-}));
+      description: "Category slug without spaces",
+    },
+  },
+}))
 
 const Tag = defineNestedType(() => ({
-  name: 'Tag',
+  name: "Tag",
   fields: {
-    name: { type: 'string', required: true, description: 'Tag name' },
+    name: { type: "string", required: true, description: "Tag name" },
     slug: {
-      type: 'string',
+      type: "string",
       required: true,
-      description: 'Tag slug without spaces'
-    }
-  }
-}));
+      description: "Tag slug without spaces",
+    },
+  },
+}))
 
 const Post = defineDocumentType(() => ({
-  name: 'Post',
-  filePathPattern: 'blog/**/*.mdx',
-  contentType: 'mdx',
+  name: "Post",
+  filePathPattern: "blog/**/*.mdx",
+  contentType: "mdx",
   fields: {
-    featured: { type: 'boolean', default: false },
-    title: { type: 'string', required: true },
-    summary: { type: 'string', required: true },
-    mainImage: { type: 'string', required: true },
-    publishedAt: { type: 'string', required: true },
-    categories: { type: 'list', of: Category, required: true },
-    tags: { type: 'list', of: Tag, required: true }
+    featured: { type: "boolean", default: false },
+    title: { type: "string", required: true },
+    summary: { type: "string", required: true },
+    mainImage: { type: "string", required: true },
+    publishedAt: { type: "string", required: true },
+    categories: { type: "list", of: Category, required: true },
+    tags: { type: "list", of: Tag, required: true },
   },
-  computedFields
-}));
+  computedFields,
+}))
 
 const Newsletter = defineDocumentType(() => ({
-  name: 'Newsletter',
-  filePathPattern: 'newsletter/**/*.mdx',
-  contentType: 'mdx',
+  name: "Newsletter",
+  filePathPattern: "newsletter/**/*.mdx",
+  contentType: "mdx",
   fields: {
-    title: { type: 'string', required: true },
-    publishedAt: { type: 'string', required: true },
-    summary: { type: 'string', required: true },
-    mainImage: { type: 'string', required: true }
+    title: { type: "string", required: true },
+    publishedAt: { type: "string", required: true },
+    summary: { type: "string", required: true },
+    mainImage: { type: "string", required: true },
   },
-  computedFields
-}));
+  computedFields,
+}))
 
 // const Snippet = defineDocumentType(() => ({
 //   name: 'Snippet',
@@ -137,7 +138,7 @@ const Newsletter = defineDocumentType(() => ({
 // }));
 
 const contentLayerConfig = makeSource({
-  contentDirPath: './data',
+  contentDirPath: "./data",
   documentTypes: [Post, Newsletter],
   // mdx: {
   //   remarkPlugins: [remarkGfm],
@@ -189,6 +190,6 @@ const contentLayerConfig = makeSource({
       ],
     ],
   },
-});
+})
 
-export default contentLayerConfig;
+export default contentLayerConfig

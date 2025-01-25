@@ -12,5 +12,10 @@
     "satoshi",
     "Sorpréndeme",
     "tailwindcss"
-  ]
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#590F2E",
+    "titleBar.activeBackground": "#7D1540",
+    "titleBar.activeForeground": "#FEFCFD"
+  }
 }

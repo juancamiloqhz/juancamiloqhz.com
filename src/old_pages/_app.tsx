@@ -12,7 +12,7 @@ import { SessionProvider } from "next-auth/react"
 import { appWithTranslation } from "next-i18next"
 import { ThemeProvider } from "next-themes"
 
-import "styles/globals.css"
+import "@/styles/globals.css"
 
 const satoshi = localFont({
   src: "../styles/Satoshi-Variable.woff2",
