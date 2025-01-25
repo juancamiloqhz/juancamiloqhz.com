@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { type Post } from "contentlayer/generated"
+import { Post } from "@/types"
+// import { type Post } from "contentlayer/generated"
 import { useTranslation } from "next-i18next"
 
 // import CoverImage from './CoverImage';

@@ -1,10 +1,13 @@
 import { GetStaticProps } from "next"
 import PostLayout from "@/layouts/PostLayout"
-import { allPosts, type Post } from "contentlayer/generated"
+// import { allPosts, type Post } from "contentlayer/generated"
+import type { Post } from "@/types"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 import components from "@/components/MDXComponents"
+
+const allPosts: Post[] = []
 
 export async function getStaticPaths() {
   return {

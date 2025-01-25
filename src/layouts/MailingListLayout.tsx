@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from "react"
 import Image from "next/image"
-import type { Newsletter } from "contentlayer/generated"
+// import type { Newsletter } from "contentlayer/generated"
+import { Newsletter } from "@/types"
 import { format, parseISO } from "date-fns"
 
 import Container from "@/components/shared/Container"

@@ -1,10 +1,13 @@
 import { GetStaticProps } from "next"
 import MailingListLayout from "@/layouts/MailingListLayout"
-import { allNewsletters, type Newsletter } from "contentlayer/generated"
+// import { allNewsletters, type Newsletter } from "contentlayer/generated"
+import { Newsletter } from "@/types"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 import components from "@/components/MDXComponents"
+
+const allNewsletters: Newsletter[] = []
 
 export async function getStaticPaths() {
   return {

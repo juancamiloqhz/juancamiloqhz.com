@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import { type Post } from "contentlayer/generated"
+import { Post } from "@/types"
+
+// import { type Post } from "contentlayer/generated"
 
 export default function CoverImage({ post }: { post: Post }) {
   const image = (

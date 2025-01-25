@@ -1,12 +1,15 @@
 import { GetStaticProps } from "next"
+// import { allPosts, type Post } from "contentlayer/generated"
+import { Post } from "@/types"
 import { pick } from "contentlayer/client"
-import { allPosts, type Post } from "contentlayer/generated"
 import { useTranslation } from "next-i18next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 import { PostPreview } from "@/components/Post"
 import Container from "@/components/shared/Container"
 import PageTitle from "@/components/shared/PageTitle"
+
+const allPosts: Post[] = []
 
 export async function getStaticPaths() {
   const allCategoriesSlugs = allPosts

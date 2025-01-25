@@ -1,8 +1,9 @@
 import { GetStaticProps } from "next"
 import Link from "next/link"
 import { useRouter } from "next/router"
+// import { allNewsletters, type Newsletter } from "contentlayer/generated"
+import { Newsletter } from "@/types"
 import { pick } from "contentlayer/client"
-import { allNewsletters, type Newsletter } from "contentlayer/generated"
 import { format, parseISO } from "date-fns"
 import { es } from "date-fns/locale"
 import { useTranslation } from "next-i18next"
@@ -10,6 +11,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 import Container from "@/components/shared/Container"
 import Subscribe from "@/components/shared/Subscribe"
+
+const allNewsletters: Newsletter[] = []
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const newsletters = allNewsletters.map((newsletter) =>
