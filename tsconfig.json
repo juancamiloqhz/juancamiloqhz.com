@@ -6,12 +6,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/shared/*": ["components/shared/*"],
-      "@/pages/*": ["pages/*"],
-      "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"],
-      "@/contentlayer/generated": ["./.contentlayer/generated"]
+      "@/*": ["./src/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
@@ -23,13 +19,19 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "strict": true
+    "strict": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".contentlayer/generated"
+    ".contentlayer/generated",
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

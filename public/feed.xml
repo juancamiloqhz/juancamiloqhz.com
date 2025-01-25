@@ -4,43 +4,8 @@
         <description><![CDATA[JuanCamiloQHz]]></description>
         <link>https://juancamiloqhz.com</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 05 Mar 2023 15:31:24 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 25 Jan 2025 19:53:15 GMT</lastBuildDate>
         <atom:link href="https://juancamiloqhz.com/feed.xml" rel="self" type="application/rss+xml"/>
         <language><![CDATA[en]]></language>
-        <item>
-            <title><![CDATA[Preview Mode for Static Generation]]></title>
-            <description><![CDATA[(Featured 1) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/featured1</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured1</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Learn How to Pre-render Pages Using Static Generation with Next.js]]></title>
-            <description><![CDATA[(Featured 2) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/featured2</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured2</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[(Featured 3) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/featured3</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured3</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[(Featured 4) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/featured4</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured4</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dynamic Routing and Static Generation]]></title>
-            <description><![CDATA[(Featured 5) 8-bit butcher mustache kitsch succulents celiac palo santo knausgaard chambray gochujang kogi direct trade chartreuse bushwick.]]></description>
-            <link>https://juancamiloqhz.com/blog/featured5</link>
-            <guid isPermaLink="true">https://juancamiloqhz.com/blog/featured5</guid>
-            <pubDate>Mon, 16 Mar 2020 05:35:07 GMT</pubDate>
-        </item>
     </channel>
 </rss>
