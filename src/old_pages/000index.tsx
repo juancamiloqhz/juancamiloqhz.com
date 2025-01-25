@@ -93,7 +93,8 @@ export default function Home() {
             variants={item}
             className="mb-1 text-lg text-primary xs:mb-4 xs:text-xl md:mb-6"
           >
-            👋 {t("hi")}
+            {/* 👋 {t("hi")} */}
+            <span className="text-primary">👋</span>
           </motion.h4>
           <motion.h1
             variants={item}

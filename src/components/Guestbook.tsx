@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import React from "react"
 import { format } from "date-fns"
-import fetcher from "lib/fetcher"
-import { Form, FormState } from "lib/types"
 import { signIn, signOut, useSession } from "next-auth/react"
 import { useTranslation } from "next-i18next"
 import { FaGoogle } from "react-icons/fa"
 import { FiGithub } from "react-icons/fi"
 import useSWR, { useSWRConfig } from "swr"
 
+import fetcher from "@/lib/fetcher"
+import { Form, FormState } from "@/lib/types"
 import ErrorMessage from "@/components/ErrorMessage"
 import LoadingSpinner from "@/components/LoadingSpinner"
 import SuccessMessage from "@/components/SuccessMessage"

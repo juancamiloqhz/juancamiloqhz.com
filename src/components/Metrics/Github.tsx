@@ -1,7 +1,7 @@
-import fetcher from "lib/fetcher"
-import { GitHub } from "lib/types"
 import useSWR from "swr"
 
+import fetcher from "@/lib/fetcher"
+import { GitHub } from "@/lib/types"
 import MetricCard from "@/components/Metrics/Card"
 
 export default function GitHubCard() {

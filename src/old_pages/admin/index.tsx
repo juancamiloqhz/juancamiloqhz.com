@@ -30,17 +30,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-const BarChart = dynamic(() => import("components/admin/BarChart"), {
+const BarChart = dynamic(() => import("@/components/admin/BarChart"), {
   ssr: false,
 })
 
-const PieChart = dynamic(() => import("components/admin/PieChart"), {
+const PieChart = dynamic(() => import("@/components/admin/PieChart"), {
   ssr: false,
 })
 
-const CalendarChart = dynamic(() => import("components/admin/CalendarChart"), {
-  ssr: false,
-})
+const CalendarChart = dynamic(
+  () => import("@/components/admin/CalendarChart"),
+  {
+    ssr: false,
+  }
+)
 
 export default function PersonalDashboard() {
   const { data: session } = useSession()

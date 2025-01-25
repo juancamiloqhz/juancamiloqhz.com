@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next"
+import PostLayout from "@/layouts/PostLayout"
 import { allPosts, type Post } from "contentlayer/generated"
-import PostLayout from "layouts/PostLayout"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
