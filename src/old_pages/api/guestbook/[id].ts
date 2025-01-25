@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import { getSession } from "next-auth/react"
 
-import prisma from "@/lib/prisma"
+// import prisma from "@/lib/prisma"
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,11 +12,19 @@ export default async function handler(
   const { id } = req.query
   const email = session?.user?.email
 
-  const entry = await prisma.guestbook.findUnique({
-    where: {
-      id: Number(id),
-    },
-  })
+  // const entry = await prisma.guestbook.findUnique({
+  //   where: {
+  //     id: Number(id),
+  //   },
+  // })
+
+  const entry = {
+    id: 1,
+    body: "Hello, world!",
+    created_by: "John Doe",
+    updated_at: new Date().toISOString(),
+    email: "john@doe.com",
+  }
 
   if (req.method === "GET") {
     return res.json({
@@ -36,11 +44,11 @@ export default async function handler(
   }
 
   if (req.method === "DELETE") {
-    await prisma.guestbook.delete({
-      where: {
-        id: Number(id),
-      },
-    })
+    // await prisma.guestbook.delete({
+    //   where: {
+    //     id: Number(id),
+    //   },
+    // })
 
     return res.status(204).json({})
   }
@@ -48,15 +56,15 @@ export default async function handler(
   if (req.method === "PUT") {
     const body = (req.body.body || "").slice(0, 500)
 
-    await prisma.guestbook.update({
-      where: {
-        id: Number(id),
-      },
-      data: {
-        body,
-        updated_at: new Date().toISOString(),
-      },
-    })
+    // await prisma.guestbook.update({
+    //   where: {
+    //     id: Number(id),
+    //   },
+    //   data: {
+    //     body,
+    //     updated_at: new Date().toISOString(),
+    //   },
+    // })
 
     return res.status(201).json({
       ...entry,

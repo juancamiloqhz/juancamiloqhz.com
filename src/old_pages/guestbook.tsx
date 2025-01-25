@@ -2,27 +2,27 @@ import { GetStaticProps } from "next"
 import { useTranslation } from "next-i18next"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
-import prisma from "@/lib/prisma"
+// import prisma from "@/lib/prisma"
 import Guestbook from "@/components/Guestbook"
 import Container from "@/components/shared/Container"
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const entries = await prisma.guestbook.findMany({
-    orderBy: {
-      updated_at: "desc",
-    },
-  })
+  // const entries = await prisma.guestbook.findMany({
+  //   orderBy: {
+  //     updated_at: "desc",
+  //   },
+  // })
 
-  const fallbackData = entries.map((entry: any) => ({
-    id: entry.id.toString(),
-    body: entry.body,
-    created_by: entry.created_by.toString(),
-    updated_at: entry.updated_at.toString(),
-  }))
+  // const fallbackData = entries.map((entry: any) => ({
+  //   id: entry.id.toString(),
+  //   body: entry.body,
+  //   created_by: entry.created_by.toString(),
+  //   updated_at: entry.updated_at.toString(),
+  // }))
 
   return {
     props: {
-      fallbackData,
+      fallbackData: [],
       ...(await serverSideTranslations(locale ?? "en", [
         "guestbook-page",
         "header",
