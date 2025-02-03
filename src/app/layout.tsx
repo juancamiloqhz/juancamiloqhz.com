@@ -61,9 +61,9 @@ export const metadata: Metadata = {
     creator: "@juancamiloqhz",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicons/favicon.ico",
+    shortcut: "/favicons/favicon-16x16.png",
+    apple: "/favicons/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
