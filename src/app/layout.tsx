@@ -1,5 +1,6 @@
 import { Metadata } from "next"
-import { Inter as FontSans } from "next/font/google"
+// import { Inter as FontSans } from "next/font/google"
+import { Space_Grotesk as FontSans } from "next/font/google"
 
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -61,9 +62,9 @@ export const metadata: Metadata = {
     creator: "@juancamiloqhz",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicons/favicon.ico",
+    shortcut: "/favicons/favicon-16x16.png",
+    apple: "/favicons/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
@@ -82,7 +83,12 @@ export default function RootLayout({
       >
         <body className="antialiased tracking-tight">
           <div className="min-h-screen bg-background">
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
               {children}
               <Analytics />
               <TailwindIndicator />

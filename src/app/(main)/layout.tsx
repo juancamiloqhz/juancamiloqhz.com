@@ -1,21 +1,17 @@
 // import { marketingConfig } from "@/config/marketing"
 // import { MainNav } from "@/components/main-nav"
 
+import Header from "@/components/header"
+
 export default async function MarketingLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <div className="flex min-h-screen flex-col pt-0 md:pt-8 p-8">
-      {/* <header className="px-8 z-40 bg-background">
-        <div className="flex h-20 items-center py-6">
-          <MainNav items={marketingConfig.mainNav} />
-        </div>
-      </header> */}
-      <main className="flex-1 mx-auto max-w-3xl prose dark:prose-invert">
-        {children}
-      </main>
+    <div className="min-h-screen max-w-7xl mx-auto px-4 mt-16">
+      <Header />
+      <main>{children}</main>
       <Footer />
     </div>
   )
