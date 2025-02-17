@@ -34,7 +34,7 @@ export default function ContainerScroll({
     return isMobile ? [0.7, 0.9] : [1.05, 1]
   }
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0])
+  const rotate = useTransform(scrollYProgress, [0, 1], [25, 0])
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
 
@@ -47,7 +47,8 @@ export default function ContainerScroll({
       <div
         className="py-10 lg:py-40 w-full relative"
         style={{
-          perspective: isMobile ? "800px" : "1000px",
+          // perspective: "1000px",
+          perspective: isMobile ? "800px" : "700px",
         }}
       >
         <HeroHeader translate={translate} titleComponent={titleComponent} />

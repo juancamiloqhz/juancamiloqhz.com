@@ -14,14 +14,25 @@ export type MainNavItem = NavItem
 
 export type SiteConfig = {
   name: string
+  initials: string
   description: string
   url: string
   ogImage: string
   links: {
     twitter: string
     github: string
+    youtube?: string
+    linkedin: string
+    instagram?: string
   }
-  navItems: NavItem[]
+  headerNavItems: NavItem[]
+  footer: {
+    links: {
+      name: string
+      url: string
+    }[]
+    navItems: NavItem[]
+  }
 }
 
 export type MarketingConfig = {

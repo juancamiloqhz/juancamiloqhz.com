@@ -4,13 +4,13 @@ import React from "react"
 import Link from "next/link"
 import { motion, Variants } from "motion/react"
 
+import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import GetStartedButton from "@/components/get-started-button"
+import Logo from "@/components/logo"
 import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
-
-import GetStartedButton from "./get-started-button"
 
 const navVariants: Variants = {
   initial: {
@@ -24,13 +24,6 @@ const navVariants: Variants = {
     maxWidth: "72rem",
   },
 }
-
-const navItems = [
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
-]
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false)
@@ -61,15 +54,9 @@ export default function Header() {
         )}
       >
         <div className="flex items-center space-x-8">
-          <Link href="/" className="flex items-center space-x-2">
-            <Avatar className="w-7 h-7">
-              <AvatarImage src="/face_round.png" />
-              <AvatarFallback></AvatarFallback>
-            </Avatar>
-            <span className="text-base font-bold">Juan Camilo QHz</span>
-          </Link>
+          <Logo />
           <div className="items-center space-x-3 hidden lg:flex">
-            {navItems.map((item) => (
+            {siteConfig.headerNavItems.map((item) => (
               <Button
                 variant="ghost"
                 size="sm"
@@ -78,7 +65,7 @@ export default function Header() {
                 className="px-5 h-8"
               >
                 <Link href={item.href} className="text-base font-medium">
-                  {item.name}
+                  {item.title}
                 </Link>
               </Button>
             ))}

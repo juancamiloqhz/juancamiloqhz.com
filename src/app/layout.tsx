@@ -69,11 +69,11 @@ export const metadata: Metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode
-}) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ViewTransitions>
       <html
@@ -87,6 +87,7 @@ export default function RootLayout({
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
+            enableColorScheme
           >
             <div vaul-drawer-wrapper="">
               <div className="relative flex min-h-svh flex-col bg-background">

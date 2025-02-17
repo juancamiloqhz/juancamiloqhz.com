@@ -46,7 +46,7 @@ export function MobileNav() {
         </DrawerHeader>
         <div className="overflow-auto p-6">
           <div className="flex flex-col space-y-3">
-            {siteConfig.navItems.map((item) => (
+            {siteConfig.headerNavItems.map((item) => (
               <MobileLink
                 key={item.href}
                 href={item.href}
