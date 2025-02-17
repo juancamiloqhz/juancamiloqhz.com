@@ -41,9 +41,9 @@ export default function Hero() {
               engagement.
             </p> */}
             {/* -------------------------- */}
-            <h1 className="text-4xl font-semibold text-black dark:text-white">
+            <h1 className="text-3xl lg:text-4xl font-semibold text-black dark:text-white">
               Hi, I'm Juan Camilo <br />
-              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
+              <span className="text-5xl lg:text-8xl font-bold mt-1 leading-none">
                 Your AI Strategy Partner
               </span>
             </h1>

@@ -81,19 +81,21 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${fontSans.className}`}
       >
-        <body className="antialiased tracking-tight">
-          <div className="min-h-screen bg-background">
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              {children}
-              <Analytics />
-              <TailwindIndicator />
-            </ThemeProvider>
-          </div>
+        <body className="min-h-svh bg-background font-sans antialiased">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div vaul-drawer-wrapper="">
+              <div className="relative flex min-h-svh flex-col bg-background">
+                {children}
+              </div>
+            </div>
+            <Analytics />
+            <TailwindIndicator />
+          </ThemeProvider>
         </body>
       </html>
     </ViewTransitions>

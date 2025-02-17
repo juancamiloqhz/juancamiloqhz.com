@@ -7,7 +7,10 @@ import { motion, Variants } from "motion/react"
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import { MobileNav } from "@/components/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
+
+import GetStartedButton from "./get-started-button"
 
 const navVariants: Variants = {
   initial: {
@@ -41,7 +44,7 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full flex justify-center">
+    <header className="fixed top-2 lg:top-4 left-1/2 transform -translate-x-1/2 z-50 w-full flex justify-center">
       <motion.nav
         initial="initial"
         animate={isScrolled ? "scrolled" : "initial"}
@@ -65,7 +68,7 @@ export default function Header() {
             </Avatar>
             <span className="text-base font-bold">Juan Camilo QHz</span>
           </Link>
-          <div className="flex items-center space-x-3">
+          <div className="items-center space-x-3 hidden lg:flex">
             {navItems.map((item) => (
               <Button
                 variant="ghost"
@@ -81,11 +84,10 @@ export default function Header() {
             ))}
           </div>
         </div>
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center lg:space-x-3 space-x-1">
           <ModeToggle />
-          <Button variant="default" size="sm" asChild animation="elevate">
-            <Link href="/contact">Book a Free AI Strategy Call</Link>
-          </Button>
+          <GetStartedButton className="hidden lg:flex" />
+          <MobileNav />
         </div>
       </motion.nav>
     </header>

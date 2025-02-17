@@ -1,5 +1,6 @@
 import React from "react"
 
+import AreYouReadyVortex from "@/components/are-you-ready"
 import Hero from "@/components/hero"
 // import CardSpotlightDemo from "@/components/sandbox/card-spotlight"
 import HeroScroll from "@/components/hero/index"
@@ -9,9 +10,10 @@ export default function HomePage() {
   return (
     <>
       <HeroScroll />
-      <Hero />
+      {/* <Hero /> */}
       <CardDemo />
       {/* <CardSpotlightDemo /> */}
+      <AreYouReadyVortex />
     </>
   )
 }

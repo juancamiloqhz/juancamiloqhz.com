@@ -21,6 +21,7 @@ export type SiteConfig = {
     twitter: string
     github: string
   }
+  navItems: NavItem[]
 }
 
 export type MarketingConfig = {

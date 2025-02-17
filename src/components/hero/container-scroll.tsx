@@ -41,13 +41,13 @@ export default function ContainerScroll({
   return (
     <div
       // className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
-      className="h-[60rem] md:h-[135vh] flex items-center justify-center relative p-2 md:p-20"
+      className="h-[110svh] lg:h-[130svh] flex items-center justify-center relative p-2 md:p-20"
       ref={containerRef}
     >
       <div
-        className="py-10 md:py-40 w-full relative"
+        className="py-10 lg:py-40 w-full relative"
         style={{
-          perspective: "1000px",
+          perspective: isMobile ? "800px" : "1000px",
         }}
       >
         <HeroHeader translate={translate} titleComponent={titleComponent} />

@@ -9,7 +9,7 @@ export default async function MarketingLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen max-w-7xl mx-auto px-4 mt-16">
+    <div className="min-h-screen">
       <Header />
       <main>{children}</main>
       <Footer />

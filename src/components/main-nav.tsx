@@ -9,7 +9,6 @@ import { motion } from "framer-motion"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
-import { MobileNav } from "@/components/mobile-nav"
 
 import ModalMenuMobile from "./Modals/ModalMenuMobile"
 
@@ -90,9 +89,6 @@ export function MainNav({ items, children }: MainNavProps) {
       >
         <Icons.menu size={24} />
       </button>
-      {/* {showMobileMenu && items && (
-        <MobileNav items={items}>{children}</MobileNav>
-      )} */}
       <ModalMenuMobile isOpen={showMobileMenu} setIsOpen={setShowMobileMenu} />
     </div>
   )

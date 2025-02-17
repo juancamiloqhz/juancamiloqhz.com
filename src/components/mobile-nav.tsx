@@ -1,47 +1,121 @@
-import * as React from "react"
-import Link from "next/link"
-import { MainNavItem } from "@/types"
+"use client"
+
+import React from "react"
+import Link, { LinkProps } from "next/link"
+import { useRouter } from "next/navigation"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { useLockBody } from "@/hooks/use-lock-body"
-import { Icons } from "@/components/icons"
+import { Button } from "@/components/ui/button"
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+import MenuToggle from "@/components/shared/MenuToggle"
 
-interface MobileNavProps {
-  items: MainNavItem[]
-  children?: React.ReactNode
-}
+export function MobileNav() {
+  const [open, setOpen] = React.useState(false)
 
-export function MobileNav({ items, children }: MobileNavProps) {
-  useLockBody()
+  const onOpenChange = React.useCallback(
+    (open: boolean) => {
+      setOpen(open)
+    },
+    [setOpen]
+  )
 
   return (
-    <div
-      className={cn(
-        "fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden"
-      )}
+    <Drawer open={open} onOpenChange={onOpenChange}>
+      <DrawerTrigger asChild>
+        <Button
+          variant="ghost"
+          size="icon"
+          // className="-ml-2 mr-2 h-8 w-8 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          className="rounded-full lg:hidden"
+        >
+          <MenuToggle isOpen={open} />
+        </Button>
+      </DrawerTrigger>
+      <DrawerContent className="max-h-[60svh] p-0">
+        <DrawerHeader className="sr-only">
+          <DrawerTitle>Website mobile menu</DrawerTitle>
+          <DrawerDescription>Website mobile menu description</DrawerDescription>
+        </DrawerHeader>
+        <div className="overflow-auto p-6">
+          <div className="flex flex-col space-y-3">
+            {siteConfig.navItems.map((item) => (
+              <MobileLink
+                key={item.href}
+                href={item.href}
+                onOpenChange={setOpen}
+              >
+                {item.title}
+              </MobileLink>
+            ))}
+          </div>
+          {/* <div className="flex flex-col space-y-2">
+            {siteConfig.navItems?.map((item, index) => (
+              <div key={index} className="flex flex-col space-y-3 pt-6">
+                <h4 className="font-medium">{item.title}</h4>
+                {item?.items?.length &&
+                  item.items.map((item) => (
+                    <React.Fragment key={item.href}>
+                      {!item.disabled &&
+                        (item.href ? (
+                          <MobileLink
+                            href={item.href}
+                            onOpenChange={setOpen}
+                            className="text-muted-foreground"
+                          >
+                            {item.title}
+                            {item.label && (
+                              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
+                                {item.label}
+                              </span>
+                            )}
+                          </MobileLink>
+                        ) : (
+                          item.title
+                        ))}
+                    </React.Fragment>
+                  ))}
+              </div>
+            ))}
+          </div> */}
+        </div>
+      </DrawerContent>
+    </Drawer>
+  )
+}
+
+interface MobileLinkProps extends LinkProps {
+  onOpenChange?: (open: boolean) => void
+  children: React.ReactNode
+  className?: string
+}
+
+function MobileLink({
+  href,
+  onOpenChange,
+  className,
+  children,
+  ...props
+}: MobileLinkProps) {
+  const router = useRouter()
+  return (
+    <Link
+      href={href}
+      onClick={() => {
+        router.push(href.toString())
+        onOpenChange?.(false)
+      }}
+      className={cn("text-base", className)}
+      {...props}
     >
-      <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
-        <Link href="/" className="flex items-center space-x-2">
-          <Icons.logo />
-          <span className="font-bold">{siteConfig.name}</span>
-        </Link>
-        <nav className="grid grid-flow-row auto-rows-max text-sm">
-          {items.map((item, index) => (
-            <Link
-              key={index}
-              href={item.disabled ? "#" : item.href}
-              className={cn(
-                "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline",
-                item.disabled && "cursor-not-allowed opacity-60"
-              )}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-        {children}
-      </div>
-    </div>
+      {children}
+    </Link>
   )
 }
