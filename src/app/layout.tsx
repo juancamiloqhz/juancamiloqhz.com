@@ -8,12 +8,15 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 import "@/styles/globals.css"
 
+// import localFont from "next/font/local"
 import { ViewTransitions } from "next-view-transitions"
 
 import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
 
 const fontSans = FontSans({
   subsets: ["latin"],
+  variable: "--font-sans",
 })
 
 // // Font files can be colocated inside of `pages`
@@ -76,12 +79,14 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <ViewTransitions>
-      <html
-        lang="en"
-        suppressHydrationWarning
-        className={`${fontSans.className}`}
-      >
-        <body className="min-h-svh bg-background font-sans antialiased">
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            "min-h-svh bg-background font-sans antialiased",
+            fontSans.variable
+            // fontHeading.variable
+          )}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
