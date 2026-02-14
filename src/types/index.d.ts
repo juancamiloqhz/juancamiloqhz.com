@@ -2,7 +2,6 @@ import type { MDX } from "contentlayer/core"
 import * as Local from "contentlayer/source-files"
 
 import { Category, Tag } from ".contentlayer/generated/types"
-import * as Local from 'contentlayer/source-files'
 
 export type NavItem = {
   title: string

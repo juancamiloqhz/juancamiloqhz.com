@@ -7,9 +7,15 @@ const nextConfig: NextConfig = {
   pageExtensions: ["mdx", "ts", "tsx"],
   reactStrictMode: true,
   images: {
-    domains: [
-      "i.scdn.co", // Spotify Album Art
-      "pbs.twimg.com", // Twitter Profile Picture
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.scdn.co", // Spotify Album Art
+      },
+      {
+        protocol: "https",
+        hostname: "pbs.twimg.com", // Twitter Profile Picture
+      },
     ],
   },
   // Note: Using the Rust compiler means we cannot use
