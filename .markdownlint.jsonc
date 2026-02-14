@@ -1,0 +1,20 @@
+// A comment to allow a .jsonc file, which is more flexible.
+{
+  // MD013/line-length - Disabled because it can be annoying for prose.
+  "MD013": false,
+  // MD033/no-inline-html - Disabled to allow for occasional HTML for styling.
+  "MD033": false,
+  // MD041/first-line-heading - Enforce that files start with a heading.
+  "MD041": true,
+  // MD025/single-title - Enforce a single top-level heading.
+  "MD025": {
+    "level": 1,
+    "front_matter_title": ""
+  },
+  // MD007/ul-indent - Indent unordered list items with 2 spaces.
+  "MD007": { "indent": 2 },
+  // MD024/no-duplicate-heading - Allow duplicate headings.
+  "MD024": { "siblings_only": true },
+  // MD029/ol-prefix - Ordered list prefixes are "one" (1. 1. 1.)
+  "MD029": { "style": "one" }
+}
