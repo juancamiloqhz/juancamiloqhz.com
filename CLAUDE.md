@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents working with code in this reposi
 
 ## Project Overview
 
-Personal website for JuanCamiloQHz — a Next.js 15 app using the App Router, TypeScript, Tailwind CSS, shadcn/ui (Radix primitives + CVA), Contentlayer for MDX blog content, Prisma for database, and i18n via next-i18next. Package manager is Bun.
+Personal website for JuanCamiloQHz — a Next.js 16 app (React 19) using the App Router, TypeScript, Tailwind CSS, shadcn/ui (unified `radix-ui` package + CVA), Contentlayer for MDX blog content, Prisma for database, and i18n via next-i18next. Package manager is Bun.
 
 ## Build / Lint / Test Commands
 
@@ -184,9 +184,10 @@ Required client-side variable: `NEXT_PUBLIC_APP_URL`
 
 | Dependency                 | Purpose                                |
 | -------------------------- | -------------------------------------- |
-| `next@15`                  | Framework (App Router + Turbopack dev) |
+| `next@16`                  | Framework (App Router + Turbopack dev) |
+| `react@19`                 | UI library                             |
 | `contentlayer`             | MDX content management                 |
-| `@radix-ui/*`              | Headless UI primitives (via shadcn/ui) |
+| `radix-ui`                 | Headless UI primitives (via shadcn/ui) |
 | `class-variance-authority` | Component variant styling              |
 | `framer-motion`            | Animations                             |
 | `next-themes`              | Dark/light/system theme                |
