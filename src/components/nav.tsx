@@ -9,7 +9,7 @@ export function Nav() {
     <nav className="flex items-center justify-between">
       <Link
         href="/"
-        className="text-foreground transition-element font-medium no-underline hover:no-underline"
+        className="text-foreground font-medium no-underline hover:no-underline"
       >
         Juan Camilo QHz
       </Link>
