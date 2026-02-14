@@ -19,7 +19,7 @@ export default function HomePage() {
     <div>
       <NameTransition />
       <p className="leading-snug">
-        I'm a frontend developer and mechanical engineer, blending the precision
+        I&apos;m a frontend developer and mechanical engineer, blending the precision
         of engineering with the creativity of web development. I craft elegant
         solutions that bridge the gap between form and function, using modern
         technologies like React and Next.js to build exceptional user

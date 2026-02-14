@@ -2,4 +2,5 @@ dist
 node_modules
 .next
 build
-.contentlayer
+.source
+src/components/ui

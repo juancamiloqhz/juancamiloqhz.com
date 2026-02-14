@@ -24,13 +24,10 @@ export const blogPosts = defineCollections({
 
 export default defineConfig({
   mdxOptions: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     remarkPlugins: [remarkGfm as any],
     rehypePlugins: [
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       rehypeSlug as any,
       [
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         rehypeAutolinkHeadings as any,
         {
           properties: {

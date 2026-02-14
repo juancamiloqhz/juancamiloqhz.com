@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 
 import { formatDate } from "@/lib/utils"
 import { blog } from "@/lib/source"
-import { useMDXComponents } from "@/mdx-components"
+import { getMDXComponents } from "@/mdx-components"
 
 type Params = Promise<{ slug: string }>
 
@@ -38,7 +38,7 @@ export default async function BlogPostPage({
   if (!page) notFound()
 
   const MDX = page.data.body
-  const components = useMDXComponents()
+  const components = getMDXComponents()
 
   return (
     <article>

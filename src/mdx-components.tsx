@@ -91,6 +91,7 @@ const components = {
     />
   ),
   img: ({ className, alt, ...props }: React.ComponentProps<"img">) => (
+    // eslint-disable-next-line @next/next/no-img-element
     <img className={cn("rounded-md", className)} alt={alt} {...props} />
   ),
   hr: ({ ...props }: React.ComponentProps<"hr">) => (
@@ -180,6 +181,10 @@ const components = {
 
 declare global {
   type MDXProvidedComponents = typeof components
+}
+
+export function getMDXComponents(): MDXProvidedComponents {
+  return components
 }
 
 export function useMDXComponents(): MDXProvidedComponents {
