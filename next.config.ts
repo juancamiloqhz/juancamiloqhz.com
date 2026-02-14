@@ -1,7 +1,5 @@
 import type { NextConfig } from "next"
-import createMDX from "@next/mdx"
-
-// import "./env.mjs";
+import { createMDX } from "fumadocs-mdx/next"
 
 const nextConfig: NextConfig = {
   pageExtensions: ["mdx", "ts", "tsx"],
@@ -10,18 +8,13 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "i.scdn.co", // Spotify Album Art
+        hostname: "i.scdn.co",
       },
       {
         protocol: "https",
-        hostname: "pbs.twimg.com", // Twitter Profile Picture
+        hostname: "pbs.twimg.com",
       },
     ],
-  },
-  // Note: Using the Rust compiler means we cannot use
-  // rehype or remark plugins. For my app, this is fine.
-  experimental: {
-    mdxRs: true,
   },
 }
 

@@ -82,7 +82,12 @@ export default function RootLayout({
       >
         <body className="antialiased tracking-tight">
           <div className="min-h-screen bg-background">
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
               {children}
               <Analytics />
               <TailwindIndicator />

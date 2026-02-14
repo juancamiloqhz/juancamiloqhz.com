@@ -35,5 +35,5 @@ yarn-error.log*
 .vercel
 .env
 
-# Contentlayer
-.contentlayer
+# Fumadocs MDX
+.source
