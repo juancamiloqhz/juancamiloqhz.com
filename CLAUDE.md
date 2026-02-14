@@ -18,8 +18,8 @@ bun run build
 # Start production server
 bun start
 
-# Lint (ESLint with next/core-web-vitals + prettier)
-bun lint
+# Lint (ESLint 9 flat config + next/core-web-vitals)
+bun run lint
 
 # Generate Fumadocs MDX types (runs automatically via postinstall)
 bun x fumadocs-mdx
@@ -30,6 +30,7 @@ There is **no test runner configured** (no Jest, Vitest, or Playwright). If test
 ## Project Structure
 
 ```text
+eslint.config.mjs       # ESLint 9 flat config (next/core-web-vitals)
 source.config.ts        # Fumadocs MDX collection definitions + MDX plugins
 data/
   blog/                 # MDX blog posts (processed by Fumadocs MDX)
@@ -69,6 +70,13 @@ public/                 # Static files served at root
 
 ## Code Style Guidelines
 
+### Linting (ESLint 9)
+
+- **Flat config** in `eslint.config.mjs` — imports `eslint-config-next/core-web-vitals` directly
+- **`next lint` does not exist** in Next.js 16 — use `bun run lint` (runs `eslint .`)
+- **`src/components/ui/`** is excluded from linting to keep shadcn/ui components untouched
+- `.source/`, `.next/`, `node_modules/` are also excluded
+
 ### Formatting (Prettier)
 
 - **No semicolons** (`semi: false`)
@@ -77,6 +85,7 @@ public/                 # Static files served at root
 - **Trailing commas** in ES5-valid positions (`trailingComma: "es5"`)
 - **LF line endings** (`endOfLine: "lf"`)
 - Tailwind class sorting is handled by `prettier-plugin-tailwindcss`
+- **`src/components/ui/`** is excluded from Prettier (via `.prettierignore`) to keep shadcn/ui components as-is
 
 ### Import Order (enforced by @ianvs/prettier-plugin-sort-imports)
 
