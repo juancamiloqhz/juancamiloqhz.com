@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents working with code in this reposi
 
 ## Project Overview
 
-Personal website for JuanCamiloQHz — a Next.js 16 app (React 19) using the App Router, TypeScript, Tailwind CSS, shadcn/ui (unified `radix-ui` package + CVA), Contentlayer for MDX blog content, Prisma for database, and i18n via next-i18next. Package manager is Bun.
+Personal website for JuanCamiloQHz — a Next.js 16 app (React 19) using the App Router, TypeScript, Tailwind CSS v4, shadcn/ui (new-york style, unified `radix-ui` package + CVA), Contentlayer for MDX blog content, Prisma for database, and i18n via next-i18next. Package manager is Bun.
 
 ## Build / Lint / Test Commands
 
@@ -18,7 +18,7 @@ bun run build
 # Start production server
 bun start
 
-# Lint (ESLint with next/core-web-vitals + prettier + tailwindcss plugin)
+# Lint (ESLint with next/core-web-vitals + prettier)
 bun lint
 
 # Database commands (Prisma)
@@ -119,7 +119,8 @@ Never use relative imports to reach outside the current directory's module bound
 ### React & Components
 
 - **Function declarations** for page components and layouts: `export default function PageName()`
-- **Arrow functions with `React.forwardRef`** for UI primitives (shadcn/ui pattern)
+- **Plain functions with `React.ComponentProps`** for UI primitives (shadcn/ui new-york style — no `React.forwardRef` needed with React 19)
+- **`data-slot` attributes** on shadcn/ui component root elements for styling and testing hooks
 - **`"use client"` directive** required at top of any file using hooks, browser APIs, or event handlers
 - Props are typed inline: `{ children }: { children: React.ReactNode }`
 - Use `import * as React from "react"` (not `import React from "react"`)
@@ -137,13 +138,14 @@ Never use relative imports to reach outside the current directory's module bound
 
 ### Styling
 
-- **Tailwind CSS** for all styling — no CSS modules or styled-components
+- **Tailwind CSS v4** for all styling — no CSS modules or styled-components
+- **No `tailwind.config.js`** — all theme configuration lives in `src/styles/globals.css` via `@theme inline`
 - **`cn()` utility** (from `@/lib/utils`) to merge Tailwind classes: `cn("base-class", conditional && "conditional-class")`
-- **CSS variables** for theme colors via HSL values (defined in globals.css, consumed as `hsl(var(--primary))`)
-- **Dark mode** via `class` strategy (`darkMode: ["class"]`)
-- **shadcn/ui** components use `class-variance-authority` (CVA) for variants
-- **Tailwind class order** is enforced by ESLint (`tailwindcss/classnames-order: "error"`)
-- Custom classnames are allowed (`tailwindcss/no-custom-classname: "off"`)
+- **CSS variables** for theme colors via OKLCH values (defined in globals.css, consumed as `var(--primary)` directly — no `hsl()` wrapper needed in v4)
+- **Dark mode** via `@custom-variant dark (&:is(.dark *))` in globals.css
+- **shadcn/ui** components use `class-variance-authority` (CVA) for variants, `new-york` style
+- **Tailwind class order** is enforced by `prettier-plugin-tailwindcss`
+- **Animations** via `tw-animate-css` (replaces `tailwindcss-animate` from v3)
 
 ### Icons
 
@@ -182,18 +184,20 @@ Required client-side variable: `NEXT_PUBLIC_APP_URL`
 
 ### Key Dependencies to Know
 
-| Dependency                 | Purpose                                |
-| -------------------------- | -------------------------------------- |
-| `next@16`                  | Framework (App Router + Turbopack dev) |
-| `react@19`                 | UI library                             |
-| `contentlayer`             | MDX content management                 |
-| `radix-ui`                 | Headless UI primitives (via shadcn/ui) |
-| `class-variance-authority` | Component variant styling              |
-| `framer-motion`            | Animations                             |
-| `next-themes`              | Dark/light/system theme                |
-| `next-i18next`             | Internationalization (en/es)           |
-| `swr`                      | Client-side data fetching              |
-| `prisma`                   | Database ORM (MySQL)                   |
-| `zod`                      | Schema validation                      |
-| `react-hook-form`          | Form management                        |
-| `next-view-transitions`    | Page transition animations             |
+| Dependency                 | Purpose                                     |
+| -------------------------- | ------------------------------------------- |
+| `next@16`                  | Framework (App Router + Turbopack dev)       |
+| `react@19`                 | UI library                                   |
+| `tailwindcss@4`            | Utility-first CSS (v4, config-in-CSS)        |
+| `tw-animate-css`           | Animation utilities for Tailwind v4          |
+| `contentlayer`             | MDX content management                       |
+| `radix-ui`                 | Headless UI primitives (unified package)     |
+| `class-variance-authority` | Component variant styling                    |
+| `framer-motion`            | Animations                                   |
+| `next-themes`              | Dark/light/system theme                      |
+| `next-i18next`             | Internationalization (en/es)                 |
+| `swr`                      | Client-side data fetching                    |
+| `prisma`                   | Database ORM (MySQL)                         |
+| `zod`                      | Schema validation                            |
+| `react-hook-form`          | Form management                              |
+| `next-view-transitions`    | Page transition animations                   |
