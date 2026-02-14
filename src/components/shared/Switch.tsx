@@ -1,5 +1,5 @@
 import React from "react"
-import * as SwitchPrimitive from "@radix-ui/react-switch"
+import { Switch as SwitchPrimitive } from "radix-ui"
 import cx from "classnames"
 
 const Switch = ({
